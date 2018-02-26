@@ -54,4 +54,20 @@ public class Task {
         return "s1";
     }
 
+    public void setTaskName(String name2) {
+
+    }
+
+    public String getStatus() {
+        return "d";
+    }
+
+    public String getDescription() {
+        return "d";
+    }
+
+    public String getTitle() {
+        return "d";
+    }
+
 }

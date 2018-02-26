@@ -18,18 +18,21 @@ public class TaskTest extends ActivityInstrumentationTestCase2 {
     public void testName() throws Exception {
     }
 
+    public void getTask(int tid) {
+
+    }
+
     public void testGetTaskInfo(){
 
-        ArrayList<Task> tasks = new ArrayList<Task>();
-        ArrayList<Bid> bids = new ArrayList<Bid>();
-        Bid bid = new Bid("username", "180");
-        bids.add(bid);
-        Task task = new Task("task1","this is task 1","bidded", bids);
-        tasks.add(task);  //assume add function works fine
-        assertTrue(tasks.getTask(0).getTitle == "task1");
-        assertTrue(tasks.getTask(0).getDescription == "this is task 1");
-        assertTrue(tasks.getTask(0).getStatus == "bidded");
-        assertTrue(tasks.getTask(0).getLowestBid == "180");
+        String username = "Tom";
+        String taskname = "task1";
+        String description = "this is a message";
+
+        Task tasks = new Task(username, taskname, description);
+
+        assertTrue(tasks.getTitle() == "task1");
+        assertTrue(tasks.getDescription() == "this is task 1");
+        assertTrue(tasks.getStatus() == "bidded");
     }
 
     public void testBidTask(){
@@ -63,21 +66,14 @@ public class TaskTest extends ActivityInstrumentationTestCase2 {
 
     }
 
-    public void testSetBidStatus(){
-
-        ArrayList<Bid> bids = new ArrayList<Bid>();
-        Task task = new Task("task1", "this is task 1", "requested", bids);
-        task.setBidStatus("bidded");
-        assertEquals(task.getStatus(),"bidded");
-    }
-
     public void testsetTaskName(){
         String username = "Tom";
+        String username2 = "Tom";
         String taskname = "task1";
         String description = "this is a message";
 
         Task task = new Task(username, taskname, description);
-        task.setTaskName(name2);
+        task.setTaskName(username2);
         assertTrue(task.getTaskName() == username);
     }
     public void testsetStatus(){
