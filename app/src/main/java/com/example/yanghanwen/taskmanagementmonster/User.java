@@ -9,10 +9,6 @@ public class User {
     private String email;
     private String phoneNum;
 
-    public User() {
-
-    }
-
     public User(String name, String email, String phoneNum) {
         this.userName = name;
         this.email = email;
