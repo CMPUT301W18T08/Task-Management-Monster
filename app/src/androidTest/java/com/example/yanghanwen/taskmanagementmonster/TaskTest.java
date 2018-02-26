@@ -35,37 +35,6 @@ public class TaskTest extends ActivityInstrumentationTestCase2 {
         assertTrue(tasks.getStatus() == "bidded");
     }
 
-    public void testBidTask(){
-
-        ArrayList<Bid> bids = new ArrayList<Bid>();
-        Bid bid = new Bid("userid","180");
-        bids.add(bid);
-        Task task1 = new Task("task1","this is task 1","bidded", bids);
-        Bid bid2 = new Bid("userid1", "220");
-        task1.addBid(bid2);
-        assertEquals(task1.getBids()[1].getid(),"userid1");
-    }
-
-    public void testSearchTask(){
-
-        ArrayList<Task> tasks = new ArrayList<Task>();
-        ArrayList<Bid> bids1 = new ArrayList<Bid>();
-        Bid bid = new Bid("userid","180");
-        bids1.add(bid);
-        Task task1 = new Task("task1","this is task 1","bidded", bids1);
-        tasks.add(task1);
-        ArrayList<Bid> bids2 = new ArrayList<Bid>();
-        Bid bid1 = new Bid("userid1","220");
-        bids2.add(bid1);
-        Task task2 = new Task("task2","this is task 2","bidded", bids2);
-        tasks.add(task2);
-        Task task = tasks.searchTask("task1");
-        Task task3 = tasks.searchTask("task 1");
-        assertEquals(task.getTitle(),"task1");
-        assertEquals(task3.getTitle(), "task1");
-
-    }
-
     public void testsetTaskName(){
         String username = "Tom";
         String username2 = "Tom";
