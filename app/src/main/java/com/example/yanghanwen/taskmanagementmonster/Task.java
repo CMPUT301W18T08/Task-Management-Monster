@@ -70,4 +70,8 @@ public class Task {
         return "d";
     }
 
+    public int getTid() {
+        return 2;
+    }
+
 }

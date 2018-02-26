@@ -7,7 +7,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4dee7c3e-444d-4d5b-8c8f-119ca7e8ca3b" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.lock" afterPath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/fileHashes/resourceHashesCache.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/fileHashes/resourceHashesCache.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/taskHistory/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/taskHistory/fileSnapshots.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.lock" afterPath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/androidTest/java/com/example/yanghanwen/taskmanagementmonster/TaskTest.java" afterPath="$PROJECT_DIR$/app/src/androidTest/java/com/example/yanghanwen/taskmanagementmonster/TaskTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yanghanwen/taskmanagementmonster/Task.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yanghanwen/taskmanagementmonster/Task.java" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -126,8 +134,8 @@
       <file leaf-file-name="TaskTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/androidTest/java/com/example/yanghanwen/taskmanagementmonster/TaskTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="35" column="5" lean-forward="false" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
+            <state relative-caret-position="121">
+              <caret line="28" column="36" lean-forward="false" selection-start-line="28" selection-start-column="36" selection-end-line="28" selection-end-column="36" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -138,8 +146,8 @@
       <file leaf-file-name="Task.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yanghanwen/taskmanagementmonster/Task.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="57" column="0" lean-forward="true" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
+            <state relative-caret-position="540">
+              <caret line="73" column="17" lean-forward="false" selection-start-line="73" selection-start-column="17" selection-end-line="73" selection-end-column="17" />
               <folding>
                 <element signature="e#305#306#0" expanded="true" />
                 <element signature="e#332#333#0" expanded="true" />
@@ -159,6 +167,8 @@
                 <element signature="e#1089#1090#0" expanded="true" />
                 <element signature="e#1121#1122#0" expanded="true" />
                 <element signature="e#1147#1148#0" expanded="true" />
+                <element signature="e#1174#1175#0" expanded="true" />
+                <element signature="e#1198#1199#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -1899,8 +1909,8 @@
         <option value="$PROJECT_DIR$/app/src/androidTest/java/com/example/yanghanwen/taskmanagementmonster/MessageTest.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/yanghanwen/taskmanagementmonster/Message.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/yanghanwen/taskmanagementmonster/User.java" />
-        <option value="$PROJECT_DIR$/app/src/main/java/com/example/yanghanwen/taskmanagementmonster/Task.java" />
         <option value="$PROJECT_DIR$/app/src/androidTest/java/com/example/yanghanwen/taskmanagementmonster/TaskTest.java" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/yanghanwen/taskmanagementmonster/Task.java" />
       </list>
     </option>
   </component>
@@ -2169,7 +2179,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Android Instrumented Tests.MessageTest">
+  <component name="RunManager" selected="Android Instrumented Tests.TaskTest">
     <configuration default="false" name="ExampleInstrumentedT..." type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests" temporary="true" nameIsGenerated="true">
       <module name="app" />
       <option name="TESTING_TYPE" value="2" />
@@ -2305,6 +2315,51 @@
       </Profilers>
       <method />
     </configuration>
+    <configuration default="false" name="TaskTest" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests" temporary="true" nameIsGenerated="true">
+      <module name="app" />
+      <option name="TESTING_TYPE" value="2" />
+      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="CLASS_NAME" value="com.example.yanghanwen.taskmanagementmonster.TaskTest" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="EXTRA_OPTIONS" value="" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <option name="DEBUGGER_TYPE" value="Auto" />
+      <Auto>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Auto>
+      <Hybrid>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Hybrid>
+      <Java />
+      <Native>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Native>
+      <Profilers>
+        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+      </Profilers>
+      <method />
+    </configuration>
     <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -2374,7 +2429,7 @@
       <option name="DEEP_LINK" value="" />
       <option name="ACTIVITY_CLASS" value="" />
       <method>
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1519685715321" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1519685879677" />
       </method>
     </configuration>
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests">
@@ -2421,7 +2476,7 @@
         <option name="ADVANCED_PROFILING_ENABLED" value="false" />
       </Profilers>
       <method>
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1519685715321" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1519685879678" />
       </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -2603,20 +2658,22 @@
       <option name="DEEP_LINK" value="" />
       <option name="ACTIVITY_CLASS" value="" />
       <method>
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1519685715321" />
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1519685879679" />
       </method>
     </configuration>
-    <list size="4">
+    <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Android App.app" />
       <item index="1" class="java.lang.String" itemvalue="Android Instrumented Tests.ExampleInstrumentedT..." />
       <item index="2" class="java.lang.String" itemvalue="Android Instrumented Tests.UserTest" />
       <item index="3" class="java.lang.String" itemvalue="Android Instrumented Tests.MessageTest" />
+      <item index="4" class="java.lang.String" itemvalue="Android Instrumented Tests.TaskTest" />
     </list>
     <recent_temporary>
-      <list size="3">
-        <item index="0" class="java.lang.String" itemvalue="Android Instrumented Tests.MessageTest" />
-        <item index="1" class="java.lang.String" itemvalue="Android Instrumented Tests.UserTest" />
-        <item index="2" class="java.lang.String" itemvalue="Android Instrumented Tests.ExampleInstrumentedT..." />
+      <list size="4">
+        <item index="0" class="java.lang.String" itemvalue="Android Instrumented Tests.TaskTest" />
+        <item index="1" class="java.lang.String" itemvalue="Android Instrumented Tests.MessageTest" />
+        <item index="2" class="java.lang.String" itemvalue="Android Instrumented Tests.UserTest" />
+        <item index="3" class="java.lang.String" itemvalue="Android Instrumented Tests.ExampleInstrumentedT..." />
       </list>
     </recent_temporary>
     <configuration name="&lt;template&gt;" type="Applet" default="true" selected="false">
@@ -2657,6 +2714,9 @@
     </history-entry>
     <history-entry file="MessageTest - 2018.02.26 at 15h 27m 21s.xml">
       <configuration name="MessageTest" configurationId="AndroidTestRunConfigurationType" />
+    </history-entry>
+    <history-entry file="TaskTest - 2018.02.26 at 15h 56m 19s.xml">
+      <configuration name="TaskTest" configurationId="AndroidTestRunConfigurationType" />
     </history-entry>
     <history-entry file="UserTest - 2018.02.26 at 14h 47m 02s.xml">
       <configuration name="UserTest" configurationId="AndroidTestRunConfigurationType" />
@@ -3003,8 +3063,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yanghanwen/taskmanagementmonster/Task.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="57" column="0" lean-forward="true" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
+        <state relative-caret-position="540">
+          <caret line="73" column="17" lean-forward="false" selection-start-line="73" selection-start-column="17" selection-end-line="73" selection-end-column="17" />
           <folding>
             <element signature="e#305#306#0" expanded="true" />
             <element signature="e#332#333#0" expanded="true" />
@@ -3024,14 +3084,16 @@
             <element signature="e#1089#1090#0" expanded="true" />
             <element signature="e#1121#1122#0" expanded="true" />
             <element signature="e#1147#1148#0" expanded="true" />
+            <element signature="e#1174#1175#0" expanded="true" />
+            <element signature="e#1198#1199#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/androidTest/java/com/example/yanghanwen/taskmanagementmonster/TaskTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="35" column="5" lean-forward="false" selection-start-line="35" selection-start-column="5" selection-end-line="35" selection-end-column="5" />
+        <state relative-caret-position="121">
+          <caret line="28" column="36" lean-forward="false" selection-start-line="28" selection-start-column="36" selection-end-line="28" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

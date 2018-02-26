@@ -18,10 +18,6 @@ public class TaskTest extends ActivityInstrumentationTestCase2 {
     public void testName() throws Exception {
     }
 
-    public void getTask(int tid) {
-
-    }
-
     public void testGetTaskInfo(){
 
         String username = "Tom";
@@ -30,6 +26,7 @@ public class TaskTest extends ActivityInstrumentationTestCase2 {
 
         Task tasks = new Task(username, taskname, description);
 
+        assertTrue(tasks.getTid() == 1);
         assertTrue(tasks.getTitle() == "task1");
         assertTrue(tasks.getDescription() == "this is task 1");
         assertTrue(tasks.getStatus() == "bidded");
@@ -43,8 +40,9 @@ public class TaskTest extends ActivityInstrumentationTestCase2 {
 
         Task task = new Task(username, taskname, description);
         task.setTaskName(username2);
-        assertTrue(task.getTaskName() == username);
+        assertTrue(task.getTaskName() == username2);
     }
+
     public void testsetStatus(){
         String username = "Tom";
         String taskname = "task1";
