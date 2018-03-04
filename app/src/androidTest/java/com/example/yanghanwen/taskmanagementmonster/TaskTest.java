@@ -27,7 +27,6 @@ public class TaskTest extends ActivityInstrumentationTestCase2 {
         Task tasks = new Task(username, taskname, description);
 
         assertTrue(tasks.getTid() == 1);
-        assertTrue(tasks.getTitle() == "task1");
         assertTrue(tasks.getDescription() == "this is task 1");
         assertTrue(tasks.getStatus() == "bidded");
     }
@@ -39,8 +38,8 @@ public class TaskTest extends ActivityInstrumentationTestCase2 {
         String description = "this is a message";
 
         Task task = new Task(username, taskname, description);
-        task.setTaskName(username2);
-        assertTrue(task.getTaskName() == username2);
+        task.setTaskname(username2);
+        assertTrue(task.getTaskname() == username2);
     }
 
     public void testsetStatus(){
@@ -51,7 +50,7 @@ public class TaskTest extends ActivityInstrumentationTestCase2 {
 
         Task task = new Task(username, taskname, description);
         task.setStatus(status2);
-        assertTrue(task.getTaskStatus() == status2);
+        assertTrue(task.getStatus() == status2);
     }
 
     public void testsetDescription(){
@@ -62,7 +61,7 @@ public class TaskTest extends ActivityInstrumentationTestCase2 {
 
         Task task = new Task(username, taskname, description);
         task.setDescription(description2);
-        assertTrue(task.getTaskDescription() == description2);
+        assertTrue(task.getDescription() == description2);
     }
 
     public void testNewBid() {
