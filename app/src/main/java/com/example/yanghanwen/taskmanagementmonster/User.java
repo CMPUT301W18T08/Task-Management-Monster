@@ -1,5 +1,7 @@
 package com.example.yanghanwen.taskmanagementmonster;
 
+import java.util.ArrayList;
+
 /**
 
  Created by yangwenhan on 2018/2/21. */
@@ -8,6 +10,7 @@ public class User {
     private String userName;
     private String email;
     private String phoneNum;
+    private ArrayList<Task>tasks;
 
     public User(String name, String email, String phoneNum) {
         this.userName = name;
