@@ -59,38 +59,110 @@ public class Task {
         this.description = description;
     }
 
-    public void newBid(String bider, Double amount) {
+    public void newBid(String bidder, Double amount) {
 
-        Bid bid = new Bid(bider, amount);
+        Bid bid = new Bid(bidder, amount);
         bids.add(bid);
 
     }
 
-    // need change
+
+    public Boolean hasBid() {
+
+        int size = bids.size();
+
+        if (size == 0) {
+            return Boolean.FALSE;
+        }
+        else {
+            return Boolean.TRUE;
+        }
+    }
+
+    public Double getUserAmount(String bidder) {
+
+        Double userAmount = null;
+
+        if ( this.hasBid() ) {
+
+            int maxSize = bids.size();
+
+            for (int i = 0; i < maxSize; i = i + 1) {
+
+                Bid bid = bids.get(i);
+
+                if (bid.getUserName() == bidder) {
+
+                    userAmount = bid.getAmount();
+                    break;
+                }
+            }
+        }
+
+        return userAmount;
+    }
+
     public Double getLowestBid() {
 
-        return 10.0;
+        Double result = null;
+
+        if ( this.hasBid() ) {
+
+            result = 0.0;
+
+            int maxSize = bids.size();
+
+            for (int i = 0; i < maxSize; i = i + 1) {
+
+                Bid bid = bids.get(i);
+
+                if (bid.getAmount() > result) {
+                    result = bid.getAmount();
+                }
+            }
+
+        }
+
+        return result;
+
     }
 
-    // need cahnge
-    public Double getUserBid(String bider1) {
+    public void modifyBid(String bidder, Double amount) {
 
-        return 10.0;
+        if ( this.hasBid() ) {
+
+            int maxSize = bids.size();
+
+            for (int i = 0; i < maxSize; i = i + 1) {
+
+                Bid bid = bids.get(i);
+
+                if (bid.getUserName() == bidder) {
+
+                    bid.setAmount(amount);
+                    break;
+                }
+            }
+        }
     }
 
-    public void modifyBid(String bider1, Double amount2) {
+    public void declineBid(String bidder) {
 
+        if ( this.hasBid() ) {
 
-    }
+            int maxSize = bids.size();
 
-    public Boolean hasBid(String bider1) {
+            for (int i = 0; i < maxSize; i = i + 1) {
 
-        return Boolean.FALSE;
-    }
+                Bid bid = bids.get(i);
 
-    public void declineBid(String bider1) {
+                if (bid.getUserName() == bidder) {
 
-
+                    bids.remove(bid);
+                    break;
+                }
+            }
+        }
     }
 
 }
