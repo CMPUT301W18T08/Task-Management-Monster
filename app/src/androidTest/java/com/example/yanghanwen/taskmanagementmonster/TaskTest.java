@@ -15,113 +15,170 @@ public class TaskTest extends ActivityInstrumentationTestCase2 {
         super(MainActivity.class); // this definitely not right, just for example
     }
 
-    public void testName() throws Exception {
-    }
+    public void testGetTid() {
 
-    public void testGetTaskInfo(){
-
+        int tid = 2;
         String username = "Tom";
         String taskname = "task1";
         String description = "this is a message";
 
-        Task tasks = new Task(username, taskname, description);
+        Task task = new Task(tid, username, taskname, description);
 
-        assertTrue(tasks.getTid() == 1);
-        assertTrue(tasks.getDescription() == "this is task 1");
-        assertTrue(tasks.getStatus() == "bidded");
+        assertTrue(task.getTid() == tid);
     }
 
-    public void testsetTaskName(){
+    public void testGetUsername () {
+
+        int tid = 2;
+        String username = "Tom";
+        String taskname = "task1";
+        String description = "this is a message";
+
+        Task task = new Task(tid, username, taskname, description);
+
+        assertTrue(task.getUsername() == username);
+    }
+
+    public void testGetTaskname () {
+
+        int tid = 2;
+        String username = "Tom";
+        String taskname = "task1";
+        String description = "this is a message";
+
+        Task task = new Task(tid, username, taskname, description);
+
+        assertTrue(task.getTaskname() == taskname);
+    }
+
+    public void testGetStatus () {
+
+        int tid = 2;
+        String username = "Tom";
+        String taskname = "task1";
+        String description = "this is a message";
+
+        Task task = new Task(tid, username, taskname, description);
+
+        assertTrue(task.getStatus() == "requested");
+    }
+
+    public void testGetDescription () {
+
+        int tid = 2;
+        String username = "Tom";
+        String taskname = "task1";
+        String description = "this is a message";
+
+        Task task = new Task(tid, username, taskname, description);
+
+        assertTrue(task.getDescription() == description);
+    }
+
+    public void testSetTaskName(){
+
+        int tid = 2;
         String username = "Tom";
         String username2 = "Tom";
         String taskname = "task1";
         String description = "this is a message";
 
-        Task task = new Task(username, taskname, description);
+        Task task = new Task(tid, username, taskname, description);
         task.setTaskname(username2);
         assertTrue(task.getTaskname() == username2);
     }
 
-    public void testsetStatus(){
+    public void testSetStatus(){
+
+        int tid = 2;
         String username = "Tom";
         String taskname = "task1";
         String description = "this is a message";
         String status2 = "bidded";
 
-        Task task = new Task(username, taskname, description);
+        Task task = new Task(tid, username, taskname, description);
         task.setStatus(status2);
         assertTrue(task.getStatus() == status2);
     }
 
-    public void testsetDescription(){
+    public void testSetDescription(){
+
+        int tid = 2;
         String username = "Tom";
         String taskname = "task1";
         String description = "this is a message";
         String description2 = "this is a message 111";
 
-        Task task = new Task(username, taskname, description);
+        Task task = new Task(tid, username, taskname, description);
         task.setDescription(description2);
         assertTrue(task.getDescription() == description2);
     }
 
-    public void testNewBid() {
-
-        String username = "Tom";
-        String taskname = "task1";
-        String description = "this is a message";
-
-        Task task = new Task(username, taskname, description);
-
-        String bider1 = "B1";
-        Double amount1 = 1.0;
-
-        task.newBid(bider1, amount1);
-
-        assertTrue(task.hasBid(bider1));
-        assertTrue(task.getUserBid(bider1) == amount1);
-    }
-
     public void testHasBid() {
 
+        int tid = 2;
         String username = "Tom";
         String taskname = "task1";
         String description = "this is a message";
 
-        Task task = new Task(username, taskname, description);
+        Task task = new Task(tid, username, taskname, description);
 
         String bider1 = "B1";
-        String bider2 = "B2";
         Double amount1 = 1.0;
+
+        assertFalse(task.hasBid());
 
         task.newBid(bider1, amount1);
 
-        assertTrue(task.hasBid(bider1));
-        assertFalse(task.hasBid(bider2));
+        assertTrue(task.hasBid());
+    }
+
+    public void testNewBid() {
+
+        int tid = 2;
+        String username = "Tom";
+        String taskname = "task1";
+        String description = "this is a message";
+
+        Task task = new Task(tid, username, taskname, description);
+
+        String bidder1 = "B1";
+        Double amount1 = 1.0;
+
+        task.newBid(bidder1, amount1);
+
+        assertTrue(task.hasBid());
+        assertTrue(task.getUserAmount(bidder1).compareTo(amount1) == 0);
     }
 
     public void testGetUserBid() {
 
+        int tid = 2;
         String username = "Tom";
         String taskname = "task1";
         String description = "this is a message";
 
-        Task task = new Task(username, taskname, description);
+        Task task = new Task(tid, username, taskname, description);
 
-        String bider1 = "B1";
+        String bidder1 = "B1";
         Double amount1 = 1.0;
 
-        task.newBid(bider1, amount1);
+        String bidder2 = "B2";
+        Double amount2 = 2.0;
 
-        assertTrue(task.getUserBid(bider1) == amount1);
+        task.newBid(bidder1, amount1);
+
+        assertTrue(task.getUserAmount(bidder1).compareTo(amount1) == 0);
     }
 
     public void testDeclineBid() {
 
+        int tid = 2;
         String username = "Tom";
         String taskname = "task1";
         String description = "this is a message";
 
-        Task task = new Task(username, taskname, description);
+        Task task = new Task(tid, username, taskname, description);
 
         String bider1 = "B1";
         Double amount1 = 1.0;
@@ -129,16 +186,17 @@ public class TaskTest extends ActivityInstrumentationTestCase2 {
         task.newBid(bider1, amount1);
         task.declineBid(bider1);
 
-        assertFalse(task.hasBid(bider1));
+        assertFalse(task.hasBid());
     }
 
     public void testModifyBid() {
 
+        int tid = 2;
         String username = "Tom";
         String taskname = "task1";
         String description = "this is a message";
 
-        Task task = new Task(username, taskname, description);
+        Task task = new Task(tid, username, taskname, description);
 
         String bider1 = "B1";
         Double amount1 = 1.0;
@@ -147,16 +205,18 @@ public class TaskTest extends ActivityInstrumentationTestCase2 {
         task.newBid(bider1, amount1);
         task.modifyBid(bider1, amount2);
 
-        assertTrue(task.getUserBid(bider1) == amount2);
+        assertTrue(task.getUserAmount(bider1).compareTo(amount2) == 0);
     }
 
     public void testGetLowestBid() {
 
+        int tid1 = 2;
+        int tid2 = 3;
         String username = "Tom";
         String taskname = "task1";
         String description = "this is a message";
 
-        Task task = new Task(username, taskname, description);
+        Task task = new Task(tid1, username, taskname, description);
 
         String bider1 = "B1";
         String bider2 = "B2";
@@ -170,15 +230,16 @@ public class TaskTest extends ActivityInstrumentationTestCase2 {
         task.newBid(bider2, amount2);
         task.newBid(bider3, amount3);
 
-        assertTrue(task.getLowestBid() == amount1);
+        assertTrue(task.getLowestBid().compareTo(amount1) == 0);
 
-        Task task2 = new Task(username, taskname, description);
+        Task task2 = new Task(tid2, username, taskname, description);
 
-        task.newBid(bider1, amount3);
-        task.newBid(bider2, amount2);
-        task.newBid(bider3, amount3);
+        task2.newBid(bider1, amount3);
+        task2.newBid(bider2, amount2);
+        task2.newBid(bider3, amount3);
 
-        assertTrue(task.getLowestBid() == amount3);
+        assertTrue(task2.getLowestBid().compareTo(amount3) == 0);
+
     }
 
 }

@@ -13,10 +13,17 @@ public class Task {
     private String taskname;
     private String status;
     private String description;
-    ArrayList<Bid> bids;
+    private ArrayList<Bid> bids;
 
-    public Task (String username, String taskname , String description) {
+    public Task (int tid, String username, String taskname , String description) {
 
+        this.tid = tid;
+        this.username = username;
+        this.taskname = taskname;
+        this.description = description;
+
+        status = "requested";
+        bids = new ArrayList<Bid>();
     }
 
     public int getTid () {
@@ -66,7 +73,6 @@ public class Task {
 
     }
 
-
     public Boolean hasBid() {
 
         int size = bids.size();
@@ -108,15 +114,17 @@ public class Task {
 
         if ( this.hasBid() ) {
 
-            result = 0.0;
-
             int maxSize = bids.size();
 
             for (int i = 0; i < maxSize; i = i + 1) {
 
                 Bid bid = bids.get(i);
 
-                if (bid.getAmount() > result) {
+                if (result == null) {
+                    result = bid.getAmount();
+                }
+
+                if (bid.getAmount() < result) {
                     result = bid.getAmount();
                 }
             }
