@@ -10,7 +10,7 @@ public class User {
     private String userName;
     private String email;
     private String phoneNum;
-    private ArrayList<int>tids;
+    private ArrayList<Integer>tids;
 
     public User(String name, String email, String phoneNum) {
         this.userName = name;
