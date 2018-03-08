@@ -9,9 +9,6 @@ public class Bid {
     private String userName;
     private double amount;
 
-    public Bid() {
-    }
-
     public Bid(String userName, double amount) {
         this.userName = userName;
         this.amount = amount;

@@ -4,6 +4,10 @@
     <string name="new_description">New Task Description</string>
     <string name="new_titile_hint">Please enter title</string>
     <string name="new_description_hint">Please enter description</string>
-    <string name="new_button_quit">Quit</string>
     <string name="new_button_create">Create</string>
+    <string name="detail_title_view">Task Title</string>
+    <string name="detail_description_view">Description</string>
+    <string name="detail_status_view">Current Status</string>
+    <string name="detail_username_view">Task Requester</string>
+    <string name="detail_bid_edit">Enter Bid Amount ($)</string>
 </resources>

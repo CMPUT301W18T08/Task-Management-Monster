@@ -18,7 +18,6 @@ public class NewTaskActivity extends Activity {
     private EditText editDescription;
 
     private Button createButton;
-    private Button quitButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,14 +26,16 @@ public class NewTaskActivity extends Activity {
 
         // Here is the required value need to get from elastic search and other place
         tid = 1;
-        username = "Tom";
+        username = "Tim";
+
+        // tid will be generate by uuid / or something
+        // username = MainActivity.user.getUserName();
         // end of value
 
         editTitle = (EditText) findViewById(R.id.editTextNewTitle);
         editDescription = (EditText) findViewById(R.id.editTextNewDescription);
 
         createButton = (Button) findViewById(R.id.buttonNewCreate);
-        quitButton = (Button) findViewById(R.id.buttonNewQuit);
 
         createButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,14 +48,6 @@ public class NewTaskActivity extends Activity {
 
                 // save the task in the main activity
                 // MainActivity.tasks.add(task);
-
-                finish();
-            }
-        });
-
-        quitButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
                 finish();
             }

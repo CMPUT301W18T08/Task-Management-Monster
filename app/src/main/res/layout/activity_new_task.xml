@@ -66,14 +66,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextNewDescription" />
 
-    <Button
-        android:id="@+id/buttonNewQuit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:text="@string/new_button_quit"
-        app:layout_constraintStart_toEndOf="@+id/buttonNewCreate"
-        app:layout_constraintTop_toBottomOf="@+id/editTextNewDescription" />
-
 </android.support.constraint.ConstraintLayout>

@@ -3,7 +3,12 @@ package com.example.yanghanwen.taskmanagementmonster;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
+
+    public static ArrayList<Task> tasks;
+    public static User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
