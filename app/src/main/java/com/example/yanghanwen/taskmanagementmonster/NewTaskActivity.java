@@ -9,10 +9,12 @@ import android.widget.TextView;
 
 public class NewTaskActivity extends Activity {
 
-    private int tid;
-    private String username;
-    private String taskname;
-    private String description;
+    //private int tid;
+    //private String username;
+    //private String taskname;
+    //private String description;
+
+    private NewTaskModel newTaskModel;
 
     private EditText editTitle;
     private EditText editDescription;
@@ -25,12 +27,8 @@ public class NewTaskActivity extends Activity {
         setContentView(R.layout.activity_new_task);
 
         // Here is the required value need to get from elastic search and other place
-        tid = 1;
-        username = "Tim";
 
-        // tid will be generate by uuid / or something
-        // username = MainActivity.user.getUserName();
-        // end of value
+        newTaskModel = new NewTaskModel();
 
         editTitle = (EditText) findViewById(R.id.editTextNewTitle);
         editDescription = (EditText) findViewById(R.id.editTextNewDescription);
@@ -41,10 +39,10 @@ public class NewTaskActivity extends Activity {
             @Override
             public void onClick(View view) {
 
-                taskname = editTitle.getText().toString();
-                description = editDescription.getText().toString();
+                String taskname = editTitle.getText().toString();
+                String description = editDescription.getText().toString();
 
-                Task task = new Task(tid, username, taskname, description);
+                newTaskModel.createNewTask(taskname, description);
 
                 // save the task in the main activity
                 // MainActivity.tasks.add(task);

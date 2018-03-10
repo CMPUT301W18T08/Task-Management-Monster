@@ -66,10 +66,15 @@ public class Task {
         this.description = description;
     }
 
-    public void newBid(String bidder, Double amount) {
+    public void createNewBid(String bidder, Double amount) {
 
         Bid bid = new Bid(bidder, amount);
         bids.add(bid);
+
+        if (status == "requested") {
+
+            this.setStatus("bidded");
+        }
 
     }
 
@@ -170,6 +175,11 @@ public class Task {
                     break;
                 }
             }
+        }
+
+        if (!this.hasBid()) {
+
+            this.setStatus("requested");
         }
     }
 

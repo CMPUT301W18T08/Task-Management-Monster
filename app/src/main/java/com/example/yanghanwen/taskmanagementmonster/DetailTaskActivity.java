@@ -35,7 +35,8 @@ public class DetailTaskActivity extends AppCompatActivity {
 
     private EditText editBid;
 
-    private Button actionButton;
+    private Button actionButton1;
+    private Button actionButton2;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,7 +81,8 @@ public class DetailTaskActivity extends AppCompatActivity {
         viewStatus = (TextView) findViewById(R.id.viewDetailStatus);
         viewDescription = (TextView) findViewById(R.id.viewDetailDescription);
 
-        actionButton = (Button) findViewById(R.id.buttonDetail);
+        actionButton1 = (Button) findViewById(R.id.buttonDetail);
+        actionButton2 = (Button) findViewById(R.id.buttonDetail2);
 
         viewTitle.setText(title);
         viewUsername.setText(username);
@@ -90,7 +92,7 @@ public class DetailTaskActivity extends AppCompatActivity {
         // mode 1: provider search task
         if (mode == 1) {
 
-            actionButton.setText("Bid This Task");
+            actionButton1.setText("Bid This Task");
 
             if (status == "requested") {
 
@@ -100,6 +102,7 @@ public class DetailTaskActivity extends AppCompatActivity {
                 findViewById(R.id.detailBidLowest).setVisibility(View.GONE);
                 findViewById(R.id.detailMyBid).setVisibility(View.GONE);
                 findViewById(R.id.viewDetailMyBid).setVisibility(View.GONE);
+                findViewById(R.id.buttonDetail2).setVisibility(View.GONE);
 
             }
 
@@ -124,7 +127,7 @@ public class DetailTaskActivity extends AppCompatActivity {
 
                 else {
 
-                    actionButton.setText("Change My Bid");
+                    actionButton1.setText("Change My Bid");
 
                     viewBidMyBid = (TextView) findViewById(R.id.viewDetailMyBid);
 
@@ -136,9 +139,30 @@ public class DetailTaskActivity extends AppCompatActivity {
 
         }
 
+        // mode 2: provider task detail
+        else if (mode == 2) {
+
+            actionButton1.setText("Change My Bid");
+            actionButton2.setText("Decline My Bid");
+
+            lowestBid = task.getLowestBid();
+            myBid = task.getUserAmount(current_user);
+
+            viewBidInfo = (TextView) findViewById(R.id.detailBidInformation);
+            viewBidMyBid = (TextView) findViewById(R.id.viewDetailMyBid);
+            viewBidLowest = (TextView) findViewById(R.id.detailBidLowest);
+            viewBidMyBidInfo = (TextView) findViewById(R.id.detailMyBid);
+
+            viewBidMyBidInfo.setText("Current My Bid");
+            viewBidMyBid.setText(myBid.toString());
+            viewBidInfo.setText("Current Lowest Bid");
+            viewBidLowest.setText(lowestBid.toString());
+
+        }
+
         // end of processing different mode
 
-        actionButton.setOnClickListener(new View.OnClickListener() {
+        actionButton1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -151,7 +175,8 @@ public class DetailTaskActivity extends AppCompatActivity {
 
                 if (myBid == null) {
 
-                    task.newBid(current_user, newBid);
+                    task.createNewBid(current_user, newBid);
+
                 }
 
                 else {
@@ -159,6 +184,18 @@ public class DetailTaskActivity extends AppCompatActivity {
                     task.modifyBid(current_user, newBid);
                 }
 
+                finish();
+
+            }
+        });
+
+        actionButton2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                task.declineBid(current_user);
+
+                finish();
             }
         });
 
