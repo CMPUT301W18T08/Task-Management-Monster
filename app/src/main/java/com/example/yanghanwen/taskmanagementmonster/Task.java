@@ -15,8 +15,15 @@ public class Task {
     private String description;
     ArrayList<Bid> bids;
 
-    public Task (String username, String taskname , String description) {
+    public Task(){
 
+    }
+
+    public Task (int tid, String username, String taskname , String description) {
+        this.tid = tid;
+        this.username = username;
+        this.taskname = taskname;
+        this.description = description;
     }
 
     public int getTid () {
