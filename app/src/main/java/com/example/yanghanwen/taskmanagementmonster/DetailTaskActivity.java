@@ -1,5 +1,6 @@
 package com.example.yanghanwen.taskmanagementmonster;
 
+import android.graphics.YuvImage;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -9,20 +10,7 @@ import android.widget.TextView;
 
 public class DetailTaskActivity extends AppCompatActivity {
 
-    private int mode;
-    private int tid;
-    private String current_user;
-    private String title;
-    private String username;
-    private String status;
-    private String description;
-    private int tasksLength;
-    private Task task;
-
-    private Double newBid;
-
-    private Double lowestBid;
-    private Double myBid;
+    private DetailTaskModel detailTaskModel;
 
     private TextView viewTitle;
     private TextView viewUsername;
@@ -43,51 +31,72 @@ public class DetailTaskActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_task);
 
+
         Bundle extras = getIntent().getExtras();
 
         if (extras == null) {
+
             // raise exception for error occured
             finish();
         }
 
         // Retrive income data
-        mode = extras.getInt("mode");
-        tid = extras.getInt("tid");
+        int mode = extras.getInt("mode");
 
-        // get the current operating user's username
-        current_user = MainActivity.user.getUserName();
+        String title = extras.getString("title");
+        String requestor = extras.getString("requestor");
 
-        // Here get tasks array length
-        // tasksLength = MainActivity.tasks.size()
-        tasksLength = 1;
-        // end
+        if (mode == 1) {
 
-        for (int i = 0; i < tasksLength; i = i + 1) {
-
-            task = MainActivity.tasks.get(i);
-
-            if (task.getTid() == tid) {
-                break;
-            }
+            detailTaskModel = new DetailTaskSearchModel(title, requestor);
         }
 
-        title = task.getTaskname();
-        username = task.getUsername();
-        status = task.getStatus();
-        description = task.getDescription();
+        else if (mode == 2) {
+
+            detailTaskModel = new DetailTaskProviderModel(title, requestor);
+        }
 
         viewTitle = (TextView) findViewById(R.id.viewDetailTitle);
         viewUsername = (TextView) findViewById(R.id.viewDetailUser);
         viewStatus = (TextView) findViewById(R.id.viewDetailStatus);
         viewDescription = (TextView) findViewById(R.id.viewDetailDescription);
+        viewBidInfo = (TextView) findViewById(R.id.detailBidInformation);
+        viewBidLowest = (TextView) findViewById(R.id.detailBidLowest);
+        viewBidMyBidInfo = (TextView) findViewById(R.id.detailMyBid);
+        viewBidMyBid = (TextView) findViewById(R.id.viewDetailMyBid);
+
+        editBid = (EditText) findViewById(R.id.editTextDetail);
 
         actionButton1 = (Button) findViewById(R.id.buttonDetail);
         actionButton2 = (Button) findViewById(R.id.buttonDetail2);
 
-        viewTitle.setText(title);
-        viewUsername.setText(username);
-        viewStatus.setText(status);
-        viewDescription.setText(description);
+        viewTitle.setText( detailTaskModel.getTitle() );
+        viewUsername.setText( detailTaskModel.getRequestor() );
+        viewStatus.setText( detailTaskModel.getStatus() );
+        viewDescription.setText( detailTaskModel.getDescrption() );
+
+        viewBidInfo.setText( detailTaskModel.getBidInfo() );
+        viewBidInfo.setVisibility( detailTaskModel.visibilityBidInfo() );
+
+        viewBidLowest.setText( detailTaskModel.getBidLowest() );
+        viewBidLowest.setVisibility( detailTaskModel.visibilityBidLowest() );
+
+        viewBidMyBidInfo.setText( detailTaskModel.getMyBidInfo() );
+        viewBidMyBidInfo.setVisibility( detailTaskModel.visibilityMyBidInfo() );
+
+        viewBidMyBid.setText( detailTaskModel.getMyBid() );
+        viewBidMyBid.setVisibility( detailTaskModel.visibilityMyBid() );
+
+        editBid.setVisibility( detailTaskModel.visibilityEdit() );
+
+        actionButton1.setText( detailTaskModel.getButtonText1() );
+        actionButton1.setVisibility( detailTaskModel.visibilityButton1() );
+
+        actionButton2.setText( detailTaskModel.getButtonText2() );
+        actionButton2.setVisibility( detailTaskModel.visibilityButton2() );
+
+        /*
+
 
         // mode 1: provider search task
         if (mode == 1) {
@@ -199,5 +208,8 @@ public class DetailTaskActivity extends AppCompatActivity {
             }
         });
 
+        */
+
     }
+
 }

@@ -8,27 +8,20 @@ import java.util.ArrayList;
 
 public class Task {
 
-    private int tid;
     private String username;
     private String taskname;
     private String status;
     private String description;
     private ArrayList<Bid> bids;
 
-    public Task (int tid, String username, String taskname , String description) {
+    public Task (String username, String taskname , String description) {
 
-        this.tid = tid;
         this.username = username;
         this.taskname = taskname;
         this.description = description;
 
         status = "requested";
         bids = new ArrayList<Bid>();
-    }
-
-    public int getTid () {
-
-        return this.tid;
     }
 
     public String getUsername () {

@@ -4,39 +4,31 @@ package com.example.yanghanwen.taskmanagementmonster;
  * Created by superfan1995 on 2018-03-09.
  */
 
-public class DetailTaskModel {
+public abstract class DetailTaskModel {
 
-    private int mode;
-    private int tid;
-    private String username;
+    protected String username;
 
-    private String title;
-    private String requestor;
-    private String status;
-    private String description;
+    //private String title;
+    //private String requestor;
+    //private String status;
+    //private String description;
 
-    private Task task;
+    protected Task task;
 
-    public DetailTaskModel(int mode, int tid) {
+    public DetailTaskModel (String title, String requestor) {
 
-        this.mode = mode;
-        this.tid = tid;
-
-        // will be change
-        // will change according to the main activity
+        // get the username from user (will change)
         this.username = MainActivity.user.getUserName();
+        // end
 
-        // Here we get the task attribute
-
-        // Here get tasks array length
-        // tasksLength = MainActivity.tasks.size()
+        // get the task attribute
         int tasksLength = 1;
 
         for (int i = 0; i < tasksLength; i = i + 1) {
 
             this.task = MainActivity.tasks.get(i);
 
-            if (task.getTid() == tid) {
+            if (task.getTaskname() == title && task.getUsername() == requestor) {
 
                 break;
             }
@@ -45,29 +37,40 @@ public class DetailTaskModel {
 
     }
 
-    public String getTitle() {
+    public abstract String getBidInfo();
+    public abstract String getBidLowest();
+    public abstract String getMyBidInfo();
+    public abstract String getMyBid();
 
-        return this.task.getTaskname();
+    public abstract String getButtonText1();
+    public abstract String getButtonText2();
+
+    public abstract int visibilityBidInfo();
+    public abstract int visibilityBidLowest();
+    public abstract int visibilityMyBidInfo();
+    public abstract int visibilityMyBid();
+    public abstract int visibilityEdit();
+    public abstract int visibilityButton1();
+    public abstract int visibilityButton2();
+
+    public String getTitle () {
+
+        return task.getTaskname();
     }
 
-    public String getRequestor() {
+    public String getRequestor () {
 
-        return this.task.getUsername();
+        return task.getUsername();
     }
 
-    public String getStatus() {
+    public String getStatus ()  {
 
-        return this.task.getStatus();
+        return task.getStatus();
     }
 
-    public String getDescription () {
+    public String getDescrption () {
 
-        return this.task.getDescription();
-    }
-
-    public void addNewBid() {
-
-
+        return task.getDescription();
     }
 
 }
