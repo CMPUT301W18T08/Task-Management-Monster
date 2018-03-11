@@ -12,6 +12,7 @@ import com.searchly.jestdroid.JestClientFactory;
 import com.searchly.jestdroid.JestDroidClient;
 
 import io.searchbox.client.JestResult;
+import io.searchbox.core.Delete;
 import io.searchbox.core.DocumentResult;
 import io.searchbox.core.Get;
 import io.searchbox.core.Index;
@@ -97,7 +98,7 @@ public class ElasticSearch {
             verifySettings();
 
             for (User user : users) {
-                Update update = new Update.Builder(user).index("cmput301f17t24").type("user").id(user.getUserName()).build();
+                Update update = new Update.Builder(user).index("cmput301w18t08").type("user").id(user.getUserName()).build();
 
                 try {
                     // where is the client
@@ -178,6 +179,76 @@ public class ElasticSearch {
             }
 
             return true;
+        }
+    }
+
+    public static class GetTask extends AsyncTask<String, Void, Task> {
+        @Override
+        protected Task doInBackground(String... params) {
+            verifySettings();
+
+            Task task = new Task();
+            Get get = new Get.Builder("cmput301w18t08", params[0]).type("task").build();
+
+            try{
+                JestResult result = client.execute(get);
+                task = result.getSourceAsObject(Task.class);
+            } catch (Exception e) {
+                Log.i("Error", "Fail to build");
+            }
+            return task;
+        }
+
+    }
+
+    public static class UpdateTask extends  AsyncTask<Task, Void, Void> {
+        @Override
+        protected Void doInBackground(Task... tasks) {
+            verifySettings();
+
+            for (Task task : tasks) {
+                Update update = new Update.Builder(task).index("cmput301w18t08").type("task").id(task.getUsername() + task.getTaskname()).build();
+
+
+                try {
+
+                    DocumentResult result = client.execute(update);
+                    if (result.isSucceeded()) {
+                        Log.d("Success print something", result.getId());
+                    } else {
+                        Log.i("Error", "Error!!!");
+                    }
+                } catch (Exception e) {
+                    Log.i("Error", "Failed to build");
+                }
+            }
+            return null;
+        }
+    }
+
+    public static class DeleteTask extends AsyncTask<Task, Void, Void> {
+
+        @Override
+        protected Void doInBackground(Task... tasks) {
+            verifySettings();
+
+            for (Task task : tasks) {
+                Delete delete = new Delete.Builder(task.getUsername() + task.getTaskname())
+                        .index("cmput301w18t08").type("task").build();
+
+                try {
+
+                    DocumentResult result = client.execute(delete);
+                    if (result.isSucceeded()) {
+                        Log.d("Success print something", result.getId());
+                    } else {
+                        Log.i("Error", "Error!!!");
+                    }
+                } catch (Exception e) {
+                    Log.i("Error", "Failed to build");
+                }
+            }
+            return null;
         }
     }
 
