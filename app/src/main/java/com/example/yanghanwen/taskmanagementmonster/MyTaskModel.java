@@ -7,7 +7,7 @@ package com.example.yanghanwen.taskmanagementmonster;
 public class MyTaskModel {
     // this model is used for pass data to my task's listview
     // the listview has to kinds:
-    // for requestor listview, there will be a filter to show bidding task or assigned task
+    // for requester listview, there will be a filter to show bidding task or assigned task
     //                          if choose bidding task, list view shows status as "bidding"
     //                                                                  title
     //                                                                  lowest bid
@@ -17,12 +17,13 @@ public class MyTaskModel {
     //                                                                  accepted bid
     // for provider listview, there will be a filter to show bidding task or assigned task
     //                          if choose bidding task, list view shows status as "bidding"
-    //                                                                  task requestor username
+    //                                                                  title
+    //                                                                  task requester username
     //                                                                  lowest bid so far
     //                                                                  my bid
     //                          if choose assigned task, list view shows status as "assigned"
     //                                                                   title
-    //                                                                   its task requestor username
+    //                                                                   its task requester username
     //                                                                   my accepted bid
     protected String username;
     protected Task task;
