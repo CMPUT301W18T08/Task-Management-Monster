@@ -20,6 +20,7 @@ public class MyTaskActivity extends AppCompatActivity {
 
         if(OperationType.equals("pro")){
             findViewById(R.id.RequesterTask).setVisibility(View.GONE);
+
         }else if(OperationType.equals("req")){
             findViewById(R.id.ProviderTask).setVisibility(View.GONE);
         }
