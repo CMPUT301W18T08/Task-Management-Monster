@@ -1,5 +1,9 @@
 package com.example.yanghanwen.taskmanagementmonster;
 
+import android.widget.ArrayAdapter;
+
+import java.util.ArrayList;
+
 /**
  * Created by superfan1995 on 2018-03-09.
  */
@@ -28,6 +32,7 @@ public abstract class DetailTaskModel {
     public abstract String getBidLowest();
     public abstract String getMyBidInfo();
     public abstract String getMyBid();
+    public abstract ArrayList<Bid> getBidsList();
 
     public abstract String getButtonText1();
     public abstract String getButtonText2();
@@ -41,6 +46,7 @@ public abstract class DetailTaskModel {
     public abstract int visibilityEditDescription();
     public abstract int visibilityChangeButton();
     public abstract int visibilityDeclineButton();
+    public abstract int visibilityListView();
 
     public abstract void changeButtonAction(String newValue);
     public abstract void declineButtonAction(String newValue);

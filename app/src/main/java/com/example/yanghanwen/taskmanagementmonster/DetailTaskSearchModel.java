@@ -2,6 +2,8 @@ package com.example.yanghanwen.taskmanagementmonster;
 
 import android.view.View;
 
+import java.util.ArrayList;
+
 /**
  * Created by superfan1995 on 2018-03-10.
  */
@@ -109,6 +111,11 @@ public class DetailTaskSearchModel extends DetailTaskModel {
         }
     }
 
+    public ArrayList<Bid> getBidsList() {
+
+        return null;
+    }
+
     public int visibilityBidInfo() {
 
         return  View.VISIBLE;
@@ -184,6 +191,11 @@ public class DetailTaskSearchModel extends DetailTaskModel {
 
             return View.GONE;
         }
+    }
+
+    public int visibilityListView() {
+
+        return View.GONE;
     }
 
     public void changeButtonAction (String newValue) {

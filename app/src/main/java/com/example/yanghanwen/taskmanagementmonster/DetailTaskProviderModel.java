@@ -2,6 +2,8 @@ package com.example.yanghanwen.taskmanagementmonster;
 
 import android.view.View;
 
+import java.util.ArrayList;
+
 /**
  * Created by superfan1995 on 2018-03-10.
  */
@@ -44,7 +46,7 @@ public class DetailTaskProviderModel extends DetailTaskModel {
         if (assigned) {
 
             Double myBid = super.task.getUserAmount(super.username);
-            return myBid.toString();
+            return "$ " + myBid.toString();
         }
 
         else {
@@ -108,6 +110,11 @@ public class DetailTaskProviderModel extends DetailTaskModel {
         }
     }
 
+    public ArrayList<Bid> getBidsList() {
+
+        return null;
+    }
+
     public int visibilityBidInfo() {
 
         return View.VISIBLE;
@@ -160,6 +167,11 @@ public class DetailTaskProviderModel extends DetailTaskModel {
     }
 
     public int visibilityEditDescription() {
+
+        return View.GONE;
+    }
+
+    public int visibilityListView() {
 
         return View.GONE;
     }

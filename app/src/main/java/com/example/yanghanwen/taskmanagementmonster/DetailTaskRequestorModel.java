@@ -2,6 +2,8 @@ package com.example.yanghanwen.taskmanagementmonster;
 
 import android.view.View;
 
+import java.util.ArrayList;
+
 /**
  * Created by superfan1995 on 2018-03-12.
  */
@@ -28,7 +30,7 @@ public class DetailTaskRequestorModel extends DetailTaskModel {
 
         else if (status == "bidded") {
 
-            return "";
+            return "Current Lowest Bid:";
         }
 
         else {
@@ -47,7 +49,8 @@ public class DetailTaskRequestorModel extends DetailTaskModel {
 
         else if (status == "bidded") {
 
-            return "";
+            Double lowestBid = super.task.getLowestBid();
+            return "$ " + lowestBid.toString();
         }
 
         else {
@@ -101,11 +104,6 @@ public class DetailTaskRequestorModel extends DetailTaskModel {
             return "Modify Title";
         }
 
-        else if (status == "bidded") {
-
-            return "";
-        }
-
         else if (status == "assigned") {
 
             return "Task Complete";
@@ -124,11 +122,6 @@ public class DetailTaskRequestorModel extends DetailTaskModel {
             return "Modify Description";
         }
 
-        else if (status == "bidded") {
-
-            return "";
-        }
-
         else if (status == "assigned") {
 
             return "Task Incomplete";
@@ -140,22 +133,15 @@ public class DetailTaskRequestorModel extends DetailTaskModel {
         }
     }
 
+    public ArrayList<Bid> getBidsList() {
+
+        return super.task.getBidList();
+    }
+
     public int visibilityBidInfo() {
 
-        if (status == "requested") {
+        return View.VISIBLE;
 
-            return View.VISIBLE;
-        }
-
-        else if (status == "bidded") {
-
-            return 0;
-        }
-
-        else {
-
-            return View.VISIBLE;
-        }
     }
 
     public int visibilityBidLowest() {
@@ -163,11 +149,6 @@ public class DetailTaskRequestorModel extends DetailTaskModel {
         if (status == "requested") {
 
             return View.GONE;
-        }
-
-        else if (status == "bidded") {
-
-            return 0;
         }
 
         else {
@@ -185,7 +166,7 @@ public class DetailTaskRequestorModel extends DetailTaskModel {
 
         else if (status == "bidded") {
 
-            return 0;
+            return View.GONE;
         }
 
         else {
@@ -205,7 +186,7 @@ public class DetailTaskRequestorModel extends DetailTaskModel {
 
             else if (status == "bidded") {
 
-                return 0;
+                return View.GONE;
             }
 
             else {
@@ -218,20 +199,7 @@ public class DetailTaskRequestorModel extends DetailTaskModel {
 
     public int visibilityEdit() {
 
-        if (status == "requested") {
-
-            return View.GONE;
-        }
-
-        else if (status == "bidded") {
-
-            return 0;
-        }
-
-        else {
-
-            return View.GONE;
-        }
+        return View.GONE;
     }
 
     public int visibilityEditTitle() {
@@ -267,11 +235,6 @@ public class DetailTaskRequestorModel extends DetailTaskModel {
             return View.VISIBLE;
         }
 
-        else if (status == "bidded") {
-
-            return 0;
-        }
-
         else if (status == "assigned") {
 
             return View.VISIBLE;
@@ -290,12 +253,20 @@ public class DetailTaskRequestorModel extends DetailTaskModel {
             return View.VISIBLE;
         }
 
-        else if (status == "bidded") {
+        else if (status == "assigned") {
 
-            return 0;
+            return View.VISIBLE;
         }
 
-        else if (status == "assigned") {
+        else {
+
+            return View.GONE;
+        }
+    }
+
+    public int visibilityListView() {
+
+        if (status == "bidded") {
 
             return View.VISIBLE;
         }
@@ -311,10 +282,6 @@ public class DetailTaskRequestorModel extends DetailTaskModel {
         if (status == "requested") {
 
             super.task.setTaskname(newValue);
-        }
-
-        else if (status == "bidded") {
-
         }
 
         else if (status == "assigned") {
@@ -334,10 +301,6 @@ public class DetailTaskRequestorModel extends DetailTaskModel {
         if (status == "requested") {
 
             super.task.setDescription(newValue);
-        }
-
-        else if (status == "bidded") {
-
         }
 
         else if (status == "assigned") {

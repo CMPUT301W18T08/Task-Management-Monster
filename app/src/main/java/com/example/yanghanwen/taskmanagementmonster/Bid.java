@@ -32,6 +32,6 @@ public class Bid {
 
     public String toString() {
 
-        return "Name: " + userName + " " + "Amount: " + amount;
+        return "Name: " + userName + " | " + "Amount: " + amount;
     }
 }

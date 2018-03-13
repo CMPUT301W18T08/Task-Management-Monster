@@ -41,11 +41,13 @@ public class MainActivity extends AppCompatActivity {
 
         mockTest = new Task(username, taskname, Description);
 
-        Double amount = 15.00;
+        Double amount = 17.00;
 
         mockTest.createNewBid(user.getUserName(), amount);
+        mockTest.createNewBid("mock1", 15.00);
+        mockTest.createNewBid("mock2", 20.00);
 
-        mockTest.setAccepted(user.getUserName());
+        //mockTest.setAccepted(user.getUserName());
 
         testNew = (Button) findViewById(R.id.buttonTestNes);
         testRe = (Button) findViewById(R.id.buttonTestRe);

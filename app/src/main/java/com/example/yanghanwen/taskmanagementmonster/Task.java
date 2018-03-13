@@ -87,17 +87,9 @@ public class Task {
         }
     }
 
-    public String getFirstBidder() {
+    public ArrayList<Bid> getBidList() {
 
-        String bidder = null;
-
-        if ( hasBid() ) {
-
-            bidder = bids.get(0).getUserName();
-        }
-
-        return bidder;
-
+        return bids;
     }
 
     public Double getUserAmount(String bidder) {
@@ -200,7 +192,20 @@ public class Task {
         this.setStatus("requested");
     }
 
-    public void setAccepted (String username) {
+    public String getFirstBidder() {
+
+        String bidder = null;
+
+        if ( hasBid() ) {
+
+            bidder = bids.get(0).getUserName();
+        }
+
+        return bidder;
+
+    }
+
+    public void setAssigned (String username) {
 
         Double amount = getUserAmount(username);
 

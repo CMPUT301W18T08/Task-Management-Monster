@@ -1,17 +1,24 @@
 package com.example.yanghanwen.taskmanagementmonster;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
+
+import java.util.ArrayList;
 
 public class DetailTaskActivity extends AppCompatActivity {
 
     int mode;
 
-    private DetailTaskModel detailTaskModel;
+    public static DetailTaskModel detailTaskModel;
 
     private TextView viewTitle;
     private TextView viewUsername;
@@ -28,6 +35,11 @@ public class DetailTaskActivity extends AppCompatActivity {
 
     private Button changeButton;
     private Button declineButton;
+
+    private ListView listViewBids;
+
+    private ArrayList<Bid> bidList;
+    private ArrayAdapter<Bid> adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,6 +93,8 @@ public class DetailTaskActivity extends AppCompatActivity {
         editBid = (EditText) findViewById(R.id.editTextDetail);
         editTitle = (EditText) findViewById(R.id.editTextDetailTitle);
         editDescription = (EditText) findViewById(R.id.editTextDetailDescription);
+
+        listViewBids = (ListView) findViewById(R.id.detailListView);
 
         changeButton = (Button) findViewById(R.id.buttonDetail);
         declineButton = (Button) findViewById(R.id.buttonDetail2);
@@ -146,6 +160,19 @@ public class DetailTaskActivity extends AppCompatActivity {
             }
         });
 
+        listViewBids.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                Intent intent = new Intent(DetailTaskActivity.this,
+                        DetailBidActivity.class);
+
+                intent.putExtra("position", i);;
+
+                startActivity(intent);
+            }
+        });
+
     }
 
     private void updateView() {
@@ -177,6 +204,18 @@ public class DetailTaskActivity extends AppCompatActivity {
         declineButton.setText( detailTaskModel.getButtonText2() );
         declineButton.setVisibility( detailTaskModel.visibilityDeclineButton() );
 
-    }
+        int listVisibility = detailTaskModel.visibilityListView();
+        listViewBids.setVisibility( listVisibility );
 
+        if ( listVisibility == View.VISIBLE ) {
+
+            bidList = detailTaskModel.getBidsList();
+
+            adapter = new ArrayAdapter<Bid>(this,
+                    android.R.layout.simple_list_item_1, bidList);
+
+            listViewBids.setAdapter(adapter);
+        }
+
+    }
 }
