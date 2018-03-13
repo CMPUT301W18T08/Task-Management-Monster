@@ -8,11 +8,6 @@ public abstract class DetailTaskModel {
 
     protected String username;
 
-    //private String title;
-    //private String requestor;
-    //private String status;
-    //private String description;
-
     protected Task task;
 
     public DetailTaskModel (String title, String requestor) {
@@ -21,18 +16,10 @@ public abstract class DetailTaskModel {
         this.username = MainActivity.user.getUserName();
         // end
 
-        // get the task attribute
-        int tasksLength = 1;
+        // get the task attribute, current for test only
 
-        for (int i = 0; i < tasksLength; i = i + 1) {
+        task = MainActivity.mockTest;
 
-            this.task = MainActivity.tasks.get(i);
-
-            if (task.getTaskname() == title && task.getUsername() == requestor) {
-
-                break;
-            }
-        }
         // end of will be change
 
     }
@@ -50,15 +37,20 @@ public abstract class DetailTaskModel {
     public abstract int visibilityMyBidInfo();
     public abstract int visibilityMyBid();
     public abstract int visibilityEdit();
-    public abstract int visibilityButton1();
-    public abstract int visibilityButton2();
+    public abstract int visibilityEditTitle();
+    public abstract int visibilityEditDescription();
+    public abstract int visibilityChangeButton();
+    public abstract int visibilityDeclineButton();
+
+    public abstract void changeButtonAction(String newValue);
+    public abstract void declineButtonAction(String newValue);
 
     public String getTitle () {
 
         return task.getTaskname();
     }
 
-    public String getRequestor () {
+    public String getRequester () {
 
         return task.getUsername();
     }

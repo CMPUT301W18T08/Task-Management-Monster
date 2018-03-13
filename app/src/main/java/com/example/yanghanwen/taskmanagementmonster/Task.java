@@ -14,6 +14,10 @@ public class Task {
     private String description;
     private ArrayList<Bid> bids;
 
+    public Task () {
+
+    }
+
     public Task (String username, String taskname , String description) {
 
         this.username = username;
@@ -81,6 +85,19 @@ public class Task {
         else {
             return Boolean.TRUE;
         }
+    }
+
+    public String getFirstBidder() {
+
+        String bidder = null;
+
+        if ( hasBid() ) {
+
+            bidder = bids.get(0).getUserName();
+        }
+
+        return bidder;
+
     }
 
     public Double getUserAmount(String bidder) {
@@ -175,5 +192,29 @@ public class Task {
             this.setStatus("requested");
         }
     }
+
+    public void emptyBids() {
+
+        bids.clear();
+
+        this.setStatus("requested");
+    }
+
+    public void setAccepted (String username) {
+
+        Double amount = getUserAmount(username);
+
+        this.emptyBids();
+
+        this.createNewBid(username, amount);
+
+        this.setStatus("assigned");
+    }
+
+    public void setDone() {
+
+        this.setStatus("done");
+    }
+
 
 }

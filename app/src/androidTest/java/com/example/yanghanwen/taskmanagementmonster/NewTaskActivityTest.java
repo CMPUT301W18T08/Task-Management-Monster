@@ -35,7 +35,6 @@ public class NewTaskActivityTest extends ActivityInstrumentationTestCase2 {
         solo.enterText((EditText) solo.getView(R.id.editTextNewDescription),
                 "This is a description.");
 
-        // will need the arraylist to test this
     }
 
 }

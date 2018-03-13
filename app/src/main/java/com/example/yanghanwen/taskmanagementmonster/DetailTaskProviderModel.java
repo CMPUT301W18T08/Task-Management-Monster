@@ -8,43 +8,104 @@ import android.view.View;
 
 public class DetailTaskProviderModel extends DetailTaskModel {
 
+    Boolean assigned;
+
     public DetailTaskProviderModel (String title, String requestor) {
 
         super(title, requestor);
+
+        if (super.task.getStatus() == "assigned") {
+
+            assigned = Boolean.TRUE;
+        }
+
+        else {
+
+            assigned = Boolean.FALSE;
+        }
+
     }
 
     public String getBidInfo() {
 
-        return "Current My Bid";
+        if (assigned) {
+
+            return "Accepted Bid:";
+        }
+
+        else {
+
+            return "Current Lowest Bid:";
+        }
     }
 
     public String getBidLowest() {
 
-        Double lowestBid = super.task.getLowestBid();
+        if (assigned) {
 
-        return lowestBid.toString();
+            Double myBid = super.task.getUserAmount(super.username);
+            return myBid.toString();
+        }
+
+        else {
+
+            Double lowestBid = super.task.getLowestBid();
+            return "$ " + lowestBid.toString();
+        }
+
     }
 
     public String getMyBidInfo() {
 
-        return "Current My Bid";
+        if (assigned) {
+
+            return "";
+        }
+
+        else{
+
+            return "Current My Bid:";
+        }
     }
 
     public String getMyBid() {
 
-        Double myBid = super.task.getUserAmount(super.username);
+        if (assigned) {
 
-        return myBid.toString();
+            return "";
+        }
+
+        else {
+
+            Double myBid = super.task.getUserAmount(super.username);
+            return "$ " + myBid.toString();
+        }
     }
 
     public String getButtonText1() {
 
-        return "Modify My Bid";
+        if (assigned) {
+
+            return "";
+        }
+
+        else {
+
+            return "Modify My Bid:";
+        }
     }
 
     public String getButtonText2() {
 
-        return "Return My Bid";
+        if (assigned) {
+
+            return "";
+        }
+
+        else {
+
+            return "Return My Bid";
+        }
     }
 
     public int visibilityBidInfo() {
@@ -59,28 +120,94 @@ public class DetailTaskProviderModel extends DetailTaskModel {
 
     public int visibilityMyBidInfo() {
 
-        return View.VISIBLE;
+        if (assigned) {
+
+            return View.GONE;
+        }
+
+        else {
+            return View.VISIBLE;
+        }
     }
 
-    public int visibilityMyBid()  {
+    public int visibilityMyBid() {
 
-        return View.VISIBLE;
+        if (assigned) {
+
+            return View.GONE;
+        }
+
+        else {
+            return View.VISIBLE;
+        }
     }
 
-    public int visibilityEdit()  {
+    public int visibilityEdit() {
 
-        return View.VISIBLE;
+        if (assigned) {
+
+            return View.GONE;
+        }
+
+        else {
+            return View.VISIBLE;
+        }
     }
 
+    public int visibilityEditTitle() {
 
-    public int visibilityButton1()  {
-
-        return View.VISIBLE;
+        return View.GONE;
     }
 
-    public int visibilityButton2()  {
+    public int visibilityEditDescription() {
 
-        return View.VISIBLE;
+        return View.GONE;
+    }
+
+    public int visibilityChangeButton() {
+
+        if (assigned) {
+
+            return View.GONE;
+        }
+
+        else {
+
+            return View.VISIBLE;
+        }
+    }
+
+    public int visibilityDeclineButton() {
+
+        if (assigned) {
+
+            return View.GONE;
+        }
+
+        else {
+
+            return View.VISIBLE;
+        }
+    }
+
+    public void changeButtonAction (String newValue) {
+
+        Double userbid = Double.parseDouble(newValue);
+
+        super.task.modifyBid(super.username, userbid);
+
+        // here update the new task, current for test only
+        MainActivity.mockTest = super.task;
+        // end of update
+    }
+
+    public void declineButtonAction (String newValue) {
+
+        super.task.declineBid(super.username);
+
+        // here update the new task, current for test only
+        MainActivity.mockTest = super.task;
+        // end of update
     }
 
 }

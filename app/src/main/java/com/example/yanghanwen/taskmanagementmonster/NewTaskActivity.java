@@ -28,7 +28,7 @@ public class NewTaskActivity extends Activity {
 
         // Here is the required value need to get from elastic search and other place
 
-        newTaskModel = new NewTaskModel();
+        newTaskModel = new NewTaskModel ();
 
         editTitle = (EditText) findViewById(R.id.editTextNewTitle);
         editDescription = (EditText) findViewById(R.id.editTextNewDescription);
@@ -43,9 +43,6 @@ public class NewTaskActivity extends Activity {
                 String description = editDescription.getText().toString();
 
                 newTaskModel.createNewTask(taskname, description);
-
-                // save the task in the main activity
-                // MainActivity.tasks.add(task);
 
                 finish();
             }

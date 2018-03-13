@@ -15,18 +15,6 @@ public class TaskTest extends ActivityInstrumentationTestCase2 {
         super(MainActivity.class); // this definitely not right, just for example
     }
 
-    public void testGetTid() {
-
-        int tid = 2;
-        String username = "Tom";
-        String taskname = "task1";
-        String description = "this is a message";
-
-        Task task = new Task(tid, username, taskname, description);
-
-        assertTrue(task.getTid() == tid);
-    }
-
     public void testGetUsername () {
 
         int tid = 2;
@@ -34,7 +22,7 @@ public class TaskTest extends ActivityInstrumentationTestCase2 {
         String taskname = "task1";
         String description = "this is a message";
 
-        Task task = new Task(tid, username, taskname, description);
+        Task task = new Task(username, taskname, description);
 
         assertTrue(task.getUsername() == username);
     }
@@ -46,7 +34,7 @@ public class TaskTest extends ActivityInstrumentationTestCase2 {
         String taskname = "task1";
         String description = "this is a message";
 
-        Task task = new Task(tid, username, taskname, description);
+        Task task = new Task(username, taskname, description);
 
         assertTrue(task.getTaskname() == taskname);
     }
@@ -58,7 +46,7 @@ public class TaskTest extends ActivityInstrumentationTestCase2 {
         String taskname = "task1";
         String description = "this is a message";
 
-        Task task = new Task(tid, username, taskname, description);
+        Task task = new Task(username, taskname, description);
 
         assertTrue(task.getStatus() == "requested");
     }
@@ -70,7 +58,7 @@ public class TaskTest extends ActivityInstrumentationTestCase2 {
         String taskname = "task1";
         String description = "this is a message";
 
-        Task task = new Task(tid, username, taskname, description);
+        Task task = new Task(username, taskname, description);
 
         assertTrue(task.getDescription() == description);
     }
@@ -83,7 +71,7 @@ public class TaskTest extends ActivityInstrumentationTestCase2 {
         String taskname = "task1";
         String description = "this is a message";
 
-        Task task = new Task(tid, username, taskname, description);
+        Task task = new Task(username, taskname, description);
         task.setTaskname(username2);
         assertTrue(task.getTaskname() == username2);
     }
@@ -96,7 +84,7 @@ public class TaskTest extends ActivityInstrumentationTestCase2 {
         String description = "this is a message";
         String status2 = "bidded";
 
-        Task task = new Task(tid, username, taskname, description);
+        Task task = new Task(username, taskname, description);
         task.setStatus(status2);
         assertTrue(task.getStatus() == status2);
     }
@@ -109,7 +97,7 @@ public class TaskTest extends ActivityInstrumentationTestCase2 {
         String description = "this is a message";
         String description2 = "this is a message 111";
 
-        Task task = new Task(tid, username, taskname, description);
+        Task task = new Task(username, taskname, description);
         task.setDescription(description2);
         assertTrue(task.getDescription() == description2);
     }
@@ -121,14 +109,14 @@ public class TaskTest extends ActivityInstrumentationTestCase2 {
         String taskname = "task1";
         String description = "this is a message";
 
-        Task task = new Task(tid, username, taskname, description);
+        Task task = new Task(username, taskname, description);
 
         String bider1 = "B1";
         Double amount1 = 1.0;
 
         assertFalse(task.hasBid());
 
-        task.newBid(bider1, amount1);
+        task.createNewBid(bider1, amount1);
 
         assertTrue(task.hasBid());
     }
@@ -140,12 +128,12 @@ public class TaskTest extends ActivityInstrumentationTestCase2 {
         String taskname = "task1";
         String description = "this is a message";
 
-        Task task = new Task(tid, username, taskname, description);
+        Task task = new Task(username, taskname, description);
 
         String bidder1 = "B1";
         Double amount1 = 1.0;
 
-        task.newBid(bidder1, amount1);
+        task.createNewBid(bidder1, amount1);
 
         assertTrue(task.hasBid());
         assertTrue(task.getUserAmount(bidder1).compareTo(amount1) == 0);
@@ -158,7 +146,7 @@ public class TaskTest extends ActivityInstrumentationTestCase2 {
         String taskname = "task1";
         String description = "this is a message";
 
-        Task task = new Task(tid, username, taskname, description);
+        Task task = new Task(username, taskname, description);
 
         String bidder1 = "B1";
         Double amount1 = 1.0;
@@ -166,7 +154,7 @@ public class TaskTest extends ActivityInstrumentationTestCase2 {
         String bidder2 = "B2";
         Double amount2 = 2.0;
 
-        task.newBid(bidder1, amount1);
+        task.createNewBid(bidder1, amount1);
 
         assertTrue(task.getUserAmount(bidder1).compareTo(amount1) == 0);
     }
@@ -178,12 +166,12 @@ public class TaskTest extends ActivityInstrumentationTestCase2 {
         String taskname = "task1";
         String description = "this is a message";
 
-        Task task = new Task(tid, username, taskname, description);
+        Task task = new Task(username, taskname, description);
 
         String bider1 = "B1";
         Double amount1 = 1.0;
 
-        task.newBid(bider1, amount1);
+        task.createNewBid(bider1, amount1);
         task.declineBid(bider1);
 
         assertFalse(task.hasBid());
@@ -196,13 +184,13 @@ public class TaskTest extends ActivityInstrumentationTestCase2 {
         String taskname = "task1";
         String description = "this is a message";
 
-        Task task = new Task(tid, username, taskname, description);
+        Task task = new Task(username, taskname, description);
 
         String bider1 = "B1";
         Double amount1 = 1.0;
         Double amount2 = 2.0;
 
-        task.newBid(bider1, amount1);
+        task.createNewBid(bider1, amount1);
         task.modifyBid(bider1, amount2);
 
         assertTrue(task.getUserAmount(bider1).compareTo(amount2) == 0);
@@ -216,7 +204,7 @@ public class TaskTest extends ActivityInstrumentationTestCase2 {
         String taskname = "task1";
         String description = "this is a message";
 
-        Task task = new Task(tid1, username, taskname, description);
+        Task task = new Task(username, taskname, description);
 
         String bider1 = "B1";
         String bider2 = "B2";
@@ -226,17 +214,17 @@ public class TaskTest extends ActivityInstrumentationTestCase2 {
         Double amount2 = 5.0;
         Double amount3 = 2.0;
 
-        task.newBid(bider1, amount1);
-        task.newBid(bider2, amount2);
-        task.newBid(bider3, amount3);
+        task.createNewBid(bider1, amount1);
+        task.createNewBid(bider2, amount2);
+        task.createNewBid(bider3, amount3);
 
         assertTrue(task.getLowestBid().compareTo(amount1) == 0);
 
-        Task task2 = new Task(tid2, username, taskname, description);
+        Task task2 = new Task(username, taskname, description);
 
-        task2.newBid(bider1, amount3);
-        task2.newBid(bider2, amount2);
-        task2.newBid(bider3, amount3);
+        task2.createNewBid(bider1, amount3);
+        task2.createNewBid(bider2, amount2);
+        task2.createNewBid(bider3, amount3);
 
         assertTrue(task2.getLowestBid().compareTo(amount3) == 0);
 

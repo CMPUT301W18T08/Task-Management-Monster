@@ -10,7 +10,7 @@ public class NewTaskModel {
 
     private String username;
 
-    public void NewTaskModel ( ) {
+    public NewTaskModel () {
 
         // will change according to the main activity
         this.username = MainActivity.user.getUserName();
@@ -20,12 +20,12 @@ public class NewTaskModel {
 
     public void createNewTask (String taskname, String description) {
 
-        Task task = new Task(username, taskname , description);
+        Task task = new Task(this.username, taskname, description);
 
-        // will change to the main activity / will upload the task into the database
-        MainActivity.tasks.add(task);
-        // end
+        // test
+        // here we add the new task, current for mock only
+        MainActivity.mockTest2 = task;
+        // end of test
     }
-
 
 }
