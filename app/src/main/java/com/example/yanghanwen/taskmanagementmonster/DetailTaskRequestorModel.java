@@ -55,7 +55,8 @@ public class DetailTaskRequestorModel extends DetailTaskModel {
 
         else {
 
-             return super.task.getFirstBidder();
+            Bid bid = super.task.getBidder(0);
+             return bid.getUserName();
         }
 
     }

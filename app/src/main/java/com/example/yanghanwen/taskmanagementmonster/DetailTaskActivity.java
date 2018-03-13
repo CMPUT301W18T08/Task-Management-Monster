@@ -18,7 +18,9 @@ public class DetailTaskActivity extends AppCompatActivity {
 
     int mode;
 
-    public static DetailTaskModel detailTaskModel;
+    public DetailTaskModel detailTaskModel;
+
+    public static final int DETAIL_BID = 1;
 
     private TextView viewTitle;
     private TextView viewUsername;
@@ -167,9 +169,9 @@ public class DetailTaskActivity extends AppCompatActivity {
                 Intent intent = new Intent(DetailTaskActivity.this,
                         DetailBidActivity.class);
 
-                intent.putExtra("position", i);;
+                intent.putExtra("provider", i);
 
-                startActivity(intent);
+                //startActivityForResult();
             }
         });
 

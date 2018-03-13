@@ -192,16 +192,16 @@ public class Task {
         this.setStatus("requested");
     }
 
-    public String getFirstBidder() {
+    public Bid getBidder(int position) {
 
-        String bidder = null;
+        Bid bid = null;
 
         if ( hasBid() ) {
 
-            bidder = bids.get(0).getUserName();
+            bid = bids.get(position);
         }
 
-        return bidder;
+        return bid;
 
     }
 
