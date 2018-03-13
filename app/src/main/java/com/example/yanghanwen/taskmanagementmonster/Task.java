@@ -24,6 +24,9 @@ public class Task {
         this.username = username;
         this.taskname = taskname;
         this.description = description;
+
+        status = "requested";
+        bids = new ArrayList<Bid>();
     }
 
     public int getTid () {
@@ -66,38 +69,152 @@ public class Task {
         this.description = description;
     }
 
-    public void newBid(String bider, Double amount) {
+    public void createNewBid(String bider, Double amount) {
 
         Bid bid = new Bid(bider, amount);
         bids.add(bid);
 
+        if(status == "requested"){
+            this.setStatus("bidded");
+        }
+
     }
 
+    public Boolean hasBid(){
+        int size = bids.size();
+
+        if(size == 0){
+            return Boolean.FALSE;
+        }else {
+            return Boolean.TRUE;
+        }
+    }
+
+    public String getFirstBidder(){
+        String bidder = null;
+        if(hasBid()){
+            bidder = bids.get(0).getUserName();
+        }
+        return bidder;
+    }
+
+    public Double getUserAmount(String bidder){
+
+       Double userAmount = null;
+
+       if(this.hasBid()){
+
+           int maxSize = bids.size();
+
+           for (int i = 0; i < maxSize; i = i + 1){
+
+               Bid bid = bids.get(i);
+
+               if (bid.getUserName() == bidder){
+
+                   userAmount = bid.getAmount();
+
+                   break;
+               }
+           }
+       }
+
+       return userAmount;
+
+    }
     // need change
     public Double getLowestBid() {
 
-        return 10.0;
+        Double result = null;
+
+        if(this.hasBid()){
+
+            int maxSize = bids.size();
+
+            for(int i = 0; i < maxSize; i = i + 1){
+
+                Bid bid = bids.get(i);
+
+                if(result == null){
+
+                    result = bid.getAmount();
+                }
+
+                if(bid.getAmount() < result){
+
+                    result = bid.getAmount();
+                }
+            }
+        }
+
+        return result;
     }
 
-    // need cahnge
-    public Double getUserBid(String bider1) {
 
-        return 10.0;
+    public void modifyBid(String bidder, Double amount) {
+
+        if (this.hasBid()){
+
+            int maxSize = bids.size();
+
+            for(int i = 0; i < maxSize; i = i + 1){
+
+                Bid bid = bids.get(i);
+
+                if(bid.getUserName() == bidder){
+
+                    bid.setAmount(amount);
+                    break;
+                }
+            }
+        }
     }
 
-    public void modifyBid(String bider1, Double amount2) {
 
+    public void declineBid(String bidder) {
+
+        if (this.hasBid()){
+
+            int maxSize = bids.size();
+
+            for (int i = 0; i < maxSize; i = i + 1){
+
+                Bid bid = bids.get(i);
+
+                if (bid.getUserName() == bidder){
+
+                    bids.remove(bid);
+                    break;
+                }
+            }
+        }
+
+        if(!this.hasBid()){
+
+            this.setStatus("requested");
+        }
 
     }
 
-    public Boolean hasBid(String bider1) {
+    public void emptyBids(){
 
-        return Boolean.FALSE;
+        bids.clear();
+        this.setStatus("requested");
     }
 
-    public void declineBid(String bider1) {
+    public void setAccepted(String username){
 
+        Double amount = getUserAmount(username);
 
+        this.emptyBids();
+
+        this.createNewBid(username,amount);
+
+        this.setStatus("assigned");
     }
 
+    public void setDone(){
+
+        this.setStatus("done");
+    }
 }
