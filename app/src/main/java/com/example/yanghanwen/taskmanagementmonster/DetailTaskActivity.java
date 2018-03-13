@@ -166,10 +166,12 @@ public class DetailTaskActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-                Intent intent = new Intent(DetailTaskActivity.this,
-                        DetailBidActivity.class);
+                //Intent intent = new Intent(DetailTaskActivity.this,
+                //        DetailBidActivity.class);
 
-                intent.putExtra("provider", i);
+                //detailTaskModel.
+
+                //intent.putExtra("provider", i);
 
                 //startActivityForResult();
             }

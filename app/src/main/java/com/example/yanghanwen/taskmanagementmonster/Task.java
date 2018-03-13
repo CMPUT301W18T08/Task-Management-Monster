@@ -192,7 +192,7 @@ public class Task {
         this.setStatus("requested");
     }
 
-    public Bid getBidder(int position) {
+    public Bid getBid(int position) {
 
         Bid bid = null;
 

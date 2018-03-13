@@ -71,4 +71,9 @@ public abstract class DetailTaskModel {
         return task.getDescription();
     }
 
+    public Bid getBid(int position) {
+
+        return task.getBid(position);
+    }
+
 }
