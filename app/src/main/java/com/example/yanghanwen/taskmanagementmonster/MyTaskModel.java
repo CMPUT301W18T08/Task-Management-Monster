@@ -1,5 +1,7 @@
 package com.example.yanghanwen.taskmanagementmonster;
 
+import java.util.ArrayList;
+
 /**
  * Created by Terrence on 2018/3/11.
  */
@@ -33,6 +35,8 @@ public class MyTaskModel {
         this.username = MainActivity.user.getUserName();
 
     }
+
+
 
 
 

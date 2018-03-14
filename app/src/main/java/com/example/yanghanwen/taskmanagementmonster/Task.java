@@ -90,13 +90,12 @@ public class Task {
         }
     }
 
-    public String getFirstBidder(){
-        String bidder = null;
-        if(hasBid()){
-            bidder = bids.get(0).getUserName();
-        }
-        return bidder;
+    public ArrayList<Bid>getBidList(){
+
+        return bids;
     }
+
+
 
     public Double getUserAmount(String bidder){
 
@@ -202,7 +201,15 @@ public class Task {
         this.setStatus("requested");
     }
 
-    public void setAccepted(String username){
+    public String getBidder(int position){
+        Bid bid = null;
+        if(hasBid()){
+            bid = bids.get(position);
+        }
+        return bid;
+    }
+
+    public void setAssigned(String username){
 
         Double amount = getUserAmount(username);
 

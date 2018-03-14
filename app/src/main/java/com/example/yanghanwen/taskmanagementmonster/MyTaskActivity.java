@@ -3,12 +3,17 @@ package com.example.yanghanwen.taskmanagementmonster;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
+import java.util.ArrayList;
 
 public class MyTaskActivity extends AppCompatActivity {
     private ListView providerList;
     private ListView requesterList;
     private String OperationType;
+    private ArrayAdapter<Task>myAdapter;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,10 +24,16 @@ public class MyTaskActivity extends AppCompatActivity {
         OperationType = getIntent().getStringExtra("type");
 
         if(OperationType.equals("pro")){
-            findViewById(R.id.RequesterTask).setVisibility(View.GONE);
+            //elastic search provider's task
+
+            // adapter to adapt requester arrayList
+            myAdapter = new ArrayAdapter<Task>(this,android.R.layout.simple_list_item_2,
+                    TaskSingleton.getInstance().getTaskArrayList());
+
+
 
         }else if(OperationType.equals("req")){
-            findViewById(R.id.ProviderTask).setVisibility(View.GONE);
+
         }
     }
 }

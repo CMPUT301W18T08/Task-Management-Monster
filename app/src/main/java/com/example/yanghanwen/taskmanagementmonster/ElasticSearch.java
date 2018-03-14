@@ -11,11 +11,16 @@ import com.searchly.jestdroid.DroidClientConfig;
 import com.searchly.jestdroid.JestClientFactory;
 import com.searchly.jestdroid.JestDroidClient;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import io.searchbox.client.JestResult;
 import io.searchbox.core.Delete;
 import io.searchbox.core.DocumentResult;
 import io.searchbox.core.Get;
 import io.searchbox.core.Index;
+import io.searchbox.core.Search;
+import io.searchbox.core.SearchResult;
 import io.searchbox.core.Update;
 
 public class ElasticSearch {
@@ -199,6 +204,33 @@ public class ElasticSearch {
             return task;
         }
 
+    }
+
+    public static class GetTaskList extends AsyncTask<String,Void,ArrayList<Task>> {
+
+        @Override
+        protected ArrayList<Task> doInBackground(String... search_parameters){
+            verifySettings();
+
+            ArrayList<Task>tasks = new ArrayList<>();
+
+
+            Search search = new Search.Builder(search_parameters[0]).addIndex("cmput301w18t08").addType("task").build();
+            try{
+                SearchResult result = client.execute(search);
+                if(result.isSucceeded()){
+                    List<Task>foundTask = result.getSourceAsObjectList(Task.class);
+                    tasks.addAll(foundTask);
+                }else{
+                    Log.i("Error","Search query failed to find any thing");
+                }
+            }
+            catch (Exception e){
+                Log.i("Error","Something went wrong when we tried to communicate with the elasticsearch server!");
+            }
+            return tasks;
+
+        }
     }
 
     public static class UpdateTask extends  AsyncTask<Task, Void, Void> {
