@@ -206,7 +206,7 @@ public class ElasticSearch {
 
     }
 
-    public static class GetTaskList extends AsyncTask<String,Void,ArrayList<Task>> {
+    public static class getTaskList extends AsyncTask<String,Void,ArrayList<Task>> {
 
         @Override
         protected ArrayList<Task> doInBackground(String... search_parameters){
