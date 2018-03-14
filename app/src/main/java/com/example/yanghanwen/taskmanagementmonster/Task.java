@@ -13,6 +13,10 @@ public class Task {
     private String description;
     private ArrayList<Bid> bids;
 
+    public Task() {
+
+    }
+
     public Task (int tid, String username, String taskname , String description) {
 
         this.tid = tid;
