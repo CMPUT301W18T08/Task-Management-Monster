@@ -1,77 +1,179 @@
 package com.example.yanghanwen.taskmanagementmonster;
+import java.util.ArrayList;
 
 /**
  * Created by superfan1995 on 2018-02-26.
  */
 
 public class Task {
+    private int tid;
+    private String username;
+    private String taskname;
+    private String status;
+    private String description;
+    private ArrayList<Bid> bids;
 
-    public Task(String username, String taskname , String description) {
+    public Task (int tid, String username, String taskname , String description) {
+
+        this.tid = tid;
+        this.username = username;
+        this.taskname = taskname;
+        this.description = description;
+        this.status = status;
+        bids = new ArrayList<Bid>();
+    }
+
+    public int getTid () {
+
+        return this.tid;
+    }
+
+    public String getUsername () {
+
+        return this.username;
+    }
+
+    public String getTaskname () {
+
+        return taskname;
+    }
+
+    public String getStatus () {
+
+        return this.status;
+    }
+
+    public String getDescription () {
+
+        return this.description;
+    }
+
+    public void setTaskname (String taskname) {
+
+        this.taskname = taskname;
+    }
+
+    public void setStatus (String status) {
+
+        this.status = status;
+    }
+
+    public void setDescription (String description) {
+
+        this.description = description;
+    }
+
+    public void newBid(String bidder, Double amount) {
+
+        Bid bid = new Bid(bidder, amount);
+        bids.add(bid);
 
     }
 
-    public void newBid(String bider1, Double amount3) {
+    public Boolean hasBid() {
 
+        int size = bids.size();
+
+        if (size == 0) {
+            return Boolean.FALSE;
+        }
+        else {
+            return Boolean.TRUE;
+        }
+    }
+
+    public Double getUserAmount(String bidder) {
+
+        Double userAmount = null;
+
+        if ( this.hasBid() ) {
+
+            int maxSize = bids.size();
+
+            for (int i = 0; i < maxSize; i = i + 1) {
+
+                Bid bid = bids.get(i);
+
+                if (bid.getUserName() == bidder) {
+
+                    userAmount = bid.getAmount();
+                    break;
+                }
+            }
+        }
+
+        return userAmount;
     }
 
     public Double getLowestBid() {
-        return 10.0;
-    }
 
-    public Double getUserBid(String bider1) {
-        return 10.0;
-    }
+        Double result = null;
 
-    public void modifyBid(String bider1, Double amount2) {
+        if ( this.hasBid() ) {
 
-    }
+            int maxSize = bids.size();
 
-    public Boolean hasBid(String bider1) {
-        return Boolean.FALSE;
-    }
+            for (int i = 0; i < maxSize; i = i + 1) {
 
-    public void declineBid(String bider1) {
+                Bid bid = bids.get(i);
 
-    }
+                if (result == null) {
+                    result = bid.getAmount();
+                }
 
-    public String getTaskName() {
-        return "hi";
-    }
+                if (bid.getAmount() < result) {
+                    result = bid.getAmount();
+                }
+            }
 
-    public String getTaskDescription() {
-        return "no";
-    }
+        }
 
-    public void setDescription(String description2) {
+        return result;
 
     }
 
-    public void setStatus(String status2) {
+    public void modifyBid(String bidder, Double amount) {
 
+        if ( this.hasBid() ) {
+
+            int maxSize = bids.size();
+
+            for (int i = 0; i < maxSize; i = i + 1) {
+
+                Bid bid = bids.get(i);
+
+                if (bid.getUserName() == bidder) {
+
+                    bid.setAmount(amount);
+                    break;
+                }
+            }
+        }
     }
 
-    public String getTaskStatus() {
-        return "s1";
+    public void declineBid(String bidder) {
+
+        if ( this.hasBid() ) {
+
+            int maxSize = bids.size();
+
+            for (int i = 0; i < maxSize; i = i + 1) {
+
+                Bid bid = bids.get(i);
+
+                if (bid.getUserName() == bidder) {
+
+                    bids.remove(bid);
+                    break;
+                }
+            }
+        }
     }
 
-    public void setTaskName(String name2) {
-
-    }
-
-    public String getStatus() {
-        return "d";
-    }
-
-    public String getDescription() {
-        return "d";
-    }
-
-    public String getTitle() {
-        return "d";
-    }
-
-    public int getTid() {
-        return 2;
+    @Override
+    public String toString() {
+        return taskname + "\n" + tid + "\n" + description + "\n" + status;
     }
 
 }
+
