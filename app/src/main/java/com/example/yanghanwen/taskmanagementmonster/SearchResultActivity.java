@@ -1,22 +1,17 @@
 package com.example.yanghanwen.taskmanagementmonster;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
-import android.text.TextUtils;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.SearchView;
 import java.util.ArrayList;
 
 public class SearchResultActivity extends AppCompatActivity {
@@ -27,22 +22,36 @@ public class SearchResultActivity extends AppCompatActivity {
     private String username;
     private String taskname;
     private String description;
-    public ArrayList<Task> taskList = new ArrayList<Task>();
+    public ArrayList<Task> taskList = new ArrayList<>();
     public ArrayAdapter<Task> adapter;
 
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_result);
         listView = (ListView) findViewById(R.id.Search_result);
         editText = (EditText) findViewById(R.id.discover_search);
         String keyWord = editText.getText().toString();
+
+        /*ElasticSearch.GetTask getTask = new ElasticSearch.GetTask();
+        ElasticSearch.IsExistTask isExistTask = new ElasticSearch.IsExistTask();
+
+        if(!isExistTask.doInBackground()) {
+            Log.d("test:", "no task");
+        }
+
+        if(getTask.doInBackground() == null) {
+            Log.d("test", "cannot get task");
+        } else {
+            Log.d("test", "something went wrong");
+    }*/
+
         initList();
 
         InputMethodManager imm = (InputMethodManager) this.getSystemService(Context.INPUT_METHOD_SERVICE);
-        Log.d("test", "it is working 1");
         imm.hideSoftInputFromWindow(editText.getWindowToken(), 0);
 
         /**
@@ -51,7 +60,6 @@ public class SearchResultActivity extends AppCompatActivity {
         editText.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Log.d("test", "it is working");
                 InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
                 imm.showSoftInput(editText, InputMethodManager.SHOW_IMPLICIT);
             }
@@ -115,6 +123,7 @@ public class SearchResultActivity extends AppCompatActivity {
     }*/
 
     public void initList() {
+
         Task task = new Task(tid, username, taskname, description);
         Task task1 = new Task(tid, username, taskname, description);
         Task task2 = new Task(tid, username, taskname, description);
@@ -164,7 +173,7 @@ public class SearchResultActivity extends AppCompatActivity {
         taskList.add(task8);
 
         listView = (ListView) findViewById(R.id.Search_result);
-        adapter = new ArrayAdapter<Task>(this, android.R.layout.simple_list_item_1, taskList);
+        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, taskList);
         listView.setAdapter(adapter);
     }
 

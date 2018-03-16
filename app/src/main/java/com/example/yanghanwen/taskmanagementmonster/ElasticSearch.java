@@ -1,8 +1,5 @@
 package com.example.yanghanwen.taskmanagementmonster;
 
-/**
- * Created by yangwenhan on 2018/2/21.
- */
 
 import android.os.AsyncTask;
 import android.util.Log;
@@ -174,11 +171,7 @@ public class ElasticSearch {
                 Log.i("fjaijfi","fjjfjfjfjjfjfffffff");
             }
 
-            if (task == null) {
-                return false;
-            }
-
-            return true;
+            return task != null;
         }
     }
 
@@ -189,6 +182,7 @@ public class ElasticSearch {
 
             Task task = new Task();
             Get get = new Get.Builder("cmput301w18t08", params[0]).type("task").build();
+            //no item in the list but trying to get the first item, array index out of bound
 
             try{
                 JestResult result = client.execute(get);

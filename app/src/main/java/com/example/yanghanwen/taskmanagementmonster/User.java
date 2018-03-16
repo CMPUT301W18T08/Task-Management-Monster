@@ -1,8 +1,5 @@
 package com.example.yanghanwen.taskmanagementmonster;
 
-/**
-
- Created by yangwenhan on 2018/2/21. */
 public class User {
 //    @JestId
     private String userName;

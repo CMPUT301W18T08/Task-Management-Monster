@@ -3,7 +3,6 @@ package com.example.yanghanwen.taskmanagementmonster;
 
 import android.test.ActivityInstrumentationTestCase2;
 
-import java.util.ArrayList;
 
 /**
  * Created by superfan1995 on 2018-02-25.

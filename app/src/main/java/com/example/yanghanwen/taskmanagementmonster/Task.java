@@ -1,9 +1,6 @@
 package com.example.yanghanwen.taskmanagementmonster;
 import java.util.ArrayList;
 
-/**
- * Created by superfan1995 on 2018-02-26.
- */
 
 public class Task {
     private int tid;
@@ -24,7 +21,7 @@ public class Task {
         this.taskname = taskname;
         this.description = description;
         this.status = status;
-        bids = new ArrayList<Bid>();
+        bids = new ArrayList<>();
     }
 
     public int getTid () {

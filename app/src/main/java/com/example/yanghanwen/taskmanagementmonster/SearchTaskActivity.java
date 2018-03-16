@@ -3,9 +3,7 @@ package com.example.yanghanwen.taskmanagementmonster;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -18,7 +16,7 @@ public class SearchTaskActivity extends AppCompatActivity {
     private String username;
     private String taskname;
     private String description;
-    public ArrayList<Task> taskList = new ArrayList<Task>();
+    public ArrayList<Task> taskList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

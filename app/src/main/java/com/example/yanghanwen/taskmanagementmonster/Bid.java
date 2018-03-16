@@ -1,8 +1,5 @@
 package com.example.yanghanwen.taskmanagementmonster;
 
-/**
- * Created by songxixuan on 2018-02-26.
- */
 
 public class Bid {
 
