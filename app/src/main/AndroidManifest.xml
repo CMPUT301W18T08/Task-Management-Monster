@@ -19,7 +19,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".register" />
-        <activity android:name=".Menu"></activity>
+        <activity android:name=".Menu" />
+        <activity android:name=".TaskAdding" />
+        <activity android:name=".ViewTaskDetail"></activity>
     </application>
 
 </manifest>

@@ -19,25 +19,28 @@ public class Task {
 
     }
 
-    public Task (int tid, String username, String taskname , String description) {
+    public Task (String username, String taskname , String description, String status, ArrayList<Bid> bids) {
 
-        this.tid = tid;
         this.username = username;
         this.taskname = taskname;
         this.description = description;
 
-        status = "requested";
-        bids = new ArrayList<Bid>();
+        this.status = status; //requested
+        this.bids = bids;//new ArrayList<Bid>();
     }
 
-    public int getTid () {
-
-        return this.tid;
-    }
+//    public int getTid () {
+//
+//        return this.tid;
+//    }
 
     public String getUsername () {
 
         return this.username;
+    }
+
+    public void setUsername(String username){
+        this.username = username;
     }
 
     public String getTaskname () {
@@ -53,6 +56,14 @@ public class Task {
     public String getDescription () {
 
         return this.description;
+    }
+
+    public ArrayList<Bid> getBids(){
+        return this.bids;
+    }
+
+    public void setBids(ArrayList<Bid> bids){
+        this.bids = bids;
     }
 
     public void setTaskname (String taskname) {

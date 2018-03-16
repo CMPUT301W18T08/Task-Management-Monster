@@ -167,7 +167,7 @@ public class ElasticSearch {
             Task task = new Task();
 
             Get get = new Get.Builder("cmput301w18t08", params[0]).type("task").build();
-            Log.d("usertest", params[0]);
+            Log.d("tasktest", params[0]);
 
             try {
                 JestResult result = client.execute(get);
@@ -203,6 +203,24 @@ public class ElasticSearch {
         }
 
     }
+
+    /**
+     * How to test getTask(you should know username of requester and task title
+     * For example(userName = "yxiong3", title = "1" get from editText
+     * private String taskID
+     * taskID = yxiong3 + title
+     * isExistTask test if task exist
+     * If yes
+     * ElasticSearch.GetTask getTask = new ElasticSearch.GetTask();
+     getTask.execute(taskID);
+     try{
+     task = getTask.get();
+     Log.i("print something","should print information");
+     }
+     catch (Exception e) {
+     Log.i("Error", "Fail to connect to server");
+     }
+     */
 
     public static class UpdateTask extends  AsyncTask<Task, Void, Void> {
         @Override

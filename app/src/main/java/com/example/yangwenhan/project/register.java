@@ -13,6 +13,8 @@ import android.widget.EditText;
 public class register extends AppCompatActivity {
 
     private EditText name;
+    private EditText email;
+    private EditText phone;
     private int uid;
 
     private Button quit;
@@ -29,6 +31,8 @@ public class register extends AppCompatActivity {
         uid = Login.userList.countUser();
         Log.d("uid is", Integer.toString(uid));
         name = (EditText)findViewById(R.id.name);
+        email = (EditText)findViewById(R.id.email);
+        phone = (EditText)findViewById(R.id.phoneNum) ;
         quit = (Button)findViewById(R.id.quit);
         save = (Button)findViewById(R.id.save);
 
@@ -60,7 +64,7 @@ public class register extends AppCompatActivity {
 //                    Toast.makeText(getApplicationContext(),"invalid userName",Toast.LENGTH_LONG).show();
 //                }else{
                     userName = name.getText().toString();
-                    User newUser = new User(uid,userName,init_email,init_phoneNum);
+                    User newUser = new User(userName,email.getText().toString(),phone.getText().toString());
                     //Users.add(newUser);
                     ElasticSearch.AddUser addUser = new ElasticSearch.AddUser();
                     addUser.execute(newUser);

@@ -19,21 +19,20 @@ public class User {
 
     }
 
-    public User(int uid, String name, String email, String phoneNum){
+    public User(String name, String email, String phoneNum){
         this.userName = name;
-        this.uid = uid;
         this.email = email;
         this.phoneNum = phoneNum;
 
     }
 
-    public int getUid() {
-        return uid;
-    }
-
-    public void setUid(int uid) {
-        this.uid = uid;
-    }
+//    public int getUid() {
+//        return uid;
+//    }
+//
+//    public void setUid(int uid) {
+//        this.uid = uid;
+//    }
 
     public String getUserName(){
         return this.userName;
