@@ -12,4 +12,8 @@
     <string name="detail_bid_edit">Enter Bid Amount ($)</string>
     <string name="detail_title_edit">Enter Modified Title</string>
     <string name="detail_Description_edit">Enter Modified Description</string>
+    <string name="bid_provider">Task Provider</string>
+    <string name="bid_amount">Bid Amount</string>
+    <string name="bid_button_assgin">Assign</string>
+    <string name="bid_button_decline">Decline</string>
 </resources>

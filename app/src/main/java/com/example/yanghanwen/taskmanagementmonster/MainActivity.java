@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity {
         mockTest.createNewBid("mock1", 15.00);
         mockTest.createNewBid("mock2", 20.00);
 
-        //mockTest.setAccepted(user.getUserName());
+        //mockTest.setAssigned(user.getUserName());
 
         testNew = (Button) findViewById(R.id.buttonTestNes);
         testRe = (Button) findViewById(R.id.buttonTestRe);

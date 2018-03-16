@@ -71,9 +71,38 @@ public abstract class DetailTaskModel {
         return task.getDescription();
     }
 
-    public Bid getBid(int position) {
+    public String getProvider(int position) {
 
-        return task.getBid(position);
+        Bid bid = task.getBid(position);
+        return bid.getUserName();
+    }
+
+    public Double getAmount(int position) {
+
+        Bid bid = task.getBid(position);
+        return bid.getAmount();
+    }
+
+    public void assignBid(int position) {
+
+        Bid bid = task.getBid(position);
+
+        task.setAssigned(bid.getUserName());
+
+        // update the task to database
+
+        //
+    }
+
+    public void declineBid(int position) {
+
+        Bid bid = task.getBid(position);
+
+        task.declineBid(bid.getUserName());
+
+        // update the task to database
+
+        //
     }
 
 }

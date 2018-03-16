@@ -55,8 +55,8 @@ public class DetailTaskRequestorModel extends DetailTaskModel {
 
         else {
 
-            Bid bid = super.task.getBidder(0);
-             return bid.getUserName();
+            Bid bid = super.task.getBid(0);
+            return bid.getUserName();
         }
 
     }
@@ -93,7 +93,11 @@ public class DetailTaskRequestorModel extends DetailTaskModel {
 
         else {
 
-            Double myBid = super.task.getUserAmount(super.username);
+            Bid bid = super.task.getBid(0);
+
+            String assignUser = bid.getUserName();
+
+            Double myBid = super.task.getUserAmount(assignUser);
             return "$ " + myBid.toString();
         }
     }
@@ -314,6 +318,23 @@ public class DetailTaskRequestorModel extends DetailTaskModel {
         // update the task to elastic search
 
         // current for test only
+    }
+
+
+    @Override
+    public void declineBid(int position) {
+
+        super.declineBid(position);
+
+        status = super.getStatus();
+    }
+
+    @Override
+    public void assignBid(int position) {
+
+        super.assignBid(position);
+
+        status = super.getStatus();
     }
 
 }

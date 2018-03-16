@@ -1,5 +1,6 @@
 package com.example.yanghanwen.taskmanagementmonster;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,13 +13,14 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.io.StringBufferInputStream;
 import java.util.ArrayList;
 
 public class DetailTaskActivity extends AppCompatActivity {
 
     int mode;
 
-    public DetailTaskModel detailTaskModel;
+    private DetailTaskModel detailTaskModel;
 
     public static final int DETAIL_BID = 1;
 
@@ -166,14 +168,19 @@ public class DetailTaskActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-                //Intent intent = new Intent(DetailTaskActivity.this,
-                //        DetailBidActivity.class);
+                Intent intent = new Intent(DetailTaskActivity.this,
+                        DetailBidActivity.class);
 
-                //detailTaskModel.
+                String provider = detailTaskModel.getProvider(i);
+                Double amount = detailTaskModel.getAmount(i);
 
-                //intent.putExtra("provider", i);
+                String bidAmount = Double.toString(amount);
 
-                //startActivityForResult();
+                intent.putExtra("position", i);
+                intent.putExtra("provider", provider);
+                intent.putExtra("amount", bidAmount);
+
+                startActivityForResult(intent, DETAIL_BID);
             }
         });
 
@@ -202,6 +209,7 @@ public class DetailTaskActivity extends AppCompatActivity {
         editTitle.setVisibility( detailTaskModel.visibilityEditTitle() );
         editDescription.setVisibility( detailTaskModel.visibilityEditDescription() );
 
+
         changeButton.setText( detailTaskModel.getButtonText1() );
         changeButton.setVisibility( detailTaskModel.visibilityChangeButton() );
 
@@ -222,4 +230,39 @@ public class DetailTaskActivity extends AppCompatActivity {
         }
 
     }
+
+    // https://stackoverflow.com/questions/10407159/how-to-manage-startactivityforresult-on-android
+    // 2018-3-15
+    @Override
+    protected void onActivityResult(int requesCode, int resultCode, Intent data) {
+
+        super.onActivityResult(requesCode, resultCode, data);
+
+        if (requesCode == DETAIL_BID) {
+
+            if (resultCode == RESULT_OK) {
+
+                int returnAction = data.getIntExtra("result", 0);
+                int bidPosition = data.getIntExtra("position", 0);
+
+                if (returnAction == 1) {
+
+                    detailTaskModel.assignBid(bidPosition);
+
+                }
+
+                else if (returnAction == 2) {
+
+                    detailTaskModel.declineBid(bidPosition);
+
+                }
+
+                updateView();
+
+            }
+
+        }
+
+    }
+
 }
