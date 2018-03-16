@@ -1,7 +1,5 @@
 package com.example.yanghanwen.taskmanagementmonster;
 
-import android.widget.ArrayAdapter;
-
 import java.util.ArrayList;
 
 /**

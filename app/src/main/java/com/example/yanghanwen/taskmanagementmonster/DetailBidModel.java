@@ -6,9 +6,9 @@ package com.example.yanghanwen.taskmanagementmonster;
 
 public class DetailBidModel {
 
-    private int position;
-    private String provider;
-    private String amount;
+    private final int position;
+    private final String provider;
+    private final String amount;
 
     public DetailBidModel(int position, String provider, String amount) {
 

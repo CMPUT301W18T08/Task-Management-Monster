@@ -6,7 +6,7 @@ package com.example.yanghanwen.taskmanagementmonster;
 
 public class Bid {
 
-    private String userName;
+    private final String userName;
     private double amount;
 
     public Bid(String userName, double amount) {

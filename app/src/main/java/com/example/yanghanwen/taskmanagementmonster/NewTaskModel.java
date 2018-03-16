@@ -1,14 +1,12 @@
 package com.example.yanghanwen.taskmanagementmonster;
 
-import android.widget.EditText;
-
 /**
  * Created by superfan1995 on 2018-03-09.
  */
 
 public class NewTaskModel {
 
-    private String username;
+    private final String username;
 
     public NewTaskModel () {
 

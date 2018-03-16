@@ -68,7 +68,6 @@ public class UserTest extends ActivityInstrumentationTestCase2 {
 
     public void testPhoneNumSet() {
         String username = "cmput301";
-        String username1 = "winter2018";
         String email = "cmput301@ualberta.ca";
         String pno = "123456789";
         String pno1 = "4567890";

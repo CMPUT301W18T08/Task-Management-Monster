@@ -11,7 +11,7 @@ import java.util.Date;
  */
 
 public class Message {
-    private String username;
+    private final String username;
     private String message;
     private Date date;
 
