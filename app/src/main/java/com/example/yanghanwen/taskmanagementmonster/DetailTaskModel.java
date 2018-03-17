@@ -1,5 +1,7 @@
 package com.example.yanghanwen.taskmanagementmonster;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 
 /**
@@ -8,21 +10,27 @@ import java.util.ArrayList;
 
 public abstract class DetailTaskModel {
 
-    protected String username;
+    protected ElasticSearch.GetTask getTask;
+    protected ElasticSearch.UpdateTask updateTask;
 
+    protected String username;
     protected Task task;
 
     public DetailTaskModel (String title, String requestor) {
 
-        // get the username from user (will change)
-        this.username = MainActivity.user.getUserName();
-        // end
+        this.getTask = new ElasticSearch.GetTask();
 
-        // get the task attribute, current for test only
+        this.username = MainActivity.mainModel.getUsername();
 
-        task = MainActivity.mockTest;
+        this.getTask.execute(requestor + title);
 
-        // end of will be change
+        try {
+            this.task = getTask.get();
+        }
+        catch (Exception e) {
+
+            Log.d("error", "fail to get the task");
+        }
 
     }
 
@@ -87,9 +95,8 @@ public abstract class DetailTaskModel {
 
         task.setAssigned(bid.getUserName());
 
-        // update the task to database
-
-        //
+        // update task by elastic search
+        taskUpdate();
     }
 
     public void declineBid(int position) {
@@ -98,9 +105,13 @@ public abstract class DetailTaskModel {
 
         task.declineBid(bid.getUserName());
 
-        // update the task to database
+        // update task by elastic search
+        taskUpdate();
+    }
 
-        //
+    public void taskUpdate() {
+
+        this.updateTask.execute(this.task);
     }
 
 }

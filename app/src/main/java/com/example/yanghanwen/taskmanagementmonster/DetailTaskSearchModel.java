@@ -212,9 +212,8 @@ public class DetailTaskSearchModel extends DetailTaskModel {
             super.task.createNewBid(super.username, userbid);
         }
 
-        // here update the new task
-        MainActivity.mockTest = task;
-        // end of update
+        // update task by elastic search
+        super.taskUpdate();
 
         hasBid = Boolean.TRUE;
 
@@ -225,9 +224,8 @@ public class DetailTaskSearchModel extends DetailTaskModel {
 
         super.task.declineBid(super.username);
 
-        // here update the new task
-        MainActivity.mockTest = task;
-        // end of update
+        // update task by elastic search
+        super.taskUpdate();
 
         hasBid = super.task.hasBid();
 

@@ -16,9 +16,7 @@ public class DetailTaskRequestorModel extends DetailTaskModel {
 
         super(title, requestor);
 
-        // get status from task, current just for test
         status = super.task.getStatus();
-        // test
     }
 
     public String getBidInfo() {
@@ -296,9 +294,8 @@ public class DetailTaskRequestorModel extends DetailTaskModel {
             status = "done";
         }
 
-        // update the task to elastic search
-
-        // current for test only
+        // update task by elastic search
+        super.taskUpdate();
     }
 
     public void declineButtonAction(String newValue) {
@@ -315,9 +312,8 @@ public class DetailTaskRequestorModel extends DetailTaskModel {
             status = "requested";
         }
 
-        // update the task to elastic search
-
-        // current for test only
+        // update task by elastic search
+        super.taskUpdate();
     }
 
 

@@ -208,18 +208,16 @@ public class DetailTaskProviderModel extends DetailTaskModel {
 
         super.task.modifyBid(super.username, userbid);
 
-        // here update the new task, current for test only
-        MainActivity.mockTest = super.task;
-        // end of update
+        // update task by elastic search
+        super.taskUpdate();
     }
 
     public void declineButtonAction (String newValue) {
 
         super.task.declineBid(super.username);
 
-        // here update the new task, current for test only
-        MainActivity.mockTest = super.task;
-        // end of update
+        // update task by elastic search
+        super.taskUpdate();
     }
 
 }
