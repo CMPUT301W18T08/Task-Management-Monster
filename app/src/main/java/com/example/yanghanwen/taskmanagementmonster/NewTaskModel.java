@@ -20,7 +20,7 @@ public class NewTaskModel {
 
         Task task = new Task(tid,username,taskname,description);
 
-        MainActivity.tasks.add(task);
+        //MainActivity.tasks.add(task);
     }
 
     private int newTid(){

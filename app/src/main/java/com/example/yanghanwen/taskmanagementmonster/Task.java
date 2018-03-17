@@ -19,6 +19,7 @@ public class Task {
 
     }
 
+
     public Task (int tid, String username, String taskname , String description) {
         this.tid = tid;
         this.username = username;
@@ -75,7 +76,7 @@ public class Task {
         bids.add(bid);
 
         if(status == "requested"){
-            this.setStatus("bidded");
+            this.setStatus("bidding");
         }
 
     }
@@ -149,6 +150,13 @@ public class Task {
         return result;
     }
 
+    public String getLowestBidString(){
+        Double result = this.getLowestBid();
+
+        String lowestBidString = String.valueOf(result);
+
+        return lowestBidString;
+    }
 
     public void modifyBid(String bidder, Double amount) {
 
@@ -201,7 +209,7 @@ public class Task {
         this.setStatus("requested");
     }
 
-    public String getBidder(int position){
+    public Bid getBid(int position){
         Bid bid = null;
         if(hasBid()){
             bid = bids.get(position);

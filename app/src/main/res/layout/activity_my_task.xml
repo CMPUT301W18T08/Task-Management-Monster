@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     tools:context="com.example.yanghanwen.taskmanagementmonster.MyTaskActivity">
     <ListView
-        android:id="@+id/ProviderTask"
+        android:id="@+id/RequesterTask"
         android:layout_width="0dp"
         android:layout_height="390dp"
         android:layout_marginBottom="8dp"
@@ -16,10 +16,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+
     <ListView
-        android:id="@+id/RequesterTask"
+        android:id="@+id/requesterBiddingListView"
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="390dp"
         android:layout_marginBottom="5dp"
         android:layout_marginEnd="6dp"
         android:layout_marginStart="6dp"
@@ -32,16 +33,24 @@
         android:id="@+id/biddingBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
         android:text="Bidding"
-        tools:layout_editor_absoluteX="58dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.264"
+        app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="27dp" />
 
     <Button
         android:id="@+id/assignedBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
         android:text="assigned"
-        tools:layout_editor_absoluteX="203dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.747"
+        app:layout_constraintStart_toStartOf="parent"
         tools:layout_editor_absoluteY="27dp" />
 </android.support.constraint.ConstraintLayout>
 

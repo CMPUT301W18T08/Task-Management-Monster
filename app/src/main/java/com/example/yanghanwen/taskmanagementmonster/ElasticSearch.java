@@ -169,7 +169,7 @@ public class ElasticSearch {
             Task task = new Task();
 
             Get get = new Get.Builder("cmput301w18t08", params[0]).type("task").build();
-            Log.d("usertest", params[0]);
+            Log.d("tasktest", params[0]);
 
             try {
                 JestResult result = client.execute(get);
