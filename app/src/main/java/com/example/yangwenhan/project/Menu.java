@@ -16,6 +16,7 @@ public class Menu extends AppCompatActivity {
     private User user;
     private Button add;
     private Button detail;
+    private Button myTasks;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +28,7 @@ public class Menu extends AppCompatActivity {
         uName = (TextView)findViewById(R.id.name);
         uEmail = (TextView)findViewById(R.id.email);
         uPhone = (TextView)findViewById(R.id.phone);
+        myTasks = (Button)findViewById(R.id.show_tasks);
 
         ElasticSearch.GetUser getUser = new ElasticSearch.GetUser();
         getUser.execute(intent.getStringExtra("username"));
@@ -60,6 +62,14 @@ public class Menu extends AppCompatActivity {
                 Intent intent1 = new Intent(Menu.this,ViewTaskDetail.class);
                 intent1.putExtra("username",user.getUserName());
                 startActivity(intent1);
+            }
+        });
+
+        myTasks.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Menu.this,DisplayTasks.class);
+                startActivity(intent);
             }
         });
     }

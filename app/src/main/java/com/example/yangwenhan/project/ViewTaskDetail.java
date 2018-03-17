@@ -18,6 +18,7 @@ public class ViewTaskDetail extends AppCompatActivity {
     private Task task;
     private Button search_bt;
     private Button delete_bt;
+    private Button edit_bt;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +29,7 @@ public class ViewTaskDetail extends AppCompatActivity {
         title_key = (EditText)findViewById(R.id.task_key);
         search_bt = (Button)findViewById(R.id.search);
         delete_bt = (Button)findViewById(R.id.delete);
+        edit_bt = (Button)findViewById(R.id.edit);
 
         search_bt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,6 +76,16 @@ public class ViewTaskDetail extends AppCompatActivity {
                 }else {
                     Log.i("Error", "Unable to get task object");
                 }
+            }
+        });
+
+        edit_bt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ViewTaskDetail.this,EditTask.class);
+                intent.putExtra("taskID",search_key);
+                startActivity(intent);
+
             }
         });
 

@@ -21,7 +21,9 @@
         <activity android:name=".register" />
         <activity android:name=".Menu" />
         <activity android:name=".TaskAdding" />
-        <activity android:name=".ViewTaskDetail"></activity>
+        <activity android:name=".ViewTaskDetail" />
+        <activity android:name=".EditTask" />
+        <activity android:name=".DisplayTasks"></activity>
     </application>
 
 </manifest>
