@@ -71,7 +71,7 @@ public class SearchResultActivity extends AppCompatActivity {
 
         try {
             tasks = getTasks.get();
-            Log.i("getting some new shit", tasks.toString());
+            Log.i("getting something new", tasks.toString());
         } catch(Exception e) {
             Log.d("test!!!!!!!!!!", "something wrong");
         }
@@ -131,7 +131,7 @@ public class SearchResultActivity extends AppCompatActivity {
     public void TaskSearch() {
         String keyWord = editText.getText().toString();
         for(int i = 0; i < taskList.size(); i++) {
-            if(!(taskList.get(i).getTaskname().toLowerCase().contains(keyWord.toLowerCase()))) {
+            if(!(taskList.get(i).getUsername().toLowerCase().contains(keyWord.toLowerCase()))) {
                 taskList.remove(taskList.get(i));
             }
         }
