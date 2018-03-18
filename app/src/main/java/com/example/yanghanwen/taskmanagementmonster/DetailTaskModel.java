@@ -352,8 +352,20 @@ public abstract class DetailTaskModel {
      */
     public void taskUpdate() {
 
-        //this.updateTask.execute(this.task);
         this.deleteTask.execute(this.task);
+        this.addTask.execute(this.task);
+    }
+
+    /**
+     * Modify the task name
+     *
+     * @param newTaskname the new taskname of this task
+     */
+    public void taskModifed(String newTaskname) {
+
+        // Warning: there is strang behavior
+        this.deleteTask.execute(this.task);
+        this.task.setTaskname(newTaskname);
         this.addTask.execute(this.task);
     }
 

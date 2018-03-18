@@ -24,6 +24,7 @@
         <activity android:name=".DetailBidActivity" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".SearchActivity" />
+        <activity android:name=".MyTaskActivity"></activity>
     </application>
 
 </manifest>

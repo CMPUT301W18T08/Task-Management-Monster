@@ -8,9 +8,16 @@ import android.util.Log;
 
 public class MainModel {
 
-    private ElasticSearch.GetUser getUser;
-    private User user;
+    private ElasticSearch.GetUser getUser;      // elastic search object to get user
 
+    private User user;      // the user object contain information of user
+
+    /**
+     * Construct a model instance for the MainActivity by providing the current user's
+     * username.
+     *
+     * @param username the current user's username
+     */
     public MainModel(String username) {
 
         getUser = new ElasticSearch.GetUser();
@@ -25,6 +32,10 @@ public class MainModel {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public String getUsername() {
 
         return user.getUserName();

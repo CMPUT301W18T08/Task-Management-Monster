@@ -17,6 +17,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Filter;
 import android.widget.ListView;
+import android.widget.Toast;
+
 import java.util.ArrayList;
 
 public class SearchActivity extends AppCompatActivity {
@@ -25,10 +27,11 @@ public class SearchActivity extends AppCompatActivity {
     private EditText editText;
     private Button button;
 
+    private long firstPressed;
+
     public ArrayList<Task> taskList = new ArrayList<>();
     public ArrayList<Task> allTaskList = new ArrayList<>();
     public ArrayAdapter<Task> adapter;
-
     ArrayList<Task> tasks = new ArrayList<>();
 
     @Override
@@ -42,6 +45,7 @@ public class SearchActivity extends AppCompatActivity {
         button = (Button) findViewById(R.id.recover_button);
         String keyWord = editText.getText().toString();
 
+        Task task_test = new Task();
         ElasticSearch.GetTask getTask = new ElasticSearch.GetTask();
         ElasticSearch.GetTasks getTasks = new ElasticSearch.GetTasks();
         ElasticSearch.IsExistTask isExistTask = new ElasticSearch.IsExistTask();
@@ -77,7 +81,7 @@ public class SearchActivity extends AppCompatActivity {
         editText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
+                TaskSearch();
             }
 
             @Override
@@ -87,6 +91,7 @@ public class SearchActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable editable) {
+                TaskSearch();
 
             }
         });
@@ -122,6 +127,24 @@ public class SearchActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    public void onBackPressed() {
+        //super.onBackPressed();
+        adapter.clear();
+        for(int j = 0; j < allTaskList.size(); j++) {
+            taskList.add(allTaskList.get(j));
+        }
+        adapter.notifyDataSetChanged();
+
+        if(System.currentTimeMillis() - firstPressed < 3000) {
+            super.onBackPressed();
+        } else {
+            Toast.makeText(SearchActivity.this, "Press again to quit", Toast.LENGTH_SHORT).show();
+            firstPressed = System.currentTimeMillis();
+        }
+    }
+
+
     public void TaskSearch() {
         String keyWord = editText.getText().toString();
         for(int i = 0; i < taskList.size(); i++) {
@@ -145,7 +168,6 @@ public class SearchActivity extends AppCompatActivity {
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, taskList);
         listView.setAdapter(adapter);
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -209,4 +231,5 @@ public class SearchActivity extends AppCompatActivity {
         }
         return true;
     }
+
 }

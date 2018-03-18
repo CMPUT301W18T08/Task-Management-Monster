@@ -13,6 +13,8 @@ public class MainActivity extends AppCompatActivity {
 
     private Button newTaskButton;
     private Button searchButton;
+    private Button providerButton;
+    private Button requesterButton;
 
     //private EditText searchKeyWord;
 
@@ -29,8 +31,8 @@ public class MainActivity extends AppCompatActivity {
 
         newTaskButton = (Button) findViewById(R.id.newTaskButton);
         searchButton = (Button) findViewById(R.id.mainSearch);
-
-        //searchKeyWord = (EditText) findViewById(R.id.typeInSearch);
+        providerButton = (Button) findViewById(R.id.providerButton);
+        requesterButton = (Button) findViewById(R.id.requesterButton);
 
         newTaskButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,9 +49,31 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                //String keyWord = searchKeyWord.getText().toString();
-
                 Intent intent = new Intent(MainActivity.this, SearchActivity.class);
+
+                startActivity(intent);
+            }
+        });
+
+        providerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(MainActivity.this, MyTaskActivity.class);
+
+                intent.putExtra("type", "pro");
+
+                startActivity(intent);
+            }
+        });
+
+        requesterButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(MainActivity.this, MyTaskActivity.class);
+
+                intent.putExtra("type", "req");
 
                 startActivity(intent);
             }
