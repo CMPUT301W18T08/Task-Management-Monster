@@ -193,13 +193,24 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextDetailTitle" />
 
-    <ListView
-        android:id="@+id/detailListView"
+    <LinearLayout
+        android:id="@+id/linearDetail"
         android:layout_width="378dp"
-        android:layout_height="248dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_height="246dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/detailBidLowest" />
+        app:layout_constraintTop_toBottomOf="@+id/detailBidLowest">
+
+        <ListView
+            android:id="@+id/detailListView"
+            android:layout_width="378dp"
+            android:layout_height="248dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/detailBidLowest" />
+    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

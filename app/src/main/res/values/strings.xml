@@ -23,4 +23,5 @@
     <string name="login_login_button">Login</string>
     <string name="login_register_button">Register</string>
     <string name="main_new_button">Create New Task</string>
+    <string name="main_button_search">Search New Task</string>
 </resources>

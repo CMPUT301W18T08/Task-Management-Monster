@@ -1,7 +1,6 @@
 package com.example.yanghanwen.taskmanagementmonster;
 
 import android.util.Log;
-import android.widget.Toast;
 
 /**
  * Created by superfan1995 on 2018-03-09.
@@ -26,6 +25,10 @@ public class NewTaskModel {
     public void createNewTask (String taskname, String description) {
 
         if (existTask(taskname)) {
+
+            Log.d("message", "task already exist");
+        }
+        else {
 
             Task task = new Task(this.username, taskname, description);
 

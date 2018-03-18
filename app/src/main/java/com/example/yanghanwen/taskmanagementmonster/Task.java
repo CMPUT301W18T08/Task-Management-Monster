@@ -68,7 +68,7 @@ public class Task {
         Bid bid = new Bid(bidder, amount);
         bids.add(bid);
 
-        if (status == "requested") {
+        if (this.status.equals("requested")) {
 
             this.setStatus("bidded");
         }
@@ -104,7 +104,7 @@ public class Task {
 
                 Bid bid = bids.get(i);
 
-                if (bid.getUserName() == bidder) {
+                if (bid.getUserName().equals(bidder) ) {
 
                     userAmount = bid.getAmount();
                     break;
@@ -152,7 +152,7 @@ public class Task {
 
                 Bid bid = bids.get(i);
 
-                if (bid.getUserName() == bidder) {
+                if (bid.getUserName().equals(bidder)) {
 
                     bid.setAmount(amount);
                     break;
@@ -171,7 +171,7 @@ public class Task {
 
                 Bid bid = bids.get(i);
 
-                if (bid.getUserName() == bidder) {
+                if (bid.getUserName().equals(bidder)) {
 
                     bids.remove(bid);
                     break;
@@ -219,6 +219,10 @@ public class Task {
     public void setDone() {
 
         this.setStatus("done");
+    }
+
+    public String toString() {
+        return username + "\n" + taskname + "\n" + description + "\n" + status + "\n" + bids;
     }
 
 }

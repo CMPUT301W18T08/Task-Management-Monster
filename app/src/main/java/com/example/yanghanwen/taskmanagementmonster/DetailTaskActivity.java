@@ -161,10 +161,12 @@ public class DetailTaskActivity extends AppCompatActivity {
             }
         });
 
+        // if click a item in the ListView
         listViewBids.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
+                // start the Detail bid task to view detail and further operation on it
                 Intent intent = new Intent(DetailTaskActivity.this,
                         DetailBidActivity.class);
 
@@ -183,12 +185,13 @@ public class DetailTaskActivity extends AppCompatActivity {
 
     }
 
+    // show the view in the current value and status of the task
     private void updateView() {
 
         viewTitle.setText( detailTaskModel.getTitle() );
         viewUsername.setText( detailTaskModel.getRequester() );
         viewStatus.setText( detailTaskModel.getStatus() );
-        viewDescription.setText( detailTaskModel.getDescrption() );
+        viewDescription.setText( detailTaskModel.getDescription() );
 
         viewBidInfo.setText( detailTaskModel.getBidInfo() );
         viewBidInfo.setVisibility( detailTaskModel.visibilityBidInfo() );
@@ -206,7 +209,6 @@ public class DetailTaskActivity extends AppCompatActivity {
         editTitle.setVisibility( detailTaskModel.visibilityEditTitle() );
         editDescription.setVisibility( detailTaskModel.visibilityEditDescription() );
 
-
         changeButton.setText( detailTaskModel.getButtonText1() );
         changeButton.setVisibility( detailTaskModel.visibilityChangeButton() );
 
@@ -216,6 +218,7 @@ public class DetailTaskActivity extends AppCompatActivity {
         int listVisibility = detailTaskModel.visibilityListView();
         listViewBids.setVisibility( listVisibility );
 
+        // show ListView of bids if it required
         if ( listVisibility == View.VISIBLE ) {
 
             bidList = detailTaskModel.getBidsList();
@@ -230,30 +233,37 @@ public class DetailTaskActivity extends AppCompatActivity {
 
     // https://stackoverflow.com/questions/10407159/how-to-manage-startactivityforresult-on-android
     // 2018-3-15
+
+    // get the return result from the DetailBidActivity to decide further opertion on bid
     @Override
     protected void onActivityResult(int requesCode, int resultCode, Intent data) {
 
         super.onActivityResult(requesCode, resultCode, data);
 
+        // if there is a result from DetailBidActivity
         if (requesCode == DETAIL_BID) {
 
             if (resultCode == RESULT_OK) {
 
+                // get the position of bid and the operation on it
                 int returnAction = data.getIntExtra("result", 0);
                 int bidPosition = data.getIntExtra("position", 0);
 
+                // assigned the task to the bid
                 if (returnAction == 1) {
 
                     detailTaskModel.assignBid(bidPosition);
 
                 }
 
+                // decline the bid
                 else if (returnAction == 2) {
 
                     detailTaskModel.declineBid(bidPosition);
 
                 }
 
+                // update the view to the modified task
                 updateView();
 
             }

@@ -12,7 +12,7 @@ public class DetailTaskSearchModel extends DetailTaskModel {
 
     private Boolean hasBid;
     private Boolean userBidded;
-    private Double userbid;
+    private Double userBid;
 
     public DetailTaskSearchModel (String title, String requestor) {
 
@@ -20,9 +20,9 @@ public class DetailTaskSearchModel extends DetailTaskModel {
 
         hasBid = super.task.hasBid();
 
-        userbid = super.task.getUserAmount(super.username);
+        userBid = super.task.getUserAmount(super.username);
 
-        if (userbid == null) {
+        if (userBid == null) {
 
             userBidded = Boolean.FALSE;
         }
@@ -76,9 +76,8 @@ public class DetailTaskSearchModel extends DetailTaskModel {
 
         if ( userBidded ) {
 
-            return "$ " + userbid.toString();
+            return "$" + userBid.toString();
         }
-
         else {
 
             return "";
@@ -200,16 +199,16 @@ public class DetailTaskSearchModel extends DetailTaskModel {
 
     public void changeButtonAction (String newValue) {
 
-        userbid = Double.parseDouble(newValue);
+        userBid = Double.parseDouble(newValue);
 
         if (userBidded) {
 
-            super.task.modifyBid(super.username, userbid);
+            super.task.modifyBid(super.username, userBid);
         }
 
         else {
 
-            super.task.createNewBid(super.username, userbid);
+            super.task.createNewBid(super.username, userBid);
         }
 
         // update task by elastic search
@@ -229,10 +228,9 @@ public class DetailTaskSearchModel extends DetailTaskModel {
 
         hasBid = super.task.hasBid();
 
-        userbid = null;
+        userBid = null;
 
         userBidded = Boolean.FALSE;
-
     }
 
 }

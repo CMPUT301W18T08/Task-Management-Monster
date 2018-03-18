@@ -8,17 +8,12 @@ import android.widget.EditText;
 
 public class NewTaskActivity extends Activity {
 
-    //private int tid;
-    //private String username;
-    //private String taskname;
-    //private String description;
+    private NewTaskModel newTaskModel; // Model of this activity
 
-    private NewTaskModel newTaskModel;
+    private EditText editTitle;         // EditText of new title
+    private EditText editDescription;   // EditText of new description
 
-    private EditText editTitle;
-    private EditText editDescription;
-
-    private Button createButton;
+    private Button createButton;        // create Task button
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

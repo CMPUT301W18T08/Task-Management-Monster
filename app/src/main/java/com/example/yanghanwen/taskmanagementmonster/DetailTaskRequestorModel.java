@@ -21,12 +21,12 @@ public class DetailTaskRequestorModel extends DetailTaskModel {
 
     public String getBidInfo() {
 
-        if (status == "requested") {
+        if (status.equals("requested")) {
 
             return "Task currently has no bid";
         }
 
-        else if (status == "bidded") {
+        else if (status.equals("bidded")) {
 
             return "Current Lowest Bid:";
         }
@@ -40,12 +40,12 @@ public class DetailTaskRequestorModel extends DetailTaskModel {
 
     public String getBidLowest() {
 
-        if (status == "requested") {
+        if (status.equals("requested")) {
 
             return "";
         }
 
-        else if (status == "bidded") {
+        else if (status.equals("bidded")) {
 
             Double lowestBid = super.task.getLowestBid();
             return "$ " + lowestBid.toString();
@@ -61,12 +61,12 @@ public class DetailTaskRequestorModel extends DetailTaskModel {
 
     public String getMyBidInfo() {
 
-        if (status == "requested") {
+        if (status.equals("requested")) {
 
             return "";
         }
 
-        else if (status == "bidded") {
+        else if (status.equals("bidded")) {
 
             return "";
         }
@@ -79,12 +79,12 @@ public class DetailTaskRequestorModel extends DetailTaskModel {
 
     public String getMyBid() {
 
-        if (status == "requested") {
+        if (status.equals("requested")) {
 
             return "";
         }
 
-        else if (status == "bidded") {
+        else if (status.equals("bidded")) {
 
             return "";
         }
@@ -102,12 +102,12 @@ public class DetailTaskRequestorModel extends DetailTaskModel {
 
     public String getButtonText1() {
 
-        if (status == "requested") {
+        if (status.equals("requested")) {
 
             return "Modify Title";
         }
 
-        else if (status == "assigned") {
+        else if (status.equals("assigned")) {
 
             return "Task Complete";
         }
@@ -120,12 +120,12 @@ public class DetailTaskRequestorModel extends DetailTaskModel {
 
     public String getButtonText2() {
 
-        if (status == "requested") {
+        if (status.equals("requested")) {
 
             return "Modify Description";
         }
 
-        else if (status == "assigned") {
+        else if (status.equals("assigned")) {
 
             return "Task Incomplete";
         }
@@ -149,7 +149,7 @@ public class DetailTaskRequestorModel extends DetailTaskModel {
 
     public int visibilityBidLowest() {
 
-        if (status == "requested") {
+        if (status.equals("requested")) {
 
             return View.GONE;
         }
@@ -162,12 +162,12 @@ public class DetailTaskRequestorModel extends DetailTaskModel {
 
     public int visibilityMyBidInfo() {
 
-        if (status == "requested") {
+        if (status.equals("requested")) {
 
             return View.GONE;
         }
 
-        else if (status == "bidded") {
+        else if (status.equals("bidded")) {
 
             return View.GONE;
         }
@@ -182,12 +182,12 @@ public class DetailTaskRequestorModel extends DetailTaskModel {
 
         {
 
-            if (status == "requested") {
+            if (status.equals("requested")) {
 
                 return View.GONE;
             }
 
-            else if (status == "bidded") {
+            else if (status.equals("bidded")) {
 
                 return View.GONE;
             }
@@ -207,7 +207,7 @@ public class DetailTaskRequestorModel extends DetailTaskModel {
 
     public int visibilityEditTitle() {
 
-        if (status == "requested") {
+        if (status.equals("requested")) {
 
             return View.VISIBLE;
         }
@@ -220,7 +220,7 @@ public class DetailTaskRequestorModel extends DetailTaskModel {
 
     public int visibilityEditDescription() {
 
-        if (status == "requested") {
+        if (status.equals("requested")) {
 
             return View.VISIBLE;
         }
@@ -233,12 +233,12 @@ public class DetailTaskRequestorModel extends DetailTaskModel {
 
     public int visibilityChangeButton() {
 
-        if (status == "requested") {
+        if (status.equals("requested")) {
 
             return View.VISIBLE;
         }
 
-        else if (status == "assigned") {
+        else if (status.equals("assigned")) {
 
             return View.VISIBLE;
         }
@@ -251,12 +251,12 @@ public class DetailTaskRequestorModel extends DetailTaskModel {
 
     public int visibilityDeclineButton()  {
 
-        if (status == "requested") {
+        if (status.equals("requested")) {
 
             return View.VISIBLE;
         }
 
-        else if (status == "assigned") {
+        else if (status.equals("assigned")) {
 
             return View.VISIBLE;
         }
@@ -269,7 +269,7 @@ public class DetailTaskRequestorModel extends DetailTaskModel {
 
     public int visibilityListView() {
 
-        if (status == "bidded") {
+        if (status.equals("bidded")) {
 
             return View.VISIBLE;
         }
@@ -282,12 +282,12 @@ public class DetailTaskRequestorModel extends DetailTaskModel {
 
     public void changeButtonAction(String newValue) {
 
-        if (status == "requested") {
+        if (status.equals("requested")) {
 
             super.task.setTaskname(newValue);
         }
 
-        else if (status == "assigned") {
+        else if (status.equals("assigned")) {
 
             super.task.setDone();
 
@@ -300,12 +300,12 @@ public class DetailTaskRequestorModel extends DetailTaskModel {
 
     public void declineButtonAction(String newValue) {
 
-        if (status == "requested") {
+        if (status.equals("requested")) {
 
             super.task.setDescription(newValue);
         }
 
-        else if (status == "assigned") {
+        else if (status.equals("assigned")) {
 
             super.task.emptyBids();
 

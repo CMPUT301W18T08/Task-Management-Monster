@@ -1,8 +1,5 @@
 package com.example.yanghanwen.taskmanagementmonster;
 
-/**
- * Created by yangwenhan on 2018/2/21.
- */
 
 import android.os.AsyncTask;
 import android.util.Log;
@@ -11,11 +8,16 @@ import com.searchly.jestdroid.DroidClientConfig;
 import com.searchly.jestdroid.JestClientFactory;
 import com.searchly.jestdroid.JestDroidClient;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import io.searchbox.client.JestResult;
 import io.searchbox.core.Delete;
 import io.searchbox.core.DocumentResult;
 import io.searchbox.core.Get;
 import io.searchbox.core.Index;
+import io.searchbox.core.Search;
+import io.searchbox.core.SearchResult;
 import io.searchbox.core.Update;
 
 public class ElasticSearch {
@@ -270,8 +272,40 @@ public class ElasticSearch {
         }
     }
 
+    public static class GetTasks extends AsyncTask<String, Void, ArrayList<Task>> {
+        @Override
+        protected ArrayList<Task> doInBackground(String... search_parameters) {
+            verifySettings();
+            ArrayList<Task> tasks = new ArrayList<Task>();
+
+            // TODO Build the query
+
+            String query = "";
+
+            Search search = new Search.Builder(search_parameters[0])
+                    .addIndex("cmput301w18t08")
+                    .addType("task")
+                    .build();
 
 
+            try {
+                // TODO get the results of the query
+                SearchResult result = client.execute(search);
+                if (result.isSucceeded()){
+                    List<Task> foundtasks = result.getSourceAsObjectList(Task.class);
+                    tasks.addAll(foundtasks);
+                }
+                else {
+                    Log.i("Error", "The search query failed to find any tweets that matched");
+                }
+            }
+            catch (Exception e) {
+                Log.i("Error", "Something went wrong when we tried to communicate with the elasticsearch server!");
+            }
+
+            return tasks;
+        }
+    }
 
     public static void verifySettings() {
         if (client == null) {

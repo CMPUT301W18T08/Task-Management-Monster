@@ -8,15 +8,27 @@ import java.util.ArrayList;
  * Created by superfan1995 on 2018-03-10.
  */
 
+
+/**
+ *
+ *
+ * @author xf4
+ * @version 1.0
+ */
 public class DetailTaskProviderModel extends DetailTaskModel {
 
     Boolean assigned;
 
+    /**
+     *
+     * @param title
+     * @param requestor
+     */
     public DetailTaskProviderModel (String title, String requestor) {
 
         super(title, requestor);
 
-        if (super.task.getStatus() == "assigned") {
+        if (super.task.getStatus().equals("assigned")) {
 
             assigned = Boolean.TRUE;
         }

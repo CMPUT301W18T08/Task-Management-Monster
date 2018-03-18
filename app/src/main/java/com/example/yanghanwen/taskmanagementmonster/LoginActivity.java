@@ -11,8 +11,6 @@ import android.widget.Toast;
 
 public class LoginActivity extends AppCompatActivity {
 
-    public static UserList userList;
-
     private EditText editID;
     private Button loginButton;
     private Button registerButton;
@@ -26,7 +24,6 @@ public class LoginActivity extends AppCompatActivity {
 
         loginButton = (Button)findViewById(R.id.login);
         registerButton = (Button)findViewById(R.id.register);
-        userList = new UserList();
 
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
