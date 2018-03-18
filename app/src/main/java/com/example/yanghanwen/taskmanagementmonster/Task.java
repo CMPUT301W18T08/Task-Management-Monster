@@ -150,13 +150,7 @@ public class Task {
         return result;
     }
 
-    public String getLowestBidString(){
-        Double result = this.getLowestBid();
 
-        String lowestBidString = String.valueOf(result);
-
-        return lowestBidString;
-    }
 
     public void modifyBid(String bidder, Double amount) {
 
