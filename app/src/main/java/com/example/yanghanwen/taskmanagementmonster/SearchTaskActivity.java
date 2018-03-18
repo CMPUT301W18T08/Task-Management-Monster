@@ -23,9 +23,9 @@ public class SearchTaskActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_task);
 
-        Task task = new Task(tid, username, taskname, description);
+        /*Task task = new Task(tid, username, taskname, description);
         Task task1 = new Task(tid, username, taskname, description);
-        /*Task task2 = new Task(tid, username, taskname, description);
+        Task task2 = new Task(tid, username, taskname, description);
         Task task3 = new Task(tid, username, taskname, description);
         Task task4 = new Task(tid, username, taskname, description);
         Task task5 = new Task(tid, username, taskname, description);
@@ -33,13 +33,13 @@ public class SearchTaskActivity extends AppCompatActivity {
         Task task7 = new Task(tid, username, taskname, description);
         Task task8 = new Task(tid, username, taskname, description);*/
 
-        task.setTaskname("This is task 1");
+        /*task.setTaskname("This is task 1");
         task.setStatus("Bidded");
         task.setDescription("This task has been bidded");
         task1.setTaskname("task 2");
         task1.setStatus("bidded");
         task1.setDescription("This task has been bidded");
-        /*task2.setTaskname("task 3");
+        task2.setTaskname("task 3");
         task2.setStatus("Bidded");
         task2.setDescription("This task has been bidded");
         task3.setTaskname("task 4");
@@ -61,9 +61,9 @@ public class SearchTaskActivity extends AppCompatActivity {
         task8.setStatus("Bidded");
         task8.setDescription("This task has been bidded");*/
 
-        taskList.add(task);
+        /*taskList.add(task);
         taskList.add(task1);
-        /*taskList.add(task2);
+        taskList.add(task2);
         taskList.add(task3);
         taskList.add(task4);
         taskList.add(task5);
@@ -75,16 +75,9 @@ public class SearchTaskActivity extends AppCompatActivity {
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                searchKeyWord = (EditText) findViewById(R.id.typeInSearch);
-                final String KeyWord = searchKeyWord.getText().toString();
-                for(int i = 0; i < taskList.size(); i++) {
-                    if((taskList.get(i).getTaskname()).contains(KeyWord)) {
                         Intent intent = new Intent(SearchTaskActivity.this, SearchResultActivity.class);
-                        intent.putExtra("index", i);
                         setResult(RESULT_OK);
                         startActivity(intent);
-                    }
-                }
             }
         });
     }

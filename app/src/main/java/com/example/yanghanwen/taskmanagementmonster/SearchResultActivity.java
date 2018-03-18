@@ -16,6 +16,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Filter;
 import android.widget.ListView;
+import android.widget.Toast;
+
 import java.util.ArrayList;
 import com.example.yanghanwen.taskmanagementmonster.Task;
 
@@ -95,7 +97,7 @@ public class SearchResultActivity extends AppCompatActivity {
         editText.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-
+                    TaskSearch();
             }
 
             @Override
@@ -105,6 +107,7 @@ public class SearchResultActivity extends AppCompatActivity {
 
             @Override
             public void afterTextChanged(Editable editable) {
+                    TaskSearch();
 
             }
         });
@@ -128,6 +131,26 @@ public class SearchResultActivity extends AppCompatActivity {
         adapter.notifyDataSetChanged();*/  //basic method
     }
 
+    private long firstPressed;
+
+    @Override
+    public void onBackPressed() {
+        //super.onBackPressed();
+        adapter.clear();
+        for(int j = 0; j < allTaskList.size(); j++) {
+            taskList.add(allTaskList.get(j));
+        }
+        adapter.notifyDataSetChanged();
+
+        if(System.currentTimeMillis() - firstPressed < 3000) {
+            super.onBackPressed();
+        } else {
+            Toast.makeText(SearchResultActivity.this, "Press again to quit", Toast.LENGTH_SHORT).show();
+            firstPressed = System.currentTimeMillis();
+        }
+    }
+
+
     public void TaskSearch() {
         String keyWord = editText.getText().toString();
         for(int i = 0; i < taskList.size(); i++) {
@@ -137,6 +160,7 @@ public class SearchResultActivity extends AppCompatActivity {
         }
         adapter.notifyDataSetChanged();
     }
+
 
     /*@Override  //method of searchView, detail fixing needed
     public boolean onCreateOptionsMenu(Menu menu) {
