@@ -179,7 +179,7 @@ public class SearchResultActivity extends AppCompatActivity {
              * setting recover all button action
              * when button is clicked, recover all elements
              * that had been removed to let user do multiple
-             * times search
+             * times of search
              *
              *
              * @param view
@@ -201,7 +201,7 @@ public class SearchResultActivity extends AppCompatActivity {
     /**
      * setting backbutton action:
      * press once to recover all elements that had been removed(same functionality as recover button)
-     * do a double press within 3000 milliseconds to return to last activity
+     * do a double press within 3000 milliseconds to return to the last activity
      */
     @Override
     public void onBackPressed() {
