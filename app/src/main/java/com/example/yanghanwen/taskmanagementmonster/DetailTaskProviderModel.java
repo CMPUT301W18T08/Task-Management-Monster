@@ -12,7 +12,6 @@ import java.util.ArrayList;
 /**
  *
  *
- * @author xf4
  * @version 1.0
  */
 public class DetailTaskProviderModel extends DetailTaskModel {

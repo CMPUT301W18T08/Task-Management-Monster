@@ -11,7 +11,6 @@ import java.util.ArrayList;
 /**
  * MVC model for the Detail task activity, compute and return required data.
  *
- * @author xf4
  * @version 1.0
  */
 

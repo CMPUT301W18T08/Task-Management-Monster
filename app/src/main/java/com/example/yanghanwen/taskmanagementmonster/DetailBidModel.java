@@ -7,7 +7,6 @@ package com.example.yanghanwen.taskmanagementmonster;
 /**
  * MVC model for the Detail bid activity, compute and return required data.
  *
- * @author xf4
  * @version 1.0
  */
 public class DetailBidModel {
@@ -19,7 +18,7 @@ public class DetailBidModel {
     /**
      * Construct a model instance for the DetailBidActivity
      *
-     * Store the inout position, provider, and amount for further operation.
+     * Store the input position, provider, and amount for further operation.
      *
      * @param position position of bid
      * @param provider provider of bid

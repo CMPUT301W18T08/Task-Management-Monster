@@ -6,6 +6,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+/**
+ * activity of creating new task
+ *
+ * @version 1.0
+ */
+
 public class NewTaskActivity extends Activity {
 
     private NewTaskModel newTaskModel; // Model of this activity
@@ -20,8 +26,7 @@ public class NewTaskActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_task);
 
-        // Here is the required value need to get from elastic search and other place
-
+        // create model for this activity
         newTaskModel = new NewTaskModel ();
 
         editTitle = (EditText) findViewById(R.id.editTextNewTitle);
@@ -29,6 +34,7 @@ public class NewTaskActivity extends Activity {
 
         createButton = (Button) findViewById(R.id.buttonNewCreate);
 
+        // get value and create new task when button clicked
         createButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
