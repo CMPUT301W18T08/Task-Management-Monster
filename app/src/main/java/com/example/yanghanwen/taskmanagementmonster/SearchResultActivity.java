@@ -1,53 +1,80 @@
 package com.example.yanghanwen.taskmanagementmonster;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Filter;
 import android.widget.ListView;
 import java.util.ArrayList;
+import com.example.yanghanwen.taskmanagementmonster.Task;
 
 public class SearchResultActivity extends AppCompatActivity {
 
     private ListView listView;
     private EditText editText;
+    private Button button;
     private int tid;
     private String username;
     private String taskname;
     private String description;
     public ArrayList<Task> taskList = new ArrayList<>();
+    public ArrayList<Task> allTaskList = new ArrayList<>();
     public ArrayAdapter<Task> adapter;
+    ArrayList<Task> tasks = new ArrayList<>();
 
 
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) throws ArrayIndexOutOfBoundsException {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search_result);
+
         listView = (ListView) findViewById(R.id.Search_result);
         editText = (EditText) findViewById(R.id.discover_search);
+        button = (Button) findViewById(R.id.recover_button);
         String keyWord = editText.getText().toString();
 
-        /*ElasticSearch.GetTask getTask = new ElasticSearch.GetTask();
+        Task task_test = new Task();
+        ElasticSearch.GetTask getTask = new ElasticSearch.GetTask();
+        ElasticSearch.GetTasks getTasks = new ElasticSearch.GetTasks();
         ElasticSearch.IsExistTask isExistTask = new ElasticSearch.IsExistTask();
 
-        if(!isExistTask.doInBackground()) {
-            Log.d("test:", "no task");
-        }
+        //getTask.execute("nullm");
 
-        if(getTask.doInBackground() == null) {
-            Log.d("test", "cannot get task");
-        } else {
-            Log.d("test", "something went wrong");
-    }*/
+
+        /*try {
+            task_test = getTask.get();
+            Log.i("print something",task_test.getTaskname());
+
+        } catch(ArrayIndexOutOfBoundsException e) {
+                Log.d("test", "out of bound");
+        } catch (Exception e) {
+            Log.i("Error", "Fail to connect to server" + e);
+        }*/
+
+        String qUsername = "";
+
+        getTasks.execute(qUsername);
+
+
+        try {
+            tasks = getTasks.get();
+            Log.i("getting some new shit", tasks.toString());
+        } catch(Exception e) {
+            Log.d("test!!!!!!!!!!", "something wrong");
+        }
 
         initList();
 
@@ -79,6 +106,17 @@ public class SearchResultActivity extends AppCompatActivity {
             @Override
             public void afterTextChanged(Editable editable) {
 
+            }
+        });
+
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                adapter.clear();
+                for(int j = 0; j < allTaskList.size(); j++) {
+                    taskList.add(allTaskList.get(j));
+                }
+                adapter.notifyDataSetChanged();
             }
         });
 
@@ -124,7 +162,7 @@ public class SearchResultActivity extends AppCompatActivity {
 
     public void initList() {
 
-        Task task = new Task(tid, username, taskname, description);
+        /*Task task = new Task(tid, username, taskname, description);
         Task task1 = new Task(tid, username, taskname, description);
         Task task2 = new Task(tid, username, taskname, description);
         Task task3 = new Task(tid, username, taskname, description);
@@ -170,12 +208,20 @@ public class SearchResultActivity extends AppCompatActivity {
         taskList.add(task5);
         taskList.add(task6);
         taskList.add(task7);
-        taskList.add(task8);
+        taskList.add(task8);*/
 
-        listView = (ListView) findViewById(R.id.Search_result);
+        for(int k = 0; k < tasks.size(); k++) {
+            taskList.add(tasks.get(k));
+        }
+
+        for(int i = 0; i < taskList.size(); i++) {
+            allTaskList.add(taskList.get(i));
+        }
+
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, taskList);
         listView.setAdapter(adapter);
     }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -189,19 +235,19 @@ public class SearchResultActivity extends AppCompatActivity {
             case R.id.item1:
                 int k = 0;
                 while(k < taskList.size()) {
-                    if(!taskList.get(k).getStatus().equals("Bidded")) {
+                    if(!taskList.get(k).getStatus().equals("bidded")) {
                         taskList.remove(taskList.get(k));
                         k = -1;
                     }
+                    adapter.notifyDataSetChanged();
                     k++;
                 }
-                adapter.notifyDataSetChanged();
                 break;
 
             case R.id.item2:
                 int a = 0;
                 while(a < taskList.size()) {
-                    if(!taskList.get(a).getStatus().equals("Requested")) {
+                    if(!taskList.get(a).getStatus().equals("requested")) {
                         taskList.remove(taskList.get(a));
                         a = -1;
                     }
@@ -213,7 +259,7 @@ public class SearchResultActivity extends AppCompatActivity {
             case R.id.item3:
                 int b = 0;
                 while(b < taskList.size()) {
-                    if(!taskList.get(b).getStatus().equals("Assigned")) {
+                    if(!taskList.get(b).getStatus().equals("assigned")) {
                         taskList.remove(taskList.get(b));
                         b = -1;
                     }
@@ -225,7 +271,7 @@ public class SearchResultActivity extends AppCompatActivity {
             case R.id.item4:
                 int c = 0;
                 while(c < taskList.size()) {
-                    if(!taskList.get(c).getStatus().equals("Done")) {
+                    if(!taskList.get(c).getStatus().equals("done")) {
                         taskList.remove(taskList.get(c));
                         c = -1;
                     }

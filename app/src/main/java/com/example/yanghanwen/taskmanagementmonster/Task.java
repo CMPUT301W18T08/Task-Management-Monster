@@ -3,6 +3,7 @@ import java.util.ArrayList;
 
 
 public class Task {
+
     private int tid;
     private String username;
     private String taskname;
@@ -10,28 +11,42 @@ public class Task {
     private String description;
     private ArrayList<Bid> bids;
 
-    public Task() {
+    public Task(){
 
     }
 
-    public Task (int tid, String username, String taskname , String description) {
+    public Task (String username, String taskname , String description, String status, ArrayList<Bid> bids) {
 
+        this.username = username;
+        this.taskname = taskname;
+        this.description = description;
+
+        this.status = status; //requested
+        this.bids = bids;//new ArrayList<Bid>();
+    }
+
+    public Task (int tid, String username, String taskname, String description) {
         this.tid = tid;
         this.username = username;
         this.taskname = taskname;
         this.description = description;
-        this.status = status;
-        bids = new ArrayList<>();
+
+        this.status = status; //requested
+        this.bids = bids;//new ArrayList<Bid>();
     }
 
-    public int getTid () {
-
-        return this.tid;
-    }
+//    public int getTid () {
+//
+//        return this.tid;
+//    }
 
     public String getUsername () {
 
         return this.username;
+    }
+
+    public void setUsername(String username){
+        this.username = username;
     }
 
     public String getTaskname () {
@@ -49,6 +64,14 @@ public class Task {
         return this.description;
     }
 
+    public ArrayList<Bid> getBids(){
+        return this.bids;
+    }
+
+    public void setBids(ArrayList<Bid> bids){
+        this.bids = bids;
+    }
+
     public void setTaskname (String taskname) {
 
         this.taskname = taskname;
@@ -64,10 +87,15 @@ public class Task {
         this.description = description;
     }
 
-    public void newBid(String bidder, Double amount) {
+    public void createNewBid(String bidder, Double amount) {
 
         Bid bid = new Bid(bidder, amount);
         bids.add(bid);
+
+        if (status == "requested") {
+
+            this.setStatus("bidded");
+        }
 
     }
 
@@ -169,11 +197,15 @@ public class Task {
                 }
             }
         }
+
+        if (!this.hasBid()) {
+
+            this.setStatus("requested");
+        }
     }
 
-    @Override
     public String toString() {
-        return taskname + "\n" + tid + "\n" + description + "\n" + status;
+        return username + "\n" + taskname + "\n" + description + "\n" + status + "\n" + bids;
     }
 
 }
