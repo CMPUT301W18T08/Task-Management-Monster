@@ -16,7 +16,7 @@ public class ThreeGridsAdapter extends BaseAdapter {
 
     private Context mContext;
     private ArrayList<Task> mTaskList;
-    private double lowestBid;
+
 
     public ThreeGridsAdapter(Context mContext,ArrayList<Task>mTaskList){
         this.mContext = mContext;

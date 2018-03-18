@@ -20,4 +20,15 @@
         android:layout_height="wrap_content"
         android:text="go to my task"
         android:onClick="myTaskBtn"/>
+
+    <Button
+        android:id="@+id/providerBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Go to my task(provider)"
+        tools:layout_editor_absoluteX="117dp"
+        tools:layout_editor_absoluteY="79dp"
+        android:onClick="myProvideTaskBtn"/>
+
+
 </android.support.constraint.ConstraintLayout>

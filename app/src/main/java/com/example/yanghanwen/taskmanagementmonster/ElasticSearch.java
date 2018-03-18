@@ -206,32 +206,23 @@ public class ElasticSearch {
 
     }
 
-    public static class getTaskList extends AsyncTask<String,Void,ArrayList<Task>> {
-
-        @Override
-        protected ArrayList<Task> doInBackground(String... search_parameters){
-            verifySettings();
-
-            ArrayList<Task>tasks = new ArrayList<>();
-
-
-            Search search = new Search.Builder(search_parameters[0]).addIndex("cmput301w18t08").addType("task").build();
-            try{
-                SearchResult result = client.execute(search);
-                if(result.isSucceeded()){
-                    List<Task>foundTask = result.getSourceAsObjectList(Task.class);
-                    tasks.addAll(foundTask);
-                }else{
-                    Log.i("Error","Search query failed to find any thing");
-                }
-            }
-            catch (Exception e){
-                Log.i("Error","Something went wrong when we tried to communicate with the elasticsearch server!");
-            }
-            return tasks;
-
-        }
-    }
+    /**
+     * How to test getTask(you should know username of requester and task title
+     * For example(userName = "yxiong3", title = "1" get from editText
+     * private String taskID
+     * taskID = yxiong3 + title
+     * isExistTask test if task exist
+     * If yes
+     * ElasticSearch.GetTask getTask = new ElasticSearch.GetTask();
+     getTask.execute(taskID);
+     try{
+     task = getTask.get();
+     Log.i("print something","should print information");
+     }
+     catch (Exception e) {
+     Log.i("Error", "Fail to connect to server");
+     }
+     */
 
     public static class UpdateTask extends  AsyncTask<Task, Void, Void> {
         @Override
@@ -281,6 +272,41 @@ public class ElasticSearch {
                 }
             }
             return null;
+        }
+    }
+
+    public static class GetTasks extends AsyncTask<String, Void, ArrayList<Task>> {
+        @Override
+        protected ArrayList<Task> doInBackground(String... search_parameters) {
+            verifySettings();
+            ArrayList<Task> tasks = new ArrayList<Task>();
+
+            // TODO Build the query
+
+            String query = "";
+
+            Search search = new Search.Builder(search_parameters[0])
+                    .addIndex("cmput301w18t08")
+                    .addType("task")
+                    .build();
+
+
+            try {
+                // TODO get the results of the query
+                SearchResult result = client.execute(search);
+                if (result.isSucceeded()){
+                    List<Task> foundtasks = result.getSourceAsObjectList(Task.class);
+                    tasks.addAll(foundtasks);
+                }
+                else {
+                    Log.i("Error", "The search query failed to find any tweets that matched");
+                }
+            }
+            catch (Exception e) {
+                Log.i("Error", "Something went wrong when we tried to communicate with the elasticsearch server!");
+            }
+
+            return tasks;
         }
     }
 

@@ -13,31 +13,59 @@ import android.widget.ListView;
 import java.util.ArrayList;
 
 public class MyTaskActivity extends AppCompatActivity {
+    // these ListView is named with "requester", But it used for requester & provider case
     private ListView requesterBiddingListView;
     private ListView requesterListView;
+    private ListView requesterAssignedListView;
+
     private String OperationType;
+
+    // different adapter for adapter different kind of ListView
     private TwoGridsAdapter adapter;
     private ThreeGridsAdapter threeGridsAdapter;
-    private String currentUsername;
+    private FourGridsAdapter fourGridsAdapter;
+    private FiveGridsAdapter fiveGridsAdapter;
+    private FourGridsProviderAdapter fourGridsProviderAdapter;
+
+
+    public static String currentUsername;
     private Button biddingBtn;
     private Button assignedBtn;
 
+    //get whole task list from ES
+    private ArrayList<Task>wholeTaskList = new ArrayList<>();
 
-    /////////for test
+    //the arraylist for the task the currentUser has bidded
+    private ArrayList<Task>providerTaskList = new ArrayList<>();
+
+    // the arraylist for currentUser's requested task
+    public ArrayList<Task>taskList = new ArrayList<>();
+
+    // a temp arraylist to store data and adapt to ListView
+    public ArrayList<Task>newTaskList = new ArrayList<>();
+
+
+    // used for ElasticSearch
+    private String userID;
+
+
+
+
+    /////////for test////////////////////////
     private int tid;
     private String taskusername;
     private String taskname;
     private String bidusername;
     private String description;
     private double amount;
-    public ArrayList<Task>taskList = new ArrayList<>();
-    public ArrayList<Task>newTaskList = new ArrayList<>();
+
     ////////////////////////////////
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_task);
-        //////////////////////
+        /////////////////////////////////////////////////
+        // for testing
         Task task0 = new Task (tid,taskusername,taskname,description);
         Task task1 = new Task (tid,taskusername,taskname,description);
         Task task2 = new Task (tid,taskusername,taskname,description);
@@ -48,15 +76,8 @@ public class MyTaskActivity extends AppCompatActivity {
         Task task7 = new Task (tid,taskusername,taskname,description);
         Task task8 = new Task (tid,taskusername,taskname,description);
         Task task9 = new Task (tid,taskusername,taskname,description);
-
-        Bid bid0 = new Bid(bidusername,amount);
-        Bid bid1 = new Bid(bidusername,amount);
-        Bid bid2 = new Bid(bidusername,amount);
-        Bid bid3 = new Bid(bidusername,amount);
-
-
-
-
+        Task task10 = new Task(tid,taskusername,taskname,description);
+        Task task11 = new Task(tid,taskusername,taskname,description);
 
 
         task0.setTaskname("task0");
@@ -110,6 +131,16 @@ public class MyTaskActivity extends AppCompatActivity {
         task9.createNewBid("bid0",1.0);
         task9.createNewBid("bid1",2.0);
 
+        task10.setTaskname("task10");
+        task10.setDescription("This task assigned");
+        task10.setStatus("assigned");
+        task10.createNewBid("bid10",66.66);
+
+        task11.setTaskname("task11");
+        task11.setDescription("This task assigned");
+        task11.setStatus("assigned");
+        task11.createNewBid("bid11",77.77);
+
 
         taskList.add(task0);
         taskList.add(task1);
@@ -121,22 +152,54 @@ public class MyTaskActivity extends AppCompatActivity {
         taskList.add(task7);
         taskList.add(task8);
         taskList.add(task9);
+        taskList.add(task10);
+        taskList.add(task11);
         ////////////////////////////////////////////
 
 
 
-        //currentUsername = MainActivity.user.getUserName();
+
+        // initial all listview
         requesterBiddingListView = findViewById(R.id.requesterBiddingListView);
+        requesterAssignedListView = findViewById(R.id.requesterAssignedListView);
         requesterListView = findViewById(R.id.RequesterTask);
 
+        // get incoming type (requester/provider)
         OperationType = getIntent().getStringExtra("type");
+
+        // initial button for filter
         biddingBtn = findViewById(R.id.biddingBtn);
         assignedBtn = findViewById(R.id.assignedBtn);
 
+        // get current username
+        currentUsername = MainActivity.MainModel.getUsername();
+
 
         if(OperationType.equals("req")){
+
+
+            // Elastic Search for current user to get his posted tasksList
+            userID = currentUsername;
+
+            ElasticSearch.GetTasks getTasks = new ElasticSearch.GetTasks();
+            String query = "{\"query\" : {\"term\" : { \"username\" : \""+userID+"\" }}}";
+            getTasks.execute(query);
+
+            try{
+                taskList = getTasks.get();
+                Log.i("inside try","getTasks.get() executes");
+            }catch (Exception e){
+                Log.i("Error", "Failed to get the tasks from the async object");
+            }
+            // adapter to adapt requester arrayList
+            adapter = new TwoGridsAdapter(getApplicationContext(),taskList);
+            requesterListView.setAdapter(adapter);
+
             /*
-            providerListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            // for clicking each items in listview
+
+            requesterListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                     Intent intent = new Intent(MyTaskActivity.this,DetailTaskActivity.class);
@@ -146,18 +209,207 @@ public class MyTaskActivity extends AppCompatActivity {
                 }
             });
             */
-            //elastic search provider's task
-            //get it later
+
+            biddingBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    requesterListView.setVisibility(View.GONE);
+                    requesterAssignedListView.setVisibility(View.GONE);
+                    requesterBiddingListView.setVisibility(View.GONE);
+                    requesterBiddingListView.setVisibility(View.VISIBLE);
+
+                    newTaskList.clear();
+                    for(Task task : taskList ){
+
+                        if (task.getStatus().equals("bidding")){
+                            Log.i("getStatus","got bidding");
+                            newTaskList.add(task);
+
+                        }
+                    }
+                    Log.d("tasklist",newTaskList.get(1).getTaskname());
+
+                    threeGridsAdapter = new ThreeGridsAdapter(getApplicationContext(),newTaskList);
+
+                    requesterBiddingListView.setAdapter(threeGridsAdapter);
+
+                    /*
+                    // for clicking each items in listview
+
+                    requesterBiddingListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                            Intent intent = new Intent(MyTaskActivity.this, DetailTaskActivity.class);
+                            intent.putExtra("index",i);
+                            intent.putExtra("mode",3);
+                            startActivity(intent);
+                        }
+                    });
+                    */
 
 
-            // adapter to adapt requester arrayList
-            adapter = new TwoGridsAdapter(getApplicationContext(),taskList);
 
+
+                }
+            });
+            assignedBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    requesterListView.setVisibility(View.GONE);
+                    requesterAssignedListView.setVisibility(View.GONE);
+                    requesterBiddingListView.setVisibility(View.GONE);
+                    requesterAssignedListView.setVisibility(View.VISIBLE);
+
+                    newTaskList.clear();
+
+                    for(Task task : taskList){
+                        if(task.getStatus().equals("assigned")){
+                            newTaskList.add(task);
+
+                        }
+                    }
+                    fourGridsAdapter = new FourGridsAdapter(getApplicationContext(),newTaskList);
+                    requesterAssignedListView.setAdapter(fourGridsAdapter);
+
+
+                    /*
+                    // for clicking each items in listview
+
+                    requesterAssignedListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                            Intent intent = new Intent(MyTaskActivity.this, DetailTaskActivity.class);
+                            intent.putExtra("index",i);
+                            intent.putExtra("mode",3);
+                            startActivity(intent);
+                        }
+                    });
+                    */
+
+
+                }
+            });
+
+        }
+
+
+        else if (OperationType.equals("pro")){
+
+            // ElasticSearch to get whole tasksList in db
+            ElasticSearch.GetTasks getTasks = new ElasticSearch.GetTasks();
+            String query = "";
+            getTasks.execute(query);
+
+            try{
+                wholeTaskList = getTasks.get();
+                Log.i("inside try","getTasks.get() executes");
+            }catch (Exception e){
+                Log.i("Error", "Failed to get the tasks from the async object");
+            }
+
+
+
+
+
+            // get the TaskList I bidded,i.e. my provider list
+            for(Task task : wholeTaskList){
+                if(!task.getUserAmount(currentUsername).equals(null)){
+                    providerTaskList.add(task);
+                }
+            }
+
+            adapter = new TwoGridsAdapter(getApplicationContext(),providerTaskList);
+            //although it says it is requestorListView, but it actually is providedListView
             requesterListView.setAdapter(adapter);
 
+            /*
+            // for clicking each item in listview
+
+            requesterListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                    Intent intent = new Intent(MyTaskActivity.this,DetailTaskActivity.class);
+                    intent.putExtra("index",i);
+                    intent.putExtra("mode",2);
+                    startActivity(intent);
+                }
+            });
+            */
 
 
 
+
+
+
+
+
+            biddingBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    requesterListView.setVisibility(View.GONE);
+                    requesterAssignedListView.setVisibility(View.GONE);
+                    requesterBiddingListView.setVisibility(View.GONE);
+                    requesterBiddingListView.setVisibility(View.VISIBLE);
+
+                    newTaskList.clear();
+                    for(Task task:providerTaskList){
+                        if(task.getStatus().equals("bidding")){
+                            newTaskList.add(task);
+                        }
+                    }
+                    fiveGridsAdapter = new FiveGridsAdapter(getApplicationContext(),newTaskList);
+                    requesterBiddingListView.setAdapter(fiveGridsAdapter);
+
+
+                    /*
+                    // for clicking each item in listview
+                    requesterBiddingListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                            Intent intent = new Intent(MyTaskActivity.this,DetailTaskActivity.class);
+                            intent.putExtra("index",i);
+                            intent.putExtra("mode",2);
+                            startActivity(intent);
+                        }
+                    });
+                    */
+
+                }
+            });
+
+            assignedBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    requesterListView.setVisibility(View.GONE);
+                    requesterAssignedListView.setVisibility(View.GONE);
+                    requesterBiddingListView.setVisibility(View.GONE);
+                    requesterBiddingListView.setVisibility(View.VISIBLE);
+
+                    newTaskList.clear();
+                    for(Task task:providerTaskList){
+                        if(task.getStatus().equals("assigned")){
+                            newTaskList.add(task);
+                        }
+                    }
+                    fourGridsProviderAdapter = new FourGridsProviderAdapter(getApplicationContext(),newTaskList);
+                    requesterAssignedListView.setAdapter(fourGridsProviderAdapter);
+
+                    /*
+                    // for clicking each item in listview
+                    requesterAssignedListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                            Intent intent = new Intent(MyTaskActivity.this,DetailTaskActivity.class);
+                            intent.putExtra("index",i);
+                            intent.putExtra("mode",2);
+                            startActivity(intent);
+                        }
+                    });
+                    */
+
+
+                }
+            });
 
 
 
@@ -165,43 +417,5 @@ public class MyTaskActivity extends AppCompatActivity {
         }
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        biddingBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                requesterListView.setVisibility(View.GONE);
-                for(Task task : taskList ){
 
-                    if (task.getStatus().equals("bidding")){
-                        Log.i("getStatus","got bidding");
-                        newTaskList.add(task);
-
-                    }
-                }
-                Log.d("tasklist",newTaskList.get(1).getTaskname());
-
-                threeGridsAdapter = new ThreeGridsAdapter(getApplicationContext(),newTaskList);
-
-                requesterBiddingListView.setAdapter(threeGridsAdapter);
-
-
-
-            }
-        });
-
-        assignedBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                requesterListView.setVisibility(View.GONE);
-                requesterListView.setVisibility(View.GONE);
-                for(Task task : taskList){
-                    if(task.getStatus().equals("assigned")){
-
-                    }
-                }
-            }
-        });
-    }
 }

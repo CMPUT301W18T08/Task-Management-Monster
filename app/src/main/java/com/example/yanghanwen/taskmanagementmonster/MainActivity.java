@@ -23,4 +23,11 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
 
     }
+
+    public void myProvideTaskBtn(View view) {
+
+        Intent intent = new Intent (this, MyTaskActivity.class);
+        intent.putExtra("type","pro");
+        startActivity(intent);
+    }
 }
