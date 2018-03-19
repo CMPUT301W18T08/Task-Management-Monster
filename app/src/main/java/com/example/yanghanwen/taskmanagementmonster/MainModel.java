@@ -6,6 +6,11 @@ import android.util.Log;
  * Created by superfan1995 on 2018-03-17.
  */
 
+/**
+ * MVC model for the main activity, as well as store the current user information
+ *
+ * @version 1.0
+ */
 public class MainModel {
 
     private User user;      // the user object contain information of user
@@ -31,6 +36,7 @@ public class MainModel {
     }
 
     /**
+     * Return the current user's username
      *
      * @return
      */
@@ -40,6 +46,7 @@ public class MainModel {
     }
 
     /**
+     * Return the current user's email
      *
      * @return
      */
@@ -49,6 +56,7 @@ public class MainModel {
     }
 
     /**
+     * Return the current user's phone number
      *
      * @return
      */
@@ -58,9 +66,11 @@ public class MainModel {
     }
 
     /**
+     * Change the current user's email and phone number to the new value, and update by elastic
+     * search
      *
-     * @param email
-     * @param phoneNum
+     * @param email the user's new email
+     * @param phoneNum  the user's new phone number
      */
     public void updateUser(String email, String phoneNum) {
 

@@ -9,15 +9,18 @@ import android.widget.EditText;
 import android.view.View;
 import android.widget.TextView;
 
+/**
+ * The activity control the view of detail information and operating on a user
+ */
 public class EditprofileActivity extends AppCompatActivity {
 
     //init the parameters
-    private TextView nameView;
+    private TextView nameView;          // TextView of username
 
-    private EditText emailEdit;
-    private EditText phoneNumEdit;
+    private EditText emailEdit;         // EditView of email
+    private EditText phoneNumEdit;      // EditView of phone num
 
-    private Button changeButton;
+    private Button changeButton;        // the button to change information
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +42,7 @@ public class EditprofileActivity extends AppCompatActivity {
         emailEdit.setText(email);
         phoneNumEdit.setText(phoneNum);
 
+        // if change button clicked, update the user information
         changeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
