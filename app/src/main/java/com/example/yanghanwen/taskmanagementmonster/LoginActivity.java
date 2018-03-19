@@ -73,23 +73,6 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
-        /*
-        private boolean existedUser (String name) {
-        ElasticSearchUserController.IsExist isExist = new ElasticSearchUserController.IsExist();
-        isExist.execute(name);
-        try {
-            if (isExist.get()) {
-                return true;
-            } else {
-                Toast.makeText(getApplicationContext(), name + " does not exist.", Toast.LENGTH_SHORT).show();
-                return false;
-            }
-        } catch (Exception e) {
-            return false;
-        }
-    }
-     */
-
     public boolean existedUser(String name) {
         ElasticSearch.IsExist isExist = new ElasticSearch.IsExist();
         isExist.execute(name);

@@ -1,6 +1,5 @@
 package com.example.yanghanwen.taskmanagementmonster;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -21,9 +20,9 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
-        nameView = (EditText)findViewById(R.id.name);
-        emailView = (EditText)findViewById(R.id.email);
-        phoneView = (EditText)findViewById(R.id.phoneNum) ;
+        nameView = (EditText)findViewById(R.id.profileName);
+        emailView = (EditText)findViewById(R.id.profileEmail);
+        phoneView = (EditText)findViewById(R.id.profilePhoneNum) ;
         saveButton = (Button)findViewById(R.id.save);
 
         saveButton.setOnClickListener(new View.OnClickListener() {

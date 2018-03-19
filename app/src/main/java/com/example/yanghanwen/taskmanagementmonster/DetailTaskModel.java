@@ -353,47 +353,4 @@ public abstract class DetailTaskModel {
         addTask.execute(this.task);
     }
 
-    /*
-
-    public void taskModifed(String newTitle) {
-
-        ElasticSearch.AddTask addTask = new ElasticSearch.AddTask();
-        ElasticSearch.DeleteTask deleteTask = new ElasticSearch.DeleteTask();
-
-        deleteTask.execute(this.task);
-        this.task.setTaskname(newTitle);
-        addTask.execute(this.task);
-    }
-    */
-
-    /*
-
-     * Updata the task to the database used the elastic search
-     *
-
-    //public void taskUpdate() {
-    //    ElasticSearch.AddTask addTask1 = new ElasticSearch.AddTask();
-
-    //    addTask1.execute(this.task);
-    //}
-
-
-     * Modify the task name
-     *
-     * @param newTaskname the new taskname of this task
-
-    //public void taskModifed(String newTaskname) {
-
-        // Warning: there is strang behavior
-      //  this.task.setTaskname(newTaskname);
-        //this.addTask.execute(this.task);
-    //}
-
-    public void bidDecline() {
-
-        this.task.declineBid(username);
-        this.addTask.execute(this.task);
-    }
-    */
-
 }
