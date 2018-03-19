@@ -13,7 +13,6 @@ import java.util.ArrayList;
  *
  * @version 1.0
  */
-
 public abstract class DetailTaskModel {
 
     //private ElasticSearch.GetTask getTask;          // elastic search object used to get task

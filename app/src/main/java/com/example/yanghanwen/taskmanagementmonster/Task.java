@@ -13,7 +13,6 @@ import java.util.ArrayList;
   *
   * @version 1.0
   */
-
 public class Task {
 
     private String username;        // the username of task creator

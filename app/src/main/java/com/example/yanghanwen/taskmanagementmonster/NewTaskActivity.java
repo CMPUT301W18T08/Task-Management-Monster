@@ -11,7 +11,6 @@ import android.widget.EditText;
  *
  * @version 1.0
  */
-
 public class NewTaskActivity extends Activity {
 
     private NewTaskModel newTaskModel; // Model of this activity

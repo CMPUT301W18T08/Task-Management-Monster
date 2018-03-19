@@ -14,7 +14,6 @@ import android.widget.TextView;
  *
  * @version 1.0
  */
-
 public class DetailBidActivity extends AppCompatActivity {
 
     private DetailBidModel detailBidModel;  // the model of this activity
