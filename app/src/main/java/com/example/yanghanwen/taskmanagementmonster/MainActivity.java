@@ -11,8 +11,7 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    private ArrayAdapter adapter;
-    public static ArrayList<User> userList = new ArrayList<>();
+    //init the user object
     private User user;
 
     @Override
@@ -20,11 +19,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+        //get the name of the user pass by log in activity
         Bundle bundle = new Bundle();
         bundle = getIntent().getExtras();
         String username = bundle.getString("name");
         user = new User();
 
+
+        // get the user object using the user name
         ElasticSearch.GetUser getUser = new ElasticSearch.GetUser();
         getUser.execute(username);
         try {
@@ -34,16 +37,16 @@ public class MainActivity extends AppCompatActivity {
         }
 
     }
-
+    // view profile function
     public void viewProfile(View view) {
+
+        // get the profile from user object
         String name = user.getUserName();
         String email = user.getEmail();
         String phoneNum = user.getPhoneNum();
 
-        Log.d("print name", name);
-        Log.d("print email", email);
-        Log.d("print phone", phoneNum);
 
+        // intit the new intent and put the user info to the bundle and pass to the profile activity intent
         Intent viewMyProfile = new Intent(MainActivity.this, ProfileActivity.class);
         viewMyProfile.putExtra("name", name);
         viewMyProfile.putExtra("email", email);

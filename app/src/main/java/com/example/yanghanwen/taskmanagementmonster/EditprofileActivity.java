@@ -7,7 +7,10 @@ import android.widget.EditText;
 import android.view.View;
 import android.widget.TextView;
 
+
+
 public class EditprofileActivity extends AppCompatActivity {
+    //init the parameters
     private TextView name;
     private EditText email;
     private EditText phoneNum;
@@ -20,6 +23,7 @@ public class EditprofileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editprofile);
 
+        //get the name,email and phone number from profile activity
         Intent intent = getIntent();
         //String name = intent.getStringExtra(MainActivity."name");
         //name = findViewById(R.id.name);
@@ -42,10 +46,9 @@ public class EditprofileActivity extends AppCompatActivity {
             user.setPhoneNum(userPhoneNum);
             user.setUserName(bundle.getString("name"));
         }
-     //   ElasticSearch.UpdateUser updateUser = new ElasticSearch.UpdateUser();
-       // updateUser.execute(user);
-    }
 
+    }
+    // save file method connects with button finish
     public void savefile(View view) {
         name = findViewById(R.id.name);
         email = findViewById(R.id.email);
@@ -53,13 +56,18 @@ public class EditprofileActivity extends AppCompatActivity {
         String username = name.getText().toString();
         String useremail = email.getText().toString();
         String userphone = phoneNum.getText().toString();
+
+        // use elastic search to delete the email and address and the phone number
         ElasticSearch.DeleteUser deleteUser = new ElasticSearch.DeleteUser();
         deleteUser.execute(user);
+
+        // set the new email and phone number to the user object and save to elastic search
         user.setEmail(useremail);
         user.setPhoneNum(userphone);
         ElasticSearch.AddUser addUser = new ElasticSearch.AddUser();
         addUser.execute(user);
 
+        // give the name back to the main activity
         Intent intent = new Intent(EditprofileActivity.this, MainActivity.class);
         intent.putExtra("name", username);
         startActivity(intent);
