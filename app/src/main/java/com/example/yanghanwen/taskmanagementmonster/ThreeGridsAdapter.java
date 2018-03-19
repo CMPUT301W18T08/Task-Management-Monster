@@ -7,7 +7,6 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import java.util.ArrayList;
-
 /**
  * Created by Terrence on 2018/3/17.
  */
@@ -48,7 +47,6 @@ public class ThreeGridsAdapter extends BaseAdapter {
         taskTitle3.setText(mTaskList.get(i).getTaskname());
         taskStatus3.setText(mTaskList.get(i).getStatus());
         taskBid3.setText(Double.toString(mTaskList.get(i).getLowestBid()));
-
 
         return v;
     }

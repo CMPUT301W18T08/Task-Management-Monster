@@ -4,30 +4,80 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-
-import java.util.ArrayList;
+import android.widget.Button;
+import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
 
-    public static User user;
+    public static MainModel mainModel;
+
+    private Button newTaskButton;
+    private Button searchButton;
+    private Button providerButton;
+    private Button requesterButton;
+
+    //private EditText searchKeyWord;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-    }
+        final Intent intent = getIntent();
 
-    public void myTaskBtn(View view) {
-        Intent intent = new Intent(this,MyTaskActivity.class);
-        intent.putExtra("type","req");
-        startActivity(intent);
+        String username = intent.getStringExtra("username");
 
-    }
+        mainModel = new MainModel(username);
 
-    public void myProvideTaskBtn(View view) {
+        newTaskButton = (Button) findViewById(R.id.newTaskButton);
+        searchButton = (Button) findViewById(R.id.mainSearch);
+        providerButton = (Button) findViewById(R.id.providerButton);
+        requesterButton = (Button) findViewById(R.id.requesterButton);
 
-        Intent intent = new Intent (this, MyTaskActivity.class);
-        intent.putExtra("type","pro");
-        startActivity(intent);
+        newTaskButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(MainActivity.this,
+                        NewTaskActivity.class);
+
+                startActivity(intent);
+            }
+        });
+
+        searchButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(MainActivity.this, SearchActivity.class);
+
+                startActivity(intent);
+            }
+        });
+
+        providerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(MainActivity.this, MyTaskActivity.class);
+
+                intent.putExtra("type", "pro");
+
+                startActivity(intent);
+            }
+        });
+
+        requesterButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(MainActivity.this, MyTaskActivity.class);
+
+                intent.putExtra("type", "req");
+
+                startActivity(intent);
+            }
+        });
+
     }
 }

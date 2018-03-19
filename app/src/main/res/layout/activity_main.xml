@@ -6,29 +6,53 @@
     android:layout_height="match_parent"
     tools:context="com.example.yanghanwen.taskmanagementmonster.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
+    <Button
+        android:id="@+id/newTaskButton"
+        android:layout_width="160dp"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:text="@string/main_new_button"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/mainSearch"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/mainSearch"
+        android:layout_width="160dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:text="@string/main_button_search"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/newTaskButton" />
+
+    <Button
+        android:id="@+id/providerButton"
+        android:layout_width="170dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/main_provider_task"
+        app:layout_constraintEnd_toStartOf="@+id/requesterButton"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:layout_width="match_parent"
+        android:id="@+id/requesterButton"
+        android:layout_width="170dp"
         android:layout_height="wrap_content"
-        android:text="go to my task"
-        android:onClick="myTaskBtn"/>
-
-    <Button
-        android:id="@+id/providerBtn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Go to my task(provider)"
-        tools:layout_editor_absoluteX="117dp"
-        tools:layout_editor_absoluteY="79dp"
-        android:onClick="myProvideTaskBtn"/>
-
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="@string/main_requester_task"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/providerButton"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

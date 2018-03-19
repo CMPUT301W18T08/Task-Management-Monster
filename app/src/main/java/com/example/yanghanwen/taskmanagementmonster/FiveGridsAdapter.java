@@ -21,7 +21,6 @@ public class FiveGridsAdapter extends BaseAdapter {
         this.mTaskList = mTaskList;
     }
 
-
     @Override
     public int getCount() {
         return mTaskList.size();
@@ -49,7 +48,7 @@ public class FiveGridsAdapter extends BaseAdapter {
 
         taskTitle5.setText(mTaskList.get(i).getTaskname());
         taskStatus5.setText(mTaskList.get(i).getStatus());
-        taskLowestBid5.setText(mTaskList.get(i).getLowestBidString());
+        taskLowestBid5.setText(Double.toString(mTaskList.get(i).getLowestBid()));
         taskUsername5.setText(mTaskList.get(i).getUsername());
         taskMyBid5.setText(Double.toString(mTaskList.get(i).getUserAmount(MyTaskActivity.currentUsername)));
 

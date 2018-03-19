@@ -49,10 +49,6 @@ public class TwoGridsAdapter extends BaseAdapter {
         taskTitle2.setText(mTaskList.get(i).getTaskname());
         taskStatus2.setText(mTaskList.get(i).getStatus());
 
-
-
-
-
         return v;
     }
 }

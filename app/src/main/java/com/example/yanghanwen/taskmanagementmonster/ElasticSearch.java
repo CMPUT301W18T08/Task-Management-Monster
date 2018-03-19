@@ -1,9 +1,5 @@
 package com.example.yanghanwen.taskmanagementmonster;
 
-/**
- * Created by yangwenhan on 2018/2/21.
- */
-
 import android.os.AsyncTask;
 import android.util.Log;
 
@@ -309,9 +305,6 @@ public class ElasticSearch {
             return tasks;
         }
     }
-
-
-
 
     public static void verifySettings() {
         if (client == null) {

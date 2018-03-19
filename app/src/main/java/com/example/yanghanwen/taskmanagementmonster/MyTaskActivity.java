@@ -12,7 +12,25 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
+
+/**
+ * MyTaskActivity is used for showing the ListView when user want to view his Tasks
+ * the listview has to kinds:
+ * for requester listview, there will be a filter to show bidding task or assigned task
+ * if choose bidding task, list view shows status as "bidding",title,lowest bid
+ * if choose assigned task,list view shows status as "assigned",its provider username,title,accepted bid
+ *
+ * for provider listview, there will be a filter to show bidding task or assigned task
+ * if choose bidding task, list view shows status as "bidding",title, task requester username,lowest bid so far,my bid
+ * if choose assigned task, list view shows status as "assigned",title,its task requester username,my accepted bid
+ *
+ * layout : activity_my_task.xml
+ *
+ * @author Tianyi Liang
+ * @version 1.0
+ */
 public class MyTaskActivity extends AppCompatActivity {
+
     // these ListView is named with "requester", But it used for requester & provider case
     private ListView requesterBiddingListView;
     private ListView requesterListView;
@@ -44,120 +62,23 @@ public class MyTaskActivity extends AppCompatActivity {
     // a temp arraylist to store data and adapt to ListView
     public ArrayList<Task>newTaskList = new ArrayList<>();
 
-
     // used for ElasticSearch
     private String userID;
 
 
-
-
-    /////////for test////////////////////////
-    private int tid;
-    private String taskusername;
-    private String taskname;
-    private String bidusername;
-    private String description;
-    private double amount;
-
-    ////////////////////////////////
+    /**
+     *
+     * Executed when the activity starts
+     * It creates three listview to store whole Task List, bidding task list, and assigned task list
+     * It creates two button as filter
+     *
+     * @param savedInstanceState
+     *
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_task);
-        /////////////////////////////////////////////////
-        // for testing
-        Task task0 = new Task (tid,taskusername,taskname,description);
-        Task task1 = new Task (tid,taskusername,taskname,description);
-        Task task2 = new Task (tid,taskusername,taskname,description);
-        Task task3 = new Task (tid,taskusername,taskname,description);
-        Task task4 = new Task (tid,taskusername,taskname,description);
-        Task task5 = new Task (tid,taskusername,taskname,description);
-        Task task6 = new Task (tid,taskusername,taskname,description);
-        Task task7 = new Task (tid,taskusername,taskname,description);
-        Task task8 = new Task (tid,taskusername,taskname,description);
-        Task task9 = new Task (tid,taskusername,taskname,description);
-        Task task10 = new Task(tid,taskusername,taskname,description);
-        Task task11 = new Task(tid,taskusername,taskname,description);
-
-
-        task0.setTaskname("task0");
-        task0.setStatus("requesting");
-        task0.setDescription("This task is requesting");
-
-        task1.setTaskname("task 1");
-        task1.setStatus("requesting");
-        task1.setDescription("This task is requesting");
-
-        task2.setTaskname("task 2");
-        task2.setStatus("requesting");
-        task2.setDescription("This task is requesting");
-
-        task3.setTaskname("task 3");
-        task3.setStatus("requesting");
-        task3.setDescription("This task is requesting");
-
-        task4.setTaskname("task 4");
-        task4.setStatus("requesting");
-        task4.setDescription("This task is requesting");
-
-        task5.setTaskname("task 5");
-        task5.setStatus("bidding");
-        task5.setDescription("This task bidding");
-        task5.createNewBid("bid0",1.0);
-        task5.createNewBid("bid1",2.0);
-
-
-        task6.setTaskname("task 6");
-        task6.setStatus("bidding");
-        task6.setDescription("This task bidding");
-        task6.createNewBid("bid2",3.0);
-        task6.createNewBid("bid3",4.0);
-
-        task7.setTaskname("task 7");
-        task7.setStatus("bidding");
-        task7.setDescription("This task bidding");
-        task7.createNewBid("bid0",1.0);
-        task7.createNewBid("bid1",2.0);
-
-        task8.setTaskname("task 8");
-        task8.setStatus("bidding");
-        task8.setDescription("This task bidding");
-        task8.createNewBid("bid2",3.0);
-        task8.createNewBid("bid3",4.0);
-
-        task9.setTaskname("task 9");
-        task9.setStatus("bidding");
-        task9.setDescription("This task bidding");
-        task9.createNewBid("bid0",1.0);
-        task9.createNewBid("bid1",2.0);
-
-        task10.setTaskname("task10");
-        task10.setDescription("This task assigned");
-        task10.setStatus("assigned");
-        task10.createNewBid("bid10",66.66);
-
-        task11.setTaskname("task11");
-        task11.setDescription("This task assigned");
-        task11.setStatus("assigned");
-        task11.createNewBid("bid11",77.77);
-
-
-        taskList.add(task0);
-        taskList.add(task1);
-        taskList.add(task2);
-        taskList.add(task3);
-        taskList.add(task4);
-        taskList.add(task5);
-        taskList.add(task6);
-        taskList.add(task7);
-        taskList.add(task8);
-        taskList.add(task9);
-        taskList.add(task10);
-        taskList.add(task11);
-        ////////////////////////////////////////////
-
-
-
 
         // initial all listview
         requesterBiddingListView = findViewById(R.id.requesterBiddingListView);
@@ -172,11 +93,10 @@ public class MyTaskActivity extends AppCompatActivity {
         assignedBtn = findViewById(R.id.assignedBtn);
 
         // get current username
-        currentUsername = MainActivity.MainModel.getUsername();
+        currentUsername = MainActivity.mainModel.getUsername();
 
 
         if(OperationType.equals("req")){
-
 
             // Elastic Search for current user to get his posted tasksList
             userID = currentUsername;
@@ -195,21 +115,28 @@ public class MyTaskActivity extends AppCompatActivity {
             adapter = new TwoGridsAdapter(getApplicationContext(),taskList);
             requesterListView.setAdapter(adapter);
 
-            /*
-
-            // for clicking each items in listview
-
+            /**
+             * for clicking each items in listview
+             */
             requesterListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                    Task task = taskList.get(i);
+                    String title = task.getTaskname();
+                    String requester = task.getUsername();
+
                     Intent intent = new Intent(MyTaskActivity.this,DetailTaskActivity.class);
-                    intent.putExtra("index",i);
                     intent.putExtra("mode",3);
+                    intent.putExtra("title", title);
+                    intent.putExtra("requester", requester);
                     startActivity(intent);
                 }
             });
-            */
 
+            /**
+             * when clicking the bidding button
+             */
             biddingBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -221,8 +148,8 @@ public class MyTaskActivity extends AppCompatActivity {
                     newTaskList.clear();
                     for(Task task : taskList ){
 
-                        if (task.getStatus().equals("bidding")){
-                            Log.i("getStatus","got bidding");
+                        if (task.getStatus().equals("bidded")){
+                            Log.i("getStatus","got bidded");
                             newTaskList.add(task);
 
                         }
@@ -233,25 +160,32 @@ public class MyTaskActivity extends AppCompatActivity {
 
                     requesterBiddingListView.setAdapter(threeGridsAdapter);
 
-                    /*
-                    // for clicking each items in listview
 
+                    /**
+                     * for clicking each items in listview
+                     */
                     requesterBiddingListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
                         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                            Task task = newTaskList.get(i);
+                            String title = task.getTaskname();
+                            String requester = task.getUsername();
+
                             Intent intent = new Intent(MyTaskActivity.this, DetailTaskActivity.class);
-                            intent.putExtra("index",i);
                             intent.putExtra("mode",3);
+                            intent.putExtra("title", title);
+                            intent.putExtra("requester", requester);
                             startActivity(intent);
                         }
                     });
-                    */
-
-
-
 
                 }
             });
+
+            /**
+             * when clicking the assigned button
+             */
             assignedBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -271,21 +205,24 @@ public class MyTaskActivity extends AppCompatActivity {
                     fourGridsAdapter = new FourGridsAdapter(getApplicationContext(),newTaskList);
                     requesterAssignedListView.setAdapter(fourGridsAdapter);
 
-
-                    /*
-                    // for clicking each items in listview
-
+                    /**
+                     * for clicking each items in listview
+                     */
                     requesterAssignedListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
                         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                            Task task = newTaskList.get(i);
+                            String title = task.getTaskname();
+                            String requester = task.getUsername();
+
                             Intent intent = new Intent(MyTaskActivity.this, DetailTaskActivity.class);
-                            intent.putExtra("index",i);
                             intent.putExtra("mode",3);
+                            intent.putExtra("title", title);
+                            intent.putExtra("requester", requester);
                             startActivity(intent);
                         }
                     });
-                    */
-
 
                 }
             });
@@ -308,12 +245,9 @@ public class MyTaskActivity extends AppCompatActivity {
             }
 
 
-
-
-
             // get the TaskList I bidded,i.e. my provider list
             for(Task task : wholeTaskList){
-                if(!task.getUserAmount(currentUsername).equals(null)){
+                if(!(task.getUserAmount(currentUsername) == null)){
                     providerTaskList.add(task);
                 }
             }
@@ -322,26 +256,29 @@ public class MyTaskActivity extends AppCompatActivity {
             //although it says it is requestorListView, but it actually is providedListView
             requesterListView.setAdapter(adapter);
 
-            /*
-            // for clicking each item in listview
 
+            /**
+             * for clicking each item in listview
+             */
             requesterListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                    Task task = providerTaskList.get(i);
+                    String title = task.getTaskname();
+                    String requester = task.getUsername();
+
                     Intent intent = new Intent(MyTaskActivity.this,DetailTaskActivity.class);
-                    intent.putExtra("index",i);
                     intent.putExtra("mode",2);
+                    intent.putExtra("title", title);
+                    intent.putExtra("requester", requester);
                     startActivity(intent);
                 }
             });
-            */
 
-
-
-
-
-
-
+            /**
+             * when click bidding button
+             */
 
             biddingBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -353,37 +290,43 @@ public class MyTaskActivity extends AppCompatActivity {
 
                     newTaskList.clear();
                     for(Task task:providerTaskList){
-                        if(task.getStatus().equals("bidding")){
+                        if(task.getStatus().equals("bidded")){
                             newTaskList.add(task);
                         }
                     }
                     fiveGridsAdapter = new FiveGridsAdapter(getApplicationContext(),newTaskList);
                     requesterBiddingListView.setAdapter(fiveGridsAdapter);
 
-
-                    /*
                     // for clicking each item in listview
                     requesterBiddingListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
                         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                            Task task = newTaskList.get(i);
+                            String title = task.getTaskname();
+                            String requester = task.getUsername();
+
                             Intent intent = new Intent(MyTaskActivity.this,DetailTaskActivity.class);
-                            intent.putExtra("index",i);
                             intent.putExtra("mode",2);
+                            intent.putExtra("title", title);
+                            intent.putExtra("requester", requester);
                             startActivity(intent);
                         }
                     });
-                    */
 
                 }
             });
 
+            /**
+             * when click assigned button
+             */
             assignedBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     requesterListView.setVisibility(View.GONE);
                     requesterAssignedListView.setVisibility(View.GONE);
                     requesterBiddingListView.setVisibility(View.GONE);
-                    requesterBiddingListView.setVisibility(View.VISIBLE);
+                    requesterAssignedListView.setVisibility(View.VISIBLE);
 
                     newTaskList.clear();
                     for(Task task:providerTaskList){
@@ -394,25 +337,26 @@ public class MyTaskActivity extends AppCompatActivity {
                     fourGridsProviderAdapter = new FourGridsProviderAdapter(getApplicationContext(),newTaskList);
                     requesterAssignedListView.setAdapter(fourGridsProviderAdapter);
 
-                    /*
                     // for clicking each item in listview
                     requesterAssignedListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
                         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                            Task task = newTaskList.get(i);
+                            String title = task.getTaskname();
+                            String requester = task.getUsername();
+
                             Intent intent = new Intent(MyTaskActivity.this,DetailTaskActivity.class);
-                            intent.putExtra("index",i);
                             intent.putExtra("mode",2);
+                            intent.putExtra("title", title);
+                            intent.putExtra("requester", requester);
                             startActivity(intent);
                         }
                     });
-                    */
 
 
                 }
             });
-
-
-
 
         }
     }
