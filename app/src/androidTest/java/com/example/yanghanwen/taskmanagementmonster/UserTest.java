@@ -6,7 +6,14 @@ import android.test.ActivityInstrumentationTestCase2;
  * Created by yanghanwen on 2018-02-26.
  */
 
+import android.test.ActivityInstrumentationTestCase2;
+
+/**
+ * Created by yanghanwen on 2018-02-26.
+ */
+
 public class UserTest extends ActivityInstrumentationTestCase2 {
+
     public UserTest () {
         super(MainActivity.class);
     }
@@ -41,18 +48,6 @@ public class UserTest extends ActivityInstrumentationTestCase2 {
         assertTrue(user.getPhoneNum() == pno);
     }
 
-    public void testUsernameSet() {
-        String username = "cmput301";
-        String username1 = "winter2018";
-        String email = "cmput301@ualberta.ca";
-        String pno = "123456789";
-
-        User user =  new User(username, email, pno);
-        user.setUserName(username1);
-
-        assertTrue(user.getUserName() == username1);
-
-    }
 
     public void testEmailSet() {
         String username = "cmput301";

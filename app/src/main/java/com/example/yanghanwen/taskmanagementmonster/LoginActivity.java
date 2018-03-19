@@ -67,23 +67,13 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    // ? what is the purpose if this?
-    private Boolean isUserIdLegal(String text){
-        if (text.equals("")) {
-            return Boolean.FALSE;
-        }
-        else{
-            return Boolean.TRUE;
-        }
-    }
-
     /**
      * Check is the input username already exist
      *
      * @param name the username for check
      * @return weather the username exist
      */
-    public boolean existedUser(String name) {
+    private boolean existedUser(String name) {
         ElasticSearch.IsExist isExist = new ElasticSearch.IsExist();
         isExist.execute(name);
         try {

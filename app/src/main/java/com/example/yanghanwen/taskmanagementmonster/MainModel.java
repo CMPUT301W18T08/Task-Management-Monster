@@ -35,6 +35,10 @@ public class MainModel {
         }
     }
 
+    public  MainModel() {
+
+    }
+
     /**
      * Return the current user's username
      *
