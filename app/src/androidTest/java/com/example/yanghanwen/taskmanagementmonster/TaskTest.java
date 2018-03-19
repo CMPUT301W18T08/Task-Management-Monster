@@ -345,7 +345,7 @@ public class TaskTest extends ActivityInstrumentationTestCase2 {
 
         Task task = new Task(username, taskname, description);
 
-        task.setStatus("done");
+        task.setDone();
 
         assertTrue(task.getStatus().equals("done"));
     }
