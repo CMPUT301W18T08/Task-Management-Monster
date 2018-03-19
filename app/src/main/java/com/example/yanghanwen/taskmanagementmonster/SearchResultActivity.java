@@ -293,6 +293,7 @@ public class SearchResultActivity extends AppCompatActivity {
                     adapter.notifyDataSetChanged();
                     k++;
                 }
+                item.setVisible(false);
                 break;
 
             case R.id.item2:
