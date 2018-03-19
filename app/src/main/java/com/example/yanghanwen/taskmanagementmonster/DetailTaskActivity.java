@@ -15,11 +15,11 @@ import java.util.ArrayList;
 
 public class DetailTaskActivity extends AppCompatActivity {
 
-    int mode;
+    int mode;   // the input mode
 
-    private DetailTaskModel detailTaskModel;
+    private DetailTaskModel detailTaskModel;    // model for this activity
 
-    public static final int DETAIL_BID = 1;
+    public static final int DETAIL_BID = 1;     // requesCode of result return from bid activity
 
     private TextView viewTitle;
     private TextView viewUsername;
@@ -42,6 +42,11 @@ public class DetailTaskActivity extends AppCompatActivity {
     private ArrayList<Bid> bidList;
     private ArrayAdapter<Bid> adapter;
 
+    /**
+     * Setup the DetailTaskActivity
+     *
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,6 +66,7 @@ public class DetailTaskActivity extends AppCompatActivity {
         String title = extras.getString("title");
         String requester = extras.getString("requester");
 
+        // create the corresponding task model for different mode
         if (mode == 1) {
 
             detailTaskModel = new DetailTaskSearchModel(title, requester);
@@ -102,6 +108,7 @@ public class DetailTaskActivity extends AppCompatActivity {
 
         updateView();
 
+        // if change/modified button clicked, do correspond action
         changeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -111,9 +118,11 @@ public class DetailTaskActivity extends AppCompatActivity {
                     String textBid = editBid.getText().toString();
                     detailTaskModel.changeButtonAction(textBid);
 
+                    //finish();
                     updateView();
                 }
 
+                //
                 else if (mode == 2) {
 
                     String textBid = editBid.getText().toString();
@@ -122,8 +131,10 @@ public class DetailTaskActivity extends AppCompatActivity {
                     updateView();
                 }
 
+                //
                 else if (mode == 3) {
 
+                    // requester modeify his task title
                     String textTitle = editTitle.getText().toString();
                     detailTaskModel.changeButtonAction(textTitle);
 
@@ -133,6 +144,7 @@ public class DetailTaskActivity extends AppCompatActivity {
             }
         });
 
+        // if decline button clicked, do corresponding action
         declineButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -144,6 +156,7 @@ public class DetailTaskActivity extends AppCompatActivity {
                     updateView();
                 }
 
+                // if provider decline his bid, finish the activity
                 else if (mode == 2) {
 
                     detailTaskModel.declineButtonAction("");
@@ -153,6 +166,7 @@ public class DetailTaskActivity extends AppCompatActivity {
 
                 else if (mode == 3) {
 
+                    // provider modify his task description
                     String textDescription = editDescription.getText().toString();
                     detailTaskModel.declineButtonAction(textDescription);
 
@@ -185,7 +199,9 @@ public class DetailTaskActivity extends AppCompatActivity {
 
     }
 
-    // show the view in the current value and status of the task
+    /**
+     * show the view in the current value and status of the task
+     */
     private void updateView() {
 
         viewTitle.setText( detailTaskModel.getTitle() );
@@ -234,7 +250,13 @@ public class DetailTaskActivity extends AppCompatActivity {
     // https://stackoverflow.com/questions/10407159/how-to-manage-startactivityforresult-on-android
     // 2018-3-15
 
-    // get the return result from the DetailBidActivity to decide further opertion on bid
+    /**
+     * get the return result from the DetailBidActivity to decide further opertion on bid
+     *
+     * @param requesCode
+     * @param resultCode
+     * @param data
+     */
     @Override
     protected void onActivityResult(int requesCode, int resultCode, Intent data) {
 
