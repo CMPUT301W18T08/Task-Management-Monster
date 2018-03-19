@@ -11,6 +11,10 @@ import java.util.ArrayList;
  * Created by Terrence on 2018/3/17.
  */
 
+/**
+ * This is a three grids adapter to adapt the arraylist into Listview
+ * works for showing task title and task status and task lowest bid in ListView
+ */
 public class ThreeGridsAdapter extends BaseAdapter {
 
     private Context mContext;

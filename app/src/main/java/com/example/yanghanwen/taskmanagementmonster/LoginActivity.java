@@ -9,6 +9,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+/**
+ * Activity for login, the user can use an exist username to enter the main activity
+ * or can enter another activity to create a new username
+ */
 public class LoginActivity extends AppCompatActivity {
 
     private EditText editID;
@@ -73,6 +77,12 @@ public class LoginActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Check is the input username already exist
+     *
+     * @param name the username for check
+     * @return weather the username exist
+     */
     public boolean existedUser(String name) {
         ElasticSearch.IsExist isExist = new ElasticSearch.IsExist();
         isExist.execute(name);

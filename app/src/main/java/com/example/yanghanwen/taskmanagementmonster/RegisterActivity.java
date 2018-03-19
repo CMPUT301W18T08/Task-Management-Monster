@@ -7,6 +7,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+/**
+ * Activity of register a new user to use the app
+ *
+ * This activity will get name, email, and phone number of a user.
+ */
 public class RegisterActivity extends AppCompatActivity {
 
     private EditText nameView;
@@ -25,6 +30,7 @@ public class RegisterActivity extends AppCompatActivity {
         phoneView = (EditText)findViewById(R.id.profilePhoneNum) ;
         saveButton = (Button)findViewById(R.id.save);
 
+        // use the input data to create a new user
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
