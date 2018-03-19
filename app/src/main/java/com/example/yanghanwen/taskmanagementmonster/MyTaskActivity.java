@@ -12,7 +12,6 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
-
 /**
  * MyTaskActivity is used for showing the ListView when user want to view his Tasks
  * the listview has to kinds:
@@ -65,7 +64,6 @@ public class MyTaskActivity extends AppCompatActivity {
     // used for ElasticSearch
     private String userID;
 
-
     /**
      *
      * Executed when the activity starts
@@ -98,6 +96,7 @@ public class MyTaskActivity extends AppCompatActivity {
 
         if(OperationType.equals("req")){
 
+
             // Elastic Search for current user to get his posted tasksList
             userID = currentUsername;
 
@@ -115,9 +114,7 @@ public class MyTaskActivity extends AppCompatActivity {
             adapter = new TwoGridsAdapter(getApplicationContext(),taskList);
             requesterListView.setAdapter(adapter);
 
-            /**
-             * for clicking each items in listview
-             */
+            // for clicking each items in listview
             requesterListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -134,9 +131,7 @@ public class MyTaskActivity extends AppCompatActivity {
                 }
             });
 
-            /**
-             * when clicking the bidding button
-             */
+            // when clicking the bidding button
             biddingBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -161,9 +156,7 @@ public class MyTaskActivity extends AppCompatActivity {
                     requesterBiddingListView.setAdapter(threeGridsAdapter);
 
 
-                    /**
-                     * for clicking each items in listview
-                     */
+                    // for clicking each items in listview
                     requesterBiddingListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
                         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -183,9 +176,7 @@ public class MyTaskActivity extends AppCompatActivity {
                 }
             });
 
-            /**
-             * when clicking the assigned button
-             */
+            // when clicking the assigned button
             assignedBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -205,9 +196,7 @@ public class MyTaskActivity extends AppCompatActivity {
                     fourGridsAdapter = new FourGridsAdapter(getApplicationContext(),newTaskList);
                     requesterAssignedListView.setAdapter(fourGridsAdapter);
 
-                    /**
-                     * for clicking each items in listview
-                     */
+                    // for clicking each items in listview
                     requesterAssignedListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override
                         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -257,9 +246,7 @@ public class MyTaskActivity extends AppCompatActivity {
             requesterListView.setAdapter(adapter);
 
 
-            /**
-             * for clicking each item in listview
-             */
+            // for clicking each item in listview
             requesterListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -276,10 +263,7 @@ public class MyTaskActivity extends AppCompatActivity {
                 }
             });
 
-            /**
-             * when click bidding button
-             */
-
+            // when click bidding button
             biddingBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -317,9 +301,7 @@ public class MyTaskActivity extends AppCompatActivity {
                 }
             });
 
-            /**
-             * when click assigned button
-             */
+            // when click assigned button
             assignedBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

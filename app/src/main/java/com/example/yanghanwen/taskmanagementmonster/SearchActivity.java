@@ -21,6 +21,17 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+/**
+ * SearchResultActivity is used for searching a
+ * task (or tasks) as a role of provider, it will provide
+ * all the tasks and provider is able to either filter tasks to
+ * whatever he want through four different status, and can also
+ * search a task(s) by entering keywords of username.
+ *
+ * layout: activity_search_result.xml
+ *
+ * @version 1.0
+ */
 public class SearchActivity extends AppCompatActivity {
 
     private ListView listView;
@@ -34,6 +45,14 @@ public class SearchActivity extends AppCompatActivity {
     public ArrayAdapter<Task> adapter;
     ArrayList<Task> tasks = new ArrayList<>();
 
+    /**
+     * Firstly executed when code starts going
+     * mainly used for getting all tasks that are
+     * available in elasticsearch server
+     *
+     * @param savedInstanceState
+     * @throws ArrayIndexOutOfBoundsException
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) throws ArrayIndexOutOfBoundsException {
 
@@ -50,6 +69,7 @@ public class SearchActivity extends AppCompatActivity {
         ElasticSearch.GetTasks getTasks = new ElasticSearch.GetTasks();
         ElasticSearch.IsExistTask isExistTask = new ElasticSearch.IsExistTask();
 
+        //getting tasks from elasticsearch server
         String qUsername = "";
 
         getTasks.execute(qUsername);
@@ -62,6 +82,8 @@ public class SearchActivity extends AppCompatActivity {
             Log.d("test!!!!!!!!!!", "something wrong");
         }
 
+        //hiding keyboard from popping up
+        //which could be annoying
         initList();
 
         InputMethodManager imm = (InputMethodManager) this.getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -79,6 +101,19 @@ public class SearchActivity extends AppCompatActivity {
         });
 
         editText.addTextChangedListener(new TextWatcher() {
+
+            /**
+             * Constructing a edittext listener
+             * to track changes of text, when user
+             * starts to enter keyword, the program
+             * starts to search
+             *
+             *
+             * @param charSequence
+             * @param i
+             * @param i1
+             * @param i2
+             */
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 TaskSearch();
@@ -89,6 +124,14 @@ public class SearchActivity extends AppCompatActivity {
                 TaskSearch();
             }
 
+            /**
+             * after text changes do searching again
+             * to make it faster
+             *
+             *
+             * @param editable
+             */
+
             @Override
             public void afterTextChanged(Editable editable) {
                 TaskSearch();
@@ -97,6 +140,16 @@ public class SearchActivity extends AppCompatActivity {
         });
 
         button.setOnClickListener(new View.OnClickListener() {
+
+            /**
+             * setting recover all button action
+             * when button is clicked, recover all elements
+             * that had been removed to let user do multiple
+             * times of search
+             *
+             *
+             * @param view
+             */
             @Override
             public void onClick(View view) {
                 adapter.clear();
@@ -127,6 +180,11 @@ public class SearchActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * setting backbutton action:
+     * press once to recover all elements that had been removed(same functionality as recover button)
+     * do a double press within 3000 milliseconds to return to the last activity
+     */
     @Override
     public void onBackPressed() {
         //super.onBackPressed();
@@ -144,7 +202,10 @@ public class SearchActivity extends AppCompatActivity {
         }
     }
 
-
+    /**
+     * searching task action: remove all
+     * tasks that are unsatisfied
+     */
     public void TaskSearch() {
         String keyWord = editText.getText().toString();
         for(int i = 0; i < taskList.size(); i++) {
@@ -155,6 +216,11 @@ public class SearchActivity extends AppCompatActivity {
         adapter.notifyDataSetChanged();
     }
 
+    /**
+     * initialize taskList, setting adapter, adding all tasks to listview
+     * meanwhile add all same tasks to allTaskList for
+     * recovering purpose
+     */
     public void initList() {
 
         for(int k = 0; k < tasks.size(); k++) {
@@ -169,12 +235,27 @@ public class SearchActivity extends AppCompatActivity {
         listView.setAdapter(adapter);
     }
 
+    /**
+     * Initializing filter menu
+     *
+     *
+     * @param menu
+     * @return
+     */
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.search_menu, menu);
         return true;
     }
 
+    /**
+     * Filter action, is able to filter in four different ways:
+     * bidded, assigned, requested or done
+     *
+     *
+     * @param item
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch(item.getItemId()) {

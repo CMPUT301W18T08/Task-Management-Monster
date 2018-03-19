@@ -27,5 +27,4 @@
         android:id="@+id/taskBid4"
         android:layout_weight="2.5"/>
 
-
 </LinearLayout>

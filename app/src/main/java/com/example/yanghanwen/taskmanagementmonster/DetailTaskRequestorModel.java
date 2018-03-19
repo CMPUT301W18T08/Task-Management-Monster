@@ -9,13 +9,18 @@ import java.util.ArrayList;
  */
 
 /**
+ * MVC model for the Detail task activity, compute and return required data. This is used in case
+ * when the detail is view in the my task as provider
  *
+ * @version 1.0
  */
 public class DetailTaskRequestorModel extends DetailTaskModel {
 
     String status;
 
     /**
+     * Construct a model instance for the DetailTaskActivity that are used to view the detail
+     * of task that user bid as requester.
      *
      * @param title
      * @param requestor
@@ -28,8 +33,9 @@ public class DetailTaskRequestorModel extends DetailTaskModel {
     }
 
     /**
+     * Get the string showed on detailBidInformation TextView of activity_detail_task.
      *
-     * @return
+     * @return String showed on detailBidInformation TextView
      */
     public String getBidInfo() {
 
@@ -51,8 +57,9 @@ public class DetailTaskRequestorModel extends DetailTaskModel {
     }
 
     /**
+     * Return task's lowest bid
      *
-     * @return
+     * @return String showed on detailBidLowest TextView
      */
     public String getBidLowest() {
 
@@ -76,8 +83,10 @@ public class DetailTaskRequestorModel extends DetailTaskModel {
     }
 
     /**
+     * Get the string showed on detailMyBid TextView of activity_detail_task, will only show
+     * if the task is assigned
      *
-     * @return
+     * @return String showed on detailMyBid TextView
      */
     public String getMyBidInfo() {
 
@@ -98,8 +107,9 @@ public class DetailTaskRequestorModel extends DetailTaskModel {
     }
 
     /**
+     * Return the assigned user's bid on this task, will only show when the task is assigned
      *
-     * @return
+     * @return the assigned user's bid in string
      */
     public String getMyBid() {
 
@@ -125,8 +135,9 @@ public class DetailTaskRequestorModel extends DetailTaskModel {
     }
 
     /**
+     *  Return the text showed on the buttonDetail
      *
-     * @return
+     * @return modify the task string on button
      */
     public String getButtonText1() {
 
@@ -147,8 +158,9 @@ public class DetailTaskRequestorModel extends DetailTaskModel {
     }
 
     /**
+     * Return the text showed on the buttonDetail2
      *
-     * @return
+     * @return decline the task string on button
      */
     public String getButtonText2() {
 
@@ -169,8 +181,9 @@ public class DetailTaskRequestorModel extends DetailTaskModel {
     }
 
     /**
+     * Return the list of all bids on this task
      *
-     * @return
+     * @return the ArrayList of all bids on this task
      */
     public ArrayList<Bid> getBidsList() {
 
@@ -178,18 +191,19 @@ public class DetailTaskRequestorModel extends DetailTaskModel {
     }
 
     /**
+     * Return the visibility of the detailBidInformation
      *
-     * @return
+     * @return an int represent the visibility of the detailBidInformation
      */
     public int visibilityBidInfo() {
 
         return View.VISIBLE;
-
     }
 
     /**
+     * Return the visibility of the detailBidLowest
      *
-     * @return
+     * @return an int represent the visibility of the detailBidLowest
      */
     public int visibilityBidLowest() {
 
@@ -205,8 +219,9 @@ public class DetailTaskRequestorModel extends DetailTaskModel {
     }
 
     /**
+     * Return the visibility of the detailMyBid
      *
-     * @return
+     * @return an int represent the visibility of the detailMyBid
      */
     public int visibilityMyBidInfo() {
 
@@ -227,8 +242,9 @@ public class DetailTaskRequestorModel extends DetailTaskModel {
     }
 
     /**
+     * Return the visibility of the viewDetailMyBid
      *
-     * @return
+     * @return an int represent the visibility of the viewDetailMyBid
      */
     public int visibilityMyBid() {
 
@@ -253,14 +269,20 @@ public class DetailTaskRequestorModel extends DetailTaskModel {
     }
 
     /**
+     * Return the visibility of the editTextDetail
      *
-     * @return
+     * @return an int represent the visibility of the editTextDetail
      */
     public int visibilityEdit() {
 
         return View.GONE;
     }
 
+    /**
+     * Return the visibility of the editTextDetailTitle
+     *
+     * @return an int represent the visibility of the editTextDetailTitle
+     */
     public int visibilityEditTitle() {
 
         if (status.equals("requested")) {
@@ -275,8 +297,9 @@ public class DetailTaskRequestorModel extends DetailTaskModel {
     }
 
     /**
+     * Return the visibility of the editTextDetailDescription
      *
-     * @return
+     * @return an int represent the visibility of the editTextDetailDescription
      */
     public int visibilityEditDescription() {
 
@@ -292,8 +315,9 @@ public class DetailTaskRequestorModel extends DetailTaskModel {
     }
 
     /**
+     * Return the visibility of the buttonDetail
      *
-     * @return
+     * @return an int represent the visibility of the buttonDetail
      */
     public int visibilityChangeButton() {
 
@@ -314,8 +338,9 @@ public class DetailTaskRequestorModel extends DetailTaskModel {
     }
 
     /**
+     * Return the visibility of the buttonDetail2
      *
-     * @return
+     * @return an int represent the visibility of the buttonDetail2
      */
     public int visibilityDeclineButton()  {
 
@@ -336,8 +361,9 @@ public class DetailTaskRequestorModel extends DetailTaskModel {
     }
 
     /**
+     * Return the visibility of the detailListView
      *
-     * @return
+     * @return an int represent the visibility of the detailListView
      */
     public int visibilityListView() {
 
@@ -353,6 +379,7 @@ public class DetailTaskRequestorModel extends DetailTaskModel {
     }
 
     /**
+     * modify the task's title to the new value / set the task to the done status
      *
      * @param newValue The new value of the change
      */
@@ -360,7 +387,15 @@ public class DetailTaskRequestorModel extends DetailTaskModel {
 
         if (status.equals("requested")) {
 
-            super.taskModifed(newValue);
+            ElasticSearch.DeleteTask deleteTask = new ElasticSearch.DeleteTask();
+            deleteTask.execute(super.task);
+
+            ElasticSearch.AddTask addTask = new ElasticSearch.AddTask();
+
+            Task newTask = new Task(super.username, newValue, super.task.getDescription());
+            addTask.execute(newTask);
+
+            super.task = newTask;
         }
 
         else if (status.equals("assigned")) {
@@ -375,6 +410,7 @@ public class DetailTaskRequestorModel extends DetailTaskModel {
     }
 
     /**
+     * modify the task's title
      *
      * @param newValue the new value of the change
      */

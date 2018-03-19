@@ -32,5 +32,4 @@
         android:id="@+id/taskMyBid5"
         android:layout_weight="2"/>
 
-
 </LinearLayout>

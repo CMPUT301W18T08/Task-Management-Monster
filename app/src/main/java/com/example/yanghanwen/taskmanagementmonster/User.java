@@ -11,7 +11,6 @@ package com.example.yanghanwen.taskmanagementmonster;
  *
  * @version 1.0
  */
-
 public class User {
 
     private String userName;    // username of user

@@ -10,7 +10,8 @@ import java.util.ArrayList;
 
 
 /**
- *
+ * MVC model for the Detail task activity, compute and return required data. This is used in case
+ * when the detail is view in the my task as provider
  *
  * @version 1.0
  */
@@ -20,7 +21,7 @@ public class DetailTaskProviderModel extends DetailTaskModel {
 
     /**
      * Construct a model instance for the DetailTaskActivity that are used to view the detail
-     * of task that we bid as provider.
+     * of task that user bid as provider.
      *
      * if the task's status is assigned, then this task is assigned to the user.
      *
@@ -64,7 +65,7 @@ public class DetailTaskProviderModel extends DetailTaskModel {
     }
 
     /**
-     * Return user's lowest bid, if the task is assigned it will also the user's
+     * Return task's lowest bid, if the task is assigned it will also the user's
      * accpeted bid
      *
      * @return String showed on detailBidLowest TextView
@@ -172,8 +173,9 @@ public class DetailTaskProviderModel extends DetailTaskModel {
     }
 
     /**
+     * Return the visibility of the detailBidInformation
      *
-     * @return
+     * @return an int represent the visibility of the detailBidInformation
      */
     public int visibilityBidInfo() {
 
@@ -181,8 +183,9 @@ public class DetailTaskProviderModel extends DetailTaskModel {
     }
 
     /**
+     * Return the visibility of the detailBidLowest
      *
-     * @return
+     * @return an int represent the visibility of the detailBidLowest
      */
     public int visibilityBidLowest() {
 
@@ -190,8 +193,9 @@ public class DetailTaskProviderModel extends DetailTaskModel {
     }
 
     /**
+     * Return the visibility of the detailMyBid
      *
-     * @return
+     * @return an int represent the visibility of the detailMyBid
      */
     public int visibilityMyBidInfo() {
 
@@ -206,8 +210,9 @@ public class DetailTaskProviderModel extends DetailTaskModel {
     }
 
     /**
+     * Return the visibility of the viewDetailMyBid
      *
-     * @return
+     * @return an int represent the visibility of the viewDetailMyBid
      */
     public int visibilityMyBid() {
 
@@ -222,8 +227,9 @@ public class DetailTaskProviderModel extends DetailTaskModel {
     }
 
     /**
+     * Return the visibility of the editTextDetail
      *
-     * @return
+     * @return an int represent the visibility of the editTextDetail
      */
     public int visibilityEdit() {
 
@@ -238,8 +244,9 @@ public class DetailTaskProviderModel extends DetailTaskModel {
     }
 
     /**
+     * Return the visibility of the editTextDetailTitle
      *
-     * @return
+     * @return an int represent the visibility of the editTextDetailTitle
      */
     public int visibilityEditTitle() {
 
@@ -247,8 +254,9 @@ public class DetailTaskProviderModel extends DetailTaskModel {
     }
 
     /**
+     * Return the visibility of the editTextDetailDescription
      *
-     * @return
+     * @return an int represent the visibility of the editTextDetailDescription
      */
     public int visibilityEditDescription() {
 
@@ -256,8 +264,9 @@ public class DetailTaskProviderModel extends DetailTaskModel {
     }
 
     /**
+     * Return the visibility of the detailListView
      *
-     * @return
+     * @return an int represent the visibility of the detailListView
      */
     public int visibilityListView() {
 
@@ -265,8 +274,9 @@ public class DetailTaskProviderModel extends DetailTaskModel {
     }
 
     /**
+     * Return the visibility of the buttonDetail
      *
-     * @return
+     * @return an int represent the visibility of the buttonDetail
      */
     public int visibilityChangeButton() {
 
@@ -282,8 +292,9 @@ public class DetailTaskProviderModel extends DetailTaskModel {
     }
 
     /**
+     * Return the visibility of the buttonDetail2
      *
-     * @return
+     * @return an int represent the visibility of the buttonDetail2
      */
     public int visibilityDeclineButton() {
 
@@ -299,6 +310,7 @@ public class DetailTaskProviderModel extends DetailTaskModel {
     }
 
     /**
+     * Modify the user's bid on the task to the new value
      *
      * @param newValue The new value of the change
      */
@@ -313,6 +325,7 @@ public class DetailTaskProviderModel extends DetailTaskModel {
     }
 
     /**
+     * decline the user's bid on this task
      *
      * @param newValue the new value of the change
      */

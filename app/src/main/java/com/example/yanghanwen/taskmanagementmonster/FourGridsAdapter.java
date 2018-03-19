@@ -16,7 +16,6 @@ import java.util.ArrayList;
  * This is a four grids adapter to adapt the arraylist into Listview
  * works for showing task title and task status and task lowest bid in ListView and task's username
  */
-
 public class FourGridsAdapter extends BaseAdapter {
 
     private Context mContext;

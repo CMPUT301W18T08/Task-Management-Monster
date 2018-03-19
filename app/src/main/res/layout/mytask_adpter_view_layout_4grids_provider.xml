@@ -27,5 +27,4 @@
         android:id="@+id/myAcceptedBid"
         android:layout_weight="2.5"/>
 
-
 </LinearLayout>
