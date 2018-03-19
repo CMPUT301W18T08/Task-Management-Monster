@@ -11,20 +11,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SearchTaskActivity">
+        <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".SearchResultActivity"
-            android:parentActivityName=".SearchTaskActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".SearchTaskActivity" />
-        </activity>
+        <activity android:name=".MainActivity" />
+        <activity android:name=".NewTaskActivity" />
+        <activity android:name=".DetailTaskActivity" />
+        <activity android:name=".DetailBidActivity" />
+        <activity android:name=".RegisterActivity" />
+        <activity android:name=".SearchActivity" />
+        <activity android:name=".MyTaskActivity" />
+        <activity android:name=".ProfileActivity"></activity>
     </application>
 
 </manifest>

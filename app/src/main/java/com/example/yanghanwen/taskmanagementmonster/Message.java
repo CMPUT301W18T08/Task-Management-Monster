@@ -4,15 +4,17 @@ package com.example.yanghanwen.taskmanagementmonster;
 import java.util.Date;
 
 public class Message {
-    private String username;
+    private final String username;
     private String message;
     private Date date;
-    public Message(String username,String message,Date date){
+
+
+    public Message(String username, String message, Date date){
         this.username = username;
         this.message = message;
         this.date = date;
-
     }
+
     public String getMessage() {
         return message;
     }

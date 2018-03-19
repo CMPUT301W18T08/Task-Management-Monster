@@ -13,11 +13,8 @@ public class UserTest extends ActivityInstrumentationTestCase2 {
 
     public void testUsernameGet() {
         String username = "cmput301";
-//        int uid = 123;
         String email = "cmput301@ualberta.ca";
         String pno = "123456789";
-//        String pwd = "cmput301winter18";
-
         User user =  new User(username, email, pno);
 
         assertTrue(user.getUserName() == username);
@@ -25,10 +22,8 @@ public class UserTest extends ActivityInstrumentationTestCase2 {
 
     public void testEmailGet() {
         String username = "cmput301";
-//        int uid = 123;
         String email = "cmput301@ualberta.ca";
         String pno = "123456789";
-//        String pwd = "cmput301winter18";
 
         User user =  new User(username, email, pno);
 
@@ -38,10 +33,8 @@ public class UserTest extends ActivityInstrumentationTestCase2 {
 
     public void testPhoneNumGet() {
         String username = "cmput301";
-//        int uid = 123;
         String email = "cmput301@ualberta.ca";
         String pno = "123456789";
-//        String pwd = "cmput301winter18";
 
         User user =  new User(username, email, pno);
 
@@ -51,10 +44,8 @@ public class UserTest extends ActivityInstrumentationTestCase2 {
     public void testUsernameSet() {
         String username = "cmput301";
         String username1 = "winter2018";
-//        int uid = 123;
         String email = "cmput301@ualberta.ca";
         String pno = "123456789";
-//        String pwd = "cmput301winter18";
 
         User user =  new User(username, email, pno);
         user.setUserName(username1);
@@ -65,11 +56,9 @@ public class UserTest extends ActivityInstrumentationTestCase2 {
 
     public void testEmailSet() {
         String username = "cmput301";
-//        int uid = 123;
         String email = "cmput301@ualberta.ca";
         String email1 = "winter2018@123.com";
         String pno = "123456789";
-//        String pwd = "cmput301winter18";
 
         User user =  new User(username, email, pno);
         user.setEmail(email1);
@@ -79,12 +68,9 @@ public class UserTest extends ActivityInstrumentationTestCase2 {
 
     public void testPhoneNumSet() {
         String username = "cmput301";
-        String username1 = "winter2018";
-//        int uid = 123;
         String email = "cmput301@ualberta.ca";
         String pno = "123456789";
         String pno1 = "4567890";
-//        String pwd = "cmput301winter18";
 
         User user =  new User(username, email, pno);
         user.setPhoneNum(pno1);
