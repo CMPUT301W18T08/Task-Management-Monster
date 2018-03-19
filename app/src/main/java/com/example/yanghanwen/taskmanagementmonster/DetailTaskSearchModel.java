@@ -76,7 +76,7 @@ public class DetailTaskSearchModel extends DetailTaskModel {
 
         if ( userBidded ) {
 
-            return "$" + userBid.toString();
+            return "$ " + userBid.toString();
         }
         else {
 
@@ -211,7 +211,6 @@ public class DetailTaskSearchModel extends DetailTaskModel {
             super.task.createNewBid(super.username, userBid);
         }
 
-        // update task by elastic search
         super.taskUpdate();
 
         hasBid = Boolean.TRUE;

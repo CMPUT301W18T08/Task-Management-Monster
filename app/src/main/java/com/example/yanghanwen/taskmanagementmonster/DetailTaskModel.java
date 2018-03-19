@@ -16,9 +16,9 @@ import java.util.ArrayList;
 
 public abstract class DetailTaskModel {
 
-    private ElasticSearch.GetTask getTask;          // elastic search object used to get task
-    private ElasticSearch.AddTask addTask;          // elastic search object used to add task
-    private ElasticSearch.DeleteTask deleteTask;    // elastic search object used to delete task
+    //private ElasticSearch.GetTask getTask;          // elastic search object used to get task
+    //private ElasticSearch.AddTask addTask;          // elastic search object used to add task
+    //private ElasticSearch.DeleteTask deleteTask;    // elastic search object used to delete task
 
     protected String username;      // username of user who is viewing the activity
     protected Task task;            // task need to be operated on
@@ -38,11 +38,9 @@ public abstract class DetailTaskModel {
 
         this.username = MainActivity.mainModel.getUsername();
 
-        this.getTask = new ElasticSearch.GetTask();
-        this.addTask = new ElasticSearch.AddTask();
-        this.deleteTask = new ElasticSearch.DeleteTask();
+        ElasticSearch.GetTask getTask = new ElasticSearch.GetTask();
 
-        this.getTask.execute(requester + title);
+        getTask.execute(requester + title);
 
         try {
             this.task = getTask.get();                              /* Task found */
@@ -348,25 +346,11 @@ public abstract class DetailTaskModel {
 
     /**
      * Updata the task to the database used the elastic search
-     *
      */
     public void taskUpdate() {
 
-        this.deleteTask.execute(this.task);
-        this.addTask.execute(this.task);
-    }
-
-    /**
-     * Modify the task name
-     *
-     * @param newTaskname the new taskname of this task
-     */
-    public void taskModifed(String newTaskname) {
-
-        // Warning: there is strang behavior
-        this.deleteTask.execute(this.task);
-        this.task.setTaskname(newTaskname);
-        this.addTask.execute(this.task);
+        ElasticSearch.AddTask addTask = new ElasticSearch.AddTask();
+        addTask.execute(this.task);
     }
 
 }

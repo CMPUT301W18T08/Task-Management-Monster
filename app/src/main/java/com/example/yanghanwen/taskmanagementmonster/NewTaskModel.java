@@ -2,6 +2,8 @@ package com.example.yanghanwen.taskmanagementmonster;
 
 import android.util.Log;
 
+import android.util.Log;
+
 /**
  * Created by superfan1995 on 2018-03-09.
  */
@@ -12,6 +14,8 @@ import android.util.Log;
  * @version 1.0
  */
 public class NewTaskModel {
+
+    // this is not good, will be change in the future
 
     private ElasticSearch.IsExistTask isExistTask;  // elastic search used to check if task exist
     private ElasticSearch.AddTask addTask;          // elastic search used to add task
@@ -30,7 +34,6 @@ public class NewTaskModel {
 
         this.isExistTask = new ElasticSearch.IsExistTask();
         this.addTask = new ElasticSearch.AddTask();
-
     }
 
     /**

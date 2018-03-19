@@ -8,8 +8,6 @@ import android.util.Log;
 
 public class MainModel {
 
-    private ElasticSearch.GetUser getUser;      // elastic search object to get user
-
     private User user;      // the user object contain information of user
 
     /**
@@ -20,7 +18,7 @@ public class MainModel {
      */
     public MainModel(String username) {
 
-        getUser = new ElasticSearch.GetUser();
+        ElasticSearch.GetUser getUser = new ElasticSearch.GetUser();
         getUser.execute(username);
 
         try{
@@ -39,6 +37,38 @@ public class MainModel {
     public String getUsername() {
 
         return user.getUserName();
+    }
+
+    /**
+     *
+     * @return
+     */
+    public String getEmail() {
+
+        return user.getEmail();
+    }
+
+    /**
+     *
+     * @return
+     */
+    public String getPhoneNum() {
+
+        return user.getPhoneNum();
+    }
+
+    /**
+     *
+     * @param email
+     * @param phoneNum
+     */
+    public void updateUser(String email, String phoneNum) {
+
+        user.setEmail(email);
+        user.setPhoneNum(phoneNum);
+
+        ElasticSearch.AddUser addUser = new ElasticSearch.AddUser();
+        addUser.execute(user);
     }
 
 }

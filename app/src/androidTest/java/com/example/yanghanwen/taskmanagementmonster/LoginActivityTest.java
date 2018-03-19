@@ -2,7 +2,9 @@ package com.example.yanghanwen.taskmanagementmonster;
 
 import android.support.v7.app.AppCompatActivity;
 import android.test.ActivityInstrumentationTestCase2;
+import android.view.View;
 import android.widget.EditText;
+import android.widget.ListView;
 
 import com.robotium.solo.Solo;
 
@@ -10,6 +12,15 @@ import com.robotium.solo.Solo;
  * Created by Terrence on 2018/3/18.
  */
 
+/**
+ * test from login
+ * go to add new task
+ * then view my requesting task
+ * then go to see the detail
+ * then go back
+ * go to see my provide task
+ * then go to see the detail
+ */
 public class LoginActivityTest extends ActivityInstrumentationTestCase2<LoginActivity> {
     private Solo solo;
     private String testName;
@@ -24,6 +35,13 @@ public class LoginActivityTest extends ActivityInstrumentationTestCase2<LoginAct
         AppCompatActivity activity = getActivity();
     }
 
+
+    /**
+     * test login
+     * test add new task
+     * test view my requesting task
+     * test click list view item and see the detail
+     */
     public void testLogin(){
         LoginActivity activity = (LoginActivity)solo.getCurrentActivity();
         solo.assertCurrentActivity("Wrong Activity",LoginActivity.class);
@@ -33,6 +51,7 @@ public class LoginActivityTest extends ActivityInstrumentationTestCase2<LoginAct
         solo.assertCurrentActivity("Wrong Activity",MainActivity.class);
 
         // keep going
+        // Create new task
         solo.clickOnButton("Create New Task");
         solo.assertCurrentActivity("Wrong Activity",NewTaskActivity.class);
 
@@ -43,15 +62,41 @@ public class LoginActivityTest extends ActivityInstrumentationTestCase2<LoginAct
         solo.clickOnButton("Create");
         solo.assertCurrentActivity("Wrong Activity",MainActivity.class);
 
+        // go to see my request task
+        solo.clickOnButton("Requester My Task");
+        solo.assertCurrentActivity("Wrong Activity",MyTaskActivity.class);
+
+
+        // click one item in list view, go to detail task activity.
+        ListView mlist = (ListView)solo.getView(R.id.RequesterTask);
+        View mView = mlist.getChildAt(0);
+        solo.clickOnView(mView);
+        solo.assertCurrentActivity("Wrong Activity",DetailTaskActivity.class);
+
     }
-
-
-
-
 
     public void testRegister(){
         solo.clickOnButton("Register");
         solo.assertCurrentActivity("Wrong Activity",RegisterActivity.class);
+    }
+
+    public void testSearch(){
+        LoginActivity activity = (LoginActivity)solo.getCurrentActivity();
+        solo.assertCurrentActivity("Wrong Activity",LoginActivity.class);
+        testName = "test";
+        solo.enterText((EditText)solo.getView(R.id.id),testName);
+        solo.clickOnButton("Login");
+        solo.assertCurrentActivity("Wrong Activity",MainActivity.class);
+
+        solo.clickOnButton("Search New Task");
+        solo.assertCurrentActivity("WrongActivity",SearchActivity.class);
+
+        // for now only list all tasks,click one item in the list view
+        ListView mlist = (ListView)solo.getView(R.id.Search_result);
+        View mView = mlist.getChildAt(0);
+        solo.clickOnView(mView);
+        solo.assertCurrentActivity("Wrong Activity",DetailTaskActivity.class);
+
     }
 
 }
