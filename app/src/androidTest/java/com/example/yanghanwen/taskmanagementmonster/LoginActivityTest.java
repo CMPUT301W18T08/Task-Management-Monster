@@ -24,6 +24,8 @@ import com.robotium.solo.Solo;
 public class LoginActivityTest extends ActivityInstrumentationTestCase2<LoginActivity> {
     private Solo solo;
     private String testName;
+    private String email;
+    private String phoNum;
 
     public LoginActivityTest(){super(LoginActivity.class);}
 
@@ -72,6 +74,20 @@ public class LoginActivityTest extends ActivityInstrumentationTestCase2<LoginAct
         View mView = mlist.getChildAt(0);
         solo.clickOnView(mView);
         solo.assertCurrentActivity("Wrong Activity",DetailTaskActivity.class);
+        solo.goBack();
+        solo.goBack();
+        solo.assertCurrentActivity("Wrong Activity",MainActivity.class);
+
+        solo.clickOnButton("Search New Task");
+        solo.assertCurrentActivity("WrongActivity",SearchActivity.class);
+        ListView listView = (ListView)solo.getView(R.id.Search_result);
+        Task task = (Task)listView.getItemAtPosition(0);
+        String taskname = task.getTaskname();
+        solo.clickInList(0);
+        solo.assertCurrentActivity("Wrong Activity",DetailTaskActivity.class);
+        assertTrue(solo.waitForText(taskname,1,3000));
+        solo.goBack();
+        solo.assertCurrentActivity("Wrong Activity",SearchActivity.class);
 
     }
 
@@ -96,6 +112,57 @@ public class LoginActivityTest extends ActivityInstrumentationTestCase2<LoginAct
         View mView = mlist.getChildAt(0);
         solo.clickOnView(mView);
         solo.assertCurrentActivity("Wrong Activity",DetailTaskActivity.class);
+
+    }
+
+    public void testModifyProfile(){
+        LoginActivity activity = (LoginActivity)solo.getCurrentActivity();
+        solo.assertCurrentActivity("Wrong Activity",LoginActivity.class);
+        testName = "test";
+        solo.enterText((EditText)solo.getView(R.id.id),testName);
+        solo.clickOnButton("Login");
+        solo.assertCurrentActivity("Wrong Activity",MainActivity.class);
+
+        solo.clickOnButton("My Profile");
+        solo.assertCurrentActivity("WrongActivity",EditprofileActivity.class);
+
+        email = "test@gmail.com";
+        phoNum = "7801111111";
+
+        solo.enterText((EditText)solo.getView(R.id.profileEmail),email);
+        solo.enterText((EditText)solo.getView(R.id.profilePhoneNum),phoNum);
+
+        solo.clickOnButton("Finish");
+        solo.assertCurrentActivity("WrongActivity",MainActivity.class);
+    }
+
+
+   /* public void testDataPass(){
+        LoginActivity activity = (LoginActivity)solo.getCurrentActivity();
+        solo.assertCurrentActivity("Wrong Activity",LoginActivity.class);
+
+        testName = "test";
+        solo.enterText((EditText)solo.getView(R.id.id),testName);
+        solo.clickOnButton("Login");
+        solo.assertCurrentActivity("Wrong Activity",MainActivity.class);
+
+        solo.clickOnButton("Search New Task");
+        solo.assertCurrentActivity("WrongActivity",SearchActivity.class);
+
+        ListView listView = (ListView)solo.getView(R.id.Search_result);
+        Task task = (Task)listView.getItemAtPosition(0);
+        String taskname = task.getTaskname();
+        solo.clickInList(0);
+        solo.assertCurrentActivity("Wrong Activity",DetailTaskActivity.class);
+        assertTrue(solo.waitForText(taskname,1,3000));
+        solo.goBack();
+        solo.assertCurrentActivity("Wrong Activity",SearchActivity.class);
+
+    }*/
+    @Override
+    public void tearDown()throws Exception{
+
+        solo.finishOpenedActivities();
 
     }
 
