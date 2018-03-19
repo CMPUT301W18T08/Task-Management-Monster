@@ -57,7 +57,7 @@ public class DetailTaskRequestorModel extends DetailTaskModel {
     }
 
     /**
-     * Return user's lowest bid
+     * Return task's lowest bid
      *
      * @return String showed on detailBidLowest TextView
      */
@@ -107,9 +107,9 @@ public class DetailTaskRequestorModel extends DetailTaskModel {
     }
 
     /**
-     * Return the user's bid on this task, will only show when the task is assigned
+     * Return the assigned user's bid on this task, will only show when the task is assigned
      *
-     * @return the user's bid in string
+     * @return the assigned user's bid in string
      */
     public String getMyBid() {
 
@@ -198,7 +198,6 @@ public class DetailTaskRequestorModel extends DetailTaskModel {
     public int visibilityBidInfo() {
 
         return View.VISIBLE;
-
     }
 
     /**

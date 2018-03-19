@@ -12,6 +12,11 @@ import java.util.ArrayList;
  * Created by Terrence on 2018/3/17.
  */
 
+/**
+ * This is a five grids adapter to adapt the arraylist into Listview
+ * works for showing task title and task status and task lowest bid in ListView and task's username
+ * and my bid
+ */
 public class FiveGridsAdapter extends BaseAdapter {
     private Context mContext;
     private ArrayList<Task> mTaskList;

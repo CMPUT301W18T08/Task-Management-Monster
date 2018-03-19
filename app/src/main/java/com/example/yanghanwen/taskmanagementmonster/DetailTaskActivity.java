@@ -13,6 +13,9 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+/**
+ * The activity control the view of viewing detail information and operating on a task
+ */
 public class DetailTaskActivity extends AppCompatActivity {
 
     int mode;   // the input mode
@@ -118,11 +121,9 @@ public class DetailTaskActivity extends AppCompatActivity {
                     String textBid = editBid.getText().toString();
                     detailTaskModel.changeButtonAction(textBid);
 
-                    //finish();
                     updateView();
                 }
 
-                //
                 else if (mode == 2) {
 
                     String textBid = editBid.getText().toString();
@@ -131,7 +132,6 @@ public class DetailTaskActivity extends AppCompatActivity {
                     updateView();
                 }
 
-                //
                 else if (mode == 3) {
 
                     // requester modeify his task title

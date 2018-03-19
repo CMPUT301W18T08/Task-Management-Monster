@@ -12,6 +12,22 @@ import android.widget.ListView;
 
 import java.util.ArrayList;
 
+/**
+ * MyTaskActivity is used for showing the ListView when user want to view his Tasks
+ * the listview has to kinds:
+ * for requester listview, there will be a filter to show bidding task or assigned task
+ * if choose bidding task, list view shows status as "bidding",title,lowest bid
+ * if choose assigned task,list view shows status as "assigned",its provider username,title,accepted bid
+ *
+ * for provider listview, there will be a filter to show bidding task or assigned task
+ * if choose bidding task, list view shows status as "bidding",title, task requester username,lowest bid so far,my bid
+ * if choose assigned task, list view shows status as "assigned",title,its task requester username,my accepted bid
+ *
+ * layout : activity_my_task.xml
+ *
+ * @author Tianyi Liang
+ * @version 1.0
+ */
 public class MyTaskActivity extends AppCompatActivity {
 
     // these ListView is named with "requester", But it used for requester & provider case
@@ -48,6 +64,15 @@ public class MyTaskActivity extends AppCompatActivity {
     // used for ElasticSearch
     private String userID;
 
+    /**
+     *
+     * Executed when the activity starts
+     * It creates three listview to store whole Task List, bidding task list, and assigned task list
+     * It creates two button as filter
+     *
+     * @param savedInstanceState
+     *
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -106,6 +131,7 @@ public class MyTaskActivity extends AppCompatActivity {
                 }
             });
 
+            // when clicking the bidding button
             biddingBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -149,6 +175,8 @@ public class MyTaskActivity extends AppCompatActivity {
 
                 }
             });
+
+            // when clicking the assigned button
             assignedBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -235,6 +263,7 @@ public class MyTaskActivity extends AppCompatActivity {
                 }
             });
 
+            // when click bidding button
             biddingBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -272,6 +301,7 @@ public class MyTaskActivity extends AppCompatActivity {
                 }
             });
 
+            // when click assigned button
             assignedBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {

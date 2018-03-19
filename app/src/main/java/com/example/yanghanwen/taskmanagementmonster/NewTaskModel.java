@@ -13,6 +13,8 @@ import android.util.Log;
  */
 public class NewTaskModel {
 
+    // this is not good, will be change in the future
+
     private ElasticSearch.IsExistTask isExistTask;  // elastic search used to check if task exist
     private ElasticSearch.AddTask addTask;          // elastic search used to add task
 
@@ -30,7 +32,6 @@ public class NewTaskModel {
 
         this.isExistTask = new ElasticSearch.IsExistTask();
         this.addTask = new ElasticSearch.AddTask();
-
     }
 
     /**

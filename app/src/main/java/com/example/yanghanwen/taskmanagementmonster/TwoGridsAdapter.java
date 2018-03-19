@@ -16,6 +16,10 @@ import java.util.ArrayList;
  * Created by Terrence on 2018/3/13.
  */
 
+/**
+ * This is a two grids adapter to adapt the arraylist into Listview
+ * works for showing task title and task status in ListView
+ */
 public class TwoGridsAdapter extends BaseAdapter {
 
     private Context mContext;

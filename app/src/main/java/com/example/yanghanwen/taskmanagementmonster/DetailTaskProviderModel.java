@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 /**
  * MVC model for the Detail task activity, compute and return required data. This is used in case
- * when the detail is view in the search result
+ * when the detail is view in the my task as provider
  *
  * @version 1.0
  */
@@ -65,7 +65,7 @@ public class DetailTaskProviderModel extends DetailTaskModel {
     }
 
     /**
-     * Return user's lowest bid, if the task is assigned it will also the user's
+     * Return task's lowest bid, if the task is assigned it will also the user's
      * accpeted bid
      *
      * @return String showed on detailBidLowest TextView

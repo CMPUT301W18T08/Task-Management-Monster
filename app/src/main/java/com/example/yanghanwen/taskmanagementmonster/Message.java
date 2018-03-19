@@ -3,6 +3,14 @@ package com.example.yanghanwen.taskmanagementmonster;
 
 import java.util.Date;
 
+
+/**
+ * Created by Terrence on 2018/2/26.
+ */
+
+/**
+ * Activity current has no use
+ */
 public class Message {
     private final String username;
     private String message;
