@@ -2,14 +2,12 @@ package com.example.yanghanwen.taskmanagementmonster;
 
 
 import android.test.ActivityInstrumentationTestCase2;
+import android.util.Log;
 
-<<<<<<< HEAD
+import java.util.ArrayList;
+import static org.junit.Assert.assertArrayEquals;
 
-=======
->>>>>>> a8dde2062fe62b353b13558f3797d4f95427a731
-/**
- * Created by superfan1995 on 2018-02-25.
- */
+
 
 public class TaskTest extends ActivityInstrumentationTestCase2 {
 
@@ -232,4 +230,123 @@ public class TaskTest extends ActivityInstrumentationTestCase2 {
 
     }
 
+    public void testGetBidList() {
+
+        int tid = 2;
+        String username = "Tom";
+        String taskname = "task1";
+        String description = "this is a message";
+        ArrayList<Bid> bids = new ArrayList<>();
+
+        Task task = new Task(username, taskname, description);
+
+        String bider1 = "B1";
+        String bider2 = "B2";
+        String bider3 = "B3";
+
+        Bid bid1 = new Bid("B1", 1.0);
+        Bid bid2 = new Bid("B2", 2.0);
+        Bid bid3 = new Bid("B3", 3.0);
+
+        bids.add(bid1);
+        bids.add(bid2);
+        bids.add(bid3);
+
+        task.createNewBid("B1", 1.0);
+        task.createNewBid("B2", 2.0);
+        task.createNewBid("B3", 3.0);
+
+
+        for(int i = 0; i < task.getBidList().size(); i++) {
+            assertTrue(task.getBidList().get(i).toString().equals(bids.get(i).toString()));
+        }
+    }
+
+    public void testEmptyBids() {
+
+        int tid = 2;
+        String username = "Tom";
+        String taskname = "task1";
+        String description = "this is a message";
+        ArrayList<Bid> bids = new ArrayList<>();
+
+        Task task = new Task(username, taskname, description);
+
+
+        task.createNewBid("B1", 1.0);
+        task.createNewBid("B2", 2.0);
+        task.createNewBid("B3", 3.0);
+
+        task.emptyBids();
+
+        assertTrue(bids.isEmpty());
+
+    }
+
+    public void testGetBid() {
+
+        int tid = 2;
+        String username = "Tom";
+        String taskname = "task1";
+        String description = "this is a message";
+        double amount = 1.0;
+        ArrayList<Bid> bids = new ArrayList<>();
+        Bid bid = new Bid(username,amount);
+
+        Task task = new Task(username, taskname, description);
+
+
+        task.createNewBid("B1", 1.0);
+        task.createNewBid("B2", 2.0);
+        task.createNewBid("B3", 3.0);
+
+        Bid bid1 = new Bid("B1", 1.0);
+        Bid bid2 = new Bid("B2", 2.0);
+        Bid bid3 = new Bid("B3", 3.0);
+
+        bids.add(bid1);
+        bids.add(bid2);
+        bids.add(bid3);
+
+        bid = task.getBid(1);
+
+        assertTrue(bid.toString().equals(bids.get(1).toString()));
+    }
+
+    public void testSetAssigned() {
+        int tid = 2;
+        String username = "Tom";
+        String taskname = "task1";
+        String description = "this is a message";
+        String status = "requested";
+        ArrayList<Bid> bids = new ArrayList<>();
+
+        Task task = new Task(username, taskname, description);
+        Task task1 = new Task(username, taskname, description);
+
+        task.createNewBid(username, 1.0);
+
+        Bid bid1 = new Bid(username, 1.0);
+
+        task.setAssigned(username);
+
+        for(int j = 0; j < bids.size(); j++) {
+           if(bids.get(j).getUserName().equals("Tom")) {
+               assertTrue(task.getStatus().equals("assigned"));
+           }
+        }
+    }
+
+    public void testSetDone() {
+        int tid = 2;
+        String username = "Tom";
+        String taskname = "task1";
+        String description = "this is a message";
+
+        Task task = new Task(username, taskname, description);
+
+        task.setStatus("done");
+
+        assertTrue(task.getStatus().equals("done"));
+    }
 }
