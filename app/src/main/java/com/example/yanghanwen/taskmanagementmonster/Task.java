@@ -6,6 +6,8 @@ package com.example.yanghanwen.taskmanagementmonster;
 
 public class Task {
 
+    public Task(){}
+
     public Task(String username, String taskname , String description) {
 
     }
