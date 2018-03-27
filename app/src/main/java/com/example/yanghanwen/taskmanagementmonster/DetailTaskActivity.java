@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -119,26 +120,68 @@ public class DetailTaskActivity extends AppCompatActivity {
                 if (mode == 1) {
 
                     String textBid = editBid.getText().toString();
-                    detailTaskModel.changeButtonAction(textBid);
 
-                    updateView();
+                    if (textBid.equals("")) {
+
+                        Toast.makeText(getApplicationContext(),
+                                "Error: Empty Are Not Available Bid Input",
+                                Toast.LENGTH_SHORT).show();
+                    }
+
+                    else {
+
+                        detailTaskModel.changeButtonAction(textBid);
+                        updateView();
+
+                        Toast.makeText(getApplicationContext(),
+                                "My Bid Update Successful",
+                                Toast.LENGTH_SHORT).show();
+                    }
                 }
 
                 else if (mode == 2) {
 
                     String textBid = editBid.getText().toString();
-                    detailTaskModel.changeButtonAction(textBid);
 
-                    updateView();
+                    if (textBid.equals("")) {
+
+                        Toast.makeText(getApplicationContext(),
+                                "Error: Empty Are Not Available Bid Input",
+                                Toast.LENGTH_SHORT).show();
+                    }
+
+                    else {
+
+                        detailTaskModel.changeButtonAction(textBid);
+                        updateView();
+
+                        Toast.makeText(getApplicationContext(),
+                                "My Bid Update Successful",
+                                Toast.LENGTH_SHORT).show();
+                    }
                 }
 
                 else if (mode == 3) {
 
                     // requester modeify his task title
                     String textTitle = editTitle.getText().toString();
-                    detailTaskModel.changeButtonAction(textTitle);
 
-                    updateView();
+                    if (textTitle.equals("")) {
+
+                        Toast.makeText(getApplicationContext(),
+                                "Error: Empty Are Not Available Title Input",
+                                Toast.LENGTH_SHORT).show();
+                    }
+
+                    else {
+
+                        detailTaskModel.changeButtonAction(textTitle);
+                        updateView();
+
+                        Toast.makeText(getApplicationContext(),
+                                "Task Title Update Successful",
+                                Toast.LENGTH_SHORT).show();
+                    }
                 }
 
             }
@@ -168,9 +211,22 @@ public class DetailTaskActivity extends AppCompatActivity {
 
                     // provider modify his task description
                     String textDescription = editDescription.getText().toString();
-                    detailTaskModel.declineButtonAction(textDescription);
 
-                    updateView();
+                    if (textDescription.equals("")) {
+
+                        Toast.makeText(getApplicationContext(),
+                                "Error: Empty Are Not Available Description Input",
+                                Toast.LENGTH_SHORT).show();
+                    }
+
+                    else {
+                        detailTaskModel.declineButtonAction(textDescription);
+                        updateView();
+
+                        Toast.makeText(getApplicationContext(),
+                                "Task Description Update Successful",
+                                Toast.LENGTH_SHORT).show();
+                    }
                 }
             }
         });

@@ -25,7 +25,8 @@
         <activity android:name=".RegisterActivity" />
         <activity android:name=".SearchActivity" />
         <activity android:name=".MyTaskActivity" />
-        <activity android:name=".EditprofileActivity"></activity>
+        <activity android:name=".EditprofileActivity" />
+        <activity android:name=".DetailImageActivity"></activity>
     </application>
 
 </manifest>
