@@ -10,17 +10,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="4dee7c3e-444d-4d5b-8c8f-119ca7e8ca3b" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.lock" afterPath="$PROJECT_DIR$/.gradle/4.1/fileHashes/fileHashes.lock" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/fileHashes/resourceHashesCache.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/fileHashes/resourceHashesCache.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/taskHistory/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/taskHistory/fileSnapshots.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.bin" afterPath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.bin" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.lock" afterPath="$PROJECT_DIR$/.gradle/4.1/taskHistory/taskHistory.lock" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+<<<<<<< HEAD
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/app.iml" afterPath="$PROJECT_DIR$/app/app.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/java/com/example/yanghanwen/taskmanagementmonster/MyTaskActivity.java" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/yanghanwen/taskmanagementmonster/MyTaskActivity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/src/main/res/layout/activity_my_task.xml" afterPath="$PROJECT_DIR$/app/src/main/res/layout/activity_my_task.xml" />
+=======
+>>>>>>> 289f5ba378b89c5623944268733f935c5352bf99
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -47,15 +44,22 @@
       <file leaf-file-name="DetailTaskModel.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yanghanwen/taskmanagementmonster/DetailTaskModel.java">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="5295">
               <caret line="355" column="1" lean-forward="false" selection-start-line="355" selection-start-column="1" selection-end-line="355" selection-end-column="1" />
               <folding>
                 <element signature="imports" expanded="false" />
               </folding>
+=======
+            <state relative-caret-position="231">
+              <caret line="139" column="33" lean-forward="false" selection-start-line="139" selection-start-column="33" selection-end-line="139" selection-end-column="33" />
+              <folding />
+>>>>>>> 289f5ba378b89c5623944268733f935c5352bf99
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file leaf-file-name="DetailTaskProviderModel.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yanghanwen/taskmanagementmonster/DetailTaskProviderModel.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -64,10 +68,19 @@
               <folding>
                 <element signature="imports" expanded="false" />
               </folding>
+=======
+      <file leaf-file-name="SearchActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yanghanwen/taskmanagementmonster/SearchActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="43">
+              <caret line="25" column="29" lean-forward="false" selection-start-line="25" selection-start-column="21" selection-end-line="25" selection-end-column="29" />
+              <folding />
+>>>>>>> 289f5ba378b89c5623944268733f935c5352bf99
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file leaf-file-name="DetailTaskSearchModel.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yanghanwen/taskmanagementmonster/DetailTaskSearchModel.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -76,36 +89,81 @@
               <folding>
                 <element signature="imports" expanded="false" />
               </folding>
+=======
+      <file leaf-file-name="activity_search.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_search.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="147">
+              <caret line="14" column="42" lean-forward="false" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="42" />
+              <folding />
+>>>>>>> 289f5ba378b89c5623944268733f935c5352bf99
             </state>
+          </provider>
+          <provider editor-type-id="android-designer2">
+            <state />
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file leaf-file-name="MainModel.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yanghanwen/taskmanagementmonster/MainModel.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1095">
               <caret line="73" column="1" lean-forward="false" selection-start-line="73" selection-start-column="1" selection-end-line="73" selection-end-column="1" />
               <folding />
+=======
+      <file leaf-file-name="RegisterActivityTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/androidTest/java/com/example/yanghanwen/taskmanagementmonster/RegisterActivityTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="576">
+              <caret line="56" column="1" lean-forward="false" selection-start-line="56" selection-start-column="1" selection-end-line="56" selection-end-column="1" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+>>>>>>> 289f5ba378b89c5623944268733f935c5352bf99
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file leaf-file-name="NewTaskModel.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yanghanwen/taskmanagementmonster/NewTaskModel.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="930">
               <caret line="64" column="0" lean-forward="false" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
+=======
+      <file leaf-file-name="activity_register.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_register.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="240">
+              <caret line="16" column="14" lean-forward="true" selection-start-line="16" selection-start-column="14" selection-end-line="16" selection-end-column="14" />
+>>>>>>> 289f5ba378b89c5623944268733f935c5352bf99
               <folding />
             </state>
           </provider>
+          <provider editor-type-id="android-designer2">
+            <state />
+          </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file leaf-file-name="activity_my_task.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_my_task.xml">
           <provider editor-type-id="text-editor">
             <state relative-caret-position="95">
               <caret line="19" column="40" lean-forward="false" selection-start-line="19" selection-start-column="40" selection-end-line="19" selection-end-column="40" />
               <folding />
+=======
+      <file leaf-file-name="MainModelTest.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/src/androidTest/java/com/example/yanghanwen/taskmanagementmonster/MainModelTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="461">
+              <caret line="81" column="1" lean-forward="false" selection-start-line="81" selection-start-column="1" selection-end-line="81" selection-end-column="1" />
+              <folding>
+                <element signature="e#257#258#0" expanded="true" />
+                <element signature="e#298#299#0" expanded="true" />
+              </folding>
+>>>>>>> 289f5ba378b89c5623944268733f935c5352bf99
             </state>
           </provider>
           <provider selected="true" editor-type-id="android-designer2">
@@ -113,6 +171,7 @@
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file leaf-file-name="MyTaskActivity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yanghanwen/taskmanagementmonster/MyTaskActivity.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -153,6 +212,18 @@
             <state relative-caret-position="45">
               <caret line="5" column="78" lean-forward="false" selection-start-line="5" selection-start-column="78" selection-end-line="5" selection-end-column="78" />
               <folding />
+=======
+      <file leaf-file-name="EditprofileActivity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yanghanwen/taskmanagementmonster/EditprofileActivity.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="41">
+              <caret line="35" column="0" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1569#1929#0" expanded="true" />
+                <element signature="e#1928#1929#0" expanded="true" />
+              </folding>
+>>>>>>> 289f5ba378b89c5623944268733f935c5352bf99
             </state>
           </provider>
           <provider editor-type-id="android-manifest">
@@ -160,6 +231,7 @@
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file leaf-file-name="ConnectionDetector.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yanghanwen/taskmanagementmonster/ConnectionDetector.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -170,18 +242,42 @@
                 <element signature="e#443#444#0" expanded="true" />
                 <element signature="e#481#482#0" expanded="true" />
               </folding>
+=======
+      <file leaf-file-name="Task.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yanghanwen/taskmanagementmonster/Task.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-779">
+              <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+              <folding />
+>>>>>>> 289f5ba378b89c5623944268733f935c5352bf99
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DetailTaskRequestorModel.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yanghanwen/taskmanagementmonster/DetailTaskRequestorModel.java">
+      <file leaf-file-name="strings.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state relative-caret-position="6885">
               <caret line="461" column="1" lean-forward="false" selection-start-line="461" selection-start-column="1" selection-end-line="461" selection-end-column="1" />
               <folding>
                 <element signature="imports" expanded="false" />
               </folding>
+=======
+            <state relative-caret-position="346">
+              <caret line="28" column="42" lean-forward="false" selection-start-line="28" selection-start-column="32" selection-end-line="28" selection-end-column="42" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="activity_editprofile.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_editprofile.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="146">
+              <caret line="58" column="28" lean-forward="false" selection-start-line="58" selection-start-column="22" selection-end-line="58" selection-end-column="28" />
+              <folding />
+>>>>>>> 289f5ba378b89c5623944268733f935c5352bf99
             </state>
           </provider>
         </entry>
@@ -191,6 +287,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="layoutResourceFile" />
         <option value="Class" />
       </list>
     </option>
@@ -1933,7 +2030,6 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/yanghanwen/taskmanagementmonster/User.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/yanghanwen/taskmanagementmonster/SearchActivity.java" />
         <option value="$PROJECT_DIR$/app/src/androidTest/java/com/example/yanghanwen/taskmanagementmonster/RegisterActivityTest.java" />
-        <option value="$PROJECT_DIR$/app/src/androidTest/java/com/example/yanghanwen/taskmanagementmonster/LoginActivityTest.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/yanghanwen/taskmanagementmonster/DetailTaskActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/yanghanwen/taskmanagementmonster/DetailBidModel.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/yanghanwen/taskmanagementmonster/DetailTaskModel.java" />
@@ -1942,16 +2038,34 @@
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/yanghanwen/taskmanagementmonster/DetailTaskSearchModel.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/yanghanwen/taskmanagementmonster/MainModel.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/yanghanwen/taskmanagementmonster/NewTaskModel.java" />
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_my_task.xml" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/yanghanwen/taskmanagementmonster/MyTaskActivity.java" />
         <option value="$PROJECT_DIR$/app/src/main/java/com/example/yanghanwen/taskmanagementmonster/ConnectionDetector.java" />
         <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+=======
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/yanghanwen/taskmanagementmonster/EditprofileActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_editprofile.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/res/values/strings.xml" />
+        <option value="$PROJECT_DIR$/app/src/main/java/com/example/yanghanwen/taskmanagementmonster/MainActivity.java" />
+        <option value="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" />
+        <option value="$PROJECT_DIR$/app/src/androidTest/java/com/example/yanghanwen/taskmanagementmonster/ModifyProfileTest.java" />
+        <option value="$PROJECT_DIR$/app/src/androidTest/java/com/example/yanghanwen/taskmanagementmonster/LoginActivityTest.java" />
+        <option value="$PROJECT_DIR$/app/src/androidTest/java/com/example/yanghanwen/taskmanagementmonster/MainModelTest.java" />
+>>>>>>> 289f5ba378b89c5623944268733f935c5352bf99
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
+<<<<<<< HEAD
     <option name="y" value="23" />
     <option name="width" value="1280" />
+=======
+    <option name="x" value="231" />
+    <option name="y" value="23" />
+    <option name="width" value="1578" />
+>>>>>>> 289f5ba378b89c5623944268733f935c5352bf99
     <option name="height" value="709" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -2140,6 +2254,49 @@
               <option name="myItemId" value="app" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidModuleNode" />
             </PATH_ELEMENT>
+<<<<<<< HEAD
+=======
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidResFolderNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="values" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidResFolderTypeNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Task-Management-Monster" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidResFolderNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Task-Management-Monster" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.AndroidViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="app" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidModuleNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="res" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidResFolderNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="layout" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidResFolderTypeNode" />
+            </PATH_ELEMENT>
+>>>>>>> 289f5ba378b89c5623944268733f935c5352bf99
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -2186,6 +2343,10 @@
               <option name="myItemId" value="manifests" />
               <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidManifestsGroupNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="manifests" />
+              <option name="myItemType" value="com.android.tools.idea.navigator.nodes.android.AndroidManifestsGroupNode" />
+            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
@@ -2209,55 +2370,13 @@
       </list>
     </option>
   </component>
+<<<<<<< HEAD
   <component name="RunManager" selected="Android App.app">
     <configuration default="false" name="UserTest" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests" temporary="true" nameIsGenerated="true">
-      <module name="app" />
-      <option name="TESTING_TYPE" value="2" />
-      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
-      <option name="METHOD_NAME" value="" />
-      <option name="CLASS_NAME" value="com.example.yanghanwen.taskmanagementmonster.UserTest" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="EXTRA_OPTIONS" value="" />
-      <option name="CLEAR_LOGCAT" value="false" />
-      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
-      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
-      <option name="FORCE_STOP_RUNNING_APP" value="true" />
-      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
-      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
-      <option name="PREFERRED_AVD" value="" />
-      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
-      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
-      <option name="DEBUGGER_TYPE" value="Auto" />
-      <Auto>
-        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
-        <option name="SHOW_STATIC_VARS" value="true" />
-        <option name="WORKING_DIR" value="" />
-        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
-        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
-      </Auto>
-      <Hybrid>
-        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
-        <option name="SHOW_STATIC_VARS" value="true" />
-        <option name="WORKING_DIR" value="" />
-        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
-        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
-      </Hybrid>
-      <Java />
-      <Native>
-        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
-        <option name="SHOW_STATIC_VARS" value="true" />
-        <option name="WORKING_DIR" value="" />
-        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
-        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
-      </Native>
-      <Profilers>
-        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
-      </Profilers>
-      <method>
-        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1522208382771" />
-      </method>
-    </configuration>
+=======
+  <component name="RunManager" selected="Android Instrumented Tests.LoginActivityTest">
     <configuration default="false" name="MessageTest" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests" temporary="true" nameIsGenerated="true">
+>>>>>>> 289f5ba378b89c5623944268733f935c5352bf99
       <module name="app" />
       <option name="TESTING_TYPE" value="2" />
       <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
@@ -2445,6 +2564,53 @@
         <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1522208382771" />
       </method>
     </configuration>
+    <configuration default="false" name="ModifyProfileTest" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests" temporary="true" nameIsGenerated="true">
+      <module name="app" />
+      <option name="TESTING_TYPE" value="2" />
+      <option name="INSTRUMENTATION_RUNNER_CLASS" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="CLASS_NAME" value="com.example.yanghanwen.taskmanagementmonster.ModifyProfileTest" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="EXTRA_OPTIONS" value="" />
+      <option name="CLEAR_LOGCAT" value="false" />
+      <option name="SHOW_LOGCAT_AUTOMATICALLY" value="false" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="TARGET_SELECTION_MODE" value="SHOW_DIALOG" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="SELECTED_CLOUD_MATRIX_CONFIGURATION_ID" value="-1" />
+      <option name="SELECTED_CLOUD_MATRIX_PROJECT_ID" value="" />
+      <option name="DEBUGGER_TYPE" value="Auto" />
+      <Auto>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Auto>
+      <Hybrid>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Hybrid>
+      <Java />
+      <Native>
+        <option name="USE_JAVA_AWARE_DEBUGGER" value="false" />
+        <option name="SHOW_STATIC_VARS" value="true" />
+        <option name="WORKING_DIR" value="" />
+        <option name="TARGET_LOGGING_CHANNELS" value="lldb process:gdb-remote packets" />
+        <option name="SHOW_OPTIMIZED_WARNING" value="true" />
+      </Native>
+      <Profilers>
+        <option name="ADVANCED_PROFILING_ENABLED" value="false" />
+      </Profilers>
+      <method>
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1522208382771" />
+      </method>
+    </configuration>
     <configuration default="true" type="AndroidJUnit" factoryName="Android JUnit">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -2514,7 +2680,11 @@
       <option name="DEEP_LINK" value="" />
       <option name="ACTIVITY_CLASS" value="" />
       <method>
+<<<<<<< HEAD
         <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1522208382771" />
+=======
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1521491817985" />
+>>>>>>> 289f5ba378b89c5623944268733f935c5352bf99
       </method>
     </configuration>
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Instrumented Tests">
@@ -2561,7 +2731,11 @@
         <option name="ADVANCED_PROFILING_ENABLED" value="false" />
       </Profilers>
       <method>
+<<<<<<< HEAD
         <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1522208382771" />
+=======
+        <option name="com.android.instantApps.provision.BeforeRunTask" enabled="true" clearCache="false" clearProvisionedDevices="false" myTimestamp="1521491817985" />
+>>>>>>> 289f5ba378b89c5623944268733f935c5352bf99
       </method>
     </configuration>
     <configuration default="true" type="Application" factoryName="Application">
@@ -2748,19 +2922,19 @@
     </configuration>
     <list size="6">
       <item index="0" class="java.lang.String" itemvalue="Android App.app" />
-      <item index="1" class="java.lang.String" itemvalue="Android Instrumented Tests.UserTest" />
-      <item index="2" class="java.lang.String" itemvalue="Android Instrumented Tests.MessageTest" />
-      <item index="3" class="java.lang.String" itemvalue="Android Instrumented Tests.TaskTest" />
-      <item index="4" class="java.lang.String" itemvalue="Android Instrumented Tests.RegisterActivityTest" />
-      <item index="5" class="java.lang.String" itemvalue="Android Instrumented Tests.LoginActivityTest" />
+      <item index="1" class="java.lang.String" itemvalue="Android Instrumented Tests.MessageTest" />
+      <item index="2" class="java.lang.String" itemvalue="Android Instrumented Tests.TaskTest" />
+      <item index="3" class="java.lang.String" itemvalue="Android Instrumented Tests.RegisterActivityTest" />
+      <item index="4" class="java.lang.String" itemvalue="Android Instrumented Tests.LoginActivityTest" />
+      <item index="5" class="java.lang.String" itemvalue="Android Instrumented Tests.ModifyProfileTest" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="Android Instrumented Tests.RegisterActivityTest" />
-        <item index="1" class="java.lang.String" itemvalue="Android Instrumented Tests.LoginActivityTest" />
-        <item index="2" class="java.lang.String" itemvalue="Android Instrumented Tests.TaskTest" />
-        <item index="3" class="java.lang.String" itemvalue="Android Instrumented Tests.MessageTest" />
-        <item index="4" class="java.lang.String" itemvalue="Android Instrumented Tests.UserTest" />
+        <item index="0" class="java.lang.String" itemvalue="Android Instrumented Tests.LoginActivityTest" />
+        <item index="1" class="java.lang.String" itemvalue="Android Instrumented Tests.ModifyProfileTest" />
+        <item index="2" class="java.lang.String" itemvalue="Android Instrumented Tests.RegisterActivityTest" />
+        <item index="3" class="java.lang.String" itemvalue="Android Instrumented Tests.TaskTest" />
+        <item index="4" class="java.lang.String" itemvalue="Android Instrumented Tests.MessageTest" />
       </list>
     </recent_temporary>
     <configuration name="&lt;template&gt;" type="Applet" default="true" selected="false">
@@ -2796,6 +2970,12 @@
     <servers />
   </component>
   <component name="TestHistory">
+<<<<<<< HEAD
+=======
+    <history-entry file="LoginActivityTest - 2018.03.18 at 23h 31m 33s.xml">
+      <configuration name="LoginActivityTest" configurationId="AndroidTestRunConfigurationType" />
+    </history-entry>
+>>>>>>> 289f5ba378b89c5623944268733f935c5352bf99
     <history-entry file="LoginActivityTest - 2018.03.18 at 23h 37m 25s.xml">
       <configuration name="LoginActivityTest" configurationId="AndroidTestRunConfigurationType" />
     </history-entry>
@@ -2805,12 +2985,13 @@
     <history-entry file="LoginActivityTest - 2018.03.18 at 23h 56m 05s.xml">
       <configuration name="LoginActivityTest" configurationId="AndroidTestRunConfigurationType" />
     </history-entry>
-    <history-entry file="RegisterActivityTest - 2018.03.18 at 22h 26m 06s.xml">
-      <configuration name="RegisterActivityTest" configurationId="AndroidTestRunConfigurationType" />
+    <history-entry file="LoginActivityTest - 2018.03.19 at 13h 18m 43s.xml">
+      <configuration name="LoginActivityTest" configurationId="AndroidTestRunConfigurationType" />
     </history-entry>
-    <history-entry file="RegisterActivityTest - 2018.03.18 at 23h 56m 26s.xml">
-      <configuration name="RegisterActivityTest" configurationId="AndroidTestRunConfigurationType" />
+    <history-entry file="LoginActivityTest - 2018.03.19 at 13h 43m 18s.xml">
+      <configuration name="LoginActivityTest" configurationId="AndroidTestRunConfigurationType" />
     </history-entry>
+<<<<<<< HEAD
     <history-entry file="RegisterActivityTest - 2018.03.26 at 16h 20m 33s.xml">
       <configuration name="RegisterActivityTest" configurationId="AndroidTestRunConfigurationType" />
     </history-entry>
@@ -2819,16 +3000,27 @@
     </history-entry>
     <history-entry file="TaskTest - 2018.02.26 at 15h 56m 19s.xml">
       <configuration name="TaskTest" configurationId="AndroidTestRunConfigurationType" />
+=======
+    <history-entry file="LoginActivityTest - 2018.03.19 at 13h 46m 23s.xml">
+      <configuration name="LoginActivityTest" configurationId="AndroidTestRunConfigurationType" />
     </history-entry>
-    <history-entry file="TaskTest - 2018.02.26 at 15h 58m 07s.xml">
-      <configuration name="TaskTest" configurationId="AndroidTestRunConfigurationType" />
+    <history-entry file="LoginActivityTest - 2018.03.19 at 13h 50m 59s.xml">
+      <configuration name="LoginActivityTest" configurationId="AndroidTestRunConfigurationType" />
+>>>>>>> 289f5ba378b89c5623944268733f935c5352bf99
     </history-entry>
-    <history-entry file="UserTest - 2018.02.26 at 14h 47m 02s.xml">
-      <configuration name="UserTest" configurationId="AndroidTestRunConfigurationType" />
+    <history-entry file="ModifyProfileTest - 2018.03.19 at 13h 02m 13s.xml">
+      <configuration name="ModifyProfileTest" configurationId="AndroidTestRunConfigurationType" />
+    </history-entry>
+    <history-entry file="RegisterActivityTest - 2018.03.18 at 23h 56m 26s.xml">
+      <configuration name="RegisterActivityTest" configurationId="AndroidTestRunConfigurationType" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
+<<<<<<< HEAD
     <frame x="0" y="23" width="1280" height="709" extended-state="0" />
+=======
+    <frame x="231" y="23" width="1578" height="709" extended-state="0" />
+>>>>>>> 289f5ba378b89c5623944268733f935c5352bf99
     <editor active="true" />
     <layout>
       <window_info id="Android Profiler" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -2839,16 +3031,26 @@
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+<<<<<<< HEAD
       <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28756058" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329235" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+=======
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3216146" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329235" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.12277868" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+>>>>>>> 289f5ba378b89c5623944268733f935c5352bf99
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1098546" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+<<<<<<< HEAD
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18659128" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+=======
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23242188" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+>>>>>>> 289f5ba378b89c5623944268733f935c5352bf99
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Device File Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
@@ -2868,32 +3070,32 @@
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Build Variants" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Logcat" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="combo" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Device File Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Device File Explorer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.19063005" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32956383" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3295626" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.329235" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16801292" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.0" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Captures" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="13" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13893376" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18659128" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
     </layout-to-restore>
   </component>
@@ -2905,6 +3107,7 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
       <provider editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -2925,6 +3128,8 @@
         </state>
       </provider>
     </entry>
+=======
+>>>>>>> 289f5ba378b89c5623944268733f935c5352bf99
     <entry file="file://$PROJECT_DIR$/app/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="390">
@@ -3021,13 +3226,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/androidTest/java/com/example/yanghanwen/taskmanagementmonster/ExampleInstrumentedTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="17" column="13" lean-forward="false" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yanghanwen/taskmanagementmonster/Bid.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="450">
@@ -3040,32 +3238,6 @@
         <state relative-caret-position="480">
           <caret line="34" column="32" lean-forward="false" selection-start-line="34" selection-start-column="32" selection-end-line="34" selection-end-column="32" />
         </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yanghanwen/taskmanagementmonster/Task.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yanghanwen/taskmanagementmonster/SearchActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="392">
-          <caret line="54" column="36" lean-forward="false" selection-start-line="54" selection-start-column="36" selection-end-line="54" selection-end-column="36" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_register.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-113">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/androidTest/java/com/example/yanghanwen/taskmanagementmonster/UserTest.java" />
@@ -3093,54 +3265,40 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yanghanwen/taskmanagementmonster/MainActivity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1215">
-          <caret line="81" column="5" lean-forward="false" selection-start-line="81" selection-start-column="5" selection-end-line="81" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_new_task.xml">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="357">
+          <caret line="36" column="37" lean-forward="false" selection-start-line="36" selection-start-column="37" selection-end-line="36" selection-end-column="37" />
+=======
         <state relative-caret-position="302">
           <caret line="64" column="29" lean-forward="false" selection-start-line="64" selection-start-column="23" selection-end-line="64" selection-end-column="29" />
+          <folding />
+>>>>>>> 289f5ba378b89c5623944268733f935c5352bf99
         </state>
       </provider>
       <provider editor-type-id="android-designer2">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/androidTest/java/com/example/yanghanwen/taskmanagementmonster/RegisterActivityTest.java">
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yanghanwen/taskmanagementmonster/MyTaskActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="56" column="1" lean-forward="false" selection-start-line="56" selection-start-column="1" selection-end-line="56" selection-end-column="1" />
+<<<<<<< HEAD
+        <state relative-caret-position="-903">
+          <caret line="11" column="13" lean-forward="false" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+=======
+        <state relative-caret-position="447">
+          <caret line="228" column="0" lean-forward="false" selection-start-line="228" selection-start-column="0" selection-end-line="228" selection-end-column="0" />
+          <folding />
+>>>>>>> 289f5ba378b89c5623944268733f935c5352bf99
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_my_task.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="158">
-          <caret line="20" column="4" lean-forward="false" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="4" />
-        </state>
-      </provider>
-      <provider editor-type-id="android-designer2">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="331">
-          <caret line="25" column="53" lean-forward="false" selection-start-line="25" selection-start-column="38" selection-end-line="25" selection-end-column="53" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_search.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="173">
-          <caret line="14" column="42" lean-forward="false" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="42" />
+        <state relative-caret-position="211">
+          <caret line="21" column="32" lean-forward="false" selection-start-line="21" selection-start-column="26" selection-end-line="21" selection-end-column="32" />
+          <folding />
         </state>
       </provider>
       <provider editor-type-id="android-designer2">
@@ -3157,41 +3315,253 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/androidTest/java/com/example/yanghanwen/taskmanagementmonster/LoginActivityTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1275">
-          <caret line="91" column="27" lean-forward="false" selection-start-line="91" selection-start-column="27" selection-end-line="91" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yanghanwen/taskmanagementmonster/DetailTaskActivity.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4260">
+        <state relative-caret-position="489">
           <caret line="295" column="1" lean-forward="false" selection-start-line="295" selection-start-column="1" selection-end-line="295" selection-end-column="1" />
-          <folding />
+          <folding>
+<<<<<<< HEAD
+            <element signature="imports" expanded="false" />
+=======
+            <marker date="1521485154235" expanded="true" signature="8511:9369" ph="{...}" />
+>>>>>>> 289f5ba378b89c5623944268733f935c5352bf99
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yanghanwen/taskmanagementmonster/DetailBidModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="945">
+<<<<<<< HEAD
+        <state relative-caret-position="302">
+          <caret line="64" column="29" lean-forward="false" selection-start-line="64" selection-start-column="23" selection-end-line="64" selection-end-column="29" />
+=======
+        <state relative-caret-position="489">
           <caret line="63" column="1" lean-forward="false" selection-start-line="63" selection-start-column="1" selection-end-line="63" selection-end-column="1" />
-          <folding />
+>>>>>>> 289f5ba378b89c5623944268733f935c5352bf99
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+    <entry file="file://$PROJECT_DIR$/app/src/androidTest/java/com/example/yanghanwen/taskmanagementmonster/RegisterActivityTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="56" column="1" lean-forward="false" selection-start-line="56" selection-start-column="1" selection-end-line="56" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="158">
+          <caret line="20" column="4" lean-forward="false" selection-start-line="20" selection-start-column="4" selection-end-line="20" selection-end-column="4" />
+=======
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yanghanwen/taskmanagementmonster/DetailTaskModel.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5295">
+        <state relative-caret-position="489">
           <caret line="355" column="1" lean-forward="false" selection-start-line="355" selection-start-column="1" selection-end-line="355" selection-end-column="1" />
           <folding>
-            <element signature="imports" expanded="false" />
+            <marker date="1521485154236" expanded="true" signature="10562:10595" ph="{...}" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yanghanwen/taskmanagementmonster/DetailTaskProviderModel.java">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="489">
+          <caret line="339" column="1" lean-forward="false" selection-start-line="339" selection-start-column="1" selection-end-line="339" selection-end-column="1" />
+          <folding>
+            <marker date="1521485154237" expanded="true" signature="163:169" ph="/**...*/" />
+            <marker date="1521485154237" expanded="true" signature="6884:6950" ph="/**...*/" />
+            <marker date="1521485154237" expanded="true" signature="7005:7130" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yanghanwen/taskmanagementmonster/DetailTaskRequestorModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="489">
+          <caret line="461" column="1" lean-forward="false" selection-start-line="461" selection-start-column="1" selection-end-line="461" selection-end-column="1" />
+          <folding>
+            <marker date="1521485154237" expanded="true" signature="162:168" ph="/**...*/" />
+            <marker date="1521485154237" expanded="true" signature="8241:8307" ph="/**...*/" />
+            <marker date="1521485154237" expanded="true" signature="8361:8670" ph="{...}" />
+            <marker date="1521485154237" expanded="true" signature="8676:8841" ph="/**...*/" />
+            <marker date="1521485154237" expanded="true" signature="8897:8978" ph="{...}" />
+            <marker date="1521485154237" expanded="true" signature="8984:9146" ph="/**...*/" />
+            <marker date="1521485154237" expanded="true" signature="9201:9281" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yanghanwen/taskmanagementmonster/DetailTaskSearchModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="474">
+          <caret line="234" column="1" lean-forward="false" selection-start-line="234" selection-start-column="1" selection-end-line="234" selection-end-column="1" />
+          <folding>
+            <marker date="1521485154238" expanded="true" signature="3421:3647" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yanghanwen/taskmanagementmonster/MainModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="489">
+          <caret line="73" column="1" lean-forward="false" selection-start-line="73" selection-start-column="1" selection-end-line="73" selection-end-column="1" />
+          <folding>
+            <marker date="1521485154238" expanded="true" signature="1414:1422" ph="{...}" />
+          </folding>
+>>>>>>> 289f5ba378b89c5623944268733f935c5352bf99
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yanghanwen/taskmanagementmonster/NewTaskModel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="339">
+          <caret line="78" column="13" lean-forward="false" selection-start-line="78" selection-start-column="13" selection-end-line="78" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_main.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="280">
+          <caret line="67" column="46" lean-forward="false" selection-start-line="67" selection-start-column="46" selection-end-line="67" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yanghanwen/taskmanagementmonster/MainActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="331">
+          <caret line="25" column="53" lean-forward="false" selection-start-line="25" selection-start-column="38" selection-end-line="25" selection-end-column="53" />
+=======
+        <state relative-caret-position="348">
+          <caret line="99" column="0" lean-forward="false" selection-start-line="99" selection-start-column="0" selection-end-line="99" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1571#1841#0" expanded="true" />
+            <element signature="e#1840#1841#0" expanded="true" />
+            <element signature="e#1920#2165#0" expanded="true" />
+            <element signature="e#2164#2165#0" expanded="true" />
+            <element signature="e#2256#2594#0" expanded="true" />
+            <element signature="e#2593#2594#0" expanded="true" />
+            <element signature="e#2687#3026#0" expanded="true" />
+            <element signature="e#3025#3026#0" expanded="true" />
+            <element signature="e#3107#3381#0" expanded="true" />
+            <element signature="e#3380#3381#0" expanded="true" />
+          </folding>
+>>>>>>> 289f5ba378b89c5623944268733f935c5352bf99
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="173">
+          <caret line="14" column="42" lean-forward="false" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="42" />
+=======
+        <state relative-caret-position="149">
+          <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+          <folding />
+>>>>>>> 289f5ba378b89c5623944268733f935c5352bf99
+        </state>
+      </provider>
+      <provider editor-type-id="android-manifest">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/androidTest/java/com/example/yanghanwen/taskmanagementmonster/ExampleInstrumentedTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+=======
+        <state relative-caret-position="150">
+          <caret line="17" column="13" lean-forward="false" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
+          <folding />
+>>>>>>> 289f5ba378b89c5623944268733f935c5352bf99
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/androidTest/java/com/example/yanghanwen/taskmanagementmonster/ModifyProfileTest.java" />
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/values/strings.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="346">
+          <caret line="28" column="42" lean-forward="false" selection-start-line="28" selection-start-column="32" selection-end-line="28" selection-end-column="42" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yanghanwen/taskmanagementmonster/EditprofileActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="1275">
+          <caret line="91" column="27" lean-forward="false" selection-start-line="91" selection-start-column="27" selection-end-line="91" selection-end-column="27" />
+=======
+        <state relative-caret-position="41">
+          <caret line="35" column="0" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1569#1929#0" expanded="true" />
+            <element signature="e#1928#1929#0" expanded="true" />
+          </folding>
+>>>>>>> 289f5ba378b89c5623944268733f935c5352bf99
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_editprofile.xml">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="4260">
+          <caret line="295" column="1" lean-forward="false" selection-start-line="295" selection-start-column="1" selection-end-line="295" selection-end-column="1" />
+=======
+        <state relative-caret-position="146">
+          <caret line="58" column="28" lean-forward="false" selection-start-line="58" selection-start-column="22" selection-end-line="58" selection-end-column="28" />
+>>>>>>> 289f5ba378b89c5623944268733f935c5352bf99
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_search.xml">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="945">
+          <caret line="63" column="1" lean-forward="false" selection-start-line="63" selection-start-column="1" selection-end-line="63" selection-end-column="1" />
+=======
+        <state relative-caret-position="147">
+          <caret line="14" column="42" lean-forward="false" selection-start-line="14" selection-start-column="29" selection-end-line="14" selection-end-column="42" />
+>>>>>>> 289f5ba378b89c5623944268733f935c5352bf99
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yanghanwen/taskmanagementmonster/SearchActivity.java">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+        <state relative-caret-position="5295">
+          <caret line="355" column="1" lean-forward="false" selection-start-line="355" selection-start-column="1" selection-end-line="355" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="false" />
+          </folding>
+=======
+        <state relative-caret-position="43">
+          <caret line="25" column="29" lean-forward="false" selection-start-line="25" selection-start-column="21" selection-end-line="25" selection-end-column="29" />
+          <folding />
+>>>>>>> 289f5ba378b89c5623944268733f935c5352bf99
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yanghanwen/taskmanagementmonster/Task.java">
+      <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="5055">
           <caret line="339" column="1" lean-forward="false" selection-start-line="339" selection-start-column="1" selection-end-line="339" selection-end-column="1" />
           <folding>
@@ -3222,12 +3592,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="930">
           <caret line="64" column="0" lean-forward="false" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
+=======
+        <state relative-caret-position="-779">
+          <caret line="25" column="0" lean-forward="false" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+>>>>>>> 289f5ba378b89c5623944268733f935c5352bf99
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/src/main/java/com/example/yanghanwen/taskmanagementmonster/DetailTaskRequestorModel.java">
+    <entry file="file://$PROJECT_DIR$/app/src/androidTest/java/com/example/yanghanwen/taskmanagementmonster/LoginActivityTest.java">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state relative-caret-position="6885">
           <caret line="461" column="1" lean-forward="false" selection-start-line="461" selection-start-column="1" selection-end-line="461" selection-end-column="1" />
           <folding>
@@ -3240,6 +3615,10 @@
       <provider editor-type-id="text-editor">
         <state relative-caret-position="95">
           <caret line="19" column="40" lean-forward="false" selection-start-line="19" selection-start-column="40" selection-end-line="19" selection-end-column="40" />
+=======
+        <state relative-caret-position="231">
+          <caret line="139" column="33" lean-forward="false" selection-start-line="139" selection-start-column="33" selection-end-line="139" selection-end-column="33" />
+>>>>>>> 289f5ba378b89c5623944268733f935c5352bf99
           <folding />
         </state>
       </provider>
@@ -3247,6 +3626,7 @@
         <state />
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="jar://$USER_HOME$/Library/Android/sdk/platforms/android-26/android.jar!/android/os/Looper.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
@@ -3306,6 +3686,36 @@
             <element signature="imports" expanded="true" />
             <element signature="e#443#444#0" expanded="true" />
             <element signature="e#481#482#0" expanded="true" />
+=======
+    <entry file="file://$PROJECT_DIR$/app/src/androidTest/java/com/example/yanghanwen/taskmanagementmonster/RegisterActivityTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="576">
+          <caret line="56" column="1" lean-forward="false" selection-start-line="56" selection-start-column="1" selection-end-line="56" selection-end-column="1" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_register.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="240">
+          <caret line="16" column="14" lean-forward="true" selection-start-line="16" selection-start-column="14" selection-end-line="16" selection-end-column="14" />
+          <folding />
+        </state>
+      </provider>
+      <provider editor-type-id="android-designer2">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/src/androidTest/java/com/example/yanghanwen/taskmanagementmonster/MainModelTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="461">
+          <caret line="81" column="1" lean-forward="false" selection-start-line="81" selection-start-column="1" selection-end-line="81" selection-end-column="1" />
+          <folding>
+            <element signature="e#257#258#0" expanded="true" />
+            <element signature="e#298#299#0" expanded="true" />
+>>>>>>> 289f5ba378b89c5623944268733f935c5352bf99
           </folding>
         </state>
       </provider>
