@@ -49,6 +49,7 @@ public class MyTaskActivity extends AppCompatActivity {
     public static String currentUsername;
     private Button biddingBtn;
     private Button assignedBtn;
+    private Button allBtn;
 
     //get whole task list from ES
     private ArrayList<Task>wholeTaskList = new ArrayList<>();
@@ -91,6 +92,7 @@ public class MyTaskActivity extends AppCompatActivity {
         // initial button for filter
         biddingBtn = findViewById(R.id.biddingBtn);
         assignedBtn = findViewById(R.id.assignedBtn);
+        allBtn = findViewById(R.id.allBtn);
 
         // get current username
         currentUsername = MainActivity.mainModel.getUsername();
@@ -154,7 +156,7 @@ public class MyTaskActivity extends AppCompatActivity {
 
                         }
                     }
-                    Log.d("tasklist",newTaskList.get(1).getTaskname());
+
 
                     threeGridsAdapter = new ThreeGridsAdapter(getApplicationContext(),newTaskList);
 
@@ -180,6 +182,18 @@ public class MyTaskActivity extends AppCompatActivity {
                         }
                     });
 
+                }
+            });
+
+            /**
+             * when click to see all task
+             */
+            allBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    requesterListView.setVisibility(View.VISIBLE);
+                    requesterAssignedListView.setVisibility(View.GONE);
+                    requesterBiddingListView.setVisibility(View.GONE);
                 }
             });
 
@@ -314,6 +328,15 @@ public class MyTaskActivity extends AppCompatActivity {
                         }
                     });
 
+                }
+            });
+
+            allBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    requesterBiddingListView.setVisibility(View.GONE);
+                    requesterAssignedListView.setVisibility(View.GONE);
+                    requesterListView.setVisibility(View.VISIBLE);
                 }
             });
 
