@@ -1,6 +1,7 @@
 package com.example.yanghanwen.taskmanagementmonster;
 
 import android.content.Intent;
+import android.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -37,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
         providerButton = (Button) findViewById(R.id.providerButton);
         requesterButton = (Button) findViewById(R.id.requesterButton);
         profileButton = (Button) findViewById(R.id.profileButton);
+
 
         // button to create new task
         newTaskButton.setOnClickListener(new View.OnClickListener() {

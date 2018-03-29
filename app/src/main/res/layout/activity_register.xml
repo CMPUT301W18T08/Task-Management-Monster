@@ -1,57 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.yanghanwen.taskmanagementmonster.RegisterActivity">
+    tools:context="com.example.yanghanwen.taskmanagementmonster.RegisterActivity"
+    android:background="@drawable/background_blue"
+    >
 
     <EditText
         android:id="@+id/profilePhoneNum"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="54dp"
-        android:layout_marginTop="32dp"
         android:layout_weight="1"
         android:ems="10"
         android:hint="@string/register_phone"
         android:inputType="phone"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profileEmail" />
+        android:layout_marginTop="170dp"
+        android:layout_marginLeft="55dp"
+        android:backgroundTint="#FFFFFF"
+        android:textColorHint="#CCCCCC"
+        />
 
     <EditText
         android:id="@+id/profileEmail"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="54dp"
-        android:layout_marginTop="32dp"
-        android:layout_weight="1"
-        android:ems="10"
+        android:layout_marginLeft="55dp"
+        android:layout_marginTop="110dp"
         android:hint="@string/register_email"
         android:inputType="textEmailAddress"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profileName" />
+        android:backgroundTint="#FFFFFF"
+        android:textColorHint="#CCCCCC"
+        />
 
-    <Button
+    <ImageButton
         android:id="@+id/save"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="54dp"
-        android:layout_marginTop="32dp"
-        android:text="@string/register_button"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profilePhoneNum" />
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="250dp"
+        android:layout_marginRight="50dp"
+        android:background="@drawable/ic_check_circle_white_18dp"
+        />
 
     <EditText
         android:id="@+id/profileName"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="54dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="50dp"
         android:ems="10"
         android:hint="@string/register_username"
         android:inputType="textPersonName"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginLeft="55dp"
+        android:backgroundTint="#FFFFFF"
+        android:textColorHint="#CCCCCC"
+         />
 
-</android.support.constraint.ConstraintLayout>
+
+</RelativeLayout>

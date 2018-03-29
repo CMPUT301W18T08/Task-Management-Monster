@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 
 /**
  * Activity of register a new user to use the app
@@ -18,7 +19,7 @@ public class RegisterActivity extends AppCompatActivity {
     private EditText emailView;
     private EditText phoneView;
 
-    private Button saveButton;
+    private ImageButton saveButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +29,7 @@ public class RegisterActivity extends AppCompatActivity {
         nameView = (EditText)findViewById(R.id.profileName);
         emailView = (EditText)findViewById(R.id.profileEmail);
         phoneView = (EditText)findViewById(R.id.profilePhoneNum) ;
-        saveButton = (Button)findViewById(R.id.save);
+        saveButton = (ImageButton)findViewById(R.id.save);
 
         // use the input data to create a new user
         saveButton.setOnClickListener(new View.OnClickListener() {

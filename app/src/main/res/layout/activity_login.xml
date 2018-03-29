@@ -1,51 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.yanghanwen.taskmanagementmonster.LoginActivity">
+    tools:context="com.example.yanghanwen.taskmanagementmonster.LoginActivity"
+    android:background="@drawable/background_blue"
+    >
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Task Management Monster"
+        android:textColor="#CCCCCC"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ver 1.0.0"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="5dp"
+        android:textColor="#CCCCCC"
+        android:fontFamily="sans-serif"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Not a user? You can"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="220dp"
+        android:layout_marginRight="35dp"
+        />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical">
     <Button
         android:id="@+id/register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="54dp"
-        android:layout_marginTop="24dp"
-        android:text="@string/login_register_button"
-        app:layout_constraintStart_toEndOf="@+id/login"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+        android:text="        Register        "
+        android:layout_marginTop="235dp"
+        android:layout_marginLeft="290dp"
+        android:layout_marginBottom="20dp"
+        android:background="#00FFFFFF"
+        android:textColor="#FFFFFF"
+         />
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="368dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="32dp"
-        android:orientation="horizontal"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+</ScrollView>
 
         <EditText
             android:id="@+id/id"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
             android:ems="10"
-            android:hint="@string/register_username"
-            android:inputType="textPersonName" />
+            android:hint="Please enter username"
+            android:inputType="textPersonName"
+            android:backgroundTint="#FFFFFF"
+            android:textColorHint="#CCCCCC"
+            android:layout_marginTop="150dp"
+            android:layout_marginLeft="97dp"
+            />
 
-    </LinearLayout>
 
     <Button
         android:id="@+id/login"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="64dp"
-        android:layout_marginTop="24dp"
-        android:text="@string/login_login_button"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+        android:text="           Log in           "
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="0dp"
+        android:layout_marginLeft="0dp"
+        android:background="#88000000"
+        android:textColor="#FFFFFF"
+         />
 
 
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>
