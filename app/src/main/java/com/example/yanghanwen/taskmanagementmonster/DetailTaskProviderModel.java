@@ -18,7 +18,9 @@ import java.util.ArrayList;
  */
 public class DetailTaskProviderModel extends DetailTaskModel {
 
-    Boolean assigned;   // where this task has assigned to the user
+    //private Boolean assigned;   // where this task has assigned to the user
+
+    private String status;
 
     /**
      * Construct a model instance for the DetailTaskActivity that are used to view the detail
@@ -33,6 +35,9 @@ public class DetailTaskProviderModel extends DetailTaskModel {
 
         super(title, requestor);
 
+        status = super.task.getStatus();
+
+        /*
         if (super.task.getStatus().equals("assigned")) {
 
             assigned = Boolean.TRUE;
@@ -42,6 +47,7 @@ public class DetailTaskProviderModel extends DetailTaskModel {
 
             assigned = Boolean.FALSE;
         }
+        */
 
     }
 
@@ -54,7 +60,7 @@ public class DetailTaskProviderModel extends DetailTaskModel {
      */
     public String getBidInfo() {
 
-        if (assigned) {
+        if (status.equals("assigned") || status.equals("done")) {
 
             return "Accepted Bid:";
         }
@@ -73,7 +79,7 @@ public class DetailTaskProviderModel extends DetailTaskModel {
      */
     public String getBidLowest() {
 
-        if (assigned) {
+        if (status.equals("assigned") || status.equals("done")) {
 
             Double myBid = super.task.getUserAmount(super.username);
             return "$ " + myBid.toString();
@@ -95,7 +101,7 @@ public class DetailTaskProviderModel extends DetailTaskModel {
      */
     public String getMyBidInfo() {
 
-        if (assigned) {
+        if (status.equals("assigned")) {
 
             return "";
         }
@@ -113,7 +119,7 @@ public class DetailTaskProviderModel extends DetailTaskModel {
      */
     public String getMyBid() {
 
-        if (assigned) {
+        if (status.equals("assigned")) {
 
             return "";
         }
@@ -133,7 +139,7 @@ public class DetailTaskProviderModel extends DetailTaskModel {
      */
     public String getButtonText1() {
 
-        if (assigned) {
+        if (status.equals("assigned")) {
 
             return "";
         }
@@ -152,7 +158,7 @@ public class DetailTaskProviderModel extends DetailTaskModel {
      */
     public String getButtonText2() {
 
-        if (assigned) {
+        if (status.equals("assigned")) {
 
             return "";
         }
@@ -200,7 +206,12 @@ public class DetailTaskProviderModel extends DetailTaskModel {
      */
     public int visibilityMyBidInfo() {
 
-        if (assigned) {
+        if (status.equals("assigned")) {
+
+            return View.GONE;
+        }
+
+        else if (status.equals("done")) {
 
             return View.GONE;
         }
@@ -217,7 +228,12 @@ public class DetailTaskProviderModel extends DetailTaskModel {
      */
     public int visibilityMyBid() {
 
-        if (assigned) {
+        if (status.equals("assigned")) {
+
+            return View.GONE;
+        }
+
+        else if (status.equals("done")) {
 
             return View.GONE;
         }
@@ -234,7 +250,12 @@ public class DetailTaskProviderModel extends DetailTaskModel {
      */
     public int visibilityEdit() {
 
-        if (assigned) {
+        if (status.equals("assigned")) {
+
+            return View.GONE;
+        }
+
+        else if (status.equals("done")) {
 
             return View.GONE;
         }
@@ -281,7 +302,12 @@ public class DetailTaskProviderModel extends DetailTaskModel {
      */
     public int visibilityChangeButton() {
 
-        if (assigned) {
+        if (status.equals("assigned")) {
+
+            return View.GONE;
+        }
+
+        else if (status.equals("done")) {
 
             return View.GONE;
         }
@@ -299,7 +325,12 @@ public class DetailTaskProviderModel extends DetailTaskModel {
      */
     public int visibilityDeclineButton() {
 
-        if (assigned) {
+        if (status.equals("assigned")) {
+
+            return View.GONE;
+        }
+
+        else if (status.equals("done")) {
 
             return View.GONE;
         }
