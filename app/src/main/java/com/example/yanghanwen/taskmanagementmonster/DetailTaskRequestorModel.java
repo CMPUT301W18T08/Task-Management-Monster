@@ -458,4 +458,34 @@ public class DetailTaskRequestorModel extends DetailTaskModel {
         status = super.getStatus();
     }
 
+    public int getImageMode() {
+
+        if (status.equals("requested")) {
+
+            return 2;
+        }
+        else {
+
+            return 0;
+        }
+    }
+
+    public int visibilityImageButton() {
+
+        if (status.equals("requested")) {
+
+            return View.VISIBLE;
+        }
+
+        else if (super.hasImage()) {
+
+            return View.VISIBLE;
+        }
+
+        else {
+
+            return View.GONE;
+        }
+    }
+
 }

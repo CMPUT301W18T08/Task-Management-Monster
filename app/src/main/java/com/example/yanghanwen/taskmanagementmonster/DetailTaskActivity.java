@@ -21,12 +21,11 @@ public class DetailTaskActivity extends AppCompatActivity {
 
     int mode;   // the input mode
 
-    private DetailTaskModel detailTaskModel;    // model for this activity
+    public static DetailTaskModel detailTaskModel;    // model for this activity
 
     public static final int DETAIL_BID = 1;     // requesCode of result return from bid activity
 
-
-    public static final int ADD_IMAGE = 200; // add this -----------------
+    //public static final int ADD_IMAGE = 200; // add this -----------------
 
     private TextView viewTitle;
     private TextView viewUsername;
@@ -43,7 +42,7 @@ public class DetailTaskActivity extends AppCompatActivity {
 
     private Button changeButton;
     private Button declineButton;
-    //private Button imageButton;                 // add this
+    private Button imageButton;                 // add this
 
     private ListView listViewBids;
 
@@ -113,7 +112,7 @@ public class DetailTaskActivity extends AppCompatActivity {
 
         changeButton = (Button) findViewById(R.id.buttonDetail);
         declineButton = (Button) findViewById(R.id.buttonDetail2);
-        //imageButton = (Button) findViewById(R.id.detialImagebutton);        // add this
+        imageButton = (Button) findViewById(R.id.detialImagebutton);        // add this
 
         updateView();
 
@@ -236,7 +235,6 @@ public class DetailTaskActivity extends AppCompatActivity {
             }
         });
 
-        /*
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -244,14 +242,11 @@ public class DetailTaskActivity extends AppCompatActivity {
                 Intent intent = new Intent(DetailTaskActivity.this,
                         DetailImageActivity.class);
 
-                // this will change later
-                intent.putExtra("image", 1);
-                // this will change later
+                intent.putExtra("mode", detailTaskModel.getImageMode() );
 
-                startActivityForResult(intent, ADD_IMAGE);
+                startActivity(intent);
             }
         });
-        */
 
         // if click a item in the ListView
         listViewBids.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -305,6 +300,7 @@ public class DetailTaskActivity extends AppCompatActivity {
 
         changeButton.setText( detailTaskModel.getButtonText1() );
         changeButton.setVisibility( detailTaskModel.visibilityChangeButton() );
+        imageButton.setVisibility( detailTaskModel.visibilityImageButton() );
 
         declineButton.setText( detailTaskModel.getButtonText2() );
         declineButton.setVisibility( detailTaskModel.visibilityDeclineButton() );

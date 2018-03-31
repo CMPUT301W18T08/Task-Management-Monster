@@ -110,4 +110,9 @@ public class NewTaskModel {
         this.bitmap = bitmap;
     }
 
+    public void deleteBitmap() {
+
+        this.bitmap = null;
+    }
+
 }

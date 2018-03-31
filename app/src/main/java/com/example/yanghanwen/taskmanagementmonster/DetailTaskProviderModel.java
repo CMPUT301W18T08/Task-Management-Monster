@@ -369,4 +369,22 @@ public class DetailTaskProviderModel extends DetailTaskModel {
         super.taskUpdate();
     }
 
+    public int getImageMode() {
+
+        return 0;
+    }
+
+    public int visibilityImageButton() {
+
+        if (super.hasImage()) {
+
+            return View.VISIBLE;
+        }
+
+        else {
+
+            return View.GONE;
+        }
+    }
+
 }

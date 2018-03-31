@@ -246,6 +246,11 @@ public abstract class DetailTaskModel {
      */
     public abstract void declineButtonAction(String newValue);
 
+    // change
+    public abstract int getImageMode();
+    public abstract int visibilityImageButton();
+    // end of change
+
     /**
      * Return the title of the current task
      *
@@ -350,6 +355,27 @@ public abstract class DetailTaskModel {
 
         ElasticSearch.AddTask addTask = new ElasticSearch.AddTask();
         addTask.execute(this.task);
+    }
+
+    public Boolean hasImage() {
+
+        // this is used to test weather has image
+        return Boolean.FALSE;
+        // end of test
+    }
+
+    public void storeImage() {
+
+
+    }
+
+    public void deleteImage() {
+
+        // here we delete the image from task
+
+        //
+
+        //here we use elastic search to replace the old task
     }
 
 }
