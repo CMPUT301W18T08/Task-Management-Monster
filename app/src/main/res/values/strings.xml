@@ -27,4 +27,5 @@
     <string name="main_provider_task">Provider My Task</string>
     <string name="main_requester_task">Requester My Task</string>
     <string name="main_profile">My Profile</string>
+    <string name="title_activity_location_service">Map</string>
 </resources>
