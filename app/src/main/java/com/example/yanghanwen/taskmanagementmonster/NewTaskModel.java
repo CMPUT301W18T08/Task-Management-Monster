@@ -1,5 +1,7 @@
 package com.example.yanghanwen.taskmanagementmonster;
 
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.util.Log;
 
 /**
@@ -19,6 +21,8 @@ public class NewTaskModel {
     private ElasticSearch.AddTask addTask;          // elastic search used to add task
 
     private final String username;                  // the username of the task creator
+
+    private Bitmap bitmap;
 
     /**
      * Construct a model instance for the NewTaskActivity.
@@ -82,6 +86,28 @@ public class NewTaskModel {
         catch (Exception e) {
             return Boolean.FALSE;
         }
+    }
+
+    public Boolean hasBitmap() {
+
+        if (this.bitmap == null) {
+
+            return Boolean.FALSE;
+        }
+        else {
+
+            return Boolean.TRUE;
+        }
+    }
+
+    public Bitmap getBitmap() {
+
+        return this.bitmap;
+    }
+
+    public void setBitmap(Bitmap bitmap) {
+
+        this.bitmap = bitmap;
     }
 
 }

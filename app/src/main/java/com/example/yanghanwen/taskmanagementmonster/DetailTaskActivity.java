@@ -43,7 +43,7 @@ public class DetailTaskActivity extends AppCompatActivity {
 
     private Button changeButton;
     private Button declineButton;
-    private Button imageButton;                 // add this
+    //private Button imageButton;                 // add this
 
     private ListView listViewBids;
 
@@ -113,7 +113,7 @@ public class DetailTaskActivity extends AppCompatActivity {
 
         changeButton = (Button) findViewById(R.id.buttonDetail);
         declineButton = (Button) findViewById(R.id.buttonDetail2);
-        imageButton = (Button) findViewById(R.id.detialImagebutton);        // add this
+        //imageButton = (Button) findViewById(R.id.detialImagebutton);        // add this
 
         updateView();
 

@@ -3,6 +3,7 @@ package com.example.yanghanwen.taskmanagementmonster;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
@@ -13,17 +14,21 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import java.io.InputStream;
+
 public class DetailImageActivity extends AppCompatActivity {
 
     private ImageView imageView;
 
-    //private Button selectButton;
+    private Button selectButton;
+    private Button storeButton;
+    private Button deleteButton;
 
-    private static final int PICK_IMAGE = 200;
     private int mode;
 
-    private Uri imageUri;
+    private static final int PICK_IMAGE = 100;
 
+    private Bitmap imageMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,37 +39,40 @@ public class DetailImageActivity extends AppCompatActivity {
 
         if (extras == null) {
 
-            Log.d("error", "receive no input");
-            // raise exception for error occured
+            Toast.makeText(getApplicationContext(),
+                    "Error: receive no input",
+                    Toast.LENGTH_SHORT).show();
+
             finish();
         }
 
-        // mode currently three status: 0: view only, 1: add new, 2: already has image
-        mode = extras.getInt("image");
+        mode = extras.getInt("mode");
 
         imageView = (ImageView) findViewById(R.id.detialImageView);
 
-        Button selectButton = (Button) findViewById(R.id.imageSelectButton);
-        final Button storeButton = (Button) findViewById(R.id.imageStoreButton);
-        Button deleteButton = (Button) findViewById(R.id.imageDeleteButton);
+        selectButton = (Button) findViewById(R.id.imageSelectButton);
+        storeButton = (Button) findViewById(R.id.imageStoreButton);
+        deleteButton = (Button) findViewById(R.id.imageDeleteButton);
 
-        /*
-        if (mode == 0) {
-
-            storeButton.setVisibility(View.GONE);
-            deleteButton.setVisibility(View.GONE);
-        }
-        */
+        initialize();
 
         selectButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 openGallery();
-
-                //storeButton.setVisibility(View.VISIBLE);
             }
         });
+
+        storeButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                storeBitmap();
+            }
+        });
+
+        /*
 
         storeButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,6 +93,7 @@ public class DetailImageActivity extends AppCompatActivity {
                 }
             }
         });
+        */
     }
 
     // https://www.youtube.com/watch?v=OPnusBmMQTw
@@ -95,6 +104,35 @@ public class DetailImageActivity extends AppCompatActivity {
         startActivityForResult(gallery, PICK_IMAGE);
     }
 
+    private void storeBitmap() {
+
+        if (imageMap == null) {
+
+            Toast.makeText(getApplicationContext(),
+                    "Error: image not found",
+                    Toast.LENGTH_SHORT).show();
+        }
+
+        else if (mode == 1) {
+
+            NewTaskActivity.newTaskModel.setBitmap(imageMap);
+            finish();
+        }
+    }
+
+    private void initialize () {
+
+        if (mode == 1) {
+
+            if (NewTaskActivity.newTaskModel.hasBitmap() ) {
+
+                imageMap = NewTaskActivity.newTaskModel.getBitmap();
+                imageView.setImageBitmap(imageMap);
+            }
+
+        }
+    }
+
     @Override
     protected void onActivityResult(int requesCode, int resultCode, Intent data) {
 
@@ -103,26 +141,19 @@ public class DetailImageActivity extends AppCompatActivity {
 
             if (resultCode == RESULT_OK) {
 
-                // show the chosen image from gallery
-                imageUri = data.getData();
+                Uri imageUri = data.getData();
 
+                // https://stackoverflow.com/questions/38352148/get-image-from-the-gallery-and-show-in-imageview
+                // 2018-03-30
                 try {
-                    Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(),
-                            imageUri);
 
-                    int byteCount = bitmap.getByteCount();
+                    // this will also used to check byte count (but will wait until test data)
+                    InputStream imageStream = getContentResolver().openInputStream(imageUri);
+                    imageMap = BitmapFactory.decodeStream(imageStream);
 
-                    if (byteCount > 65536) {
-
-                        Toast.makeText(getApplicationContext(),
-                                "Error: Image larger than 65536 byte",
-                                Toast.LENGTH_SHORT).show();
-                    }
-                    else {
-
-                        imageView.setImageURI(imageUri);
-                    }
+                    imageView.setImageBitmap(imageMap);
                 }
+
                 catch (Exception e) {
 
                     Toast.makeText(getApplicationContext(),
@@ -132,5 +163,6 @@ public class DetailImageActivity extends AppCompatActivity {
             }
         }
     }
+
 
 }
