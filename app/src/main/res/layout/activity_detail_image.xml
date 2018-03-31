@@ -22,12 +22,32 @@
         android:id="@+id/imageSelectButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="24dp"
         android:text="@string/image_button_select"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/detialImageView" />
+
+    <Button
+        android:id="@+id/imageStoreButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/image_button_store"
+        app:layout_constraintStart_toEndOf="@+id/imageSelectButton"
+        app:layout_constraintTop_toBottomOf="@+id/detialImageView" />
+
+    <Button
+        android:id="@+id/imageDeleteButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="24dp"
+        android:text="@string/image_button_delete"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageStoreButton"
         app:layout_constraintTop_toBottomOf="@+id/detialImageView" />
 
 </android.support.constraint.ConstraintLayout>

@@ -5,6 +5,7 @@
     <string name="new_titile_hint">Please enter title</string>
     <string name="new_description_hint">Please enter description</string>
     <string name="new_button_create">Create</string>
+    <string name="new_button_image">Add Image</string>
     <string name="detail_title_view">Task Title:</string>
     <string name="detail_description_view">Description:</string>
     <string name="detail_status_view">Current Status:</string>
@@ -28,4 +29,6 @@
     <string name="main_requester_task">Requester My Task</string>
     <string name="main_profile">My Profile</string>
     <string name="image_button_select">Select Image</string>
+    <string name="image_button_store">Store Image</string>
+    <string name="image_button_delete">delete Image</string>
 </resources>

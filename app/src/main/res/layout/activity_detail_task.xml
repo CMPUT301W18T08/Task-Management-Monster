@@ -213,4 +213,14 @@
             app:layout_constraintTop_toBottomOf="@+id/detailBidLowest" />
     </LinearLayout>
 
+    <Button
+        android:id="@+id/detialImagebutton"
+        android:layout_width="50dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="image"
+        app:layout_constraintStart_toEndOf="@+id/buttonDetail2"
+        app:layout_constraintTop_toBottomOf="@+id/linearDetail" />
+
 </android.support.constraint.ConstraintLayout>
