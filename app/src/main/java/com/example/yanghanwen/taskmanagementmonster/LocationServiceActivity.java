@@ -6,6 +6,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -32,9 +33,11 @@ public class LocationServiceActivity extends FragmentActivity implements OnMapRe
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
+
         mMap = googleMap;
 
-        // Add a marker in Sydney and move the camera
+        //TODO add tasks location here
+        // Add a marker in Toronto and move the camera
         LatLng toronto = new LatLng(43.6532, -79.3832);
         mMap.addMarker(new MarkerOptions().position(toronto).title("Marker in Toronto"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(toronto));
@@ -42,6 +45,7 @@ public class LocationServiceActivity extends FragmentActivity implements OnMapRe
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             mMap.setMyLocationEnabled(true);
         }
+
         //https://stackoverflow.com/questions/33666071/android-marshmallow-request-permission
         //2018-03-30
         else {
