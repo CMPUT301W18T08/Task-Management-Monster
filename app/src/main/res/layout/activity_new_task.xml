@@ -120,7 +120,7 @@
             />
 
         <TextView
-            android:id="@+id/coordinateMessage"
+            android:id="@+id/taskCity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="230dp"
@@ -132,24 +132,24 @@
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:background="@drawable/ic_info_outline_white_24dp"
-            android:layout_marginTop="230dp"
-            android:layout_marginLeft="15dp"
+            android:layout_marginTop="70dp"
+            android:layout_marginRight="150dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="25dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="25dp"
             />
 
         <ImageView
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:background="@drawable/ic_location_city_white_24dp"
-            android:layout_marginTop="70dp"
-            android:layout_marginRight="150dp"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="35dp"
-            android:layout_alignParentLeft="true"
-            android:layout_marginLeft="25dp"
+            android:layout_marginTop="230dp"
+            android:layout_marginLeft="15dp"
             />
 
         <TextView
-            android:id="@+id/taskCity"
+            android:id="@+id/coordinateMessage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"

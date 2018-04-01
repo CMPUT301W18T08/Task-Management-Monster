@@ -40,12 +40,9 @@ import com.google.android.gms.location.places.ui.PlacePicker;
 public class NewTaskActivity extends AppCompatActivity {
 
     private NewTaskModel newTaskModel; // Model of this activity
-
     private EditText editTitle;         // EditText of new title
     private EditText editDescription;   // EditText of new description
-
     private Button createButton;        // create Task button
-
     private ImageButton setLocation;
     int PLACE_PICKER_REQUEST = 1;
     GoogleApiClient mGoogleApiClient;
@@ -88,6 +85,9 @@ public class NewTaskActivity extends AppCompatActivity {
 
         setLocation = (ImageButton) findViewById(R.id.add_location);
 
+
+//        https://developers.google.com/places/android-api/placepicker
+//        2018/03/31
         setLocation.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -106,6 +106,8 @@ public class NewTaskActivity extends AppCompatActivity {
             }
         });
 
+//      https://stackoverflow.com/questions/35507410/how-to-validate-google-places-autocompletetextview
+//      2018/03/31
         mUpdatePlaceDetailsCallback = new ResultCallback<PlaceBuffer>() {
             @Override
             public void onResult(@NonNull PlaceBuffer places) {
