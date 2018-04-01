@@ -1,6 +1,8 @@
 package com.example.yanghanwen.taskmanagementmonster;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.Image;
 import android.os.Bundle;
@@ -148,10 +150,27 @@ public class NewTaskActivity extends AppCompatActivity {
         switch(item.getItemId()) {
 
             case R.id.discard:
-                finish();
+
+                AlertDialog.Builder dialog = new AlertDialog.Builder(NewTaskActivity.this);
+                dialog.setTitle("Alert");
+                dialog.setMessage("This is going to discard current task, this might be irretrievable");
+                dialog.setCancelable(false);
+                dialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int which) {
+                        finish();
+                    }
+                });
+                dialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int which) {
+                    }
+                });
+                dialog.show();
                 break;
 
             default:
+                break;
         }
         return true;
     }

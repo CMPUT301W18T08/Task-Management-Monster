@@ -1,5 +1,6 @@
 package com.example.yanghanwen.taskmanagementmonster;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,6 +19,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText editID;
     private Button loginButton;
     private Button registerButton;
+    public ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +34,13 @@ public class LoginActivity extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                progressDialog = new ProgressDialog(LoginActivity.this);
+                progressDialog.setTitle("Logging you in...");
+                progressDialog.setMessage("Loading...");
+                progressDialog.setCancelable(true);
+                progressDialog.show();
+
 
                 String userId = editID.getText().toString();
 
@@ -66,6 +75,19 @@ public class LoginActivity extends AppCompatActivity {
         });
 
     }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+
+//        https://stackoverflow.com/questions/8332127/displaying-a-progress-dialog-until-new-activity-loads
+//        2018/03/31
+        if(this.progressDialog != null) {
+            this.progressDialog.dismiss();
+            this.progressDialog = null;
+        }
+    }
+
 
     // ? what is the purpose if this?
     private Boolean isUserIdLegal(String text){

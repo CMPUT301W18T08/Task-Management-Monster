@@ -75,8 +75,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/task_logo"
-                android:layout_marginRight="30dp"
-                android:layout_gravity="center"
+                android:layout_marginRight="0dp"
                 android:id="@+id/toolbar_title" />
 
         </android.support.v7.widget.Toolbar>
