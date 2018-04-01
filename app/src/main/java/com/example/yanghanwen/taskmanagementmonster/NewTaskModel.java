@@ -56,6 +56,11 @@ public class NewTaskModel {
 
             Task task = new Task(this.username, taskname, description);
 
+            if ( hasBitmap() ) {
+
+                task.setImageMap(bitmap);
+            }
+
             addTask.execute(task);
 
             Log.d("message", "task successfully created");

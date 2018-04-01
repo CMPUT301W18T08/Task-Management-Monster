@@ -1,5 +1,6 @@
 package com.example.yanghanwen.taskmanagementmonster;
 
+import android.graphics.Bitmap;
 import android.util.Log;
 
 import java.util.ArrayList;
@@ -359,23 +360,28 @@ public abstract class DetailTaskModel {
 
     public Boolean hasImage() {
 
-        // this is used to test weather has image
-        return Boolean.FALSE;
-        // end of test
+        return task.hasImageMap();
     }
 
-    public void storeImage() {
+    public Bitmap getImage() {
 
+        return this.task.getImageMap();
+    }
 
+    public void setImage(Bitmap imageMap) {
+
+        this.task.setImageMap(imageMap);
+
+        // use elastic search to update the old task
+        taskUpdate();
     }
 
     public void deleteImage() {
 
-        // here we delete the image from task
+        this.task.deleteImageMap();
 
-        //
-
-        //here we use elastic search to replace the old task
+        // use elastic search to update the old task
+        taskUpdate();
     }
 
 }

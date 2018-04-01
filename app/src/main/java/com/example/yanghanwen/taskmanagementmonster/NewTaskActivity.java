@@ -68,67 +68,8 @@ public class NewTaskActivity extends Activity {
             }
         });
 
-        /*
-
-        imageButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                Intent intent = new Intent(NewTaskActivity.this,
-                        DetailImageActivity.class);
-
-                // this will change later
-                intent.putExtra("image", 1);
-                // this will change later
-
-                startActivityForResult(intent, ADD_IMAGE);
-            }
-        });
-
-*/
-        // end of new part (1) -------------------------------------------------------------
 
     }
 
-    // this part is new (2) ---------------------------------------------------------------
-/*
-    @Override
-    protected void onActivityResult(int requesCode, int resultCode, Intent data) {
-
-        super.onActivityResult(requesCode, resultCode, data);
-
-            if (requesCode == ADD_IMAGE) {
-
-                if (resultCode == RESULT_OK) {
-
-                    Uri imageUri = data.getData();
-
-                    // get the Uri, currently for testing
-                    Toast.makeText(getApplicationContext(),
-                            imageUri.toString(),
-                            Toast.LENGTH_SHORT).show();
-                    // end of get
-
-                    try {
-                        Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(),
-                                imageUri);
-
-                        // here upload the bitmap
-
-                        // end of upload
-
-                    }
-                    catch (Exception e) {
-
-                        Toast.makeText(getApplicationContext(),
-                                "Error: unable compile the image",
-                                Toast.LENGTH_SHORT).show();
-                    }
-
-                }
-            }
-    }
-*/
-    // end of part is new (2) ---------------------------------------------------------------
 
 }

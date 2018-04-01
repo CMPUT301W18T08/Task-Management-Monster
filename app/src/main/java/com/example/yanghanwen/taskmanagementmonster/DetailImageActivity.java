@@ -96,9 +96,8 @@ public class DetailImageActivity extends AppCompatActivity {
 
             if (DetailTaskActivity.detailTaskModel.hasImage()) {
 
-                // here we get bitmap image
-
-                // end of have image map
+                imageMap = DetailTaskActivity.detailTaskModel.getImage();
+                imageView.setImageBitmap(imageMap);
             }
 
             selectButton.setVisibility(View.GONE);
@@ -125,9 +124,8 @@ public class DetailImageActivity extends AppCompatActivity {
 
             if (DetailTaskActivity.detailTaskModel.hasImage()) {
 
-                // here we get bitmap image
-
-                // end of have image map
+                imageMap = DetailTaskActivity.detailTaskModel.getImage();
+                imageView.setImageBitmap(imageMap);
             }
 
             else {
@@ -156,7 +154,7 @@ public class DetailImageActivity extends AppCompatActivity {
         else if (mode == 2) {
 
             // store the new image to the task
-
+            DetailTaskActivity.detailTaskModel.setImage(imageMap);
             finish();
         }
     }

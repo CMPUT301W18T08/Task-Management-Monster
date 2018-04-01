@@ -1,5 +1,7 @@
 package com.example.yanghanwen.taskmanagementmonster;
 
+import android.graphics.Bitmap;
+
 import java.util.ArrayList;
 
 /**
@@ -20,6 +22,7 @@ public class Task {
     private String status;          // current status of the task
     private String description;     // description of the task
     private ArrayList<Bid> bids;    // list of all bids on this task
+    private Bitmap imageMap;
 
      /**
       * Create an empty task object.
@@ -48,6 +51,8 @@ public class Task {
 
         // initialize the list of bids object
         bids = new ArrayList<Bid>();
+
+        imageMap = null;
     }
 
      /**
@@ -352,5 +357,32 @@ public class Task {
     public String toString() {
         return username + "\n" + taskname + "\n" + description + "\n" + status + "\n" + bids;
     }
+
+    public void setImageMap(Bitmap bitmap) {
+
+        this.imageMap = bitmap;
+    }
+
+    public Bitmap getImageMap() {
+
+        return this.imageMap;
+    }
+
+    public void deleteImageMap() {
+
+        this.imageMap = null;
+    }
+
+     public Boolean hasImageMap() {
+
+         if (this.imageMap == null) {
+
+             return Boolean.FALSE;
+         }
+         else {
+
+             return Boolean.TRUE;
+         }
+     }
 
 }
