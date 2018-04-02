@@ -1,4 +1,7 @@
 package com.example.yanghanwen.taskmanagementmonster;
+import com.google.android.gms.location.places.Place;
+import com.google.android.gms.maps.model.LatLng;
+
 import java.util.ArrayList;
 import java.util.ArrayList;
 
@@ -20,6 +23,7 @@ public class Task {
     private String status;          // current status of the task
     private String description;     // description of the task
     private ArrayList<Bid> bids;    // list of all bids on this task
+    private LatLng coordinate;
 
      /**
       * Create an empty task object.
@@ -37,7 +41,7 @@ public class Task {
       * @param taskname string name of the task
       * @param description string description of task
       */
-    public Task (String username, String taskname , String description) {
+    public Task (String username, String taskname , String description, LatLng coordinate) {
 
         this.username = username;
         this.taskname = taskname;
@@ -47,6 +51,8 @@ public class Task {
 
         // initialize the list of bids object
         bids = new ArrayList<Bid>();
+
+        this.coordinate = coordinate;
     }
 
      /**
@@ -352,5 +358,20 @@ public class Task {
     public String toString() {
         return username + "\n" + taskname + "\n" + description + "\n" + status + "\n" + bids;
     }
+
+    // new coordinate method
+
+     public void setCoordinate(LatLng coordinate) {
+
+        this.coordinate = coordinate;
+     }
+
+     public LatLng getCoordinate() {
+
+        return this.coordinate;
+     }
+
+     // end of new coordinate method
+
 }
 

@@ -2,6 +2,8 @@ package com.example.yanghanwen.taskmanagementmonster;
 
 import android.util.Log;
 
+import com.google.android.gms.maps.model.LatLng;
+
 import java.util.ArrayList;
 
 /**
@@ -351,6 +353,11 @@ public abstract class DetailTaskModel {
 
         ElasticSearch.AddTask addTask = new ElasticSearch.AddTask();
         addTask.execute(this.task);
+    }
+
+    public LatLng getCoordinate() {
+
+        return task.getCoordinate();
     }
 
 }

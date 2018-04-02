@@ -41,8 +41,7 @@ public class MainModel {
      * @return
      */
     public String getUsername() {
-
-        return user.getUserName();
+            return user.getUserName();
     }
 
     /**

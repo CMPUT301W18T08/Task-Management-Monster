@@ -1,6 +1,9 @@
 package com.example.yanghanwen.taskmanagementmonster;
 
 import android.Manifest;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
@@ -14,6 +17,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 public class LocationServiceActivity extends FragmentActivity implements OnMapReadyCallback {
@@ -34,13 +38,45 @@ public class LocationServiceActivity extends FragmentActivity implements OnMapRe
     @Override
     public void onMapReady(GoogleMap googleMap) {
 
+        Intent intent = getIntent();
+
+
+        double LatitudeGet = intent.getDoubleExtra("latitude", 0);
+        double LongitudeGet = intent.getDoubleExtra("longitude", 0);
+        String TitleToReceive = intent.getStringExtra("taskTitle");
+
         mMap = googleMap;
 
         //TODO add tasks location here
-        // Add a marker in Toronto and move the camera
-        LatLng toronto = new LatLng(43.6532, -79.3832);
-        mMap.addMarker(new MarkerOptions().position(toronto).title("Marker in Toronto"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(toronto));
+        // Add a marker in current task location and move the camera
+        LatLng TaskLocation = new LatLng(LatitudeGet, LongitudeGet);
+        mMap.addMarker(new MarkerOptions().position(TaskLocation).title(TitleToReceive));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(TaskLocation));
+
+       /*mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(Marker marker) {
+
+                AlertDialog.Builder dialog = new AlertDialog.Builder(LocationServiceActivity.this);
+                dialog.setTitle("Reminder");
+                dialog.setMessage("This task is at" + ExactPlaceToReceive);
+                dialog.setCancelable(false);
+                dialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int which) {
+                        finish();
+                    }
+                });
+                dialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int which) {
+                    }
+                });
+                dialog.show();
+
+                return false;
+            }
+        });*/
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             mMap.setMyLocationEnabled(true);

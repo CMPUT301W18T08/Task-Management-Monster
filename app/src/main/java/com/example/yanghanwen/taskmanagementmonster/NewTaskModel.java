@@ -2,6 +2,9 @@ package com.example.yanghanwen.taskmanagementmonster;
 
 import android.util.Log;
 
+import com.google.android.gms.location.places.Place;
+import com.google.android.gms.maps.model.LatLng;
+
 /**
  * Created by superfan1995 on 2018-03-09.
  */
@@ -40,7 +43,7 @@ public class NewTaskModel {
      * @param taskname the task name of new task
      * @param description the description of new task
      */
-    public void createNewTask (String taskname, String description) {
+    public void createNewTask (String taskname, String description, LatLng coordinate) {
 
         if (existTask(taskname)) {
 
@@ -50,7 +53,7 @@ public class NewTaskModel {
         }
         else {
 
-            Task task = new Task(this.username, taskname, description);
+            Task task = new Task(this.username, taskname, description, coordinate);
 
             addTask.execute(task);
 

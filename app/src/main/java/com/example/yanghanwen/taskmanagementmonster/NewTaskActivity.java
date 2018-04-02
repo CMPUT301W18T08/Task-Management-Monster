@@ -29,6 +29,7 @@ import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.PlaceBuffer;
 import com.google.android.gms.location.places.Places;
 import com.google.android.gms.location.places.ui.PlacePicker;
+import com.google.android.gms.maps.model.LatLng;
 
 
 /**
@@ -49,7 +50,7 @@ public class NewTaskActivity extends AppCompatActivity {
     private ResultCallback<PlaceBuffer> mUpdatePlaceDetailsCallback;
     public TextView CoorMsg;
     public TextView CityMsg;
-
+    private Place mapPlace;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,7 +78,9 @@ public class NewTaskActivity extends AppCompatActivity {
                 String taskname = editTitle.getText().toString();
                 String description = editDescription.getText().toString();
 
-                newTaskModel.createNewTask(taskname, description);
+                LatLng coordinate = mapPlace.getLatLng();
+
+                newTaskModel.createNewTask(taskname, description, coordinate);
 
                 finish();
             }
@@ -132,8 +135,12 @@ public class NewTaskActivity extends AppCompatActivity {
 
             if (resultCode == RESULT_OK) {
                 Place place = PlacePicker.getPlace(this, data);
+
+                mapPlace = place;
+
                 CoorMsg.setText("This task will be located at:" + "\n" + place.getLatLng().toString());
                 CityMsg.setText("This task is at:" + "\n" + place.getAddress());
+
                 String toastMsg = String.format("Place: %s", place.getLatLng());
                 Toast.makeText(this, toastMsg, Toast.LENGTH_LONG).show();
             }

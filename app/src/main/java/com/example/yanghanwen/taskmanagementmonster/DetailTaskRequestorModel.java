@@ -392,7 +392,8 @@ public class DetailTaskRequestorModel extends DetailTaskModel {
 
             ElasticSearch.AddTask addTask = new ElasticSearch.AddTask();
 
-            Task newTask = new Task(super.username, newValue, super.task.getDescription());
+            Task newTask = new Task(super.username, newValue, super.task.getDescription(),
+                    super.task.getCoordinate());
             addTask.execute(newTask);
 
             super.task = newTask;

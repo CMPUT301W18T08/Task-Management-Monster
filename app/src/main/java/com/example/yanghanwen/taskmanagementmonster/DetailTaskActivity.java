@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.google.android.gms.maps.model.LatLng;
 
 import java.util.ArrayList;
 
@@ -33,6 +34,7 @@ public class DetailTaskActivity extends AppCompatActivity {
     private TextView viewBidLowest;
     private TextView viewBidMyBidInfo;
     private TextView viewBidMyBid;
+    private TextView viewCoordinate;
 
     private EditText editBid;
     private EditText editTitle;
@@ -40,6 +42,7 @@ public class DetailTaskActivity extends AppCompatActivity {
 
     private Button changeButton;
     private Button declineButton;
+    private Button findLocation;
 
     private ListView listViewBids;
 
@@ -109,6 +112,8 @@ public class DetailTaskActivity extends AppCompatActivity {
 
         changeButton = (Button) findViewById(R.id.buttonDetail);
         declineButton = (Button) findViewById(R.id.buttonDetail2);
+        viewCoordinate = (TextView) findViewById(R.id.coordinateDetail);
+        findLocation = (Button) findViewById(R.id.findLocation);
 
         updateView();
 
@@ -254,6 +259,25 @@ public class DetailTaskActivity extends AppCompatActivity {
             }
         });
 
+
+        findLocation.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(DetailTaskActivity.this, LocationServiceActivity.class);
+
+                double LatitudeToPut = detailTaskModel.getCoordinate().latitude;
+                double LongitudeToPut = detailTaskModel.getCoordinate().longitude;
+                String TaskTitle = detailTaskModel.getTitle().toString();
+
+                intent.putExtra("latitude", LatitudeToPut);
+                intent.putExtra("longitude", LongitudeToPut);
+                intent.putExtra("taskTitle", TaskTitle);
+
+                startActivity(intent);
+            }
+        });
+
     }
 
     /**
@@ -271,6 +295,12 @@ public class DetailTaskActivity extends AppCompatActivity {
 
         viewBidLowest.setText( detailTaskModel.getBidLowest() );
         viewBidLowest.setVisibility( detailTaskModel.visibilityBidLowest() );
+
+        if(detailTaskModel.getCoordinate() != null) {
+            viewCoordinate.setText(detailTaskModel.getCoordinate().toString());
+        } else {
+            viewCoordinate.setText(null);
+        }
 
         viewBidMyBidInfo.setText( detailTaskModel.getMyBidInfo() );
         viewBidMyBidInfo.setVisibility( detailTaskModel.visibilityMyBidInfo() );
