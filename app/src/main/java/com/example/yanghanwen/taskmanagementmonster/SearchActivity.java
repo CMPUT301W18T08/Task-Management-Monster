@@ -2,6 +2,11 @@ package com.example.yanghanwen.taskmanagementmonster;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.support.design.widget.FloatingActionButton;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -10,6 +15,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -18,6 +24,8 @@ import android.widget.EditText;
 import android.widget.Filter;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import com.google.android.gms.maps.model.LatLng;
 
 import java.util.ArrayList;
 
@@ -37,6 +45,7 @@ public class SearchActivity extends AppCompatActivity {
     private ListView listView;
     private EditText editText;
     private Button button;
+    private FloatingActionButton discover;
 
     private long firstPressed;
 
@@ -58,6 +67,10 @@ public class SearchActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
+        ActionBar bar = getSupportActionBar();
+
+        bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#E47833")));
+
 
         listView = (ListView) findViewById(R.id.Search_result);
         editText = (EditText) findViewById(R.id.discover_search);
@@ -178,6 +191,52 @@ public class SearchActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        discover = (FloatingActionButton) findViewById(R.id.discoverButton);
+
+        discover.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getTaskCoordinates();
+            }
+        });
+    }
+
+    /**
+     * passing an arrayList of coordinates of existing tasks
+     */
+    public void getTaskCoordinates() {
+
+        /*double TaskCoorLat;
+        double TaskCoorLng;
+        Intent intentLat, intentLng;
+        intentLat = new Intent(SearchActivity.this, SearchScreenLocationActivity.class);
+        intentLng = new Intent(SearchActivity.this, SearchScreenLocationActivity.class);
+
+        for(int i = 0; i < taskList.size(); i++) {
+            TaskCoorLat = taskList.get(i).getCoordinate().latitude;
+            TaskCoorLng = taskList.get(i).getCoordinate().longitude;
+            intentLat.putExtra("latitude", TaskCoorLat);
+            intentLng.putExtra("longitude", TaskCoorLng);
+        }
+        startActivity(intentLat);
+        startActivity(intentLng);*/
+
+        ArrayList<LatLng> coor = new ArrayList<>();
+        ArrayList<String> taskName = new ArrayList<>();
+        ArrayList<String> status = new ArrayList<>();
+
+        for(int i = 0; i < taskList.size(); i++) {
+            coor.add(taskList.get(i).getCoordinate());
+            taskName.add(taskList.get(i).getTaskname());
+            status.add(taskList.get(i).getStatus());
+        }
+        Intent intent = new Intent(SearchActivity.this, SearchScreenLocationActivity.class);
+        intent.putParcelableArrayListExtra("coordinates", coor);
+        intent.putStringArrayListExtra("taskname", taskName);
+        intent.putStringArrayListExtra("status", status);
+        startActivity(intent);
+        Log.d("!!!!!!!!!!!!!!!!!!", coor.toString());
     }
 
     /**

@@ -2,6 +2,7 @@ package com.example.yanghanwen.taskmanagementmonster;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
@@ -14,14 +15,10 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Filter;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import com.example.yanghanwen.taskmanagementmonster.Task;
-
-
 
 
 /**
@@ -41,11 +38,13 @@ public class SearchResultActivity extends AppCompatActivity {
     private ListView listView;
     private EditText editText;
     private Button button;
+    private FloatingActionButton discover;
     private int tid;
     private String username;
     private String taskname;
     private String description;
     private long firstPressed;
+    private Intent intent;
     public ArrayList<Task> taskList = new ArrayList<>();
     public ArrayList<Task> allTaskList = new ArrayList<>();
     public ArrayAdapter<Task> adapter;
@@ -184,7 +183,35 @@ public class SearchResultActivity extends AppCompatActivity {
                 adapter.notifyDataSetChanged();
             }
         });
+
+
+        //getTaskCoordinates();
     }
+
+    /**
+     * passing an arrayList of coordinates of existing tasks
+     */
+    /*public void getTaskCoordinates() {
+
+        ArrayList<String> TaskCoorLat = new ArrayList<>();
+        ArrayList<String> TaskCoorLng = new ArrayList<>();
+        Intent intentLat, intentLng;
+
+        for(int i = 0; i < taskList.size(); i++) {
+            TaskCoorLat.add(String.valueOf(taskList.get(i).getCoordinate().latitude));
+            TaskCoorLng.add(String.valueOf(taskList.get(i).getCoordinate().longitude));
+        }
+
+        intentLat = new Intent(SearchResultActivity.this, SearchScreenLocationActivity.class);
+        intentLng = new Intent(SearchResultActivity.this, SearchScreenLocationActivity.class);
+        intentLat.putExtra("latitude", TaskCoorLat);
+        intentLng.putExtra("longitude", TaskCoorLng);
+
+        startActivity(intentLat);
+        startActivity(intentLng);
+
+        Log.d("Passing!!!!!!!!!!!!!!!!!!!!!!!!!!", TaskCoorLat.toString());
+    }*/
 
 
 

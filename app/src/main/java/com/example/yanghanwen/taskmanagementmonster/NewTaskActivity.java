@@ -184,4 +184,25 @@ public class NewTaskActivity extends AppCompatActivity {
         return true;
     }
 
+    @Override
+    public void onBackPressed() {
+
+        AlertDialog.Builder dialog = new AlertDialog.Builder(NewTaskActivity.this);
+        dialog.setTitle("Alert");
+        dialog.setMessage("This is going to discard current task, this might be irretrievable");
+        dialog.setCancelable(false);
+        dialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int which) {
+                NewTaskActivity.super.onBackPressed();
+            }
+        });
+        dialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int which) {
+            }
+        });
+        dialog.show();
+    }
+
 }

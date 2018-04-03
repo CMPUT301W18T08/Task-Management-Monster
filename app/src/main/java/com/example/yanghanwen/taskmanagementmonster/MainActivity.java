@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.support.v7.widget.Toolbar;
 import android.support.v7.app.ActionBar;
+import android.widget.Toast;
 
 /**
  * The activity control the main view of the app
@@ -29,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
     private Button requesterButton;     // button to see my task as requester
     private Button profileButton;       // button to see my profile
     private DrawerLayout mdrawerlayout;
+    private long firstPressed;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -125,6 +127,17 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
+    }
+
+    @Override
+    public void onBackPressed() {
+
+        if(System.currentTimeMillis() - firstPressed < 3000) {
+            super.onBackPressed();//if do a double click within 3000 milliseconds, back to previous activity
+        } else {
+            Toast.makeText(MainActivity.this, "Press again to quit", Toast.LENGTH_SHORT).show();
+            firstPressed = System.currentTimeMillis();
+        }
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {

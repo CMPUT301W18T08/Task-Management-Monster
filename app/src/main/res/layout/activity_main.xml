@@ -63,7 +63,7 @@
     android:clickable="true"
     android:src="@drawable/ic_add_black_24dp"
     app:elevation="4dp"
-    app:backgroundTint="#C0C0C0"
+    app:backgroundTint="#E47833"
     />
 
     <ImageButton

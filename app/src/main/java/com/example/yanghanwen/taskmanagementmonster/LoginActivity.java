@@ -56,7 +56,8 @@ public class LoginActivity extends AppCompatActivity {
                 }
 
                 else {
-
+                    progressDialog.dismiss();
+                    progressDialog = null;
                     Toast.makeText(getApplicationContext(), "Username Not Exist",
                             Toast.LENGTH_SHORT).show();
                 }

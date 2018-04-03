@@ -1,6 +1,9 @@
 package com.example.yanghanwen.taskmanagementmonster;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -58,6 +61,10 @@ public class DetailTaskActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_task);
+
+        ActionBar bar = getSupportActionBar();
+
+        bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#E47833")));
 
         Bundle extras = getIntent().getExtras();
 
@@ -269,10 +276,12 @@ public class DetailTaskActivity extends AppCompatActivity {
                 double LatitudeToPut = detailTaskModel.getCoordinate().latitude;
                 double LongitudeToPut = detailTaskModel.getCoordinate().longitude;
                 String TaskTitle = detailTaskModel.getTitle().toString();
+                String TaskStatus = detailTaskModel.getStatus();
 
                 intent.putExtra("latitude", LatitudeToPut);
                 intent.putExtra("longitude", LongitudeToPut);
                 intent.putExtra("taskTitle", TaskTitle);
+                intent.putExtra("status", TaskStatus);
 
                 startActivity(intent);
             }

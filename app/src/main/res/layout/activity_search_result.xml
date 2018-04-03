@@ -39,4 +39,13 @@
         android:layout_alignParentBottom="true"
         android:text="Recover all"
         />
+
+    <Button
+        android:id="@+id/discoverButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="150dp"
+        android:text="Discover"
+        />
 </RelativeLayout>

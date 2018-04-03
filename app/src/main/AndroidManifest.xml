@@ -81,12 +81,15 @@
 
         <activity
             android:name=".LocationServiceActivity"
-            android:label="@string/title_activity_location_service">
-        </activity>
+            android:label="@string/title_activity_location_service"></activity>
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
+
+        <activity
+            android:name=".SearchScreenLocationActivity"
+            android:label="@string/title_activity_main_screen_maps"></activity>
     </application>
 
 </manifest>

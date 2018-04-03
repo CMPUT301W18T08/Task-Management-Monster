@@ -11,6 +11,7 @@ import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
+import com.example.yanghanwen.taskmanagementmonster.SearchResultActivity;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -20,9 +21,11 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+
 public class LocationServiceActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
+    private Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,20 +41,25 @@ public class LocationServiceActivity extends FragmentActivity implements OnMapRe
     @Override
     public void onMapReady(GoogleMap googleMap) {
 
-        Intent intent = getIntent();
+        intent = getIntent();
 
 
         double LatitudeGet = intent.getDoubleExtra("latitude", 0);
         double LongitudeGet = intent.getDoubleExtra("longitude", 0);
         String TitleToReceive = intent.getStringExtra("taskTitle");
+        String StatusToReceive = intent.getStringExtra("status");
 
         mMap = googleMap;
+
 
         //TODO add tasks location here
         // Add a marker in current task location and move the camera
         LatLng TaskLocation = new LatLng(LatitudeGet, LongitudeGet);
-        mMap.addMarker(new MarkerOptions().position(TaskLocation).title(TitleToReceive));
+        mMap.addMarker(new MarkerOptions().position(TaskLocation).title(TitleToReceive).snippet(StatusToReceive));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(TaskLocation));
+
+
+
 
        /*mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
