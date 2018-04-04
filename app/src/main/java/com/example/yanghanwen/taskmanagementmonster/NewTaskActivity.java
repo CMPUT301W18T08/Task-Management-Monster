@@ -44,8 +44,10 @@ public class NewTaskActivity extends Activity {
             @Override
             public void onClick(View view) {
                 if(!(connectionCheck.isNetWorkAvailable(getApplicationContext()))){
-                    Toast.makeText(getApplicationContext(),"Oops,data will upload once connected",
-                            Toast.LENGTH_LONG).show();
+                    for(int i = 0; i < 3; i ++){
+                        Toast.makeText(getApplicationContext(),"Oops,data will upload once connected",
+                                Toast.LENGTH_LONG).show();
+                    }
                 }
                 String taskname = editTitle.getText().toString();
                 String description = editDescription.getText().toString();

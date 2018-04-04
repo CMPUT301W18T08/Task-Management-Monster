@@ -19,15 +19,11 @@ public class TaskIntentService extends IntentService{
     private ConnectionCheck connectionCheck;
 
     private Handler iServiceHandler;
-    private ElasticSearch.AddTask addTask;
+
     private String username;
     private String description;
     private String title;
     private Task mTask;
-
-
-
-
 
 
 
@@ -79,6 +75,7 @@ public class TaskIntentService extends IntentService{
                     Log.d("title",""+title);
                     Log.d("description",""+description);
                     mTask = new Task(username,title,description);
+                    ElasticSearch.AddTask addTask = new ElasticSearch.AddTask();
                     addTask.execute(mTask);
                 }
                 TaskList.getInstance().getTasks().clear();
@@ -86,8 +83,5 @@ public class TaskIntentService extends IntentService{
 
             }
         }
-
-
-
     }
 }
