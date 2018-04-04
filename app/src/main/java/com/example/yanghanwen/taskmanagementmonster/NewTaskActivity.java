@@ -74,15 +74,23 @@ public class NewTaskActivity extends AppCompatActivity {
         createButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(mapPlace != null) {
+                    String taskname = editTitle.getText().toString();
+                    String description = editDescription.getText().toString();
 
-                String taskname = editTitle.getText().toString();
-                String description = editDescription.getText().toString();
+                    LatLng coordinate = mapPlace.getLatLng();
+                    newTaskModel.createNewTask(taskname, description, coordinate);
 
-                LatLng coordinate = mapPlace.getLatLng();
+                    finish();
+                } else {
+                    Toast.makeText(NewTaskActivity.this, "You did not specify any location on this", Toast.LENGTH_SHORT).show();
+                    String taskname = editTitle.getText().toString();
+                    String description = editDescription.getText().toString();
 
-                newTaskModel.createNewTask(taskname, description, coordinate);
+                    newTaskModel.createNewTask(taskname, description, null);
 
-                finish();
+                    finish();
+                }
             }
         });
 

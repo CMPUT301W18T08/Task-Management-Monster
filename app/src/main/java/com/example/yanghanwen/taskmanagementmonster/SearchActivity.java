@@ -207,36 +207,25 @@ public class SearchActivity extends AppCompatActivity {
      */
     public void getTaskCoordinates() {
 
-        /*double TaskCoorLat;
-        double TaskCoorLng;
-        Intent intentLat, intentLng;
-        intentLat = new Intent(SearchActivity.this, SearchScreenLocationActivity.class);
-        intentLng = new Intent(SearchActivity.this, SearchScreenLocationActivity.class);
-
-        for(int i = 0; i < taskList.size(); i++) {
-            TaskCoorLat = taskList.get(i).getCoordinate().latitude;
-            TaskCoorLng = taskList.get(i).getCoordinate().longitude;
-            intentLat.putExtra("latitude", TaskCoorLat);
-            intentLng.putExtra("longitude", TaskCoorLng);
-        }
-        startActivity(intentLat);
-        startActivity(intentLng);*/
-
         ArrayList<LatLng> coor = new ArrayList<>();
         ArrayList<String> taskName = new ArrayList<>();
         ArrayList<String> status = new ArrayList<>();
 
-        for(int i = 0; i < taskList.size(); i++) {
-            coor.add(taskList.get(i).getCoordinate());
-            taskName.add(taskList.get(i).getTaskname());
-            status.add(taskList.get(i).getStatus());
+        for (int i = 0; i < taskList.size(); i++) {
+
+            if (taskList.get(i).getCoordinate() != null) {
+                coor.add(taskList.get(i).getCoordinate());
+                taskName.add(taskList.get(i).getTaskname());
+                status.add(taskList.get(i).getStatus());
+            } else {
+                continue;
+            }
         }
         Intent intent = new Intent(SearchActivity.this, SearchScreenLocationActivity.class);
         intent.putParcelableArrayListExtra("coordinates", coor);
         intent.putStringArrayListExtra("taskname", taskName);
         intent.putStringArrayListExtra("status", status);
         startActivity(intent);
-        Log.d("!!!!!!!!!!!!!!!!!!", coor.toString());
     }
 
     /**

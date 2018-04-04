@@ -7,6 +7,7 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,6 +15,7 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.support.v7.widget.Toolbar;
 import android.support.v7.app.ActionBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 /**
@@ -31,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     private Button profileButton;       // button to see my profile
     private DrawerLayout mdrawerlayout;
     private long firstPressed;
+    private TextView usernameView, emailView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
 
         if(actionbar != null) {
             actionbar.setDisplayHomeAsUpEnabled(true);
-            actionbar.setHomeAsUpIndicator(R.drawable.icon_list_24dp);
+            actionbar.setHomeAsUpIndicator(R.drawable.icon_list_white_24dp);
         }
 
 
@@ -127,6 +130,15 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
+
+        View header = navView.getHeaderView(0);
+        usernameView = (TextView) header.findViewById(R.id.username);
+        emailView = (TextView) header.findViewById(R.id.mail);
+
+        String DrawerUsername = MainActivity.mainModel.getUsername();
+        String DrawerEmail = MainActivity.mainModel.getEmail();
+        usernameView.setText(DrawerUsername);
+        emailView.setText(DrawerEmail);
     }
 
     @Override

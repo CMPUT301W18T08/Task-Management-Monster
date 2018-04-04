@@ -74,7 +74,7 @@ public class DetailTaskActivity extends AppCompatActivity {
             finish();
         }
 
-        // Retrive income data
+        // Retrieve income data
         mode = extras.getInt("mode");
 
         String title = extras.getString("title");
@@ -84,19 +84,13 @@ public class DetailTaskActivity extends AppCompatActivity {
         if (mode == 1) {
 
             detailTaskModel = new DetailTaskSearchModel(title, requester);
-        }
-
-        else if (mode == 2) {
+        } else if (mode == 2) {
 
             detailTaskModel = new DetailTaskProviderModel(title, requester);
-        }
+        } else if (mode == 3) {
 
-        else if (mode == 3) {
-
-            detailTaskModel =new DetailTaskRequestorModel(title, requester);
-        }
-
-        else {
+            detailTaskModel = new DetailTaskRequestorModel(title, requester);
+        } else {
 
             // raise exception for error occured
             finish();
@@ -138,9 +132,7 @@ public class DetailTaskActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(),
                                 "Error: Empty Are Not Available Bid Input",
                                 Toast.LENGTH_SHORT).show();
-                    }
-
-                    else {
+                    } else {
 
                         detailTaskModel.changeButtonAction(textBid);
                         updateView();
@@ -149,9 +141,7 @@ public class DetailTaskActivity extends AppCompatActivity {
                                 "My Bid Update Successful",
                                 Toast.LENGTH_SHORT).show();
                     }
-                }
-
-                else if (mode == 2) {
+                } else if (mode == 2) {
 
                     String textBid = editBid.getText().toString();
 
@@ -160,9 +150,7 @@ public class DetailTaskActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(),
                                 "Error: Empty Are Not Available Bid Input",
                                 Toast.LENGTH_SHORT).show();
-                    }
-
-                    else {
+                    } else {
 
                         detailTaskModel.changeButtonAction(textBid);
                         updateView();
@@ -171,9 +159,7 @@ public class DetailTaskActivity extends AppCompatActivity {
                                 "My Bid Update Successful",
                                 Toast.LENGTH_SHORT).show();
                     }
-                }
-
-                else if (mode == 3) {
+                } else if (mode == 3) {
 
                     // requester modeify his task title
                     String textTitle = editTitle.getText().toString();
@@ -183,9 +169,7 @@ public class DetailTaskActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(),
                                 "Error: Empty Are Not Available Title Input",
                                 Toast.LENGTH_SHORT).show();
-                    }
-
-                    else {
+                    } else {
 
                         detailTaskModel.changeButtonAction(textTitle);
                         updateView();
@@ -218,9 +202,7 @@ public class DetailTaskActivity extends AppCompatActivity {
                     detailTaskModel.declineButtonAction("");
 
                     finish();
-                }
-
-                else if (mode == 3) {
+                } else if (mode == 3) {
 
                     // provider modify his task description
                     String textDescription = editDescription.getText().toString();
@@ -230,9 +212,7 @@ public class DetailTaskActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(),
                                 "Error: Empty Are Not Available Description Input",
                                 Toast.LENGTH_SHORT).show();
-                    }
-
-                    else {
+                    } else {
                         detailTaskModel.declineButtonAction(textDescription);
                         updateView();
 
@@ -273,20 +253,26 @@ public class DetailTaskActivity extends AppCompatActivity {
 
                 Intent intent = new Intent(DetailTaskActivity.this, LocationServiceActivity.class);
 
-                double LatitudeToPut = detailTaskModel.getCoordinate().latitude;
-                double LongitudeToPut = detailTaskModel.getCoordinate().longitude;
-                String TaskTitle = detailTaskModel.getTitle().toString();
-                String TaskStatus = detailTaskModel.getStatus();
+                if (detailTaskModel.getCoordinate() != null) {
 
-                intent.putExtra("latitude", LatitudeToPut);
-                intent.putExtra("longitude", LongitudeToPut);
-                intent.putExtra("taskTitle", TaskTitle);
-                intent.putExtra("status", TaskStatus);
+                    double LatitudeToPut = detailTaskModel.getCoordinate().latitude;
+                    double LongitudeToPut = detailTaskModel.getCoordinate().longitude;
+                    String TaskTitle = detailTaskModel.getTitle().toString();
+                    String TaskStatus = detailTaskModel.getStatus();
 
-                startActivity(intent);
+                    intent.putExtra("latitude", LatitudeToPut);
+                    intent.putExtra("longitude", LongitudeToPut);
+                    intent.putExtra("taskTitle", TaskTitle);
+                    intent.putExtra("status", TaskStatus);
+
+                    startActivity(intent);
+
+                } else {
+                    Toast.makeText(DetailTaskActivity.this, "This task did not specify any location",
+                            Toast.LENGTH_SHORT).show();
+                }
             }
         });
-
     }
 
     /**

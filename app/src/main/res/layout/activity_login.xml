@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.yanghanwen.taskmanagementmonster.LoginActivity"
-    android:background="@drawable/background_blue"
+    android:background="@drawable/wallpaper_ver2"
     >
 
     <TextView

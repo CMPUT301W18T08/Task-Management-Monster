@@ -5,6 +5,10 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
+import android.location.Location;
+import android.nfc.Tag;
+import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
@@ -12,13 +16,20 @@ import android.util.Log;
 import android.widget.Toast;
 
 
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.Circle;
+import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -31,6 +42,8 @@ public class SearchScreenLocationActivity extends FragmentActivity implements On
     private ArrayList<LatLng> getCoor = new ArrayList<>();
     private ArrayList<String> taskname = new ArrayList<>();
     private ArrayList<String> status = new ArrayList<>();
+    private FusedLocationProviderClient mFusedLocationClient;
+    private Location mLastKnownLocation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +53,8 @@ public class SearchScreenLocationActivity extends FragmentActivity implements On
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+        Log.d("TEST@KEVIN", "#####################");
+        setMyLastKnownLocation();
     }
 
 
@@ -68,45 +83,18 @@ public class SearchScreenLocationActivity extends FragmentActivity implements On
         }
 
 
-       mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+        mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
             @Override
             public boolean onMarkerClick(Marker marker) {
                  marker.showInfoWindow();
 
-//                    Map map = new HashMap();
-//                    for(int i = 0; i < status.size(); i++) {
-//                        map.put(status.get(i), marker.getId());
-//                    }
-//
-//                    Log.d("test&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&", marker.getId());
-//
-//                    AlertDialog.Builder dialog = new AlertDialog.Builder(SearchScreenLocationActivity.this);
-//
-//                    dialog.setTitle("Reminder");
-//                    if(marker.getId().equals("m1")) {
-//                        dialog.setMessage("you clicked marker 1");
-//                    } else if(marker.getId().equals("m0")) {
-//                        dialog.setMessage("You clicked marker 0");
-//                    }
-//                    dialog.setCancelable(false);
-//                    dialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-//                        @Override
-//                        public void onClick(DialogInterface dialogInterface, int which) {
-//                        }
-//                    });
-//                    dialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-//                        @Override
-//                        public void onClick(DialogInterface dialogInterface, int which) {
-//                        }
-//                    });
-//                    dialog.show();
-
-                return false;
+                 return false;
             }
         });
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             mMap.setMyLocationEnabled(true);
+            mMap.getUiSettings().setMyLocationButtonEnabled(true);
         }
 
         //https://stackoverflow.com/questions/33666071/android-marshmallow-request-permission
@@ -115,6 +103,7 @@ public class SearchScreenLocationActivity extends FragmentActivity implements On
             ActivityCompat.requestPermissions(SearchScreenLocationActivity.this, new String[]{
                     Manifest.permission.ACCESS_FINE_LOCATION}, 1);
         }
+
     }
 
     @Override
@@ -133,4 +122,28 @@ public class SearchScreenLocationActivity extends FragmentActivity implements On
                 break;
         }
     }
-}
+
+    private void setMyLastKnownLocation(){
+
+        if(ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
+            mFusedLocationClient.getLastLocation()
+                    .addOnSuccessListener(this, new OnSuccessListener<Location>() {
+                        @Override
+                        public void onSuccess(Location location) {
+                            // Got last known location. In some rare situations this can be null.
+                            Log.d("TEST@KEVIN", "#####################");
+                            if (location != null) {
+                                // Logic to handle location object
+                                Log.d("Latitude", Double.toString(location.getLatitude()));
+                                Log.d("Lontitude", Double.toString(location.getLongitude()));
+                                mMap.addCircle(new CircleOptions().center(new LatLng(location.getLatitude(),
+                                        location.getLongitude())).radius(5000).strokeColor(Color.BLUE).fillColor(Color.parseColor("#500084d3")));
+                                mLastKnownLocation = location;
+                            }
+                        }
+
+                    });
+                }
+        }
+    }

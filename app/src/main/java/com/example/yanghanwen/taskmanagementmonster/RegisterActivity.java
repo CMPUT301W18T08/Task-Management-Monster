@@ -1,6 +1,9 @@
 package com.example.yanghanwen.taskmanagementmonster;
 
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -21,6 +24,7 @@ public class RegisterActivity extends AppCompatActivity {
 
     private ImageButton saveButton;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +34,10 @@ public class RegisterActivity extends AppCompatActivity {
         emailView = (EditText)findViewById(R.id.profileEmail);
         phoneView = (EditText)findViewById(R.id.profilePhoneNum) ;
         saveButton = (ImageButton)findViewById(R.id.save);
+
+        ActionBar bar = getSupportActionBar();
+
+        bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#000000")));
 
         // use the input data to create a new user
         saveButton.setOnClickListener(new View.OnClickListener() {
