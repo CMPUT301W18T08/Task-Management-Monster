@@ -21,7 +21,7 @@ public class NewTaskModel {
     private ElasticSearch.AddTask addTask;          // elastic search used to add task
 
     private final String username;                  // the username of the task creator
-
+    //public TaskList taskQueue;
     /**
      * Construct a model instance for the NewTaskActivity.
      *
@@ -54,8 +54,9 @@ public class NewTaskModel {
 
             Task task = new Task(this.username, taskname, description);
 
-            addTask.execute(task);
-
+            //addTask.execute(task);
+            TaskList.getInstance().getTasks().add(task);
+            Log.d("now the task is ","Value" + TaskList.getInstance().getTasks().get(0));
             Log.d("message", "task successfully created");
 
             // create new task

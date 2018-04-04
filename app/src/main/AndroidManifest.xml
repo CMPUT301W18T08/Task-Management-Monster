@@ -28,6 +28,7 @@
         <activity android:name=".SearchActivity" />
         <activity android:name=".MyTaskActivity" />
         <activity android:name=".EditprofileActivity"></activity>
+        <service android:name=".TaskIntentService"/>
     </application>
 
 </manifest>

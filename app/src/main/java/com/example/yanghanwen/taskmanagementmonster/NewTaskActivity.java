@@ -1,9 +1,12 @@
 package com.example.yanghanwen.taskmanagementmonster;
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 /**
  * activity of creating new task
@@ -24,6 +27,9 @@ public class NewTaskActivity extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_task);
+        Intent intentService = new Intent(getApplicationContext(),TaskIntentService.class);
+        startService(intentService);
+
 
         // create model for this activity
         newTaskModel = new NewTaskModel ();
@@ -42,6 +48,10 @@ public class NewTaskActivity extends Activity {
                 String description = editDescription.getText().toString();
 
                 newTaskModel.createNewTask(taskname, description);
+                Log.d("task","Value" + TaskList.getInstance().getTasks());
+
+
+;
 
                 finish();
             }

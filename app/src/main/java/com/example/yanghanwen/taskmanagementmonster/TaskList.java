@@ -7,12 +7,22 @@ import java.util.ArrayList;
  */
 
 public class TaskList {
-    private ArrayList<Task>tasks = new ArrayList<Task>();
+    private ArrayList<Task>tasks;
+    public ArrayList<Task>getTasks(){
+        return tasks;
+    }
+    private static TaskList ourInstance = new TaskList();
 
-    public TaskList(){
-
+    public static TaskList getInstance(){
+        return ourInstance;
+    }
+    private TaskList(){
+        tasks = new ArrayList<Task>();
     }
 
+
+
+/**
     public Task getTask(int i){
         return tasks.get(i);
     }
@@ -26,4 +36,5 @@ public class TaskList {
     public void delete(Task task){
         tasks.remove(task);
     }
+ */
 }
