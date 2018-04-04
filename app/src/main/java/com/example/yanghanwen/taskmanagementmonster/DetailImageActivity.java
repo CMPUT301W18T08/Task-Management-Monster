@@ -15,18 +15,24 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.io.InputStream;
+import java.util.ArrayList;
 
 public class DetailImageActivity extends AppCompatActivity {
 
-    private ImageView imageView;
+    /*
+    private Bitmap imageMap;
+    */
+
+    private String mode;
+    private int position;
+
+    private static final int PICK_IMAGE = 100;
 
     private Button selectButton;
     private Button storeButton;
     private Button deleteButton;
 
-    private int mode;
-
-    private static final int PICK_IMAGE = 100;
+    private ImageView imageView;
 
     private Bitmap imageMap;
 
@@ -46,7 +52,8 @@ public class DetailImageActivity extends AppCompatActivity {
             finish();
         }
 
-        mode = extras.getInt("mode");
+        mode = extras.getString("mode");
+        position = extras.getInt("position");
 
         imageView = (ImageView) findViewById(R.id.detialImageView);
 
@@ -68,7 +75,7 @@ public class DetailImageActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                storeBitmap();
+                storeImage();
             }
         });
 
@@ -76,67 +83,57 @@ public class DetailImageActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                deleteBitmap();
+                deleteImage();
             }
         });
 
+
     }
 
-    // https://www.youtube.com/watch?v=OPnusBmMQTw
-    // 2018/03/26
-    private void openGallery() {
+    private void initialize() {
 
-        Intent gallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
-        startActivityForResult(gallery, PICK_IMAGE);
-    }
+        if (mode.equals("new")) {
 
-    private void initialize () {
+            deleteButton.setVisibility(View.GONE);
+            storeButton.setVisibility(View.GONE);
+        }
 
-        if (mode == 0) {
+        else if (mode.equals("newView")) {
 
-            if (DetailTaskActivity.detailTaskModel.hasImage()) {
-
-                imageMap = DetailTaskActivity.detailTaskModel.getImage();
-                imageView.setImageBitmap(imageMap);
-            }
+            imageMap = NewTaskActivity.newTaskModel.getImage(position);
+            imageView.setImageBitmap(imageMap);
 
             selectButton.setVisibility(View.GONE);
             storeButton.setVisibility(View.GONE);
+        }
+
+        else if (mode.equals("viewOnly")) {
+
+            imageMap = DetailTaskActivity.detailTaskModel.getImage(position);
+            imageView.setImageBitmap(imageMap);
+
+            selectButton.setVisibility(View.GONE);
             deleteButton.setVisibility(View.GONE);
+            storeButton.setVisibility(View.GONE);
         }
 
-        else if (mode == 1) {
+        else if (mode.equals("myTask")) {
 
-            if (NewTaskActivity.newTaskModel.hasBitmap() ) {
-
-                imageMap = NewTaskActivity.newTaskModel.getBitmap();
-                imageView.setImageBitmap(imageMap);
-            }
-
-            else {
-
-                storeButton.setVisibility(View.GONE);
-                deleteButton.setVisibility(View.GONE);
-            }
+            deleteButton.setVisibility(View.GONE);
+            storeButton.setVisibility(View.GONE);
         }
 
-        else if (mode == 2) {
+        else if (mode.equals("myTaskView")) {
 
-            if (DetailTaskActivity.detailTaskModel.hasImage()) {
+            imageMap = DetailTaskActivity.detailTaskModel.getImage(position);
+            imageView.setImageBitmap(imageMap);
 
-                imageMap = DetailTaskActivity.detailTaskModel.getImage();
-                imageView.setImageBitmap(imageMap);
-            }
-
-            else {
-
-                storeButton.setVisibility(View.GONE);
-                deleteButton.setVisibility(View.GONE);
-            }
+            selectButton.setVisibility(View.GONE);
+            storeButton.setVisibility(View.GONE);
         }
     }
 
-    private void storeBitmap() {
+    private void storeImage() {
 
         if (imageMap == null) {
 
@@ -145,33 +142,52 @@ public class DetailImageActivity extends AppCompatActivity {
                     Toast.LENGTH_SHORT).show();
         }
 
-        else if (mode == 1) {
+        else if (mode.equals("new")) {
 
-            NewTaskActivity.newTaskModel.setBitmap(imageMap);
+            NewTaskActivity.newTaskModel.addImage(imageMap);
+
+            Intent returnIntent = new Intent();
+            setResult(Activity.RESULT_OK, returnIntent);
             finish();
         }
 
-        else if (mode == 2) {
+        else if (mode.equals("myTask")) {
 
-            // store the new image to the task
-            DetailTaskActivity.detailTaskModel.setImage(imageMap);
+            DetailTaskActivity.detailTaskModel.addImage(imageMap);
+
+            Intent returnIntent = new Intent();
+            setResult(Activity.RESULT_OK, returnIntent);
             finish();
         }
     }
 
-    private void deleteBitmap() {
+    private void deleteImage() {
 
-        if (mode == 1) {
+        if (mode.equals("newView")) {
 
-            NewTaskActivity.newTaskModel.deleteBitmap();
+            NewTaskActivity.newTaskModel.deleteImage(position);
+
+            Intent returnIntent = new Intent();
+            setResult(Activity.RESULT_OK, returnIntent);
             finish();
         }
 
-        else if (mode == 2) {
+        else if (mode.equals("myTaskView")) {
 
-            DetailTaskActivity.detailTaskModel.deleteImage();
+            DetailTaskActivity.detailTaskModel.deleteImage(position);
+
+            Intent returnIntent = new Intent();
+            setResult(Activity.RESULT_OK, returnIntent);
             finish();
         }
+    }
+
+    // https://www.youtube.com/watch?v=OPnusBmMQTw
+    // 2018/03/26
+    private void openGallery() {
+
+        Intent gallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
+        startActivityForResult(gallery, PICK_IMAGE);
     }
 
     @Override
@@ -192,9 +208,20 @@ public class DetailImageActivity extends AppCompatActivity {
                     InputStream imageStream = getContentResolver().openInputStream(imageUri);
                     imageMap = BitmapFactory.decodeStream(imageStream);
 
-                    imageView.setImageBitmap(imageMap);
+                    int bytecount = imageMap.getByteCount();
 
-                    storeButton.setVisibility(View.VISIBLE);
+                    if (bytecount > 65536) {
+
+                        Toast.makeText(getApplicationContext(),
+                                "Error: image larger than 65536 byte.",
+                                Toast.LENGTH_SHORT).show();
+                    }
+
+                    else {
+
+                        imageView.setImageBitmap(imageMap);
+                        storeButton.setVisibility(View.VISIBLE);
+                    }
                 }
 
                 catch (Exception e) {
@@ -206,6 +233,7 @@ public class DetailImageActivity extends AppCompatActivity {
             }
         }
     }
+
 
 
 }

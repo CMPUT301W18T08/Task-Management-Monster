@@ -18,12 +18,14 @@ import android.widget.Toast;
  */
 public class NewTaskActivity extends Activity {
 
+    // new change -----------------------------------------
+
     public static NewTaskModel newTaskModel; // Model of this activity
+
+    // new change -----------------------------------------
 
     private EditText editTitle;         // EditText of new title
     private EditText editDescription;   // EditText of new description
-
-    //public static final int ADD_IMAGE = 100;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,23 +55,23 @@ public class NewTaskActivity extends Activity {
             }
         });
 
-        // this part is new (1) -----------------------------------------------------------
+        // this part is new  -----------------------------------------------------------
 
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 Intent intent = new Intent(NewTaskActivity.this,
-                        DetailImageActivity.class);
+                        ImageListActivity.class);
 
-                intent.putExtra("mode", 1);
+                intent.putExtra("mode", "new");
 
                 startActivity(intent);
             }
         });
 
+        // this part is new (1) -----------------------------------------------------------
 
     }
-
 
 }

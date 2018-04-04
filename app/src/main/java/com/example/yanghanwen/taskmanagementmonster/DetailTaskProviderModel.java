@@ -369,14 +369,16 @@ public class DetailTaskProviderModel extends DetailTaskModel {
         super.taskUpdate();
     }
 
-    public int getImageMode() {
+    // change
 
-        return 0;
+    public String getImageMode() {
+
+        return "viewOnly";
     }
 
     public int visibilityImageButton() {
 
-        if (super.hasImage()) {
+        if (super.hasImages()) {
 
             return View.VISIBLE;
         }
@@ -386,5 +388,7 @@ public class DetailTaskProviderModel extends DetailTaskModel {
             return View.GONE;
         }
     }
+
+    // change
 
 }

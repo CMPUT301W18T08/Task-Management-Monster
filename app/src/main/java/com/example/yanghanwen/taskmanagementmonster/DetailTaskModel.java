@@ -2,6 +2,7 @@ package com.example.yanghanwen.taskmanagementmonster;
 
 import android.graphics.Bitmap;
 import android.util.Log;
+import android.view.View;
 
 import java.util.ArrayList;
 
@@ -247,11 +248,6 @@ public abstract class DetailTaskModel {
      */
     public abstract void declineButtonAction(String newValue);
 
-    // change
-    public abstract int getImageMode();
-    public abstract int visibilityImageButton();
-    // end of change
-
     /**
      * Return the title of the current task
      *
@@ -358,6 +354,53 @@ public abstract class DetailTaskModel {
         addTask.execute(this.task);
     }
 
+    // change
+
+    //public abstract int getImageMode();
+    public abstract int visibilityImageButton();
+    public abstract String getImageMode();
+
+    public Boolean hasImages() {
+
+        return this.task.hasImages();
+    }
+
+    public void deleteAllImages() {
+
+        this.task.deleteAllImages();
+
+        taskUpdate();
+    }
+
+    public ArrayList<String> getImageMessages() {
+
+        return task.getImageMessages();
+    }
+
+    public Bitmap getImage(int position) {
+
+        return this.task.getImage(position);
+    }
+
+    public void addImage(Bitmap imageMap) {
+
+        this.task.addImage(imageMap);
+
+        taskUpdate();
+    }
+
+    public void deleteImage(int position) {
+
+        this.task.deleteImage(position);
+
+        taskUpdate();
+    }
+
+    // end of change
+
+
+    // new change -----------------------------------------
+    /*
     public Boolean hasImage() {
 
         return task.hasImageMap();
@@ -383,5 +426,7 @@ public abstract class DetailTaskModel {
         // use elastic search to update the old task
         taskUpdate();
     }
+    */
+    // new change -----------------------------------------
 
 }

@@ -21,7 +21,11 @@ public class DetailTaskActivity extends AppCompatActivity {
 
     int mode;   // the input mode
 
+    // new change -----------------------------------------
+
     public static DetailTaskModel detailTaskModel;    // model for this activity
+
+    // new change -----------------------------------------
 
     public static final int DETAIL_BID = 1;     // requesCode of result return from bid activity
 
@@ -235,12 +239,13 @@ public class DetailTaskActivity extends AppCompatActivity {
             }
         });
 
+
         imageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
                 Intent intent = new Intent(DetailTaskActivity.this,
-                        DetailImageActivity.class);
+                        ImageListActivity.class);
 
                 intent.putExtra("mode", detailTaskModel.getImageMode() );
 

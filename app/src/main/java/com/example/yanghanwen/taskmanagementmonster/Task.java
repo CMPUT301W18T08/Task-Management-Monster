@@ -1,7 +1,10 @@
 package com.example.yanghanwen.taskmanagementmonster;
 
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Base64;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
 /**
@@ -22,7 +25,10 @@ public class Task {
     private String status;          // current status of the task
     private String description;     // description of the task
     private ArrayList<Bid> bids;    // list of all bids on this task
-    private Bitmap imageMap;
+    private ArrayList<String> imagesBase64;
+
+    //private ArrayList<Bitmap> images;
+     //private ArrayList<byte[]> images;
 
      /**
       * Create an empty task object.
@@ -52,7 +58,7 @@ public class Task {
         // initialize the list of bids object
         bids = new ArrayList<Bid>();
 
-        imageMap = null;
+        imagesBase64 = new ArrayList<String>();
     }
 
      /**
@@ -358,31 +364,103 @@ public class Task {
         return username + "\n" + taskname + "\n" + description + "\n" + status + "\n" + bids;
     }
 
-    public void setImageMap(Bitmap bitmap) {
+    public void setImagesBase64(ArrayList<String> imagesBase64) {
 
-        this.imageMap = bitmap;
+        this.imagesBase64 = new ArrayList<String>(imagesBase64);
     }
 
-    public Bitmap getImageMap() {
+    public ArrayList<String> getImageMessages () {
 
-        return this.imageMap;
+        int i = this.imagesBase64.size();
+        int j = 0;
+
+        ArrayList<String> messages = new ArrayList<String>();
+
+        while (j < i) {
+
+            messages.add("Images " + (j + 1));
+
+            j = j + 1;
+        }
+
+        return messages;
     }
 
-    public void deleteImageMap() {
+    public void deleteAllImages() {
 
-        this.imageMap = null;
+        this.imagesBase64 = new ArrayList<String>();
     }
 
-     public Boolean hasImageMap() {
+    public void addImage(Bitmap imageMap) {
 
-         if (this.imageMap == null) {
+        byte[] imageByteArray = BitmapToByteArray(imageMap);
+        String imageBase64 = byteArrayToBase64(imageByteArray);
 
-             return Boolean.FALSE;
-         }
-         else {
+        this.imagesBase64.add(imageBase64);
+    }
 
-             return Boolean.TRUE;
-         }
-     }
+    public Bitmap getImage(int position) {
+
+        String imageBase64 = this.imagesBase64.get(position);
+
+        byte[] imageByteArray = Base64ToByteArray(imageBase64);
+        Bitmap imageMap = byteArrayToBitmap(imageByteArray);
+
+        return imageMap;
+    }
+
+    public void deleteImage(int position) {
+
+        this.imagesBase64.remove(position);
+    }
+
+    private byte[] BitmapToByteArray(Bitmap imageMap) {
+
+        // https://stackoverflow.com/questions/13758560/android-bitmap-to-byte-array-and-back-skimagedecoderfactory-returned-null
+        // 2018-4-3
+        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        imageMap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+        byte[] byteArray = stream.toByteArray();
+
+        return byteArray;
+    }
+
+    private String byteArrayToBase64(byte[] imageByteArray) {
+
+        // https://stackoverflow.com/questions/13562429/how-many-ways-to-convert-bitmap-to-string-and-vice-versa
+        // 2018-4-4
+        String imageBase64 = Base64.encodeToString(imageByteArray, Base64.NO_WRAP);
+
+        return imageBase64;
+    }
+
+    private Bitmap byteArrayToBitmap(byte[] imageByteArray) {
+
+        // https://stackoverflow.com/questions/13562429/how-many-ways-to-convert-bitmap-to-string-and-vice-versa
+        // 2018-4-4
+        Bitmap imagemap = BitmapFactory.decodeByteArray(imageByteArray, 0,
+                imageByteArray.length);
+
+        return imagemap;
+    }
+
+    private byte[] Base64ToByteArray(String imageBase64) {
+
+        // https://stackoverflow.com/questions/13562429/how-many-ways-to-convert-bitmap-to-string-and-vice-versa
+        // 2018-4-4
+        byte[] imageByteArray = Base64.decode(imageBase64, Base64.DEFAULT);
+
+        return imageByteArray;
+    }
+
+    public Boolean hasImages() {
+
+        return !this.imagesBase64.isEmpty();
+    }
+
+    public ArrayList<String> getImagesBase64() {
+
+        return imagesBase64;
+    }
 
 }

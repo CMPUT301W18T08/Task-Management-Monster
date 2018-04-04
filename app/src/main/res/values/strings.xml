@@ -31,4 +31,6 @@
     <string name="image_button_select">Select Image</string>
     <string name="image_button_store">Store Image</string>
     <string name="image_button_delete">delete Image</string>
+    <string name="image_button_delete_all">delete All Image</string>
+    <string name="image_button_new">Upload New Image</string>
 </resources>

@@ -393,6 +393,10 @@ public class DetailTaskRequestorModel extends DetailTaskModel {
             ElasticSearch.AddTask addTask = new ElasticSearch.AddTask();
 
             Task newTask = new Task(super.username, newValue, super.task.getDescription());
+
+            ArrayList<String> imagesBase64 = super.task.getImagesBase64();
+            newTask.setImagesBase64(imagesBase64);
+
             addTask.execute(newTask);
 
             super.task = newTask;
@@ -458,15 +462,19 @@ public class DetailTaskRequestorModel extends DetailTaskModel {
         status = super.getStatus();
     }
 
-    public int getImageMode() {
+
+    // change
+
+    public String getImageMode() {
 
         if (status.equals("requested")) {
 
-            return 2;
+            return "myTask";
         }
+
         else {
 
-            return 0;
+            return "viewOnly";
         }
     }
 
@@ -477,7 +485,7 @@ public class DetailTaskRequestorModel extends DetailTaskModel {
             return View.VISIBLE;
         }
 
-        else if (super.hasImage()) {
+        else if (super.hasImages()) {
 
             return View.VISIBLE;
         }
@@ -487,5 +495,6 @@ public class DetailTaskRequestorModel extends DetailTaskModel {
             return View.GONE;
         }
     }
+
 
 }

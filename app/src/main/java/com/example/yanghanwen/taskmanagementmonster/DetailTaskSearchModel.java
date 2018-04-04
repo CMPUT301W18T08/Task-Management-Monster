@@ -343,6 +343,29 @@ public class DetailTaskSearchModel extends DetailTaskModel {
         userBidded = Boolean.FALSE;
     }
 
+    // change
+
+    public String getImageMode() {
+
+        return "viewOnly";
+    }
+
+    public int visibilityImageButton() {
+
+        if (super.hasImages()) {
+
+            return View.VISIBLE;
+        }
+
+        else {
+
+            return View.GONE;
+        }
+    }
+
+    // change
+
+    /*
     public int getImageMode() {
 
         return 0;
@@ -360,5 +383,6 @@ public class DetailTaskSearchModel extends DetailTaskModel {
             return View.GONE;
         }
     }
+    */
 
 }
