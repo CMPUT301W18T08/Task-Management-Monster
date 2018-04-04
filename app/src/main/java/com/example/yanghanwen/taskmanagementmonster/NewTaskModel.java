@@ -46,17 +46,21 @@ public class NewTaskModel {
 
         if (existTask(taskname)) {
 
-            Log.d("message", "task already exist");
+            Log.d("message", "sstask already exist");
 
             // if the task already exist, don't create it
         }
         else {
-
+            Log.i("create ","create new task");
             Task task = new Task(this.username, taskname, description);
 
             //addTask.execute(task);
             TaskList.getInstance().getTasks().add(task);
-            Log.d("now the task is ","Value" + TaskList.getInstance().getTasks().get(0));
+            try {
+                Log.d("now the task is ", "Value" + TaskList.getInstance().getTasks().get(1));
+            }catch (Exception e){
+                Log.d("the 2nd task is","Value"+ TaskList.getInstance().getTasks().get(0));
+            }
             Log.d("message", "task successfully created");
 
             // create new task

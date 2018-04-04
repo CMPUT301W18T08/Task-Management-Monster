@@ -22,13 +22,13 @@ public class NewTaskActivity extends Activity {
     private EditText editDescription;   // EditText of new description
 
     private Button createButton;        // create Task button
+    private ConnectionCheck connectionCheck;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_task);
-        Intent intentService = new Intent(getApplicationContext(),TaskIntentService.class);
-        startService(intentService);
+
 
 
         // create model for this activity
@@ -43,12 +43,17 @@ public class NewTaskActivity extends Activity {
         createButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                if(!(connectionCheck.isNetWorkAvailable(getApplicationContext()))){
+                    Toast.makeText(getApplicationContext(),"Oops,data will upload once connected",
+                            Toast.LENGTH_LONG).show();
+                }
                 String taskname = editTitle.getText().toString();
                 String description = editDescription.getText().toString();
 
                 newTaskModel.createNewTask(taskname, description);
-                Log.d("task","Value" + TaskList.getInstance().getTasks());
+                Intent intentService = new Intent(getApplicationContext(),TaskIntentService.class);
+                startService(intentService);
+
 
 
 ;

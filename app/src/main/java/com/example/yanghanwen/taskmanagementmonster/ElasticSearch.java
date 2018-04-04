@@ -170,12 +170,14 @@ public class ElasticSearch {
             try {
                 JestResult result = client.execute(get);
                 task = result.getSourceAsObject(Task.class);
+
             } catch (Exception e) {
                 Log.i("Error", e.toString());
+                Log.d("what is in the task",""+task);
                 Log.i("fjaijfi","fjjfjfjfjjfjfffffff");
             }
 
-            if (task == null) {
+            if (task.getTaskname() == null) {
                 return false;
             }
 
