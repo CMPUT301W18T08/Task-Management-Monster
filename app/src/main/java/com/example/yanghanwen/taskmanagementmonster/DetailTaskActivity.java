@@ -2,6 +2,7 @@ package com.example.yanghanwen.taskmanagementmonster;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -123,7 +124,7 @@ public class DetailTaskActivity extends AppCompatActivity {
 
                 //
                 else if (mode == 2) {
-
+                    Log.i("mode=2","mode=2");
                     String textBid = editBid.getText().toString();
                     detailTaskModel.changeButtonAction(textBid);
 
@@ -132,7 +133,7 @@ public class DetailTaskActivity extends AppCompatActivity {
 
                 //
                 else if (mode == 3) {
-
+                    Log.i("mode=3","mode=3");
                     // requester modeify his task title
                     String textTitle = editTitle.getText().toString();
                     detailTaskModel.changeButtonAction(textTitle);
@@ -164,6 +165,7 @@ public class DetailTaskActivity extends AppCompatActivity {
                 }
 
                 else if (mode == 3) {
+                    Log.i("modified description","3");
 
                     // provider modify his task description
                     String textDescription = editDescription.getText().toString();

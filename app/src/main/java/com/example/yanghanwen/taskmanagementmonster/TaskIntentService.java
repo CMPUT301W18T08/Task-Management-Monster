@@ -25,8 +25,6 @@ public class TaskIntentService extends IntentService{
     private String title;
     private Task mTask;
 
-
-
     public TaskIntentService(){
         super("TaskIntentService");
     }
