@@ -5,6 +5,8 @@ import android.content.Intent;
 import android.content.IntentSender;
 import android.support.annotation.Nullable;
 
+import com.sun.source.util.TaskListener;
+
 /**
  * Created by songxixuan on 2018-04-03.
  */
@@ -22,10 +24,13 @@ public class TaskIntentService extends IntentService {
     protected void onHandleIntent(@Nullable Intent intent){
         while (true) {
             if (connectionCheck.isNetWorkAvailable(getApplicationContext())){
-                for (Task task : TaskList.getTasks()){
-                    addTask.execute(task);
+                if (TaskListt.getInstance().getTasks().size().equal(0)) {
+                    break;
                 }
-                break;
+
+                addTask.execute(TaskList.getInstance().getTasks().get(0));
+                TaskListt.getInstance().getTasks().remove(0);
+
             }
         }
     }
