@@ -44,15 +44,17 @@ public class SearchActivity extends AppCompatActivity {
 
     private ListView listView;
     private EditText editText;
-    private Button button;
+    //private Button button;
+    private Button search_button;
     private FloatingActionButton discover;
+    private ArrayList<Task> tasks = new ArrayList<>();
 
     private long firstPressed;
 
     public ArrayList<Task> taskList = new ArrayList<>();
     public ArrayList<Task> allTaskList = new ArrayList<>();
     public ArrayAdapter<Task> adapter;
-    ArrayList<Task> tasks = new ArrayList<>();
+    //ArrayList<Task> tasks = new ArrayList<>();
 
     /**
      * Firstly executed when code starts going
@@ -74,30 +76,31 @@ public class SearchActivity extends AppCompatActivity {
 
         listView = (ListView) findViewById(R.id.Search_result);
         editText = (EditText) findViewById(R.id.discover_search);
-        button = (Button) findViewById(R.id.recover_button);
+        //button = (Button) findViewById(R.id.recover_button);
+        search_button = (Button)findViewById(R.id.search);
         String keyWord = editText.getText().toString();
 
         Task task_test = new Task();
         ElasticSearch.GetTask getTask = new ElasticSearch.GetTask();
-        ElasticSearch.GetTasks getTasks = new ElasticSearch.GetTasks();
+        //ElasticSearch.GetTasks getTasks = new ElasticSearch.GetTasks();
         ElasticSearch.IsExistTask isExistTask = new ElasticSearch.IsExistTask();
 
         //getting tasks from elasticsearch server
-        String qUsername = "";
-
-        getTasks.execute(qUsername);
-
-
-        try {
-            tasks = getTasks.get();
-            Log.i("getting something new", tasks.toString());
-        } catch(Exception e) {
-            Log.d("test!!!!!!!!!!", "something wrong");
-        }
+//        String qUsername = "";
+//
+//        getTasks.execute(qUsername);
+//
+//
+//        try {
+//            tasks = getTasks.get();
+//            Log.i("getting something new", tasks.toString());
+//        } catch(Exception e) {
+//            Log.d("test!!!!!!!!!!", "something wrong");
+//        }
 
         //hiding keyboard from popping up
         //which could be annoying
-        initList();
+        //initList();
 
         InputMethodManager imm = (InputMethodManager) this.getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(editText.getWindowToken(), 0);
@@ -113,65 +116,74 @@ public class SearchActivity extends AppCompatActivity {
             }
         });
 
-        editText.addTextChangedListener(new TextWatcher() {
-
-            /**
-             * Constructing a edittext listener
-             * to track changes of text, when user
-             * starts to enter keyword, the program
-             * starts to search
-             *
-             *
-             * @param charSequence
-             * @param i
-             * @param i1
-             * @param i2
-             */
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                TaskSearch();
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                TaskSearch();
-            }
-
-            /**
-             * after text changes do searching again
-             * to make it faster
-             *
-             *
-             * @param editable
-             */
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                TaskSearch();
-
-            }
-        });
-
-        button.setOnClickListener(new View.OnClickListener() {
-
-            /**
-             * setting recover all button action
-             * when button is clicked, recover all elements
-             * that had been removed to let user do multiple
-             * times of search
-             *
-             *
-             * @param view
-             */
+        search_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                adapter.clear();
-                for(int j = 0; j < allTaskList.size(); j++) {
-                    taskList.add(allTaskList.get(j));
-                }
+                TaskSearch();
                 adapter.notifyDataSetChanged();
             }
         });
+
+//        editText.addTextChangedListener(new TextWatcher() {
+//
+//            /**
+//             * Constructing a edittext listener
+//             * to track changes of text, when user
+//             * starts to enter keyword, the program
+//             * starts to search
+//             *
+//             *
+//             * @param charSequence
+//             * @param i
+//             * @param i1
+//             * @param i2
+//             */
+//            @Override
+//            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+//                TaskSearch();
+//            }
+//
+//            @Override
+//            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+//                TaskSearch();
+//            }
+//
+//            /**
+//             * after text changes do searching again
+//             * to make it faster
+//             *
+//             *
+//             * @param editable
+//             */
+//
+//            @Override
+//            public void afterTextChanged(Editable editable) {
+//                TaskSearch();
+//
+//            }
+//        });
+
+//        button.setOnClickListener(new View.OnClickListener() {
+//
+//            /**
+//             * setting recover all button action
+//             * when button is clicked, recover all elements
+//             * that had been removed to let user do multiple
+//             * times of search
+//             *
+//             *
+//             * @param view
+//             */
+//            @Override
+//            public void onClick(View view) {
+//                adapter.clear();
+//                for(int j = 0; j < allTaskList.size(); j++) {
+//                    taskList.add(allTaskList.get(j));
+//                }
+//                adapter.notifyDataSetChanged();
+//            }
+//        });
+
 
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -247,11 +259,11 @@ public class SearchActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         //super.onBackPressed();
-        adapter.clear();
-        for(int j = 0; j < allTaskList.size(); j++) {
-            taskList.add(allTaskList.get(j));
-        }
-        adapter.notifyDataSetChanged();
+//        adapter.clear();
+//        for(int j = 0; j < allTaskList.size(); j++) {
+//            taskList.add(allTaskList.get(j));
+//        }
+//        adapter.notifyDataSetChanged();
 
         if(System.currentTimeMillis() - firstPressed < 3000) {
             super.onBackPressed();
@@ -267,12 +279,60 @@ public class SearchActivity extends AppCompatActivity {
      */
     public void TaskSearch() {
         String keyWord = editText.getText().toString();
-        for(int i = 0; i < taskList.size(); i++) {
-            if(!(taskList.get(i).getUsername().toLowerCase().contains(keyWord.toLowerCase()))) {
-                taskList.remove(taskList.get(i));
+        /**
+         * '{
+         "query": {
+         "match": {
+         "content": {
+         "query": "中国世界",
+         "operator": "and"
+         }
+         }
+         }
+         }'
+
+         作者：木鸟飞鱼
+         链接：https://www.jianshu.com/p/eb30eee13923
+         來源：简书
+         著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
+         */
+        String searchQuery = "{\"query\" : {\"match\" : { \"taskname\" : {\"query\": \""+keyWord+"\", \"operator\": \""+ "and" +"\"}}}}";
+        ElasticSearch.GetTasks getTasks = new ElasticSearch.GetTasks();
+        getTasks.execute(searchQuery);
+
+
+        try {
+            taskList = getTasks.get();
+            Log.i("getting something new", taskList.toString());
+        } catch(Exception e) {
+            Log.d("test!!!!!!!!!!", "something wrong");
+        }
+
+        String searchQuery2 = "{\"query\" : {\"match\" : { \"description\" : {\"query\": \""+keyWord+"\", \"operator\": \""+ "and" +"\"}}}}";
+        ElasticSearch.GetTasks getTasks2 = new ElasticSearch.GetTasks();
+        getTasks2.execute(searchQuery2);
+
+        try {
+            tasks = getTasks2.get();
+            Log.i("getting something new", tasks.toString());
+        } catch(Exception e) {
+            Log.d("test!!!!!!!!!!", "something wrong");
+        }
+        /**
+         * for (Object x : two){
+         if (!one.contains(x))
+         one.add(x);
+         }
+         */
+
+        for (Task task: tasks) {
+            if (!taskList.contains(task)) {
+                taskList.add(task);
             }
         }
-        adapter.notifyDataSetChanged();
+        adapter = new ArrayAdapter<Task>(this, android.R.layout.simple_list_item_1,taskList);
+        listView.setAdapter(adapter);
+
     }
 
     /**
@@ -280,19 +340,19 @@ public class SearchActivity extends AppCompatActivity {
      * meanwhile add all same tasks to allTaskList for
      * recovering purpose
      */
-    public void initList() {
-
-        for(int k = 0; k < tasks.size(); k++) {
-            taskList.add(tasks.get(k));
-        }
-
-        for(int i = 0; i < taskList.size(); i++) {
-            allTaskList.add(taskList.get(i));
-        }
-
-        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, taskList);
-        listView.setAdapter(adapter);
-    }
+//    public void initList() {
+//
+////        for(int k = 0; k < tasks.size(); k++) {
+////            taskList.add(tasks.get(k));
+////        }
+////
+////        for(int i = 0; i < taskList.size(); i++) {
+////            allTaskList.add(taskList.get(i));
+////        }
+//
+//        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, taskList);
+//        listView.setAdapter(adapter);
+//    }
 
     /**
      * Initializing filter menu

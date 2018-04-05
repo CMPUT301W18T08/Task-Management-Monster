@@ -253,7 +253,7 @@ public class ElasticSearch {
             verifySettings();
 
             for (Task task : tasks) {
-                Delete delete = new Delete.Builder(task.getUsername() + task.getTaskname())
+                Delete delete = new Delete.Builder(task.getUsername()+task.getTaskname())
                         .index("cmput301w18t08").type("task").build();
 
                 try {
@@ -296,7 +296,7 @@ public class ElasticSearch {
                     tasks.addAll(foundtasks);
                 }
                 else {
-                    Log.i("Error", "The search query failed to find any tweets that matched");
+                    Log.i("Error", "The search query failed to find any tasks that matched");
                 }
             }
             catch (Exception e) {

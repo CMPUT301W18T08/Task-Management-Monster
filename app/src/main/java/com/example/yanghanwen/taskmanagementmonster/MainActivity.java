@@ -155,7 +155,6 @@ public class MainActivity extends AppCompatActivity {
                 break;
 
             case R.id.search_item:
-
                 Intent intent = new Intent(MainActivity.this, SearchActivity.class);
 
                 startActivity(intent);
