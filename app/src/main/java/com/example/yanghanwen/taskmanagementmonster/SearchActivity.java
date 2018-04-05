@@ -22,6 +22,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Filter;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -44,15 +45,17 @@ public class SearchActivity extends AppCompatActivity {
 
     private ListView listView;
     private EditText editText;
-    private Button button;
     private FloatingActionButton discover;
+    private ImageButton search_button;
 
     private long firstPressed;
 
+    public ArrayList<Task> Tmp = new ArrayList<>();
     public ArrayList<Task> taskList = new ArrayList<>();
     public ArrayList<Task> allTaskList = new ArrayList<>();
     public ArrayAdapter<Task> adapter;
     ArrayList<Task> tasks = new ArrayList<>();
+
 
     /**
      * Firstly executed when code starts going
@@ -67,14 +70,14 @@ public class SearchActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search);
+
         ActionBar bar = getSupportActionBar();
 
-        bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#E47833")));
+        bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#00E47833")));
 
 
         listView = (ListView) findViewById(R.id.Search_result);
         editText = (EditText) findViewById(R.id.discover_search);
-        button = (Button) findViewById(R.id.recover_button);
         String keyWord = editText.getText().toString();
 
         Task task_test = new Task();
@@ -82,93 +85,24 @@ public class SearchActivity extends AppCompatActivity {
         ElasticSearch.GetTasks getTasks = new ElasticSearch.GetTasks();
         ElasticSearch.IsExistTask isExistTask = new ElasticSearch.IsExistTask();
 
-        //getting tasks from elasticsearch server
-        String qUsername = "";
-
+        //getting all tasks from elasticsearch server
+        String qUsername = "{\"query\" : {\"match_all\": {} }, \"from\":0, \"size\":1000 }";
         getTasks.execute(qUsername);
 
 
         try {
-            tasks = getTasks.get();
+            Tmp = getTasks.get();
             Log.i("getting something new", tasks.toString());
         } catch(Exception e) {
             Log.d("test!!!!!!!!!!", "something wrong");
         }
 
-        //hiding keyboard from popping up
-        //which could be annoying
-        initList();
 
-        InputMethodManager imm = (InputMethodManager) this.getSystemService(Context.INPUT_METHOD_SERVICE);
-        imm.hideSoftInputFromWindow(editText.getWindowToken(), 0);
-
-        /**
-         * Prevent keyboard from popping up
-         */
-        editText.setOnClickListener(new View.OnClickListener() {
+        search_button = (ImageButton) findViewById(R.id.search_button);
+        search_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-                imm.showSoftInput(editText, InputMethodManager.SHOW_IMPLICIT);
-            }
-        });
-
-        editText.addTextChangedListener(new TextWatcher() {
-
-            /**
-             * Constructing a edittext listener
-             * to track changes of text, when user
-             * starts to enter keyword, the program
-             * starts to search
-             *
-             *
-             * @param charSequence
-             * @param i
-             * @param i1
-             * @param i2
-             */
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 TaskSearch();
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                TaskSearch();
-            }
-
-            /**
-             * after text changes do searching again
-             * to make it faster
-             *
-             *
-             * @param editable
-             */
-
-            @Override
-            public void afterTextChanged(Editable editable) {
-                TaskSearch();
-
-            }
-        });
-
-        button.setOnClickListener(new View.OnClickListener() {
-
-            /**
-             * setting recover all button action
-             * when button is clicked, recover all elements
-             * that had been removed to let user do multiple
-             * times of search
-             *
-             *
-             * @param view
-             */
-            @Override
-            public void onClick(View view) {
-                adapter.clear();
-                for(int j = 0; j < allTaskList.size(); j++) {
-                    taskList.add(allTaskList.get(j));
-                }
                 adapter.notifyDataSetChanged();
             }
         });
@@ -202,6 +136,8 @@ public class SearchActivity extends AppCompatActivity {
         });
     }
 
+
+    //TODO get information from database instead of tasklist
     /**
      * passing an arrayList of coordinates of existing tasks
      */
@@ -211,12 +147,14 @@ public class SearchActivity extends AppCompatActivity {
         ArrayList<String> taskName = new ArrayList<>();
         ArrayList<String> status = new ArrayList<>();
 
-        for (int i = 0; i < taskList.size(); i++) {
+        Log.d(")))))))))))))))))))", Integer.toString(Tmp.size()));
 
-            if (taskList.get(i).getCoordinate() != null) {
-                coor.add(taskList.get(i).getCoordinate());
-                taskName.add(taskList.get(i).getTaskname());
-                status.add(taskList.get(i).getStatus());
+        for (int i = 0; i < Tmp.size(); i++) {
+
+            if (Tmp.get(i).getCoordinate() != null) {
+                coor.add(Tmp.get(i).getCoordinate());
+                taskName.add(Tmp.get(i).getTaskname());
+                status.add(Tmp.get(i).getStatus());
             } else {
                 continue;
             }
@@ -228,6 +166,7 @@ public class SearchActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+
     /**
      * setting backbutton action:
      * press once to recover all elements that had been removed(same functionality as recover button)
@@ -235,12 +174,6 @@ public class SearchActivity extends AppCompatActivity {
      */
     @Override
     public void onBackPressed() {
-        //super.onBackPressed();
-        adapter.clear();
-        for(int j = 0; j < allTaskList.size(); j++) {
-            taskList.add(allTaskList.get(j));
-        }
-        adapter.notifyDataSetChanged();
 
         if(System.currentTimeMillis() - firstPressed < 3000) {
             super.onBackPressed();
@@ -250,38 +183,50 @@ public class SearchActivity extends AppCompatActivity {
         }
     }
 
-    /**
-     * searching task action: remove all
-     * tasks that are unsatisfied
-     */
+
     public void TaskSearch() {
+
         String keyWord = editText.getText().toString();
-        for(int i = 0; i < taskList.size(); i++) {
-            if(!(taskList.get(i).getUsername().toLowerCase().contains(keyWord.toLowerCase()))) {
-                taskList.remove(taskList.get(i));
+
+        String searchQuery = "{\"query\" : {\"match\" : { \"taskname\" : {\"query\": \""+keyWord+"\", \"operator\": \""+ "and" +"\"}}}}";
+        ElasticSearch.GetTasks getTasks = new ElasticSearch.GetTasks();
+        getTasks.execute(searchQuery);
+
+
+        try {
+            taskList = getTasks.get();
+            Log.i("getting something new", taskList.toString());
+        } catch(Exception e) {
+            Log.d("test!!!!!!!!!!", "something wrong");
+        }
+
+        String searchQuery2 = "{\"query\" : {\"match\" : { \"description\" : {\"query\": \""+keyWord+"\", \"operator\": \""+ "and" +"\"}}}}";
+        ElasticSearch.GetTasks getTasks2 = new ElasticSearch.GetTasks();
+        getTasks2.execute(searchQuery2);
+
+        try {
+            tasks = getTasks2.get();
+            Log.i("getting something new", tasks.toString());
+        } catch(Exception e) {
+            Log.d("test!!!!!!!!!!", "something wrong");
+        }
+        /**
+         * for (Object x : two){
+         if (!one.contains(x))
+         one.add(x);
+         }
+         */
+
+        for (Task task: tasks) {
+            if (!taskList.contains(task)) {
+                taskList.add(task);
             }
         }
-        adapter.notifyDataSetChanged();
-    }
-
-    /**
-     * initialize taskList, setting adapter, adding all tasks to listview
-     * meanwhile add all same tasks to allTaskList for
-     * recovering purpose
-     */
-    public void initList() {
-
-        for(int k = 0; k < tasks.size(); k++) {
-            taskList.add(tasks.get(k));
-        }
-
-        for(int i = 0; i < taskList.size(); i++) {
-            allTaskList.add(taskList.get(i));
-        }
-
-        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, taskList);
+        adapter = new ArrayAdapter<Task>(this, android.R.layout.simple_list_item_1,taskList);
         listView.setAdapter(adapter);
+
     }
+
 
     /**
      * Initializing filter menu
@@ -296,6 +241,7 @@ public class SearchActivity extends AppCompatActivity {
         return true;
     }
 
+
     /**
      * Filter action, is able to filter in four different ways:
      * bidded, assigned, requested or done
@@ -306,7 +252,8 @@ public class SearchActivity extends AppCompatActivity {
      */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch(item.getItemId()) {
+
+        switch(item.getItemId()) { // filter by bidded task
             case R.id.item1:
                 int k = 0;
                 while(k < taskList.size()) {
@@ -317,11 +264,12 @@ public class SearchActivity extends AppCompatActivity {
                     adapter.notifyDataSetChanged();
                     k++;
                 }
+                item.setVisible(false);
                 break;
 
             case R.id.item2:
                 int a = 0;
-                while(a < taskList.size()) {
+                while(a < taskList.size()) { // filter by requested task
                     if(!taskList.get(a).getStatus().equals("requested")) {
                         taskList.remove(taskList.get(a));
                         a = -1;
@@ -333,7 +281,7 @@ public class SearchActivity extends AppCompatActivity {
 
             case R.id.item3:
                 int b = 0;
-                while(b < taskList.size()) {
+                while(b < taskList.size()) { // filter by assigned task
                     if(!taskList.get(b).getStatus().equals("assigned")) {
                         taskList.remove(taskList.get(b));
                         b = -1;
@@ -345,7 +293,7 @@ public class SearchActivity extends AppCompatActivity {
 
             case R.id.item4:
                 int c = 0;
-                while(c < taskList.size()) {
+                while(c < taskList.size()) { // filter by done task
                     if(!taskList.get(c).getStatus().equals("done")) {
                         taskList.remove(taskList.get(c));
                         c = -1;
@@ -360,5 +308,6 @@ public class SearchActivity extends AppCompatActivity {
         }
         return true;
     }
-
 }
+
+

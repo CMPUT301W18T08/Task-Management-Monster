@@ -74,6 +74,7 @@ public class NewTaskActivity extends AppCompatActivity {
         createButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 if(mapPlace != null) {
                     String taskname = editTitle.getText().toString();
                     String description = editDescription.getText().toString();

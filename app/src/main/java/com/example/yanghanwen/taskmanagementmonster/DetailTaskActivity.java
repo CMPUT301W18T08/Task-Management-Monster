@@ -3,6 +3,7 @@ package com.example.yanghanwen.taskmanagementmonster;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.media.Image;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -45,7 +47,7 @@ public class DetailTaskActivity extends AppCompatActivity {
 
     private Button changeButton;
     private Button declineButton;
-    private Button findLocation;
+    private ImageButton findLocation;
 
     private ListView listViewBids;
 
@@ -114,7 +116,7 @@ public class DetailTaskActivity extends AppCompatActivity {
         changeButton = (Button) findViewById(R.id.buttonDetail);
         declineButton = (Button) findViewById(R.id.buttonDetail2);
         viewCoordinate = (TextView) findViewById(R.id.coordinateDetail);
-        findLocation = (Button) findViewById(R.id.findLocation);
+        findLocation = (ImageButton) findViewById(R.id.findLocation);
 
         updateView();
 

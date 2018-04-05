@@ -9,6 +9,7 @@ import android.graphics.Color;
 import android.location.Location;
 import android.nfc.Tag;
 import android.support.annotation.NonNull;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
@@ -44,6 +45,7 @@ public class SearchScreenLocationActivity extends FragmentActivity implements On
     private ArrayList<String> status = new ArrayList<>();
     private FusedLocationProviderClient mFusedLocationClient;
     private Location mLastKnownLocation;
+    private ArrayList<String> distanceInMtrs = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,13 +76,13 @@ public class SearchScreenLocationActivity extends FragmentActivity implements On
 
         //TODO add tasks location here
 
-        for(int i = 0; i < getCoor.size(); i++) {
-
-            // Add a marker in current task location and move the camera
-            LatLng TaskLocation = new LatLng(getCoor.get(i).latitude, getCoor.get(i).longitude);
-            mMap.addMarker(new MarkerOptions().position(TaskLocation).title(taskname.get(i)).snippet(status.get(i)));
-            mMap.moveCamera(CameraUpdateFactory.newLatLng(TaskLocation));
-        }
+//        for(int i = 0; i < getCoor.size(); i++) {
+//
+//            // Add a marker in current task location and move the camera
+//            LatLng TaskLocation = new LatLng(getCoor.get(i).latitude, getCoor.get(i).longitude);
+//            mMap.addMarker(new MarkerOptions().position(TaskLocation).title(taskname.get(i)).snippet(status.get(i)));
+//            mMap.moveCamera(CameraUpdateFactory.newLatLng(TaskLocation));
+//        }
 
 
         mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
@@ -126,6 +128,7 @@ public class SearchScreenLocationActivity extends FragmentActivity implements On
     private void setMyLastKnownLocation(){
 
         if(ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+
             mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
             mFusedLocationClient.getLastLocation()
                     .addOnSuccessListener(this, new OnSuccessListener<Location>() {
@@ -137,13 +140,38 @@ public class SearchScreenLocationActivity extends FragmentActivity implements On
                                 // Logic to handle location object
                                 Log.d("Latitude", Double.toString(location.getLatitude()));
                                 Log.d("Lontitude", Double.toString(location.getLongitude()));
+
+                                //add a circle to show a range within 5km
                                 mMap.addCircle(new CircleOptions().center(new LatLng(location.getLatitude(),
-                                        location.getLongitude())).radius(5000).strokeColor(Color.BLUE).fillColor(Color.parseColor("#500084d3")));
+                                        location.getLongitude())).radius(5000).strokeColor(Color.parseColor("#500084d3")).fillColor(Color.parseColor("#500084d3")));
                                 mLastKnownLocation = location;
+
+                                for(int j = 0; j < getCoor.size(); j++) {
+                                    Location loc1 = new Location("");
+                                    loc1.setLatitude(location.getLatitude());
+                                    loc1.setLongitude(location.getLongitude());
+                                    Location loc2 = new Location("");
+                                    loc2.setLatitude(getCoor.get(j).latitude);
+                                    loc2.setLongitude(getCoor.get(j).longitude);
+                                    distanceInMtrs.add(Float.toString(loc1.distanceTo(loc2)));
+                                }
+                                Log.d("****^&%%%^%#$%#@#$#@$#@@@@@@@@@@@@@@@@@", distanceInMtrs.toString());
+
+                                for(int k = 0; k < distanceInMtrs.size(); k++) {
+                                    if(Float.valueOf(distanceInMtrs.get(k)) <= 5000 && (status.get(k).equals("bidded") || status.get(k).equals("requested"))) {
+                                        LatLng nearbyTasks = new LatLng(getCoor.get(k).latitude, getCoor.get(k).longitude);
+                                        mMap.addMarker(new MarkerOptions().position(nearbyTasks).title(taskname.get(k)).snippet(status.get(k)));
+                                        mMap.moveCamera(CameraUpdateFactory.newLatLng(nearbyTasks));
+                                    } else if(Float.valueOf(distanceInMtrs.get(k)) > 5000) {
+                                        LatLng awayTasks = new LatLng(getCoor.get(k).latitude, getCoor.get(k).longitude);
+                                        mMap.addMarker(new MarkerOptions().position(awayTasks).title(taskname.get(k)).snippet(status.get(k)));
+                                        mMap.moveCamera(CameraUpdateFactory.newLatLng(awayTasks));
+                                    }
+                                }
                             }
                         }
 
                     });
-                }
+            }
         }
     }

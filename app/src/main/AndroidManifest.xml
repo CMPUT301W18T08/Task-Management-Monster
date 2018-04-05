@@ -32,44 +32,24 @@
         <activity
             android:name=".MainActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
+
         <activity
             android:name=".NewTaskActivity"
-            android:parentActivityName=".MainActivity"
             android:theme="@style/Theme.AppCompat.NoActionBar">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
         </activity>
+
         <activity android:name=".DetailTaskActivity" />
-        <activity android:name=".DetailBidActivity" />
-        <activity
-            android:name=".RegisterActivity"
-            android:parentActivityName=".LoginActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".LoginActivity" />
-        </activity>
-        <activity
-            android:name=".SearchActivity"
-            android:parentActivityName=".MainActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
-        </activity>
-        <activity
-            android:name=".MyTaskActivity"
-            android:parentActivityName=".MainActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
-        </activity>
-        <activity
-            android:name=".EditprofileActivity"
-            android:parentActivityName=".MainActivity">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value=".MainActivity" />
-        </activity>
+
+        <activity android:name=".DetailBidActivity"/>
+
+        <activity android:name=".RegisterActivity"/>
+
+        <activity android:name=".SearchActivity"/>
+
+        <activity android:name=".MyTaskActivity"/>
+
+        <activity android:name=".EditprofileActivity" />
+
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").

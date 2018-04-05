@@ -20,6 +20,7 @@
         android:layout_marginLeft="55dp"
         android:backgroundTint="#FFFFFF"
         android:textColorHint="#CCCCCC"
+        android:textColor="#FFFFFF"
         />
 
     <EditText
@@ -32,6 +33,7 @@
         android:inputType="textEmailAddress"
         android:backgroundTint="#FFFFFF"
         android:textColorHint="#CCCCCC"
+        android:textColor="#FFFFFF"
         />
 
     <ImageButton
@@ -55,6 +57,7 @@
         android:layout_marginLeft="55dp"
         android:backgroundTint="#FFFFFF"
         android:textColorHint="#CCCCCC"
+        android:textColor="#FFFFFF"
          />
 
 
