@@ -1,20 +1,25 @@
 package com.example.yanghanwen.taskmanagementmonster;
 
 import android.Manifest;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.location.Location;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 import com.example.yanghanwen.taskmanagementmonster.SearchResultActivity;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -23,12 +28,15 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 
 
 public class LocationServiceActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
     private Intent intent;
+    private FusedLocationProviderClient mFusedLocationClient;
+    double latToSend, lngToSend = 0;
 //    private FusedLocationProviderClient mFusedLocationProviderClient;
 
     @Override
@@ -39,7 +47,7 @@ public class LocationServiceActivity extends FragmentActivity implements OnMapRe
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-//        getDeviceLocation();
+        setMyLastKnownLocation();
     }
 
 
@@ -120,5 +128,36 @@ public class LocationServiceActivity extends FragmentActivity implements OnMapRe
             }
         }
 
+    private void setMyLastKnownLocation(){
+
+        if(ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+
+            mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
+            mFusedLocationClient.getLastLocation()
+                    .addOnSuccessListener(this, new OnSuccessListener<Location>() {
+                        @Override
+                        public void onSuccess(Location location) {
+                            // Got last known location. In some rare situations this can be null.
+                            Log.d("TEST@KEVIN", "#####################");
+                            if (location != null) {
+                                // Logic to handle location object
+                                Log.d("Latitude", Double.toString(location.getLatitude()));
+                                Log.d("Lontitude", Double.toString(location.getLongitude()));
+                                latToSend = location.getLatitude();
+                                lngToSend = location.getLongitude();
+                            }
+                        }
+                    });
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent3 = new Intent();
+        intent3.putExtra("latitudeSent", latToSend);
+        intent3.putExtra("longitudeSent", lngToSend);
+        setResult(Activity.RESULT_OK, intent3);
+        finish();
+    }
 }
 

@@ -94,7 +94,7 @@ public class SearchActivity extends AppCompatActivity {
             Tmp = getTasks.get();
             Log.i("getting something new", tasks.toString());
         } catch(Exception e) {
-            Log.d("test!!!!!!!!!!", "something wrong");
+            Log.d("test!!!!!!!!!!", "something went wrong");
         }
 
 
