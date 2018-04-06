@@ -155,7 +155,7 @@ public class MainActivity extends AppCompatActivity {
         usernameView.setText(DrawerUsername);
         emailView.setText(DrawerEmail);
 
-
+        //TODO WOW factor ------------------------------------------------------------------------------
         refreshButton = (Button) findViewById(R.id.refreshing);
         refreshButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -167,6 +167,8 @@ public class MainActivity extends AppCompatActivity {
         recommendedTasks.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                Log.d("test######", Integer.toString(i));
 
                 Task task = recommendedList.get(i);
                 String title = task.getTaskname();
@@ -186,7 +188,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    //TODO WOW factor ------------------------------------------------------------------------------
+
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         switch (requestCode) {
             case REQUEST_CODE_GET:
@@ -231,14 +233,6 @@ public class MainActivity extends AppCompatActivity {
                     adapter.notifyDataSetChanged();
                     Toast.makeText(MainActivity.this, "We found you nearby tasks", Toast.LENGTH_SHORT).show();
                 }
-
-                //refreshButton = (Button) findViewById(R.id.refreshing);
-                //refreshButton.setOnClickListener(new View.OnClickListener() {
-                //    @Override
-                //    public void onClick(View view) {
-                //        adapter.clear();
-                //    }
-                //});
             }
         }
         if(recommendedList.isEmpty()) {

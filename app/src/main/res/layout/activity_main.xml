@@ -1,70 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v4.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/wallpaper_ver2"
+    android:id="@+id/drawer_layout"
+    android:focusable="false"
     >
-
-    <Button
-        android:id="@+id/refreshing"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="15dp"
-        android:layout_marginTop="55dp"
-        android:text="refresh"
-        android:textColor="#AA00FF"
-        android:background="#00FFFFFF"
-        android:focusable="false"
-        />
-
-    <ImageView
-        android:layout_width="35dp"
-        android:layout_height="35dp"
-        android:src="@drawable/icons_8_good_quality"
-        android:layout_marginTop="63dp"
-        android:layout_marginLeft="5dp"
-        android:focusable="false"
-        />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
+        android:orientation="vertical">
 
-        >
-
-
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="AROUND YOUR LOCATION"
-            android:layout_marginTop="65dp"
-            android:layout_marginLeft="45dp"
-            android:textColor="#FF7575"
-            android:textSize="20sp"
-            android:focusable="false"
-            />
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:src="@drawable/icons_8_good_quality"
+                android:layout_marginTop="63dp"
+                android:layout_marginLeft="5dp"
+                android:focusable="false"
+                />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="AROUND YOUR LOCATION"
+                android:layout_marginTop="55dp"
+                android:layout_marginLeft="20dp"
+                android:textColor="#FF7575"
+                android:textSize="20sp"
+                android:focusable="false"
+                />
+
+            <Button
+                android:id="@+id/refreshing"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="55dp"
+                android:text="refresh"
+                android:textColor="#AA00FF"
+                android:background="#00FFFFFF"
+                android:focusable="false"
+                />
+
+        </LinearLayout>
 
         <ListView
             android:id="@+id/recommendedTasklist"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="5dp" />
-
     </LinearLayout>
 
-    <android.support.v4.widget.DrawerLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/drawer_layout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:focusable="false"
-        >
+
 
         <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
             xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -107,7 +106,7 @@
 
         </android.support.design.widget.CoordinatorLayout>
 
-        <android.support.design.widget.NavigationView
+    <android.support.design.widget.NavigationView
             android:id="@+id/nav_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -116,9 +115,9 @@
             app:headerLayout="@layout/nav_header"
             android:focusable="false">
 
-        </android.support.design.widget.NavigationView>
+    </android.support.design.widget.NavigationView>
 
 
-    </android.support.v4.widget.DrawerLayout>
 
-</RelativeLayout>
+</android.support.v4.widget.DrawerLayout>
+
