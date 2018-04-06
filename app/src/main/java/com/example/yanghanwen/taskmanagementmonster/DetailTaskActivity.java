@@ -1,6 +1,8 @@
 package com.example.yanghanwen.taskmanagementmonster;
 
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -272,6 +274,59 @@ public class DetailTaskActivity extends AppCompatActivity {
                 intent.putExtra("amount", bidAmount);
 
                 startActivityForResult(intent, DETAIL_BID);
+            }
+        });
+
+        viewUsername.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                // https://www.youtube.com/watch?v=xPYINCsIQVg
+                // 2018-4-5
+                AlertDialog.Builder mBuilder = new AlertDialog.Builder(DetailTaskActivity.this);
+
+                mBuilder.setTitle("User Contact Information");
+
+                String requesterName = detailTaskModel.getRequester();
+                mBuilder.setMessage(detailTaskModel.getUserInfo(requesterName));
+
+                mBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                    }
+                });
+
+                AlertDialog alertDialog = mBuilder.create();
+                alertDialog.show();
+            }
+        });
+
+        viewBidLowest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if (detailTaskModel.showProvider()) {
+
+                    // https://www.youtube.com/watch?v=xPYINCsIQVg
+                    // 2018-4-5
+                    AlertDialog.Builder mBuilder = new AlertDialog.Builder(DetailTaskActivity.this);
+
+                    mBuilder.setTitle("User Contact Information");
+
+                    String provider = detailTaskModel.getProvider(0);
+                    mBuilder.setMessage(detailTaskModel.getUserInfo(provider));
+
+                    mBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            dialogInterface.dismiss();
+                        }
+                    });
+
+                    AlertDialog alertDialog = mBuilder.create();
+                    alertDialog.show();
+                }
             }
         });
 

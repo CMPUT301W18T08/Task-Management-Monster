@@ -41,12 +41,13 @@
         android:textColor="@android:color/black"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewDetailTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/viewDetailTitle"
+        android:clickable="true"/>
 
     <TextView
         android:id="@+id/viewDetailUser"
         android:layout_width="300dp"
-        android:layout_height="wrap_content"
+        android:layout_height="28dp"
         android:layout_marginStart="16dp"
         android:textColor="@android:color/holo_blue_dark"
         android:textSize="18sp"
@@ -116,7 +117,9 @@
         android:textColor="@android:color/holo_blue_dark"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/detailBidInformation" />
+        app:layout_constraintTop_toBottomOf="@+id/detailBidInformation"
+        android:clickable="true"
+        />
 
     <TextView
         android:id="@+id/detailMyBid"

@@ -496,5 +496,22 @@ public class DetailTaskRequestorModel extends DetailTaskModel {
         }
     }
 
+    public Boolean showProvider() {
+
+        if (status.equals("requested")) {
+
+            return Boolean.FALSE;
+        }
+
+        else if (status.equals("bidded")) {
+
+            return Boolean.FALSE;
+        }
+
+        else {
+
+            return Boolean.TRUE;
+        }
+    }
 
 }

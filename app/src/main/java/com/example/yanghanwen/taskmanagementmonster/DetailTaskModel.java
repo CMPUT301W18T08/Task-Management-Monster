@@ -359,6 +359,7 @@ public abstract class DetailTaskModel {
     //public abstract int getImageMode();
     public abstract int visibilityImageButton();
     public abstract String getImageMode();
+    public abstract Boolean showProvider();
 
     public Boolean hasImages() {
 
@@ -396,37 +397,27 @@ public abstract class DetailTaskModel {
         taskUpdate();
     }
 
+    public String getUserInfo(String username) {
+
+        ElasticSearch.GetUser getUser = new ElasticSearch.GetUser();
+        getUser.execute(username);
+
+        String email = "";
+        String phone = "";
+
+        try {
+            User user = getUser.get();
+
+            email = user.getEmail();
+            phone = user.getPhoneNum();
+        }
+        catch (Exception e) {
+            Log.i("Error", "Fail to connect to server");
+        }
+
+        return username + '\n' + "Email: " + email + '\n' + "Phone: " + phone;
+    }
+
     // end of change
-
-
-    // new change -----------------------------------------
-    /*
-    public Boolean hasImage() {
-
-        return task.hasImageMap();
-    }
-
-    public Bitmap getImage() {
-
-        return this.task.getImageMap();
-    }
-
-    public void setImage(Bitmap imageMap) {
-
-        this.task.setImageMap(imageMap);
-
-        // use elastic search to update the old task
-        taskUpdate();
-    }
-
-    public void deleteImage() {
-
-        this.task.deleteImageMap();
-
-        // use elastic search to update the old task
-        taskUpdate();
-    }
-    */
-    // new change -----------------------------------------
 
 }

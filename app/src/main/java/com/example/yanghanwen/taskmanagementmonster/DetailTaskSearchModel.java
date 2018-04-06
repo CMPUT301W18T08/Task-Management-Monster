@@ -363,6 +363,11 @@ public class DetailTaskSearchModel extends DetailTaskModel {
         }
     }
 
+    public Boolean showProvider() {
+
+        return Boolean.FALSE;
+    }
+
     // change
 
     /*

@@ -15,6 +15,8 @@
     <string name="detail_Description_edit">Enter Modified Description</string>
     <string name="bid_provider">Task Provider</string>
     <string name="bid_amount">Bid Amount</string>
+    <string name="bid_email">Provider Email</string>
+    <string name="bid_phone">provider Phone</string>
     <string name="bid_button_assgin">Assign</string>
     <string name="bid_button_decline">Decline</string>
     <string name="register_phone">Please Enter Phone Number</string>
