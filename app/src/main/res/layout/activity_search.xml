@@ -42,7 +42,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
-        android:layout_marginBottom="150dp"
+        android:layout_marginBottom="400dp"
         android:layout_marginRight="20dp"
         android:clickable="true"
         android:src="@drawable/ic_pin_drop_black_48dp"

@@ -18,6 +18,7 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -74,6 +75,10 @@ public class MainActivity extends AppCompatActivity {
         profileButton = (Button) findViewById(R.id.profileButton);
 
         mdrawerlayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+
+        // change
+        recommendedTasks = (ListView) findViewById(R.id.recommendedTasklist);
+        // change
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -150,9 +155,38 @@ public class MainActivity extends AppCompatActivity {
         usernameView.setText(DrawerUsername);
         emailView.setText(DrawerEmail);
 
+
+        refreshButton = (Button) findViewById(R.id.refreshing);
+        refreshButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                adapter.clear();
+            }
+        });
+
+        recommendedTasks.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                Task task = recommendedList.get(i);
+                String title = task.getTaskname();
+                String requester = task.getUsername();
+
+                Intent intent = new Intent(MainActivity.this,
+                        DetailTaskActivity.class);
+
+                intent.putExtra("mode", 1);
+                intent.putExtra("title", title);
+                intent.putExtra("requester", requester);
+
+                startActivity(intent);
+            }
+        });
+
+
     }
 
-    //TODO WOW factor -------------------------------------------------------------------------------
+    //TODO WOW factor ------------------------------------------------------------------------------
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         switch (requestCode) {
             case REQUEST_CODE_GET:
@@ -166,7 +200,7 @@ public class MainActivity extends AppCompatActivity {
             default:
         }
 
-        recommendedTasks = (ListView) findViewById(R.id.recommendedTasklist);
+        //recommendedTasks = (ListView) findViewById(R.id.recommendedTasklist);
         adapter = new ArrayAdapter<Task>(this, android.R.layout.simple_list_item_1, recommendedList);
         recommendedTasks.setAdapter(adapter);
 
@@ -198,17 +232,17 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "We found you nearby tasks", Toast.LENGTH_SHORT).show();
                 }
 
-                refreshButton = (Button) findViewById(R.id.refreshing);
-                refreshButton.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        recommendedList.clear();
-                    }
-                });
+                //refreshButton = (Button) findViewById(R.id.refreshing);
+                //refreshButton.setOnClickListener(new View.OnClickListener() {
+                //    @Override
+                //    public void onClick(View view) {
+                //        adapter.clear();
+                //    }
+                //});
             }
         }
         if(recommendedList.isEmpty()) {
-            Toast.makeText(MainActivity.this, "There is no nearby tasks around you", Toast.LENGTH_SHORT).show();
+            Toast.makeText(MainActivity.this, "There is no nearby tasks around you within 2km", Toast.LENGTH_SHORT).show();
         }
     }
 

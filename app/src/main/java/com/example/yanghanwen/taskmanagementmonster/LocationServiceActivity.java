@@ -3,10 +3,13 @@ package com.example.yanghanwen.taskmanagementmonster;
 import android.Manifest;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
+import android.location.LocationListener;
+import android.location.LocationManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
@@ -16,6 +19,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+
 import com.example.yanghanwen.taskmanagementmonster.SearchResultActivity;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
@@ -37,6 +41,7 @@ public class LocationServiceActivity extends FragmentActivity implements OnMapRe
     private Intent intent;
     private FusedLocationProviderClient mFusedLocationClient;
     double latToSend, lngToSend = 0;
+    private LocationManager locationManager;
 //    private FusedLocationProviderClient mFusedLocationProviderClient;
 
     @Override
@@ -48,6 +53,7 @@ public class LocationServiceActivity extends FragmentActivity implements OnMapRe
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
         setMyLastKnownLocation();
+
     }
 
 
@@ -55,7 +61,6 @@ public class LocationServiceActivity extends FragmentActivity implements OnMapRe
     public void onMapReady(GoogleMap googleMap) {
 
         intent = getIntent();
-
 
         double LatitudeGet = intent.getDoubleExtra("latitude", 0);
         double LongitudeGet = intent.getDoubleExtra("longitude", 0);
@@ -117,20 +122,19 @@ public class LocationServiceActivity extends FragmentActivity implements OnMapRe
         switch (requestCode) {
 
             case 1:
-                if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED ) {
+                if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
                     mMap.setMyLocationEnabled(true);
-                }
-                else {
+                } else {
                     Toast.makeText(LocationServiceActivity.this, "Permission denied to access your location", Toast.LENGTH_SHORT).show();
                     finish();
                 }
                 break;
-            }
         }
+    }
 
-    private void setMyLastKnownLocation(){
+    private void setMyLastKnownLocation() {
 
-        if(ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
 
             mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
             mFusedLocationClient.getLastLocation()
@@ -151,13 +155,14 @@ public class LocationServiceActivity extends FragmentActivity implements OnMapRe
         }
     }
 
+
     @Override
     public void onBackPressed() {
         Intent intent3 = new Intent();
         intent3.putExtra("latitudeSent", latToSend);
         intent3.putExtra("longitudeSent", lngToSend);
         setResult(Activity.RESULT_OK, intent3);
-        finish();
+        super.onBackPressed();
     }
 }
 
