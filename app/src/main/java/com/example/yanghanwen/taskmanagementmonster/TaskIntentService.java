@@ -41,8 +41,12 @@ public class TaskIntentService extends IntentService{
         iServiceHandler.post(new Runnable() {
             @Override
             public void run() {
-                Toast.makeText(getApplicationContext(),msg,
-                        Toast.LENGTH_SHORT).show();
+                for(int i = 0; i<6;i++){
+
+                    Toast.makeText(getApplicationContext(),msg,
+                            Toast.LENGTH_SHORT).show();
+                }
+
 
             }
         });
@@ -105,9 +109,13 @@ public class TaskIntentService extends IntentService{
                         if(taskExsit(task.getUsername(),task.getTaskname())){
                             Log.i("create a conflict task","conflick task");
                             Log.d("boolean",""+taskExsit(task.getUsername(),task.getTaskname()));
-                            /*for(int i = 0; i < 4; i++){
-                                displayMessage("Oops,task name is conflicted.Please try another one.");
-                            }*/
+                            Log.d("current tilte","value"+task.getTaskname());
+                            title = task.getTaskname();
+                            Log.i("current task name","herrerere");
+                            Log.d("current task name",""+title);
+
+                            displayMessage("Oops," + title + "'s name is conflicted.Please try another one.");
+
 
                         }else{
                             if(taskExsit(task.getUsername(),task.getTaskname())){
@@ -139,8 +147,6 @@ public class TaskIntentService extends IntentService{
 
                         ElasticSearch.AddTask addTask1 = new ElasticSearch.AddTask();
                         addTask1.execute(mTask);
-
-
                     }
                     TaskList.getInstance().getTasks().clear();
                     break;
