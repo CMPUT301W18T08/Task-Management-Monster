@@ -337,4 +337,27 @@ public class DetailTaskProviderModel extends DetailTaskModel {
         super.taskUpdate();
     }
 
+    public String getImageMode() {
+
+        return "viewOnly";
+    }
+
+    public int visibilityImageButton() {
+
+        if (super.hasImages()) {
+
+            return View.VISIBLE;
+        }
+
+        else {
+
+            return View.GONE;
+        }
+    }
+
+    public Boolean showProvider() {
+
+        return Boolean.FALSE;
+    }
+
 }

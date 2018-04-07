@@ -4,6 +4,8 @@ package com.example.yanghanwen.taskmanagementmonster;
  * Created by superfan1995 on 2018-03-13.
  */
 
+import android.util.Log;
+
 /**
  * MVC model for the Detail bid activity, compute and return required data.
  *
@@ -13,6 +15,8 @@ public class DetailBidModel {
 
     private final int position;         // the position of the bid in the ArrayList bids of task
     private final String provider;      // the provider create the bid
+    private String email;
+    private String phone;
     private final String amount;        // the bid amount of bid
 
     /**
@@ -29,6 +33,22 @@ public class DetailBidModel {
         this.position = position;
         this.provider = provider;
         this.amount = amount;
+
+        this.email = "No Information";
+        this.phone = "No Information";
+
+        ElasticSearch.GetUser getUser = new ElasticSearch.GetUser();
+        getUser.execute(provider);
+
+        try {
+            User user = getUser.get();
+
+            this.email = user.getEmail();
+            this.phone = user.getPhoneNum();
+        }
+        catch (Exception e) {
+            Log.i("Error", "Fail to connect to server");
+        }
     }
 
     /**
@@ -59,6 +79,16 @@ public class DetailBidModel {
     public String getAmount() {
 
         return amount;
+    }
+
+    public String getEmail() {
+
+        return email;
+    }
+
+    public String getPhone() {
+
+        return phone;
     }
 
 }

@@ -1,5 +1,7 @@
 package com.example.yanghanwen.taskmanagementmonster;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -27,7 +29,7 @@ public class DetailTaskActivity extends AppCompatActivity {
 
     int mode;   // the input mode
 
-    private DetailTaskModel detailTaskModel;    // model for this activity
+    public static DetailTaskModel detailTaskModel;    // model for this activity
 
     public static final int DETAIL_BID = 1;     // requesCode of result return from bid activity
 
@@ -48,6 +50,7 @@ public class DetailTaskActivity extends AppCompatActivity {
     private Button changeButton;
     private Button declineButton;
     private ImageButton findLocation;
+    private Button imageButton;                 // add this
 
     private ListView listViewBids;
 
@@ -117,6 +120,7 @@ public class DetailTaskActivity extends AppCompatActivity {
         declineButton = (Button) findViewById(R.id.buttonDetail2);
         viewCoordinate = (TextView) findViewById(R.id.coordinateDetail);
         findLocation = (ImageButton) findViewById(R.id.findLocation);
+        imageButton = (Button) findViewById(R.id.detialImagebutton);        // add this
 
         updateView();
 
@@ -226,6 +230,19 @@ public class DetailTaskActivity extends AppCompatActivity {
             }
         });
 
+        imageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(DetailTaskActivity.this,
+                        ImageListActivity.class);
+
+                intent.putExtra("mode", detailTaskModel.getImageMode() );
+
+                startActivity(intent);
+            }
+        });
+
         // if click a item in the ListView
         listViewBids.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -272,6 +289,59 @@ public class DetailTaskActivity extends AppCompatActivity {
                 } else {
                     Toast.makeText(DetailTaskActivity.this, "This task did not specify any location",
                             Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        viewUsername.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                // https://www.youtube.com/watch?v=xPYINCsIQVg
+                // 2018-4-5
+                AlertDialog.Builder mBuilder = new AlertDialog.Builder(DetailTaskActivity.this);
+
+                mBuilder.setTitle("User Contact Information");
+
+                String requesterName = detailTaskModel.getRequester();
+                mBuilder.setMessage(detailTaskModel.getUserInfo(requesterName));
+
+                mBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                    }
+                });
+
+                AlertDialog alertDialog = mBuilder.create();
+                alertDialog.show();
+            }
+        });
+
+        viewBidLowest.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if (detailTaskModel.showProvider()) {
+
+                    // https://www.youtube.com/watch?v=xPYINCsIQVg
+                    // 2018-4-5
+                    AlertDialog.Builder mBuilder = new AlertDialog.Builder(DetailTaskActivity.this);
+
+                    mBuilder.setTitle("User Contact Information");
+
+                    String provider = detailTaskModel.getProvider(0);
+                    mBuilder.setMessage(detailTaskModel.getUserInfo(provider));
+
+                    mBuilder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            dialogInterface.dismiss();
+                        }
+                    });
+
+                    AlertDialog alertDialog = mBuilder.create();
+                    alertDialog.show();
                 }
             }
         });

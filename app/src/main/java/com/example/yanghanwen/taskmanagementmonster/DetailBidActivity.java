@@ -23,6 +23,8 @@ public class DetailBidActivity extends AppCompatActivity {
     private DetailBidModel detailBidModel;  // the model of this activity
 
     TextView viewProvider;  // TextView of provider's username
+    TextView viewEmail;
+    TextView viewPhone;
     TextView viewAmount;    // TextView of provider's bidded amount
 
     Button assignButton;    // Button of assign the task to this bid
@@ -56,6 +58,8 @@ public class DetailBidActivity extends AppCompatActivity {
 
         // set the TextView and button for control
         viewProvider = (TextView) findViewById(R.id.viewBidProvider);
+        viewEmail = (TextView) findViewById(R.id.viewBidEmail);
+        viewPhone = (TextView) findViewById(R.id.viewBidPhone);
         viewAmount = (TextView) findViewById(R.id.viewBidAmount);
 
         assignButton = (Button) findViewById(R.id.bidAssignButton);
@@ -63,6 +67,8 @@ public class DetailBidActivity extends AppCompatActivity {
 
         // Show the value on the TextView
         viewProvider.setText( detailBidModel.getProvider() );
+        viewEmail.setText( detailBidModel.getEmail() );
+        viewPhone.setText( detailBidModel.getPhone() );
         viewAmount.setText( detailBidModel.getAmount() );
 
         // assigned button clicked, return the result mode as 1 and position of bid

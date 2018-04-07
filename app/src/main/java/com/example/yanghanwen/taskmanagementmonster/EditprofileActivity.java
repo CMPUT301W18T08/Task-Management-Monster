@@ -2,11 +2,15 @@ package com.example.yanghanwen.taskmanagementmonster;
 
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 /**
@@ -20,7 +24,7 @@ public class EditprofileActivity extends AppCompatActivity {
     private EditText emailEdit;         // EditView of email
     private EditText phoneNumEdit;      // EditView of phone num
 
-    private Button changeButton;        // the button to change information
+    private ImageButton changeButton;        // the button to change information
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +36,7 @@ public class EditprofileActivity extends AppCompatActivity {
         emailEdit = (EditText) findViewById(R.id.profileEmail);
         phoneNumEdit = (EditText) findViewById(R.id.profilePhoneNum);
 
-        changeButton = (Button) findViewById(R.id.profileEditButton);
+        changeButton = (ImageButton) findViewById(R.id.profileEditButton);
 
         String username = MainActivity.mainModel.getUsername();
         String email = MainActivity.mainModel.getEmail();
@@ -41,6 +45,10 @@ public class EditprofileActivity extends AppCompatActivity {
         nameView.setText(username);
         emailEdit.setText(email);
         phoneNumEdit.setText(phoneNum);
+
+        ActionBar bar = getSupportActionBar();
+
+        bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#E47833")));
 
         // if change button clicked, update the user information
         changeButton.setOnClickListener(new View.OnClickListener() {

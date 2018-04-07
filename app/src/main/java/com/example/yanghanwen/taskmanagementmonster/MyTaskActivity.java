@@ -1,9 +1,6 @@
 package com.example.yanghanwen.taskmanagementmonster;
 
 import android.content.Intent;
-import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -80,10 +77,6 @@ public class MyTaskActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my_task);
-
-        ActionBar bar = getSupportActionBar();
-
-        bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#E47833")));
 
         // initial all listview
         requesterBiddingListView = findViewById(R.id.requesterBiddingListView);

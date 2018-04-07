@@ -390,10 +390,13 @@ public class DetailTaskRequestorModel extends DetailTaskModel {
             ElasticSearch.DeleteTask deleteTask = new ElasticSearch.DeleteTask();
             deleteTask.execute(super.task);
 
-            ElasticSearch.AddTask addTask = new ElasticSearch.AddTask();
-
             Task newTask = new Task(super.username, newValue, super.task.getDescription(),
                     super.task.getCoordinate());
+
+            ArrayList<String> imagesBase64 = super.task.getImagesBase64();
+            newTask.setImagesBase64(imagesBase64);
+
+            ElasticSearch.AddTask addTask = new ElasticSearch.AddTask();
             addTask.execute(newTask);
 
             super.task = newTask;
@@ -457,6 +460,56 @@ public class DetailTaskRequestorModel extends DetailTaskModel {
         super.assignBid(position);
 
         status = super.getStatus();
+    }
+
+    public String getImageMode() {
+
+        if (status.equals("requested")) {
+
+            return "myTask";
+        }
+
+        else {
+
+            return "viewOnly";
+        }
+    }
+
+    public int visibilityImageButton() {
+
+        if (status.equals("requested")) {
+
+            return View.VISIBLE;
+        }
+
+        else if (super.hasImages()) {
+
+            return View.VISIBLE;
+        }
+
+        else {
+
+            return View.GONE;
+        }
+    }
+
+
+    public Boolean showProvider() {
+
+        if (status.equals("requested")) {
+
+            return Boolean.FALSE;
+        }
+
+        else if (status.equals("bidded")) {
+
+            return Boolean.FALSE;
+        }
+
+        else {
+
+            return Boolean.TRUE;
+        }
     }
 
 }

@@ -40,7 +40,7 @@ import com.google.android.gms.maps.model.LatLng;
 
 public class NewTaskActivity extends AppCompatActivity {
 
-    private NewTaskModel newTaskModel; // Model of this activity
+    public static NewTaskModel newTaskModel; // Model of this activity
     private EditText editTitle;         // EditText of new title
     private EditText editDescription;   // EditText of new description
     private Button createButton;        // create Task button
@@ -69,6 +69,7 @@ public class NewTaskActivity extends AppCompatActivity {
         editDescription = (EditText) findViewById(R.id.editTextNewDescription);
 
         createButton = (Button) findViewById(R.id.buttonNewCreate);
+        Button imageButton = (Button) findViewById(R.id.buttonNewImage);
 
         // get value and create new task when button clicked
         createButton.setOnClickListener(new View.OnClickListener() {
@@ -94,6 +95,20 @@ public class NewTaskActivity extends AppCompatActivity {
                 }
             }
         });
+
+        imageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(NewTaskActivity.this,
+                        ImageListActivity.class);
+
+                intent.putExtra("mode", "new");
+
+                startActivity(intent);
+            }
+        });
+
 
         setLocation = (ImageButton) findViewById(R.id.add_location);
 
@@ -132,6 +147,7 @@ public class NewTaskActivity extends AppCompatActivity {
                 }
             }
         };
+
     }
 
 

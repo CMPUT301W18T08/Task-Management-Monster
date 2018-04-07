@@ -68,6 +68,15 @@ public class MainActivity extends AppCompatActivity {
         // create the model by given the username
         mainModel = new MainModel(username);
 
+        if (mainModel.getUsername() == null) {
+
+            finish();
+
+            Toast.makeText(MainActivity.this,
+                    "Login Fail",
+                    Toast.LENGTH_SHORT).show();
+        }
+
         newTaskButton = (FloatingActionButton) findViewById(R.id.newTaskButton);
         //searchButton = (ImageButton) findViewById(R.id.mainSearch);
         providerButton = (Button) findViewById(R.id.providerButton);

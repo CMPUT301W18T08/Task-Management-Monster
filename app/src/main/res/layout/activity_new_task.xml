@@ -112,12 +112,20 @@
             android:id="@+id/buttonNewCreate"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:text="@string/new_button_create"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="0dp"
-            android:layout_marginTop="300dp"
+            android:layout_below="@+id/buttonNewImage"
+            android:layout_marginTop="24dp"
+            android:layout_toEndOf="@+id/imageView2"
             android:background="#E47833"
-            />
+            android:text="@string/new_button_create" />
+
+        <Button
+            android:id="@+id/buttonNewImage"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/imageView2"
+            android:background="#E47833"
+            android:text="@string/new_button_image" />
 
         <TextView
             android:id="@+id/taskCity"
@@ -138,7 +146,7 @@
             android:layout_marginBottom="25dp"
             android:layout_alignParentLeft="true"
             android:layout_marginLeft="25dp"
-            />
+            android:id="@+id/imageView2" />
 
         <ImageView
             android:layout_width="30dp"

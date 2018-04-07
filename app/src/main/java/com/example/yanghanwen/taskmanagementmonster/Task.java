@@ -1,7 +1,12 @@
 package com.example.yanghanwen.taskmanagementmonster;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.util.Base64;
+
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.maps.model.LatLng;
 
+import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.ArrayList;
 
@@ -24,6 +29,7 @@ public class Task {
     private String description;     // description of the task
     private ArrayList<Bid> bids;    // list of all bids on this task
     private LatLng coordinate;
+    private ArrayList<String> imagesBase64;
 
      /**
       * Create an empty task object.
@@ -53,6 +59,8 @@ public class Task {
         bids = new ArrayList<Bid>();
 
         this.coordinate = coordinate;
+
+        imagesBase64 = new ArrayList<String>();
     }
 
      /**
@@ -372,6 +380,105 @@ public class Task {
      }
 
      // end of new coordinate method
+
+     public void setImagesBase64(ArrayList<String> imagesBase64) {
+
+         this.imagesBase64 = new ArrayList<String>(imagesBase64);
+     }
+
+     public ArrayList<String> getImageMessages () {
+
+         int i = this.imagesBase64.size();
+         int j = 0;
+
+         ArrayList<String> messages = new ArrayList<String>();
+
+         while (j < i) {
+
+             messages.add("Images " + (j + 1));
+
+             j = j + 1;
+         }
+
+         return messages;
+     }
+
+     public void deleteAllImages() {
+
+         this.imagesBase64 = new ArrayList<String>();
+     }
+
+     public void addImage(Bitmap imageMap) {
+
+         byte[] imageByteArray = BitmapToByteArray(imageMap);
+         String imageBase64 = byteArrayToBase64(imageByteArray);
+
+         this.imagesBase64.add(imageBase64);
+     }
+
+     public Bitmap getImage(int position) {
+
+         String imageBase64 = this.imagesBase64.get(position);
+
+         byte[] imageByteArray = Base64ToByteArray(imageBase64);
+         Bitmap imageMap = byteArrayToBitmap(imageByteArray);
+
+         return imageMap;
+     }
+
+     public void deleteImage(int position) {
+
+         this.imagesBase64.remove(position);
+     }
+
+     private byte[] BitmapToByteArray(Bitmap imageMap) {
+
+         // https://stackoverflow.com/questions/13758560/android-bitmap-to-byte-array-and-back-skimagedecoderfactory-returned-null
+         // 2018-4-3
+         ByteArrayOutputStream stream = new ByteArrayOutputStream();
+         imageMap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+         byte[] byteArray = stream.toByteArray();
+
+         return byteArray;
+     }
+
+     private String byteArrayToBase64(byte[] imageByteArray) {
+
+         // https://stackoverflow.com/questions/13562429/how-many-ways-to-convert-bitmap-to-string-and-vice-versa
+         // 2018-4-4
+         String imageBase64 = Base64.encodeToString(imageByteArray, Base64.NO_WRAP);
+
+         return imageBase64;
+     }
+
+     private Bitmap byteArrayToBitmap(byte[] imageByteArray) {
+
+         // https://stackoverflow.com/questions/13562429/how-many-ways-to-convert-bitmap-to-string-and-vice-versa
+         // 2018-4-4
+         Bitmap imagemap = BitmapFactory.decodeByteArray(imageByteArray, 0,
+                 imageByteArray.length);
+
+         return imagemap;
+     }
+
+     private byte[] Base64ToByteArray(String imageBase64) {
+
+         // https://stackoverflow.com/questions/13562429/how-many-ways-to-convert-bitmap-to-string-and-vice-versa
+         // 2018-4-4
+         byte[] imageByteArray = Base64.decode(imageBase64, Base64.DEFAULT);
+
+         return imageByteArray;
+     }
+
+     public Boolean hasImages() {
+
+         return !this.imagesBase64.isEmpty();
+     }
+
+     public ArrayList<String> getImagesBase64() {
+
+         return imagesBase64;
+     }
 
 }
 

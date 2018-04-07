@@ -18,9 +18,9 @@
         android:inputType="phone"
         android:layout_marginTop="230dp"
         android:layout_marginLeft="55dp"
-        android:backgroundTint="#FFFFFF"
+        android:backgroundTint="#ffffff"
         android:textColorHint="#CCCCCC"
-        android:textColor="#FFFFFF"
+        android:textColor="#ffffff"
         />
 
     <EditText
@@ -33,7 +33,7 @@
         android:inputType="textEmailAddress"
         android:backgroundTint="#FFFFFF"
         android:textColorHint="#CCCCCC"
-        android:textColor="#FFFFFF"
+        android:textColor="#ffffff"
         />
 
     <ImageButton
@@ -55,9 +55,9 @@
         android:hint="@string/register_username"
         android:inputType="textPersonName"
         android:layout_marginLeft="55dp"
-        android:backgroundTint="#FFFFFF"
+        android:backgroundTint="#ffffff"
         android:textColorHint="#CCCCCC"
-        android:textColor="#FFFFFF"
+        android:textColor="#ffffff"
          />
 
 

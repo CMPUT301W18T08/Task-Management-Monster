@@ -1,5 +1,6 @@
 package com.example.yanghanwen.taskmanagementmonster;
 
+import android.graphics.Bitmap;
 import android.util.Log;
 
 import com.google.android.gms.maps.model.LatLng;
@@ -249,6 +250,11 @@ public abstract class DetailTaskModel {
      */
     public abstract void declineButtonAction(String newValue);
 
+    public abstract int visibilityImageButton();
+    public abstract String getImageMode();
+    public abstract Boolean showProvider();
+
+
     /**
      * Return the title of the current task
      *
@@ -358,6 +364,63 @@ public abstract class DetailTaskModel {
     public LatLng getCoordinate() {
 
         return task.getCoordinate();
+    }
+
+    public Boolean hasImages() {
+
+        return this.task.hasImages();
+    }
+
+    public void deleteAllImages() {
+
+        this.task.deleteAllImages();
+
+        taskUpdate();
+    }
+
+    public ArrayList<String> getImageMessages() {
+
+        return task.getImageMessages();
+    }
+
+    public Bitmap getImage(int position) {
+
+        return this.task.getImage(position);
+    }
+
+    public void addImage(Bitmap imageMap) {
+
+        this.task.addImage(imageMap);
+
+        taskUpdate();
+    }
+
+    public void deleteImage(int position) {
+
+        this.task.deleteImage(position);
+
+        taskUpdate();
+    }
+
+    public String getUserInfo(String username) {
+
+        ElasticSearch.GetUser getUser = new ElasticSearch.GetUser();
+        getUser.execute(username);
+
+        String email = "";
+        String phone = "";
+
+        try {
+            User user = getUser.get();
+
+            email = user.getEmail();
+            phone = user.getPhoneNum();
+        }
+        catch (Exception e) {
+            Log.i("Error", "Fail to connect to server");
+        }
+
+        return username + '\n' + "Email: " + email + '\n' + "Phone: " + phone;
     }
 
 }

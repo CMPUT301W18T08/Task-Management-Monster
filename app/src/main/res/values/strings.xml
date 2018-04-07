@@ -4,7 +4,9 @@
     <string name="new_description">New Task Description</string>
     <string name="new_titile_hint">Please enter title</string>
     <string name="new_description_hint">Please enter description</string>
+    \
     <string name="new_button_create">Create</string>
+    <string name="new_button_image">Add Image</string>
     <string name="detail_title_view">Task Title:</string>
     <string name="detail_description_view">Description:</string>
     <string name="detail_status_view">Current Status:</string>
@@ -14,6 +16,8 @@
     <string name="detail_Description_edit">Enter Modified Description</string>
     <string name="bid_provider">Task Provider</string>
     <string name="bid_amount">Bid Amount</string>
+    <string name="bid_email">Provider Email</string>
+    <string name="bid_phone">provider Phone</string>
     <string name="bid_button_assgin">Assign</string>
     <string name="bid_button_decline">Decline</string>
     <string name="register_phone">Please Enter Phone Number</string>
@@ -29,4 +33,9 @@
     <string name="main_profile">My Profile</string>
     <string name="title_activity_location_service">Map</string>
     <string name="title_activity_main_screen_maps">Map</string>
+    <string name="image_button_select">Select Image</string>
+    <string name="image_button_store">Store Image</string>
+    <string name="image_button_delete">delete Image</string>
+    <string name="image_button_delete_all">delete All Image</string>
+    <string name="image_button_new">Upload New Image</string>
 </resources>

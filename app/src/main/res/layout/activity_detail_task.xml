@@ -104,7 +104,7 @@
         android:textColor="@android:color/black"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/viewDetailDescription" />
+        app:layout_constraintTop_toBottomOf="@+id/detialImagebutton" />
 
     <TextView
         android:id="@+id/detailBidLowest"
@@ -154,6 +154,16 @@
         android:layout_marginTop="16dp"
         app:layout_constraintStart_toEndOf="@+id/buttonDetail"
         app:layout_constraintTop_toBottomOf="@+id/editTextDetailDescription" />
+
+    <Button
+        android:id="@+id/detialImagebutton"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:text="image"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewDetailDescription" />
 
     <EditText
         android:id="@+id/editTextDetail"
@@ -222,19 +232,17 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_marginBottom="15dp"
-            android:layout_marginLeft="20dp"
-            />
+            android:layout_marginLeft="20dp" />
 
         <ImageButton
             android:id="@+id/findLocation"
             android:layout_width="45dp"
             android:layout_height="45dp"
-            android:layout_alignParentTop="true"
             android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
             android:layout_marginRight="30dp"
             android:layout_marginTop="90dp"
-            android:background="@drawable/icons8_location"
-            />
+            android:background="@drawable/icons8_location" />
 
     </RelativeLayout>
 
