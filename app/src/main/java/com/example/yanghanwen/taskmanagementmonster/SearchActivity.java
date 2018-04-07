@@ -52,7 +52,6 @@ public class SearchActivity extends AppCompatActivity {
 
     public ArrayList<Task> Tmp = new ArrayList<>();
     public ArrayList<Task> taskList = new ArrayList<>();
-    public ArrayList<Task> allTaskList = new ArrayList<>();
     public ArrayAdapter<Task> adapter;
     ArrayList<Task> tasks = new ArrayList<>();
 
@@ -218,7 +217,7 @@ public class SearchActivity extends AppCompatActivity {
          */
 
         for (Task task: tasks) {
-            if (!taskList.contains(task)) {
+            if (!taskList.toString().contains(task.toString())) {
                 taskList.add(task);
             }
         }
@@ -256,51 +255,54 @@ public class SearchActivity extends AppCompatActivity {
         switch(item.getItemId()) { // filter by bidded task
             case R.id.item1:
                 int k = 0;
+                ArrayList<Task> tasks1 = new ArrayList<>();
                 while(k < taskList.size()) {
-                    if(!taskList.get(k).getStatus().equals("bidded")) {
-                        taskList.remove(taskList.get(k));
-                        k = -1;
+                    if(taskList.get(k).getStatus().equals("bidded")) {
+                        tasks1.add(taskList.get(k));
                     }
-                    adapter.notifyDataSetChanged();
+                    ArrayAdapter<Task> adapter1 = new ArrayAdapter<Task>(this, android.R.layout.simple_list_item_1,tasks1);
+                    listView.setAdapter(adapter1);
                     k++;
                 }
-                item.setVisible(false);
                 break;
 
             case R.id.item2:
                 int a = 0;
+                ArrayList<Task> tasks2 = new ArrayList<>();
                 while(a < taskList.size()) { // filter by requested task
-                    if(!taskList.get(a).getStatus().equals("requested")) {
-                        taskList.remove(taskList.get(a));
-                        a = -1;
+                    if(taskList.get(a).getStatus().equals("requested")) {
+                        tasks2.add(taskList.get(a));
                     }
                     a++;
                 }
-                adapter.notifyDataSetChanged();
+                ArrayAdapter<Task> adapter2 = new ArrayAdapter<Task>(this, android.R.layout.simple_list_item_1,tasks2);
+                listView.setAdapter(adapter2);
                 break;
 
             case R.id.item3:
                 int b = 0;
+                ArrayList<Task> tasks3 = new ArrayList<>();
                 while(b < taskList.size()) { // filter by assigned task
-                    if(!taskList.get(b).getStatus().equals("assigned")) {
-                        taskList.remove(taskList.get(b));
-                        b = -1;
+                    if(taskList.get(b).getStatus().equals("assigned")) {
+                        tasks3.add(taskList.get(b));
                     }
                     b++;
                 }
-                adapter.notifyDataSetChanged();
+                ArrayAdapter<Task> adapter3 = new ArrayAdapter<Task>(this, android.R.layout.simple_list_item_1,tasks3);
+                listView.setAdapter(adapter3);
                 break;
 
             case R.id.item4:
                 int c = 0;
+                ArrayList<Task> tasks4 = new ArrayList<>();
                 while(c < taskList.size()) { // filter by done task
-                    if(!taskList.get(c).getStatus().equals("done")) {
-                        taskList.remove(taskList.get(c));
-                        c = -1;
+                    if(taskList.get(c).getStatus().equals("done")) {
+                        tasks4.add(taskList.get(c));
                     }
                     c++;
                 }
-                adapter.notifyDataSetChanged();
+                ArrayAdapter<Task> adapter4 = new ArrayAdapter<Task>(this, android.R.layout.simple_list_item_1,tasks4);
+                listView.setAdapter(adapter4);
                 break;
 
             default:
