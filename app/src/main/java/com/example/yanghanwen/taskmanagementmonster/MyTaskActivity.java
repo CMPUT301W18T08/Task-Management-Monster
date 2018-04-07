@@ -261,7 +261,9 @@ public class MyTaskActivity extends AppCompatActivity {
 
             // get the TaskList I bidded,i.e. my provider list
             for(Task task : wholeTaskList){
+                Log.d("task in wholeTaskList",""+task);
                 if(!(task.getUserAmount(currentUsername) == null)){
+                    Log.d("task with bid","Value"+ task);
                     providerTaskList.add(task);
                 }
             }
