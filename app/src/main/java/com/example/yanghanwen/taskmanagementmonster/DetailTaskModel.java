@@ -353,4 +353,8 @@ public abstract class DetailTaskModel {
         addTask.execute(this.task);
     }
 
+    public void queueUpdate(){
+        TaskList.getInstance().getTasks().add(this.task);
+    }
+
 }

@@ -138,6 +138,7 @@ public class ElasticSearch {
                 } catch (Exception e) {
 
                     Log.i("Error", "Fail to build");
+                    Log.e("Error",e.getMessage());
                 }
 
             }
@@ -263,10 +264,14 @@ public class ElasticSearch {
             for (Task task : tasks) {
                 Delete delete = new Delete.Builder(task.getUsername() + task.getTaskname())
                         .index("cmput301w18t08").type("task").build();
+                Log.d("task.getUsernmae()",""+task.getUsername());
+                Log.d("task.getTaskname()",""+task.getTaskname());
+                Log.d("Delete delete",""+  delete);
 
                 try {
 
                     DocumentResult result = client.execute(delete);
+                    Log.d("DocumentResult result",""+result);
                     if (result.isSucceeded()) {
                         Log.d("Success print something", result.getId());
                     } else {
@@ -274,6 +279,7 @@ public class ElasticSearch {
                     }
                 } catch (Exception e) {
                     Log.i("Error", "Failed to build");
+                    Log.e("error is what",e.getMessage());
                 }
             }
             return null;

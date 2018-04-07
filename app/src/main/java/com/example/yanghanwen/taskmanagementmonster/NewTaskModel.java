@@ -3,6 +3,7 @@ package com.example.yanghanwen.taskmanagementmonster;
 import android.util.Log;
 
 import android.util.Log;
+import android.widget.Toast;
 
 /**
  * Created by superfan1995 on 2018-03-09.
@@ -44,27 +45,25 @@ public class NewTaskModel {
      */
     public void createNewTask (String taskname, String description) {
 
-        if (existTask(taskname)) {
-
+        /*if (existTask(taskname)) {
             Log.d("message", "sstask already exist");
-
             // if the task already exist, don't create it
-        }
-        else {
-            Log.i("create ","create new task");
-            Task task = new Task(this.username, taskname, description);
+        }*/
+        //else {
+        Log.i("create ","create new task");
+        Task task = new Task(this.username, taskname, description);
 
             //addTask.execute(task);
-            TaskList.getInstance().getTasks().add(task);
-            try {
-                Log.d("now the task is ", "Value" + TaskList.getInstance().getTasks().get(1));
-            }catch (Exception e){
-                Log.d("the 2nd task is","Value"+ TaskList.getInstance().getTasks().get(0));
-            }
-            Log.d("message", "task successfully created");
+        TaskList.getInstance().getTasks().add(task);
+        try {
+            Log.d("now the task is ", "Value" + TaskList.getInstance().getTasks().get(1));
+        }catch (Exception e){
+            Log.d("the 2nd task is","Value"+ TaskList.getInstance().getTasks().get(0));
+        }
+        Log.d("message", "task successfully created");
 
             // create new task
-        }
+        //}
 
     }
 

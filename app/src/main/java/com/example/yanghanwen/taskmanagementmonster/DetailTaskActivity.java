@@ -137,6 +137,9 @@ public class DetailTaskActivity extends AppCompatActivity {
                     // requester modeify his task title
                     String textTitle = editTitle.getText().toString();
                     detailTaskModel.changeButtonAction(textTitle);
+                    Intent intentService = new Intent(getApplicationContext(),TaskIntentService.class);
+                    intentService.putExtra("mode","2");
+                    startService(intentService);
 
                     updateView();
                 }
@@ -170,6 +173,9 @@ public class DetailTaskActivity extends AppCompatActivity {
                     // provider modify his task description
                     String textDescription = editDescription.getText().toString();
                     detailTaskModel.declineButtonAction(textDescription);
+                    Intent intentService = new Intent(getApplicationContext(),TaskIntentService.class);
+                    intentService.putExtra("mode","3");
+                    startService(intentService);
 
                     updateView();
                 }

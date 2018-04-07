@@ -1,5 +1,6 @@
 package com.example.yanghanwen.taskmanagementmonster;
 
+import android.util.Log;
 import android.view.View;
 
 import java.util.ArrayList;
@@ -16,6 +17,7 @@ import java.util.ArrayList;
  */
 public class DetailTaskRequestorModel extends DetailTaskModel {
 
+    private ConnectionCheck connectionCheck;
     String status;
 
     /**
@@ -387,15 +389,16 @@ public class DetailTaskRequestorModel extends DetailTaskModel {
     public void changeButtonAction(String newValue) {
 
         if (status.equals("requested")) {
-
-            ElasticSearch.DeleteTask deleteTask = new ElasticSearch.DeleteTask();
-            deleteTask.execute(super.task);
-
-            ElasticSearch.AddTask addTask = new ElasticSearch.AddTask();
+            Log.i("have I go to this spot?","yes you did");
+            //ElasticSearch.DeleteTask deleteTask = new ElasticSearch.DeleteTask();
+            //deleteTask.execute(super.task);
+            DeleteTaskList.getInstance().getTasks().add(super.task);
+            Log.d("DeleteTaskList is : ", "Value" + DeleteTaskList.getInstance().getTasks().get(0));
+            //ElasticSearch.AddTask addTask = new ElasticSearch.AddTask();
 
             Task newTask = new Task(super.username, newValue, super.task.getDescription());
-            addTask.execute(newTask);
-
+            //addTask.execute(newTask);
+            TaskList.getInstance().getTasks().add(newTask);
             super.task = newTask;
         }
 
@@ -420,6 +423,8 @@ public class DetailTaskRequestorModel extends DetailTaskModel {
         if (status.equals("requested")) {
 
             super.task.setDescription(newValue);
+
+            super.queueUpdate();
         }
 
         else if (status.equals("assigned")) {
@@ -427,10 +432,11 @@ public class DetailTaskRequestorModel extends DetailTaskModel {
             super.task.emptyBids();
 
             status = "requested";
+            // update task by elastic search
+            super.taskUpdate();
         }
 
-        // update task by elastic search
-        super.taskUpdate();
+
     }
 
     /**
