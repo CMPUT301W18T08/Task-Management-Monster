@@ -14,6 +14,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText editID;
     private Button loginButton;
     private Button registerButton;
+    private ConnectionCheck connectionCheck;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,22 +32,29 @@ public class LoginActivity extends AppCompatActivity {
 
                 String userId = editID.getText().toString();
 
-                if (existedUser(userId)){
+                if(connectionCheck.isNetWorkAvailable(getApplicationContext())){
+                    if (existedUser(userId)){
 
-                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                    Log.d("username", userId);
-                    intent.putExtra("username",userId);
-                    startActivity(intent);
+                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                        Log.d("username", userId);
+                        intent.putExtra("username",userId);
+                        startActivity(intent);
 
-                    Toast.makeText(getApplicationContext(), "Online Login Success",
-                            Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Online Login Success",
+                                Toast.LENGTH_SHORT).show();
+                    }
+
+                    else {
+
+                        Toast.makeText(getApplicationContext(), "Username Not Exist",
+                                Toast.LENGTH_SHORT).show();
+                    }
+
+                }else{
+                    Toast.makeText(getApplicationContext(),"Network is currently down.Please try later.",
+                            Toast.LENGTH_LONG).show();
                 }
 
-                else {
-
-                    Toast.makeText(getApplicationContext(), "Username Not Exist",
-                            Toast.LENGTH_SHORT).show();
-                }
             }
 
         });

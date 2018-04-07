@@ -54,7 +54,7 @@ public class NewTaskActivity extends Activity {
 
                 newTaskModel.createNewTask(taskname, description);
                 Intent intentService = new Intent(getApplicationContext(),TaskIntentService.class);
-                intentService.putExtra("mode","1");
+                intentService.putExtra("mode","create");
                 startService(intentService);
 
 

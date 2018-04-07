@@ -57,7 +57,7 @@ public class TaskIntentService extends IntentService{
 
     @Override
     protected void onHandleIntent(@Nullable Intent intent) {
-
+        Thread thread = new Thread();
         mode = intent.getStringExtra("mode");
         Log.d("current mode",intent.getStringExtra("mode"));
 
@@ -72,7 +72,6 @@ public class TaskIntentService extends IntentService{
         }
 
         while (true) {
-            Log.d("what is the mode ",""+mode);
             if (connectionCheck.isNetWorkAvailable(getApplicationContext())){
                 /**if (TaskList.getInstance().getTasks().size() == 0) {
                     break;
@@ -98,19 +97,28 @@ public class TaskIntentService extends IntentService{
                     Log.i("delete for update","have nothing to delete");
                 }
 
-                if(mode == "create"){
+                if(mode.equals("create")){
                     Log.i("offline ","create mode");
                     for(Task task : TaskList.getInstance().getTasks()){
                         Log.d("current task",""+task);
+
                         if(taskExsit(task.getUsername(),task.getTaskname())){
-                            Log.i("create a conflict task","");
+                            Log.i("create a conflict task","conflick task");
+                            Log.d("boolean",""+taskExsit(task.getUsername(),task.getTaskname()));
                             /*for(int i = 0; i < 4; i++){
                                 displayMessage("Oops,task name is conflicted.Please try another one.");
                             }*/
 
                         }else{
-                            ElasticSearch.AddTask addTask = new ElasticSearch.AddTask();
-                            addTask.execute(task);
+                            if(taskExsit(task.getUsername(),task.getTaskname())){
+                                Log.i("create a conflict task","conflick task");
+                                Log.d("boolean",""+taskExsit(task.getUsername(),task.getTaskname()));
+
+                            }else{
+                                Log.i("not conflict","");
+                                ElasticSearch.AddTask addTask = new ElasticSearch.AddTask();
+                                addTask.execute(task);
+                            }
                         }
                     }
                     TaskList.getInstance().getTasks().clear();
