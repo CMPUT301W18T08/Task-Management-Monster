@@ -48,9 +48,9 @@ public class ThreeGridsAdapter extends BaseAdapter {
         TextView taskStatus3 = (TextView)v.findViewById(R.id.taskStatus3);
         TextView taskBid3 = (TextView)v.findViewById(R.id.taskBid3);
 
-        taskTitle3.setText(mTaskList.get(i).getTaskname());
-        taskStatus3.setText(mTaskList.get(i).getStatus());
-        taskBid3.setText(Double.toString(mTaskList.get(i).getLowestBid()));
+        taskTitle3.setText("Title: "+mTaskList.get(i).getTaskname());
+        taskStatus3.setText("Status: "+mTaskList.get(i).getStatus());
+        taskBid3.setText("Lowest Bid: "+Double.toString(mTaskList.get(i).getLowestBid()));
 
         return v;
     }

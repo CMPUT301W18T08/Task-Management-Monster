@@ -52,11 +52,11 @@ public class FiveGridsAdapter extends BaseAdapter {
         TextView taskLowestBid5 = (TextView)v.findViewById(R.id.taskLowestBid5);
         TextView taskMyBid5 = (TextView)v.findViewById(R.id.taskMyBid5);
 
-        taskTitle5.setText(mTaskList.get(i).getTaskname());
-        taskStatus5.setText(mTaskList.get(i).getStatus());
-        taskLowestBid5.setText(Double.toString(mTaskList.get(i).getLowestBid()));
-        taskUsername5.setText(mTaskList.get(i).getUsername());
-        taskMyBid5.setText(Double.toString(mTaskList.get(i).getUserAmount(MyTaskActivity.currentUsername)));
+        taskTitle5.setText("Title: "+mTaskList.get(i).getTaskname());
+        taskStatus5.setText("Status: "+mTaskList.get(i).getStatus());
+        taskLowestBid5.setText("Lowest bid: "+Double.toString(mTaskList.get(i).getLowestBid()));
+        taskUsername5.setText("Requestor: "+mTaskList.get(i).getUsername());
+        taskMyBid5.setText("My bid: "+Double.toString(mTaskList.get(i).getUserAmount(MyTaskActivity.currentUsername)));
 
 
         return v;

@@ -51,10 +51,10 @@ public class FourGridsAdapter extends BaseAdapter {
         TextView taskUsername4 = (TextView)v.findViewById(R.id.taskUsername4);
         TextView taskBid4 = (TextView)v.findViewById(R.id.taskBid4);
 
-        taskTitle4.setText(mTaskList.get(i).getTaskname());
-        taskStatus4.setText(mTaskList.get(i).getStatus());
-        taskUsername4.setText(mTaskList.get(i).getBid(0).getUserName());
-        taskBid4.setText(Double.toString(mTaskList.get(i).getBid(0).getAmount()));
+        taskTitle4.setText("Title: "+mTaskList.get(i).getTaskname());
+        taskStatus4.setText("Status: "+mTaskList.get(i).getStatus());
+        taskUsername4.setText("Provider: "+mTaskList.get(i).getBid(0).getUserName());
+        taskBid4.setText("Accept bid: "+Double.toString(mTaskList.get(i).getBid(0).getAmount()));
 
 
         return v;

@@ -7,38 +7,6 @@
     android:orientation="vertical"
     tools:context="com.example.yanghanwen.taskmanagementmonster.MyTaskActivity">
 
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/biddingBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp"
-            android:layout_marginTop="20dp"
-            android:text="Bidded" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/assignedBtn"
-            android:text="assigned"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="30dp"/>
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/allBtn"
-            android:text="All"
-            android:layout_marginTop="20dp"
-            android:layout_marginLeft="40dp"/>
-
-    </LinearLayout>
-
     <ListView
         android:id="@+id/RequesterTask"
         android:layout_width="match_parent"

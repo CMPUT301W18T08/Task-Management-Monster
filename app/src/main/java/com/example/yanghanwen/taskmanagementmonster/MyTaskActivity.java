@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -31,6 +33,7 @@ import java.util.ArrayList;
  */
 public class MyTaskActivity extends AppCompatActivity {
 
+    private int mode;
     // these ListView is named with "requester", But it used for requester & provider case
     private ListView requesterBiddingListView;
     private ListView requesterListView;
@@ -47,9 +50,7 @@ public class MyTaskActivity extends AppCompatActivity {
 
 
     public static String currentUsername;
-    private Button biddingBtn;
-    private Button assignedBtn;
-    private Button allBtn;
+
 
     //get whole task list from ES
     private ArrayList<Task>wholeTaskList = new ArrayList<>();
@@ -88,11 +89,13 @@ public class MyTaskActivity extends AppCompatActivity {
 
         // get incoming type (requester/provider)
         OperationType = getIntent().getStringExtra("type");
+        if(OperationType.equals("req")){
+            mode = 1;
+        }else if (OperationType.equals("pro")){
+            mode = 2;
+        }
 
-        // initial button for filter
-        biddingBtn = findViewById(R.id.biddingBtn);
-        assignedBtn = findViewById(R.id.assignedBtn);
-        allBtn = findViewById(R.id.allBtn);
+
 
         // get current username
         currentUsername = MainActivity.mainModel.getUsername();
@@ -109,7 +112,8 @@ public class MyTaskActivity extends AppCompatActivity {
 
             try{
                 taskList = getTasks.get();
-                Log.i("inside try","getTasks.get() executes");
+
+
             }catch (Exception e){
                 Log.i("Error", "Failed to get the tasks from the async object");
             }
@@ -136,110 +140,8 @@ public class MyTaskActivity extends AppCompatActivity {
                 }
             });
 
-            /**
-             * when clicking the bidding button
-             */
-            biddingBtn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    requesterListView.setVisibility(View.GONE);
-                    requesterAssignedListView.setVisibility(View.GONE);
-                    requesterBiddingListView.setVisibility(View.GONE);
-                    requesterBiddingListView.setVisibility(View.VISIBLE);
-
-                    newTaskList.clear();
-                    for(Task task : taskList ){
-
-                        if (task.getStatus().equals("bidded")){
-                            Log.i("getStatus","got bidded");
-                            newTaskList.add(task);
-
-                        }
-                    }
 
 
-                    threeGridsAdapter = new ThreeGridsAdapter(getApplicationContext(),newTaskList);
-
-                    requesterBiddingListView.setAdapter(threeGridsAdapter);
-
-
-                    /**
-                     * for clicking each items in listview
-                     */
-                    requesterBiddingListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                        @Override
-                        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
-                            Task task = newTaskList.get(i);
-                            String title = task.getTaskname();
-                            String requester = task.getUsername();
-
-                            Intent intent = new Intent(MyTaskActivity.this, DetailTaskActivity.class);
-                            intent.putExtra("mode",3);
-                            intent.putExtra("title", title);
-                            intent.putExtra("requester", requester);
-                            startActivity(intent);
-                        }
-                    });
-
-                }
-            });
-
-            /**
-             * when click to see all task
-             */
-            allBtn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    requesterListView.setVisibility(View.VISIBLE);
-                    requesterAssignedListView.setVisibility(View.GONE);
-                    requesterBiddingListView.setVisibility(View.GONE);
-                }
-            });
-
-            /**
-             * when clicking the assigned button
-             */
-            assignedBtn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    requesterListView.setVisibility(View.GONE);
-                    requesterAssignedListView.setVisibility(View.GONE);
-                    requesterBiddingListView.setVisibility(View.GONE);
-                    requesterAssignedListView.setVisibility(View.VISIBLE);
-
-                    newTaskList.clear();
-
-                    for(Task task : taskList){
-                        if(task.getStatus().equals("assigned")){
-                            newTaskList.add(task);
-
-                        }
-                    }
-                    fourGridsAdapter = new FourGridsAdapter(getApplicationContext(),newTaskList);
-                    requesterAssignedListView.setAdapter(fourGridsAdapter);
-
-                    /**
-                     * for clicking each items in listview
-                     */
-                    requesterAssignedListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                        @Override
-                        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
-                            Task task = newTaskList.get(i);
-                            String title = task.getTaskname();
-                            String requester = task.getUsername();
-
-                            Intent intent = new Intent(MyTaskActivity.this, DetailTaskActivity.class);
-                            intent.putExtra("mode",3);
-                            intent.putExtra("title", title);
-                            intent.putExtra("requester", requester);
-                            startActivity(intent);
-                        }
-                    });
-
-                }
-            });
 
         }
 
@@ -248,12 +150,14 @@ public class MyTaskActivity extends AppCompatActivity {
 
             // ElasticSearch to get whole tasksList in db
             ElasticSearch.GetTasks getTasks = new ElasticSearch.GetTasks();
-            String query = "";
+            String query = "{\"query\" : {\"match\" : { \"bids.userName\" : {\"query\": \""+currentUsername+"\"}}}}";
+
             getTasks.execute(query);
 
             try{
                 wholeTaskList = getTasks.get();
-                Log.i("inside try","getTasks.get() executes");
+                Log.i("print wholeTaskList", wholeTaskList.toString());
+
             }catch (Exception e){
                 Log.i("Error", "Failed to get the tasks from the async object");
             }
@@ -262,10 +166,10 @@ public class MyTaskActivity extends AppCompatActivity {
             // get the TaskList I bidded,i.e. my provider list
             for(Task task : wholeTaskList){
                 Log.d("task in wholeTaskList",""+task);
-                if(!(task.getUserAmount(currentUsername) == null)){
-                    Log.d("task with bid","Value"+ task);
-                    providerTaskList.add(task);
-                }
+
+                Log.d("task with bid","Value"+ task);
+                providerTaskList.add(task);
+
             }
 
             adapter = new TwoGridsAdapter(getApplicationContext(),providerTaskList);
@@ -292,13 +196,155 @@ public class MyTaskActivity extends AppCompatActivity {
                 }
             });
 
-            /**
-             * when click bidding button
-             */
 
-            biddingBtn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
+
+
+
+        }
+    }
+
+    /**
+     * Initialize filter menu
+     * @param menu
+     * @return
+     */
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.mytask_menu,menu);
+        return true;
+    }
+
+    /**
+     * filter for bidded,assigned,all
+     * @param item
+     * @return
+     */
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        switch (item.getItemId()){
+            case R.id.assignedItem:
+                Log.i("print","print something");
+                if(OperationType.equals("req")){
+                    Log.i("in swith case","assign");
+                    requesterListView.setVisibility(View.GONE);
+                    //requesterAssignedListView.setVisibility(View.GONE);
+                    requesterBiddingListView.setVisibility(View.GONE);
+                    requesterAssignedListView.setVisibility(View.VISIBLE);
+
+
+                    newTaskList.clear();
+                    Log.i("print taskList",taskList.toString());
+
+                    for(Task task : taskList){
+                        if(task.getStatus().equals("assigned")){
+                            newTaskList.add(task);
+
+                        }
+                    }
+                    Log.i("print newTaskList", newTaskList.toString());
+
+                    fourGridsAdapter = new FourGridsAdapter(getApplicationContext(),newTaskList);
+                    requesterAssignedListView.setAdapter(fourGridsAdapter);
+
+
+                    //for clicking each items in listview
+                    requesterAssignedListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                            Task task = newTaskList.get(position);
+                            String title = task.getTaskname();
+                            String requster = task.getUsername();
+
+                            Intent intent = new Intent(MyTaskActivity.this, DetailTaskActivity.class);
+                            intent.putExtra("mode",3);
+                            intent.putExtra("title",title);
+                            intent.putExtra("requester",requster);
+                            startActivity(intent);
+                        }
+                    });
+                }
+                if(OperationType.equals("pro")){
+
+                    requesterListView.setVisibility(View.GONE);
+                    //requesterAssignedListView.setVisibility(View.GONE);
+                    requesterBiddingListView.setVisibility(View.GONE);
+                    requesterAssignedListView.setVisibility(View.VISIBLE);
+
+                    newTaskList.clear();
+                    for(Task task : providerTaskList){
+                        if(task.getStatus().equals("assigned")){
+                            newTaskList.add(task);
+                        }
+                    }
+
+                    fourGridsProviderAdapter = new FourGridsProviderAdapter(getApplicationContext(),newTaskList);
+                    requesterAssignedListView.setAdapter(fourGridsProviderAdapter);
+
+                    // for clicking each item in listview
+                    requesterAssignedListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                            Task task = newTaskList.get(i);
+                            String title = task.getTaskname();
+                            String requester = task.getUsername();
+
+                            Intent intent = new Intent(MyTaskActivity.this,DetailTaskActivity.class);
+                            intent.putExtra("mode",2);
+                            intent.putExtra("title", title);
+                            intent.putExtra("requester", requester);
+                            startActivity(intent);
+                        }
+                    });
+                }
+                break;
+
+            case R.id.biddedItem:
+                if(OperationType.equals("req")){
+
+                    requesterListView.setVisibility(View.GONE);
+                    requesterAssignedListView.setVisibility(View.GONE);
+                    requesterBiddingListView.setVisibility(View.GONE);
+                    requesterBiddingListView.setVisibility(View.VISIBLE);
+
+                    newTaskList.clear();
+                    for(Task task : taskList ){
+
+                        if (task.getStatus().equals("bidded")){
+                            Log.i("getStatus","got bidded");
+                            newTaskList.add(task);
+
+                        }
+                    }
+
+
+
+                    threeGridsAdapter = new ThreeGridsAdapter(getApplicationContext(),newTaskList);
+
+                    requesterBiddingListView.setAdapter(threeGridsAdapter);
+
+
+                    // for clicking each items in listview
+                    requesterBiddingListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                            Task task = newTaskList.get(i);
+                            String title = task.getTaskname();
+                            String requester = task.getUsername();
+
+                            Intent intent = new Intent(MyTaskActivity.this, DetailTaskActivity.class);
+                            intent.putExtra("mode",3);
+                            intent.putExtra("title", title);
+                            intent.putExtra("requester", requester);
+                            startActivity(intent);
+                        }
+                    });
+
+                }
+
+                if(OperationType.equals("pro")){
                     requesterListView.setVisibility(View.GONE);
                     requesterAssignedListView.setVisibility(View.GONE);
                     requesterBiddingListView.setVisibility(View.GONE);
@@ -329,62 +375,19 @@ public class MyTaskActivity extends AppCompatActivity {
                             startActivity(intent);
                         }
                     });
-
                 }
-            });
+                break;
 
-            allBtn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    requesterBiddingListView.setVisibility(View.GONE);
-                    requesterAssignedListView.setVisibility(View.GONE);
-                    requesterListView.setVisibility(View.VISIBLE);
-                }
-            });
+            case R.id.allItem:
+                requesterBiddingListView.setVisibility(View.GONE);
+                requesterAssignedListView.setVisibility(View.GONE);
+                requesterListView.setVisibility(View.VISIBLE);
 
-            /**
-             * when click assigned button
-             */
-            assignedBtn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    requesterListView.setVisibility(View.GONE);
-                    requesterAssignedListView.setVisibility(View.GONE);
-                    requesterBiddingListView.setVisibility(View.GONE);
-                    requesterAssignedListView.setVisibility(View.VISIBLE);
+                break;
 
-                    newTaskList.clear();
-                    for(Task task:providerTaskList){
-                        if(task.getStatus().equals("assigned")){
-                            newTaskList.add(task);
-                        }
-                    }
-                    fourGridsProviderAdapter = new FourGridsProviderAdapter(getApplicationContext(),newTaskList);
-                    requesterAssignedListView.setAdapter(fourGridsProviderAdapter);
-
-                    // for clicking each item in listview
-                    requesterAssignedListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                        @Override
-                        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
-                            Task task = newTaskList.get(i);
-                            String title = task.getTaskname();
-                            String requester = task.getUsername();
-
-                            Intent intent = new Intent(MyTaskActivity.this,DetailTaskActivity.class);
-                            intent.putExtra("mode",2);
-                            intent.putExtra("title", title);
-                            intent.putExtra("requester", requester);
-                            startActivity(intent);
-                        }
-                    });
-
-
-                }
-            });
-
+            default:
+                return super.onOptionsItemSelected(item);
         }
+        return true;
     }
-
-
 }
