@@ -223,12 +223,12 @@ public class MyTaskActivity extends AppCompatActivity {
 
             // ElasticSearch to get whole tasksList in db
             ElasticSearch.GetTasks getTasks = new ElasticSearch.GetTasks();
-            String query = "";
+            String query = "{\"query\":{\"match\":{\"bids.userName\":{\"query\":\""+currentUsername+"\"}}}}";
             getTasks.execute(query);
 
             try{
                 wholeTaskList = getTasks.get();
-                Log.i("inside try","getTasks.get() executes");
+
             }catch (Exception e){
                 Log.i("Error", "Failed to get the tasks from the async object");
             }
@@ -236,9 +236,9 @@ public class MyTaskActivity extends AppCompatActivity {
 
             // get the TaskList I bidded,i.e. my provider list
             for(Task task : wholeTaskList){
-                if(!(task.getUserAmount(currentUsername) == null)){
-                    providerTaskList.add(task);
-                }
+
+                providerTaskList.add(task);
+
             }
 
             adapter = new TwoGridsAdapter(getApplicationContext(),providerTaskList);

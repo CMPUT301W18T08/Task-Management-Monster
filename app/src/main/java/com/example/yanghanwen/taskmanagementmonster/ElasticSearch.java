@@ -176,8 +176,14 @@ public class ElasticSearch {
                 Log.i("fjaijfi","fjjfjfjfjjfjfffffff");
             }
 
-            if (task == null) {
-                return false;
+            try{
+                if(task.getTaskname() == null){
+                    return false;
+                }
+            }catch (Exception e){
+                if(task == null){
+                    return false;
+                }
             }
 
             return true;

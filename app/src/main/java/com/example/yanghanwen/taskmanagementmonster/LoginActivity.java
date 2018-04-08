@@ -20,6 +20,7 @@ public class LoginActivity extends AppCompatActivity {
     private Button loginButton;
     private Button registerButton;
     public ProgressDialog progressDialog;
+    private ConnectionCheck connectionCheck;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,23 +45,35 @@ public class LoginActivity extends AppCompatActivity {
 
                 String userId = editID.getText().toString();
 
-                if (existedUser(userId)){
+                if(connectionCheck.isNetWorkAvailable(getApplicationContext())){
 
-                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                    Log.d("username", userId);
-                    intent.putExtra("username",userId);
-                    startActivity(intent);
+                    if (existedUser(userId)){
 
-                    Toast.makeText(getApplicationContext(), "Online Login Success",
-                            Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                        Log.d("username", userId);
+                        intent.putExtra("username",userId);
+                        startActivity(intent);
+
+                        Toast.makeText(getApplicationContext(), "Online Login Success",
+                                Toast.LENGTH_SHORT).show();
+                    }
+
+                    else {
+                        progressDialog.dismiss();
+                        progressDialog = null;
+                        Toast.makeText(getApplicationContext(), "Username Not Exist",
+                                Toast.LENGTH_SHORT).show();
+                    }
+                }else{
+                    for(int i = 0; i < 6; i++){
+
+                        Toast.makeText(getApplicationContext(),"Network is currently down.Please try later.",
+                                Toast.LENGTH_LONG).show();
+
+                    }
+
                 }
 
-                else {
-                    progressDialog.dismiss();
-                    progressDialog = null;
-                    Toast.makeText(getApplicationContext(), "Username Not Exist",
-                            Toast.LENGTH_SHORT).show();
-                }
             }
 
         });

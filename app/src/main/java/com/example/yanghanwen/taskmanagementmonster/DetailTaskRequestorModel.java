@@ -387,8 +387,10 @@ public class DetailTaskRequestorModel extends DetailTaskModel {
 
         if (status.equals("requested")) {
 
-            ElasticSearch.DeleteTask deleteTask = new ElasticSearch.DeleteTask();
-            deleteTask.execute(super.task);
+            //ElasticSearch.DeleteTask deleteTask = new ElasticSearch.DeleteTask();
+            //deleteTask.execute(super.task);
+
+            DeleteTaskList.getInstance().getTasks().add(super.task);
 
             Task newTask = new Task(super.username, newValue, super.task.getDescription(),
                     super.task.getCoordinate());
@@ -396,8 +398,9 @@ public class DetailTaskRequestorModel extends DetailTaskModel {
             ArrayList<String> imagesBase64 = super.task.getImagesBase64();
             newTask.setImagesBase64(imagesBase64);
 
-            ElasticSearch.AddTask addTask = new ElasticSearch.AddTask();
-            addTask.execute(newTask);
+            //ElasticSearch.AddTask addTask = new ElasticSearch.AddTask();
+            //addTask.execute(newTask);
+            TaskList.getInstance().getTasks().add(newTask);
 
             super.task = newTask;
         }
@@ -423,6 +426,8 @@ public class DetailTaskRequestorModel extends DetailTaskModel {
         if (status.equals("requested")) {
 
             super.task.setDescription(newValue);
+
+            super.queueUpdate();
         }
 
         else if (status.equals("assigned")) {
@@ -430,10 +435,12 @@ public class DetailTaskRequestorModel extends DetailTaskModel {
             super.task.emptyBids();
 
             status = "requested";
+
+            super.taskUpdate();
         }
 
         // update task by elastic search
-        super.taskUpdate();
+        //super.taskUpdate();
     }
 
     /**

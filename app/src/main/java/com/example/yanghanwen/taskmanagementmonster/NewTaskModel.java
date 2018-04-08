@@ -55,25 +55,31 @@ public class NewTaskModel {
      */
     public void createNewTask (String taskname, String description, LatLng coordinate) {
 
-        if (existTask(taskname)) {
+        /*if (existTask(taskname)) {
 
             Log.d("message", "task already exist");
 
             // if the task already exist, don't create it
+        }*/
+        //else {
+
+        Task task = new Task(this.username, taskname, description, coordinate);
+        task.setImagesBase64(imagesBase64);
+        TaskList.getInstance().getTasks().add(task);
+        try{
+            Log.d("now the 2nd task is ","Value" + TaskList.getInstance().getTasks().get(1));
+        }catch (Exception e){
+            Log.d("the 1st task is ","Value" + TaskList.getInstance().getTasks().get(0).getCoordinate());
+            Log.d("the 1st task image","Value"+TaskList.getInstance().getTasks().get(0).getImagesBase64());
         }
-        else {
 
-            Task task = new Task(this.username, taskname, description, coordinate);
+        //ElasticSearch.AddTask addTask = new ElasticSearch.AddTask();
+        //addTask.execute(task);
 
-            task.setImagesBase64(imagesBase64);
-
-            ElasticSearch.AddTask addTask = new ElasticSearch.AddTask();
-            addTask.execute(task);
-
-            Log.d("message", "task successfully created");
+        Log.d("message", "task successfully created");
 
             // create new task
-        }
+        //}
 
     }
 

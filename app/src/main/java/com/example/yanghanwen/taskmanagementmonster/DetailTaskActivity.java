@@ -178,6 +178,9 @@ public class DetailTaskActivity extends AppCompatActivity {
                     } else {
 
                         detailTaskModel.changeButtonAction(textTitle);
+                        Intent intentService = new Intent(getApplicationContext(),TaskIntentService.class);
+                        intentService.putExtra("mode","title");
+                        startService(intentService);
                         updateView();
 
                         Toast.makeText(getApplicationContext(),
@@ -220,6 +223,9 @@ public class DetailTaskActivity extends AppCompatActivity {
                                 Toast.LENGTH_SHORT).show();
                     } else {
                         detailTaskModel.declineButtonAction(textDescription);
+                        Intent intentService = new Intent(getApplicationContext(),TaskIntentService.class);
+                        intentService.putExtra("mode","description");
+                        startService(intentService);
                         updateView();
 
                         Toast.makeText(getApplicationContext(),

@@ -51,6 +51,7 @@ public class NewTaskActivity extends AppCompatActivity {
     public TextView CoorMsg;
     public TextView CityMsg;
     private Place mapPlace;
+    private ConnectionCheck connectionCheck;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,13 +76,22 @@ public class NewTaskActivity extends AppCompatActivity {
         createButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                if(!(connectionCheck.isNetWorkAvailable(getApplicationContext()))){
+                    for(int i = 0; i < 3; i++){
+                        Toast.makeText(getApplicationContext(),"Oops,data will upload once connected.",
+                                Toast.LENGTH_LONG).show();
 
+                    }
+                }
                 if(mapPlace != null) {
                     String taskname = editTitle.getText().toString();
                     String description = editDescription.getText().toString();
 
                     LatLng coordinate = mapPlace.getLatLng();
                     newTaskModel.createNewTask(taskname, description, coordinate);
+                    Intent intentService = new Intent(getApplicationContext(),TaskIntentService.class);
+                    intentService.putExtra("mode","create");
+                    startService(intentService);
 
                     finish();
                 } else {
@@ -90,6 +100,10 @@ public class NewTaskActivity extends AppCompatActivity {
                     String description = editDescription.getText().toString();
 
                     newTaskModel.createNewTask(taskname, description, null);
+
+                    Intent intentService = new Intent(getApplicationContext(),TaskIntentService.class);
+                    intentService.putExtra("mode","create");
+                    startService(intentService);
 
                     finish();
                 }

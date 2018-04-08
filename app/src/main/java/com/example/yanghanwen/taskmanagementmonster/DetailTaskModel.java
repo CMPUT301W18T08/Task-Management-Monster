@@ -423,4 +423,7 @@ public abstract class DetailTaskModel {
         return username + '\n' + "Email: " + email + '\n' + "Phone: " + phone;
     }
 
+    public void queueUpdate(){
+        TaskList.getInstance().getTasks().add(this.task);
+    }
 }
