@@ -234,7 +234,7 @@ public class MainActivity extends AppCompatActivity {
                 if (((Math.abs(Math.abs(TmpTasks.get(i).getCoordinate().latitude) - Math.abs(latitudeGet)) <= 0.018) &&
                         Math.abs((Math.abs(TmpTasks.get(i).getCoordinate().longitude)
                                 - Math.abs(longitudeGet))) <= 0.018) &&
-                        (!(TmpTasks.get(i).getStatus().equals("assigned") || TmpTasks.get(i).getStatus().equals("done")))) {
+                        (!TmpTasks.get(i).getStatus().equals("assigned") && !TmpTasks.get(i).getStatus().equals("done"))) {
                     Log.d("getting a lot new", TmpTasks.get(i).toString());
                     Log.d("getting coordinate present", Double.toString(latitudeGet) + "\n" + Double.toString(longitudeGet));
                     recommendedList.add(TmpTasks.get(i));

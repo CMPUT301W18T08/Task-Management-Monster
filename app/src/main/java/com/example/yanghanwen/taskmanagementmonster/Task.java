@@ -365,7 +365,7 @@ public class Task {
       * @return an String used to describe the task in listView
       */
     public String toString() {
-        return username + "\n" + taskname + "\n" + description + "\n" + status + "\n" + bids;
+        return "Username: " + username + "\n" + "Title: " + taskname + "\n" + "Description: " + description + "\n" + "Status: " + status + "\n" + "Lowest bid: " + bids;
     }
 
     // new coordinate method

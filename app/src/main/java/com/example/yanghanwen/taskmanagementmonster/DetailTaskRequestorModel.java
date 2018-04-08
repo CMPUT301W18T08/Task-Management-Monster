@@ -519,4 +519,9 @@ public class DetailTaskRequestorModel extends DetailTaskModel {
         }
     }
 
+    public int visibilityDeleteButton() {
+
+        return View.VISIBLE;
+    }
+
 }

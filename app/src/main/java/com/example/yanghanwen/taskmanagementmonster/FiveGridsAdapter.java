@@ -1,3 +1,4 @@
+
 package com.example.yanghanwen.taskmanagementmonster;
 
 import android.content.Context;
@@ -17,6 +18,7 @@ import java.util.ArrayList;
  * works for showing task title and task status and task lowest bid in ListView and task's username
  * and my bid
  */
+
 public class FiveGridsAdapter extends BaseAdapter {
     private Context mContext;
     private ArrayList<Task> mTaskList;
@@ -51,11 +53,11 @@ public class FiveGridsAdapter extends BaseAdapter {
         TextView taskLowestBid5 = (TextView)v.findViewById(R.id.taskLowestBid5);
         TextView taskMyBid5 = (TextView)v.findViewById(R.id.taskMyBid5);
 
-        taskTitle5.setText(mTaskList.get(i).getTaskname());
-        taskStatus5.setText(mTaskList.get(i).getStatus());
-        taskLowestBid5.setText(Double.toString(mTaskList.get(i).getLowestBid()));
-        taskUsername5.setText(mTaskList.get(i).getUsername());
-        taskMyBid5.setText(Double.toString(mTaskList.get(i).getUserAmount(MyTaskActivity.currentUsername)));
+        taskTitle5.setText("Title: "+mTaskList.get(i).getTaskname());
+        taskStatus5.setText("Status: "+mTaskList.get(i).getStatus());
+        taskLowestBid5.setText("Lowest bid: "+Double.toString(mTaskList.get(i).getLowestBid()));
+        taskUsername5.setText("Requestor: "+mTaskList.get(i).getUsername());
+        taskMyBid5.setText("My bid: "+Double.toString(mTaskList.get(i).getUserAmount(MyTaskActivity.currentUsername)));
 
 
         return v;

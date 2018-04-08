@@ -1,5 +1,6 @@
 package com.example.yanghanwen.taskmanagementmonster;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -41,7 +42,6 @@ public class DetailTaskActivity extends AppCompatActivity {
     private TextView viewBidLowest;
     private TextView viewBidMyBidInfo;
     private TextView viewBidMyBid;
-    private TextView viewCoordinate;
 
     private EditText editBid;
     private EditText editTitle;
@@ -49,6 +49,7 @@ public class DetailTaskActivity extends AppCompatActivity {
 
     private Button changeButton;
     private Button declineButton;
+    private Button deleteButton;
     private ImageButton findLocation;
     private ImageButton imageButton;                 // add this
 
@@ -118,9 +119,11 @@ public class DetailTaskActivity extends AppCompatActivity {
 
         changeButton = (Button) findViewById(R.id.buttonDetail);
         declineButton = (Button) findViewById(R.id.buttonDetail2);
-        viewCoordinate = (TextView) findViewById(R.id.coordinateDetail);
         findLocation = (ImageButton) findViewById(R.id.findLocation);
-        imageButton = (ImageButton) findViewById(R.id.detialImagebutton);        // add this
+        imageButton = (ImageButton) findViewById(R.id.detialImagebutton);
+        deleteButton = (Button) findViewById(R.id.buttonDetialDelete);
+
+        deleteButton.setVisibility( detailTaskModel.visibilityDeleteButton() );
 
         updateView();
 
@@ -143,6 +146,11 @@ public class DetailTaskActivity extends AppCompatActivity {
                         detailTaskModel.changeButtonAction(textBid);
                         updateView();
 
+                        Intent returnIntent = new Intent();
+                        setResult(Activity.RESULT_OK, returnIntent);
+
+                        finish();
+
                         Toast.makeText(getApplicationContext(),
                                 "My Bid Update Successful",
                                 Toast.LENGTH_SHORT).show();
@@ -160,6 +168,11 @@ public class DetailTaskActivity extends AppCompatActivity {
 
                         detailTaskModel.changeButtonAction(textBid);
                         updateView();
+
+                        Intent returnIntent = new Intent();
+                        setResult(Activity.RESULT_OK, returnIntent);
+
+                        finish();
 
                         Toast.makeText(getApplicationContext(),
                                 "My Bid Update Successful",
@@ -188,6 +201,11 @@ public class DetailTaskActivity extends AppCompatActivity {
                         startService(intentService);
                         updateView();
 
+                        Intent returnIntent = new Intent();
+                        setResult(Activity.RESULT_OK, returnIntent);
+
+                        finish();
+
                         Toast.makeText(getApplicationContext(),
                                 "Task Title Update Successful",
                                 Toast.LENGTH_SHORT).show();
@@ -208,12 +226,20 @@ public class DetailTaskActivity extends AppCompatActivity {
                     detailTaskModel.declineButtonAction("");
 
                     updateView();
+
+                    Intent returnIntent = new Intent();
+                    setResult(Activity.RESULT_OK, returnIntent);
+
+                    finish();
                 }
 
                 // if provider decline his bid, finish the activity
                 else if (mode == 2) {
 
                     detailTaskModel.declineButtonAction("");
+
+                    Intent returnIntent = new Intent();
+                    setResult(Activity.RESULT_OK, returnIntent);
 
                     finish();
                 } else if (mode == 3) {
@@ -238,6 +264,11 @@ public class DetailTaskActivity extends AppCompatActivity {
                         startService(intentService);
                         updateView();
 
+                        Intent returnIntent = new Intent();
+                        setResult(Activity.RESULT_OK, returnIntent);
+
+                        finish();
+
                         Toast.makeText(getApplicationContext(),
                                 "Task Description Update Successful",
                                 Toast.LENGTH_SHORT).show();
@@ -258,6 +289,35 @@ public class DetailTaskActivity extends AppCompatActivity {
                     startActivity(intent);
                 }
             });
+
+        deleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                AlertDialog.Builder dialog = new AlertDialog.Builder(DetailTaskActivity.this);
+                dialog.setTitle("Reminder");
+                dialog.setMessage("This is going to delete this task");
+                dialog.setCancelable(false);
+                dialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int which) {
+                        detailTaskModel.deleteTask();
+
+                        Intent returnIntent = new Intent();
+                        setResult(Activity.RESULT_OK, returnIntent);
+
+                        finish();
+                    }
+                });
+                dialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int which) {
+                    }
+                });
+                dialog.show();
+            }
+        });
 
         // if click a item in the ListView
         listViewBids.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -379,12 +439,6 @@ public class DetailTaskActivity extends AppCompatActivity {
         viewBidLowest.setText( detailTaskModel.getBidLowest() );
         viewBidLowest.setVisibility( detailTaskModel.visibilityBidLowest() );
 
-        if(detailTaskModel.getCoordinate() != null) {
-            viewCoordinate.setText(detailTaskModel.getCoordinate().toString());
-        } else {
-            viewCoordinate.setText(null);
-        }
-
         viewBidMyBidInfo.setText( detailTaskModel.getMyBidInfo() );
         viewBidMyBidInfo.setVisibility( detailTaskModel.visibilityMyBidInfo() );
 
@@ -400,6 +454,8 @@ public class DetailTaskActivity extends AppCompatActivity {
 
         declineButton.setText( detailTaskModel.getButtonText2() );
         declineButton.setVisibility( detailTaskModel.visibilityDeclineButton() );
+
+        imageButton.setVisibility( detailTaskModel.visibilityImageButton() );
 
         int listVisibility = detailTaskModel.visibilityListView();
         listViewBids.setVisibility( listVisibility );
@@ -457,6 +513,11 @@ public class DetailTaskActivity extends AppCompatActivity {
 
                 // update the view to the modified task
                 updateView();
+
+                Intent returnIntent = new Intent();
+                setResult(Activity.RESULT_OK, returnIntent);
+
+                finish();
 
             }
 

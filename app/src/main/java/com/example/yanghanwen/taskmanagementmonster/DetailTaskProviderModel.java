@@ -360,4 +360,9 @@ public class DetailTaskProviderModel extends DetailTaskModel {
         return Boolean.FALSE;
     }
 
+    public int visibilityDeleteButton() {
+
+        return View.GONE;
+    }
+
 }

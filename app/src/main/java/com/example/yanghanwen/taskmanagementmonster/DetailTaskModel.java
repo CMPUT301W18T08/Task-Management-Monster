@@ -254,6 +254,7 @@ public abstract class DetailTaskModel {
     public abstract String getImageMode();
     public abstract Boolean showProvider();
 
+    public abstract int visibilityDeleteButton();
 
     /**
      * Return the title of the current task
@@ -431,4 +432,11 @@ public abstract class DetailTaskModel {
     public void queueUpdate(){
         TaskList.getInstance().getTasks().add(this.task);
     }
+
+    public void deleteTask() {
+
+        ElasticSearch.DeleteTask deleteTask = new ElasticSearch.DeleteTask();
+        deleteTask.execute(this.task);
+    }
+
 }

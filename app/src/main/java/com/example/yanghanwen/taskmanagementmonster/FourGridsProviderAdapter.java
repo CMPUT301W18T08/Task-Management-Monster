@@ -12,10 +12,10 @@ import java.util.ArrayList;
  * Created by Terrence on 2018/3/17.
  */
 
-
- /** This is a four grids adapter to adapt the arraylist into Listview
-  * works for showing task title and task status and task lowest bid in ListView and task's username
-  */
+/**
+ * This is a four grids adapter to adapt the arraylist into Listview
+ * works for showing task title and task status and task lowest bid in ListView and task's username
+ */
 public class FourGridsProviderAdapter extends BaseAdapter {
 
     private Context mContext;
@@ -49,10 +49,10 @@ public class FourGridsProviderAdapter extends BaseAdapter {
         TextView taskUsername = (TextView)v.findViewById(R.id.taskUsername);
         TextView myAcceptedBid = (TextView)v.findViewById(R.id.myAcceptedBid);
 
-        taskTitle.setText(mTaskList.get(i).getTaskname());
-        taskStatus.setText(mTaskList.get(i).getStatus());
-        taskUsername.setText(mTaskList.get(i).getUsername());
-        myAcceptedBid.setText(Double.toString(mTaskList.get(i).getBid(0).getAmount()));
+        taskTitle.setText("Title: "+mTaskList.get(i).getTaskname());
+        taskStatus.setText("Status: "+mTaskList.get(i).getStatus());
+        taskUsername.setText("Requestor: "+mTaskList.get(i).getUsername());
+        myAcceptedBid.setText("My Accept Bid: "+Double.toString(mTaskList.get(i).getBid(0).getAmount()));
 
 
         return v;

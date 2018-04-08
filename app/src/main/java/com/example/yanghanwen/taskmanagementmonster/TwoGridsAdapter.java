@@ -50,8 +50,8 @@ public class TwoGridsAdapter extends BaseAdapter {
         TextView taskTitle2 = (TextView)v.findViewById(R.id.taskTitle2);
         TextView taskStatus2 = (TextView)v.findViewById(R.id.taskStatus2);
 
-        taskTitle2.setText(mTaskList.get(i).getTaskname());
-        taskStatus2.setText(mTaskList.get(i).getStatus());
+        taskTitle2.setText("Title: "+mTaskList.get(i).getTaskname());
+        taskStatus2.setText("Status: "+mTaskList.get(i).getStatus());
 
         return v;
     }

@@ -6,57 +6,41 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context="com.example.yanghanwen.taskmanagementmonster.MyTaskActivity">
-
-
-    <LinearLayout
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/biddingBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="40dp"
-            android:layout_marginTop="100dp"
-            android:text="Bidded" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/assignedBtn"
-            android:text="assigned"
-            android:layout_marginTop="100dp"
-            android:layout_marginLeft="80dp"/>
-    </LinearLayout>
-
+        android:text="Task Listing"
+        android:textSize="20sp"
+        android:layout_gravity="center_horizontal"
+        android:textColor="#E47833"
+        android:textStyle="bold"
+        android:layout_marginTop="90dp"/>
     <ListView
         android:id="@+id/RequesterTask"
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="10dp"
         android:layout_marginBottom="20dp"
         android:scrollbars="vertical"
-        android:layout_marginLeft="20dp"
-        />
+        android:layout_marginLeft="10dp"/>
 
 
     <ListView
         android:id="@+id/requesterBiddingListView"
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
         android:layout_marginBottom="20dp"
-        android:layout_marginLeft="20dp"
         android:scrollbars="vertical" />
 
     <ListView
         android:id="@+id/requesterAssignedListView"
         android:layout_width="match_parent"
         android:layout_height="fill_parent"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="10dp"
         android:layout_marginBottom="20dp"
-        android:layout_marginLeft="20dp"
+        android:layout_marginLeft="10dp"
         android:scrollbars="vertical" />
 
 

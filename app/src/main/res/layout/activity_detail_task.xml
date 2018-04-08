@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.yanghanwen.taskmanagementmonster.DetailTaskActivity"
-    tools:layout_marginTop="0dp">
+    tools:layout_marginTop="-400dp">
 
     <TextView
         android:id="@+id/detailTitle"
@@ -142,7 +142,7 @@
         android:layout_width="150dp"
         android:layout_height="51dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="4dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextDetailDescription" />
 
@@ -151,7 +151,7 @@
         android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="4dp"
         app:layout_constraintStart_toEndOf="@+id/buttonDetail"
         app:layout_constraintTop_toBottomOf="@+id/editTextDetailDescription" />
 
@@ -161,8 +161,8 @@
         android:layout_height="65dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="0dp"
-        android:text="image"
         android:background="@drawable/icons8_picture"
+        android:text="image"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/viewDetailDescription" />
 
@@ -223,17 +223,9 @@
     </LinearLayout>
 
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="354dp"
+        android:layout_height="412dp"
         android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/coordinateDetail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="15dp"
-            android:layout_marginLeft="20dp" />
 
         <ImageButton
             android:id="@+id/findLocation"
@@ -241,10 +233,20 @@
             android:layout_height="45dp"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
-            android:layout_marginRight="30dp"
+            android:layout_marginRight="0dp"
             android:layout_marginTop="90dp"
             android:background="@drawable/icons8_location" />
 
     </RelativeLayout>
+
+    <Button
+        android:id="@+id/buttonDetialDelete"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:background="#50E47833"
+        android:text="Delete Task"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

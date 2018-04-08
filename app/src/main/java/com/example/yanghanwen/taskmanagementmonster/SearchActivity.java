@@ -56,6 +56,8 @@ public class SearchActivity extends AppCompatActivity {
     public ArrayAdapter<Task> adapter;
     ArrayList<Task> tasks = new ArrayList<>();
 
+    public static final int RETURN_MAIN = 20;
+
 
     /**
      * Firstly executed when code starts going
@@ -122,7 +124,7 @@ public class SearchActivity extends AppCompatActivity {
                 intent.putExtra("title", title);
                 intent.putExtra("requester", requester);
 
-                startActivity(intent);
+                startActivityForResult(intent, RETURN_MAIN);
             }
         });
 
@@ -163,7 +165,7 @@ public class SearchActivity extends AppCompatActivity {
         intent.putParcelableArrayListExtra("coordinates", coor);
         intent.putStringArrayListExtra("taskname", taskName);
         intent.putStringArrayListExtra("status", status);
-        startActivity(intent);
+        startActivityForResult(intent, RETURN_MAIN);
     }
 
 
@@ -297,6 +299,23 @@ public class SearchActivity extends AppCompatActivity {
             }
             return true;
         }
+
+    @Override
+    protected void onActivityResult(int requesCode, int resultCode, Intent data) {
+
+        super.onActivityResult(requesCode, resultCode, data);
+
+        // if there is a result from DetailBidActivity
+        if (requesCode == RETURN_MAIN) {
+
+            if (resultCode == RESULT_OK) {
+
+                finish();
+            }
+        }
+
     }
+
+}
 
 

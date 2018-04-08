@@ -15,6 +15,9 @@ import com.google.android.gms.maps.model.LatLng;
 
 /**
  * Created by Terrence on 03/04/2018.
+ * This is the intent service for upload data or delete data from database
+ * we use two singleton TaskList and DeleteTaskList as queue to store the task to be uploaded or deleted
+ * then in this intent service, it runs in background and keep pushing data to database when connected.
  */
 
 public class TaskIntentService extends IntentService{
