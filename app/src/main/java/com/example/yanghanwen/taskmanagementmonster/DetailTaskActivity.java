@@ -50,7 +50,7 @@ public class DetailTaskActivity extends AppCompatActivity {
     private Button changeButton;
     private Button declineButton;
     private ImageButton findLocation;
-    private Button imageButton;                 // add this
+    private ImageButton imageButton;                 // add this
 
     private ListView listViewBids;
 
@@ -120,7 +120,7 @@ public class DetailTaskActivity extends AppCompatActivity {
         declineButton = (Button) findViewById(R.id.buttonDetail2);
         viewCoordinate = (TextView) findViewById(R.id.coordinateDetail);
         findLocation = (ImageButton) findViewById(R.id.findLocation);
-        imageButton = (Button) findViewById(R.id.detialImagebutton);        // add this
+        imageButton = (ImageButton) findViewById(R.id.detialImagebutton);        // add this
 
         updateView();
 
@@ -170,6 +170,11 @@ public class DetailTaskActivity extends AppCompatActivity {
                     // requester modeify his task title
                     String textTitle = editTitle.getText().toString();
 
+                    if (detailTaskModel.getStatus().equals("assigned")) {
+
+                        textTitle = "true";
+                    }
+
                     if (textTitle.equals("")) {
 
                         Toast.makeText(getApplicationContext(),
@@ -216,6 +221,11 @@ public class DetailTaskActivity extends AppCompatActivity {
                     // provider modify his task description
                     String textDescription = editDescription.getText().toString();
 
+                    if (detailTaskModel.getStatus().equals("assigned")) {
+
+                        textDescription = "true";
+                    }
+
                     if (textDescription.equals("")) {
 
                         Toast.makeText(getApplicationContext(),
@@ -240,14 +250,14 @@ public class DetailTaskActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                Intent intent = new Intent(DetailTaskActivity.this,
-                        ImageListActivity.class);
+                    Intent intent = new Intent(DetailTaskActivity.this,
+                            ImageListActivity.class);
 
-                intent.putExtra("mode", detailTaskModel.getImageMode() );
+                    intent.putExtra("mode", detailTaskModel.getImageMode());
 
-                startActivity(intent);
-            }
-        });
+                    startActivity(intent);
+                }
+            });
 
         // if click a item in the ListView
         listViewBids.setOnItemClickListener(new AdapterView.OnItemClickListener() {

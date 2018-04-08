@@ -138,20 +138,40 @@ public class DetailImageActivity extends AppCompatActivity {
 
         else if (mode.equals("new")) {
 
-            NewTaskActivity.newTaskModel.addImage(imageMap);
+            if (NewTaskActivity.newTaskModel.imageSpace()) {
 
-            Intent returnIntent = new Intent();
-            setResult(Activity.RESULT_OK, returnIntent);
-            finish();
+                NewTaskActivity.newTaskModel.addImage(imageMap);
+
+                Intent returnIntent = new Intent();
+                setResult(Activity.RESULT_OK, returnIntent);
+                finish();
+            }
+
+            else {
+
+                Toast.makeText(getApplicationContext(),
+                        "Error: can only store at most 10 images",
+                        Toast.LENGTH_SHORT).show();
+            }
         }
 
         else if (mode.equals("myTask")) {
 
-            DetailTaskActivity.detailTaskModel.addImage(imageMap);
+            if (DetailTaskActivity.detailTaskModel.imageSpace()) {
 
-            Intent returnIntent = new Intent();
-            setResult(Activity.RESULT_OK, returnIntent);
-            finish();
+                DetailTaskActivity.detailTaskModel.addImage(imageMap);
+
+                Intent returnIntent = new Intent();
+                setResult(Activity.RESULT_OK, returnIntent);
+                finish();
+            }
+
+            else {
+
+                Toast.makeText(getApplicationContext(),
+                        "Error: can only store at most 10 images",
+                        Toast.LENGTH_SHORT).show();
+            }
         }
     }
 

@@ -32,10 +32,15 @@ import com.google.android.gms.location.places.ui.PlacePicker;
 import com.google.android.gms.maps.model.LatLng;
 
 
+
+
 /**
- * activity of creating new task
+ * Activity of creating new task, users are able to add a new task,
+ * with specifying its name, description as well as its location if they
+ * want(they can surely ignore that by not doing so).
  *
  * @version 1.0
+ * @author Xiang Fan && Hanwen Yang && Tianyi Liang
  */
 
 public class NewTaskActivity extends AppCompatActivity {
@@ -53,6 +58,11 @@ public class NewTaskActivity extends AppCompatActivity {
     private Place mapPlace;
     private ConnectionCheck connectionCheck;
 
+
+    /**
+     * Firstly called when activity starts
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -72,8 +82,14 @@ public class NewTaskActivity extends AppCompatActivity {
         createButton = (Button) findViewById(R.id.buttonNewCreate);
         Button imageButton = (Button) findViewById(R.id.buttonNewImage);
 
+
+
         // get value and create new task when button clicked
         createButton.setOnClickListener(new View.OnClickListener() {
+            /**
+             * create new task button action, system brings user to creating task page
+             * @param view
+             */
             @Override
             public void onClick(View view) {
                 if(!(connectionCheck.isNetWorkAvailable(getApplicationContext()))){

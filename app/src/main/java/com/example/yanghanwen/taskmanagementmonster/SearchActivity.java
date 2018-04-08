@@ -31,13 +31,13 @@ import com.google.android.gms.maps.model.LatLng;
 import java.util.ArrayList;
 
 /**
- * SearchResultActivity is used for searching a
+ * SearchActivity is used for searching a
  * task (or tasks) as a role of provider, it will provide
  * all the tasks and provider is able to either filter tasks to
  * whatever he want through four different status, and can also
  * search a task(s) by entering keywords of username.
  *
- * layout: activity_search_result.xml
+ * layout: activity_search.xml
  *
  * @version 1.0
  */
@@ -200,6 +200,12 @@ public class SearchActivity extends AppCompatActivity {
             Log.d("test!!!!!!!!!!", "something wrong");
         }
 
+        for(Task task: taskList) {
+            if(!task.getStatus().equals("bidded") && !task.getStatus().equals("requested")) {
+                taskList.remove(task);
+            }
+        }
+
         String searchQuery2 = "{\"query\" : {\"match\" : { \"description\" : {\"query\": \""+keyWord+"\", \"operator\": \""+ "and" +"\"}}}}";
         ElasticSearch.GetTasks getTasks2 = new ElasticSearch.GetTasks();
         getTasks2.execute(searchQuery2);
@@ -217,8 +223,14 @@ public class SearchActivity extends AppCompatActivity {
          }
          */
 
+        for(Task task: tasks) {
+            if(!task.getStatus().equals("bidded") && !task.getStatus().equals("requested")) {
+                tasks.remove(task);
+            }
+        }
+
         for (Task task: tasks) {
-            if (!taskList.contains(task)) {
+            if (!taskList.toString().contains(task.toString())) {
                 taskList.add(task);
             }
         }
@@ -253,61 +265,38 @@ public class SearchActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
-        switch(item.getItemId()) { // filter by bidded task
-            case R.id.item1:
-                int k = 0;
-                while(k < taskList.size()) {
-                    if(!taskList.get(k).getStatus().equals("bidded")) {
-                        taskList.remove(taskList.get(k));
-                        k = -1;
+            switch(item.getItemId()) { // filter by bidded task
+                case R.id.item1:
+                    int k = 0;
+                    ArrayList<Task> tasks1 = new ArrayList<>();
+                    while(k < taskList.size()) {
+                        if(taskList.get(k).getStatus().equals("bidded")) {
+                            tasks1.add(taskList.get(k));
+                        }
+                        ArrayAdapter<Task> adapter1 = new ArrayAdapter<Task>(this, android.R.layout.simple_list_item_1,tasks1);
+                        listView.setAdapter(adapter1);
+                        k++;
                     }
-                    adapter.notifyDataSetChanged();
-                    k++;
-                }
-                item.setVisible(false);
-                break;
+                    break;
 
-            case R.id.item2:
-                int a = 0;
-                while(a < taskList.size()) { // filter by requested task
-                    if(!taskList.get(a).getStatus().equals("requested")) {
-                        taskList.remove(taskList.get(a));
-                        a = -1;
+                case R.id.item2:
+                    int a = 0;
+                    ArrayList<Task> tasks2 = new ArrayList<>();
+                    while(a < taskList.size()) { // filter by requested task
+                        if(taskList.get(a).getStatus().equals("requested")) {
+                            tasks2.add(taskList.get(a));
+                        }
+                        a++;
                     }
-                    a++;
-                }
-                adapter.notifyDataSetChanged();
-                break;
+                    ArrayAdapter<Task> adapter2 = new ArrayAdapter<Task>(this, android.R.layout.simple_list_item_1,tasks2);
+                    listView.setAdapter(adapter2);
+                    break;
 
-            case R.id.item3:
-                int b = 0;
-                while(b < taskList.size()) { // filter by assigned task
-                    if(!taskList.get(b).getStatus().equals("assigned")) {
-                        taskList.remove(taskList.get(b));
-                        b = -1;
-                    }
-                    b++;
-                }
-                adapter.notifyDataSetChanged();
-                break;
-
-            case R.id.item4:
-                int c = 0;
-                while(c < taskList.size()) { // filter by done task
-                    if(!taskList.get(c).getStatus().equals("done")) {
-                        taskList.remove(taskList.get(c));
-                        c = -1;
-                    }
-                    c++;
-                }
-                adapter.notifyDataSetChanged();
-                break;
-
-            default:
-                return super.onOptionsItemSelected(item);
+                default:
+                    return super.onOptionsItemSelected(item);
+            }
+            return true;
         }
-        return true;
     }
-}
 
 

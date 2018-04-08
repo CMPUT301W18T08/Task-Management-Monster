@@ -190,4 +190,19 @@ public class NewTaskModel {
         return imageByteArray;
     }
 
+    public Boolean imageSpace() {
+
+        int base64Size = imagesBase64.size();
+
+        if (base64Size < 10) {
+
+            return Boolean.TRUE;
+        }
+
+        else {
+
+            return Boolean.FALSE;
+        }
+    }
+
 }

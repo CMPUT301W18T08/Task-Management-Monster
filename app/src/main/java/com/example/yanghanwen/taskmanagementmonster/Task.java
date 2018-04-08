@@ -2,6 +2,7 @@ package com.example.yanghanwen.taskmanagementmonster;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Base64;
+import android.widget.Toast;
 
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.maps.model.LatLng;
@@ -388,19 +389,20 @@ public class Task {
 
      public ArrayList<String> getImageMessages () {
 
-         int i = this.imagesBase64.size();
-         int j = 0;
+                 int i = this.imagesBase64.size();
+                 int j = 0;
 
-         ArrayList<String> messages = new ArrayList<String>();
+                 ArrayList<String> messages = new ArrayList<String>();
 
-         while (j < i) {
+                 while (j < i) {
 
-             messages.add("Images " + (j + 1));
+                     messages.add("Images " + (j + 1));
 
-             j = j + 1;
-         }
+                     j = j + 1;
 
-         return messages;
+                 }
+                 return messages;
+
      }
 
      public void deleteAllImages() {
@@ -478,6 +480,21 @@ public class Task {
      public ArrayList<String> getImagesBase64() {
 
          return imagesBase64;
+     }
+
+     public Boolean imageSpace() {
+
+         int base64Size = imagesBase64.size();
+
+         if (base64Size < 10) {
+
+             return Boolean.TRUE;
+         }
+
+         else {
+
+             return Boolean.FALSE;
+         }
      }
 
 }

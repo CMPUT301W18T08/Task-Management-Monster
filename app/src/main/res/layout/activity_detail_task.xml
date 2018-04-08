@@ -155,13 +155,14 @@
         app:layout_constraintStart_toEndOf="@+id/buttonDetail"
         app:layout_constraintTop_toBottomOf="@+id/editTextDetailDescription" />
 
-    <Button
+    <ImageButton
         android:id="@+id/detialImagebutton"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="0dp"
         android:text="image"
+        android:background="@drawable/icons8_picture"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/viewDetailDescription" />
 

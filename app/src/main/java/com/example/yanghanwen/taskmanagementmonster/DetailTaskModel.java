@@ -423,6 +423,11 @@ public abstract class DetailTaskModel {
         return username + '\n' + "Email: " + email + '\n' + "Phone: " + phone;
     }
 
+    public Boolean imageSpace() {
+
+        return this.task.imageSpace();
+    }
+
     public void queueUpdate(){
         TaskList.getInstance().getTasks().add(this.task);
     }

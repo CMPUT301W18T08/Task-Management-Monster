@@ -43,8 +43,10 @@
         android:ems="10"
         android:hint="@string/new_titile_hint"
         android:inputType="textPersonName"
+        android:maxLength="30"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewNewTitle" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewNewTitle"
+        />
 
     <EditText
         android:id="@+id/editTextNewDescription"
@@ -54,6 +56,7 @@
         android:ems="10"
         android:hint="@string/new_description_hint"
         android:inputType="textPersonName"
+        android:maxLength="300"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewNewDescription" />
 
