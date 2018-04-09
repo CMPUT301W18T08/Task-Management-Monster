@@ -1,5 +1,6 @@
 package com.example.yanghanwen.taskmanagementmonster;
 
+import android.util.Log;
 import android.view.View;
 
 import java.util.ArrayList;
@@ -207,8 +208,9 @@ public class DetailTaskSearchModel extends DetailTaskModel {
         }
 
         else {
-
+            Log.i("bid this","bid this");
             super.task.createNewBid(super.username, userBid);
+            super.task.setCounter(1);
         }
 
         super.taskUpdate();

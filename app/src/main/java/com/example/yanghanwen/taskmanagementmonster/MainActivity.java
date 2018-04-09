@@ -3,6 +3,7 @@ package com.example.yanghanwen.taskmanagementmonster;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -19,6 +20,9 @@ public class MainActivity extends AppCompatActivity {
     private Button providerButton;      // button to see my task as provider
     private Button requesterButton;     // button to see my task as requester
     private Button profileButton;       // button to see my profile
+
+    private Button notificationBtn;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +41,9 @@ public class MainActivity extends AppCompatActivity {
         providerButton = (Button) findViewById(R.id.providerButton);
         requesterButton = (Button) findViewById(R.id.requesterButton);
         profileButton = (Button) findViewById(R.id.profileButton);
+
+        notificationBtn = (Button)findViewById(R.id.notificationBtn);
+
 
         // button to create new task
         newTaskButton.setOnClickListener(new View.OnClickListener() {
@@ -101,5 +108,13 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Intent intentService = new Intent(getApplicationContext(),TaskIntentService.class);
+        intentService.putExtra("mode","notify");
+        startService(intentService);
     }
 }

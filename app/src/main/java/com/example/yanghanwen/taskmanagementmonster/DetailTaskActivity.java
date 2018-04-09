@@ -114,7 +114,7 @@ public class DetailTaskActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 if (mode == 1) {
-
+                    Log.i("mode=1","mode=1");
                     String textBid = editBid.getText().toString();
                     detailTaskModel.changeButtonAction(textBid);
 

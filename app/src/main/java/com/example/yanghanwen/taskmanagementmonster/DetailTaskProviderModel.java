@@ -1,5 +1,6 @@
 package com.example.yanghanwen.taskmanagementmonster;
 
+import android.util.Log;
 import android.view.View;
 
 import java.util.ArrayList;
@@ -315,7 +316,7 @@ public class DetailTaskProviderModel extends DetailTaskModel {
      * @param newValue The new value of the change
      */
     public void changeButtonAction (String newValue) {
-
+        Log.i("bid this","bid this");
         Double userbid = Double.parseDouble(newValue);
 
         super.task.modifyBid(super.username, userbid);

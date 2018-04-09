@@ -21,7 +21,7 @@ public class Task {
     private String status;          // current status of the task
     private String description;     // description of the task
     private ArrayList<Bid> bids;    // list of all bids on this task
-
+    private int counter;            // for check if status is changed
     /**
      * Create an empty task object.
      *
@@ -49,8 +49,18 @@ public class Task {
 
         // initialize the list of bids object
         bids = new ArrayList<Bid>();
+
+        counter = 0;
     }
 
+    public int getCounter(){
+        return this.counter;
+    }
+
+    public void setCounter(int adder){
+        this.counter = adder;
+
+    }
     /**
      * Return the username
      *

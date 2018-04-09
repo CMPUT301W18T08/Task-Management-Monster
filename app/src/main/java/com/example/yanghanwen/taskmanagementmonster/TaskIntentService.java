@@ -11,6 +11,8 @@ import android.util.Log;
 import android.os.Handler;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 /**
  * Created by Terrence on 03/04/2018.
  */
@@ -28,6 +30,10 @@ public class TaskIntentService extends IntentService{
     private String title;
     private Task mTask;
     private String mode;
+
+    private String userID;
+
+    public ArrayList<Task> reqestorList = new ArrayList<>();
 
 
 
@@ -74,7 +80,7 @@ public class TaskIntentService extends IntentService{
 
 
         }
-
+        userID = MainActivity.mainModel.getUsername();
         while (true) {
             if (connectionCheck.isNetWorkAvailable(getApplicationContext())){
                 /**if (TaskList.getInstance().getTasks().size() == 0) {
@@ -99,6 +105,30 @@ public class TaskIntentService extends IntentService{
                     DeleteTaskList.getInstance().getTasks().clear();
                 }catch (Exception e){
                     Log.i("delete for update","have nothing to delete");
+                }
+
+                if(mode.equals("notify")){
+                    Log.i(TAG,"query for notify start");
+                    ElasticSearch.GetTasks getTasks = new ElasticSearch.GetTasks();
+                    String query = "{\"query\" : {\"term\" : { \"username\" : \""+userID+"\" }}}";
+                    getTasks.execute(query);
+                    try{
+                        reqestorList = getTasks.get();
+                    }catch (Exception e){
+                        Log.i("Error", "Failed to get the tasks from the async object");
+                    }
+                    for(Task task : reqestorList){
+                        if(task.getCounter()==1){
+                            Log.i(TAG,"You have a task was bidded");
+                            task.setCounter(0);
+                            ElasticSearch.AddTask addTask = new ElasticSearch.AddTask();
+                            addTask.execute(task);
+                            displayMessage("You have a task was bidded");
+                            break;
+                        }
+                    }
+                    break;
+
                 }
 
                 if(mode.equals("create")){
