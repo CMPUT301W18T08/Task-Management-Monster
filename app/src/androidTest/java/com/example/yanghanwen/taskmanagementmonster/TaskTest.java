@@ -4,6 +4,8 @@ package com.example.yanghanwen.taskmanagementmonster;
 import android.test.ActivityInstrumentationTestCase2;
 import android.util.Log;
 
+import com.google.android.gms.maps.model.LatLng;
+
 import java.util.ArrayList;
 import static org.junit.Assert.assertArrayEquals;
 
@@ -21,8 +23,9 @@ public class TaskTest extends ActivityInstrumentationTestCase2 {
         String username = "Tom";
         String taskname = "task1";
         String description = "this is a message";
+        LatLng coordinate = new LatLng(53.5444, -113.49);
 
-        Task task = new Task(username, taskname, description);
+        Task task = new Task(username, taskname, description, coordinate);
 
         assertTrue(task.getUsername() == username);
     }
@@ -33,8 +36,9 @@ public class TaskTest extends ActivityInstrumentationTestCase2 {
         String username = "Tom";
         String taskname = "task1";
         String description = "this is a message";
+        LatLng coordinate = new LatLng(53.5444, -113.49);
 
-        Task task = new Task(username, taskname, description);
+        Task task = new Task(username, taskname, description, coordinate);
 
         assertTrue(task.getTaskname() == taskname);
     }
@@ -45,8 +49,9 @@ public class TaskTest extends ActivityInstrumentationTestCase2 {
         String username = "Tom";
         String taskname = "task1";
         String description = "this is a message";
+        LatLng coordinate = new LatLng(53.5444, -113.49);
 
-        Task task = new Task(username, taskname, description);
+        Task task = new Task(username, taskname, description, coordinate);
 
         assertTrue(task.getStatus() == "requested");
     }
@@ -57,8 +62,9 @@ public class TaskTest extends ActivityInstrumentationTestCase2 {
         String username = "Tom";
         String taskname = "task1";
         String description = "this is a message";
+        LatLng coordinate = new LatLng(53.5444, -113.49);
 
-        Task task = new Task(username, taskname, description);
+        Task task = new Task(username, taskname, description, coordinate);
 
         assertTrue(task.getDescription() == description);
     }
@@ -70,8 +76,9 @@ public class TaskTest extends ActivityInstrumentationTestCase2 {
         String username2 = "Tom";
         String taskname = "task1";
         String description = "this is a message";
+        LatLng coordinate = new LatLng(53.5444, -113.49);
 
-        Task task = new Task(username, taskname, description);
+        Task task = new Task(username, taskname, description, coordinate);
         task.setTaskname(username2);
         assertTrue(task.getTaskname() == username2);
     }
@@ -83,8 +90,9 @@ public class TaskTest extends ActivityInstrumentationTestCase2 {
         String taskname = "task1";
         String description = "this is a message";
         String status2 = "bidded";
+        LatLng coordinate = new LatLng(53.5444, -113.49);
 
-        Task task = new Task(username, taskname, description);
+        Task task = new Task(username, taskname, description, coordinate);
         task.setStatus(status2);
         assertTrue(task.getStatus() == status2);
     }
@@ -96,8 +104,9 @@ public class TaskTest extends ActivityInstrumentationTestCase2 {
         String taskname = "task1";
         String description = "this is a message";
         String description2 = "this is a message 111";
+        LatLng coordinate = new LatLng(53.5444, -113.49);
 
-        Task task = new Task(username, taskname, description);
+        Task task = new Task(username, taskname, description, coordinate);
         task.setDescription(description2);
         assertTrue(task.getDescription() == description2);
     }
@@ -108,8 +117,9 @@ public class TaskTest extends ActivityInstrumentationTestCase2 {
         String username = "Tom";
         String taskname = "task1";
         String description = "this is a message";
+        LatLng coordinate = new LatLng(53.5444, -113.49);
 
-        Task task = new Task(username, taskname, description);
+        Task task = new Task(username, taskname, description, coordinate);
 
         String bider1 = "B1";
         Double amount1 = 1.0;
@@ -127,8 +137,9 @@ public class TaskTest extends ActivityInstrumentationTestCase2 {
         String username = "Tom";
         String taskname = "task1";
         String description = "this is a message";
+        LatLng coordinate = new LatLng(53.5444, -113.49);
 
-        Task task = new Task(username, taskname, description);
+        Task task = new Task(username, taskname, description, coordinate);
 
         String bidder1 = "B1";
         Double amount1 = 1.0;
@@ -145,9 +156,9 @@ public class TaskTest extends ActivityInstrumentationTestCase2 {
         String username = "Tom";
         String taskname = "task1";
         String description = "this is a message";
+        LatLng coordinate = new LatLng(53.5444, -113.49);
 
-        Task task = new Task(username, taskname, description);
-
+        Task task = new Task(username, taskname, description, coordinate);
         String bidder1 = "B1";
         Double amount1 = 1.0;
 
@@ -165,8 +176,9 @@ public class TaskTest extends ActivityInstrumentationTestCase2 {
         String username = "Tom";
         String taskname = "task1";
         String description = "this is a message";
+        LatLng coordinate = new LatLng(53.5444, -113.49);
 
-        Task task = new Task(username, taskname, description);
+        Task task = new Task(username, taskname, description, coordinate);
 
         String bider1 = "B1";
         Double amount1 = 1.0;
@@ -183,8 +195,9 @@ public class TaskTest extends ActivityInstrumentationTestCase2 {
         String username = "Tom";
         String taskname = "task1";
         String description = "this is a message";
+        LatLng coordinate = new LatLng(53.5444, -113.49);
 
-        Task task = new Task(username, taskname, description);
+        Task task = new Task(username, taskname, description, coordinate);
 
         String bider1 = "B1";
         Double amount1 = 1.0;
@@ -203,8 +216,9 @@ public class TaskTest extends ActivityInstrumentationTestCase2 {
         String username = "Tom";
         String taskname = "task1";
         String description = "this is a message";
+        LatLng coordinate = new LatLng(53.5444, -113.49);
 
-        Task task = new Task(username, taskname, description);
+        Task task = new Task(username, taskname, description, coordinate);
 
         String bider1 = "B1";
         String bider2 = "B2";
@@ -220,7 +234,7 @@ public class TaskTest extends ActivityInstrumentationTestCase2 {
 
         assertTrue(task.getLowestBid().compareTo(amount1) == 0);
 
-        Task task2 = new Task(username, taskname, description);
+        Task task2 = new Task(username, taskname, description, coordinate);
 
         task2.createNewBid(bider1, amount3);
         task2.createNewBid(bider2, amount2);
@@ -237,8 +251,9 @@ public class TaskTest extends ActivityInstrumentationTestCase2 {
         String taskname = "task1";
         String description = "this is a message";
         ArrayList<Bid> bids = new ArrayList<>();
+        LatLng coordinate = new LatLng(53.5444, -113.49);
 
-        Task task = new Task(username, taskname, description);
+        Task task = new Task(username, taskname, description, coordinate);
 
         String bider1 = "B1";
         String bider2 = "B2";
@@ -269,8 +284,9 @@ public class TaskTest extends ActivityInstrumentationTestCase2 {
         String taskname = "task1";
         String description = "this is a message";
         ArrayList<Bid> bids = new ArrayList<>();
+        LatLng coordinate = new LatLng(53.5444, -113.49);
 
-        Task task = new Task(username, taskname, description);
+        Task task = new Task(username, taskname, description, coordinate);
 
 
         task.createNewBid("B1", 1.0);
@@ -292,8 +308,9 @@ public class TaskTest extends ActivityInstrumentationTestCase2 {
         double amount = 1.0;
         ArrayList<Bid> bids = new ArrayList<>();
         Bid bid = new Bid(username,amount);
+        LatLng coordinate = new LatLng(53.5444, -113.49);
 
-        Task task = new Task(username, taskname, description);
+        Task task = new Task(username, taskname, description, coordinate);
 
 
         task.createNewBid("B1", 1.0);
@@ -320,9 +337,10 @@ public class TaskTest extends ActivityInstrumentationTestCase2 {
         String description = "this is a message";
         String status = "requested";
         ArrayList<Bid> bids = new ArrayList<>();
+        LatLng coordinate = new LatLng(53.5444, -113.49);
 
-        Task task = new Task(username, taskname, description);
-        Task task1 = new Task(username, taskname, description);
+        Task task = new Task(username, taskname, description, coordinate);
+        Task task1 = new Task(username, taskname, description, coordinate);
 
         task.createNewBid(username, 1.0);
 
@@ -342,11 +360,25 @@ public class TaskTest extends ActivityInstrumentationTestCase2 {
         String username = "Tom";
         String taskname = "task1";
         String description = "this is a message";
+        LatLng coordinate = new LatLng(53.5444, -113.49);
 
-        Task task = new Task(username, taskname, description);
+        Task task = new Task(username, taskname, description, coordinate);
 
         task.setDone();
 
         assertTrue(task.getStatus().equals("done"));
+    }
+
+    public void testGetCoordinate() {
+
+        int tid = 2;
+        String username = "Tom";
+        String taskname = "task1";
+        String description = "this is a message";
+        LatLng coordinate = new LatLng(53.5444, -113.49);
+
+        Task task = new Task(username, taskname, description, coordinate);
+
+        assertTrue(task.getCoordinate() == coordinate);
     }
 }

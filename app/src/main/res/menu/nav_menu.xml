@@ -16,5 +16,16 @@
             android:id="@+id/requesterButton"
             android:icon="@drawable/ic_receipt_black_18dp"
             android:title="Requestor Tasks"/>
-    </group>>
+
+        <item
+            android:id="@+id/myLocationButton"
+            android:icon="@drawable/icons8_home"
+            android:title="My Location"/>
+
+        <item
+            android:id="@+id/SearchButton"
+            android:icon="@drawable/ic_search_white_24dp"
+            android:title="Search a task"/>
+
+    </group>
 </menu>

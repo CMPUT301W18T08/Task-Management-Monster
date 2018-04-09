@@ -131,12 +131,12 @@ public class MainActivity extends AppCompatActivity {
                         break;
 
                     case R.id.providerButton:
-                        Intent intent1 = new Intent(MainActivity.this, MyTaskActivity.class);
+                        Intent intent0 = new Intent(MainActivity.this, MyTaskActivity.class);
 
                         // set the type as provider
-                        intent1.putExtra("type", "pro");
+                        intent0.putExtra("type", "pro");
 
-                        startActivity(intent1);
+                        startActivity(intent0);
                         break;
 
                     case R.id.requesterButton:
@@ -146,6 +146,20 @@ public class MainActivity extends AppCompatActivity {
                         intent2.putExtra("type", "req");
 
                         startActivity(intent2);
+                        break;
+
+                    case R.id.myLocationButton:
+
+                        Intent intent1 = new Intent(MainActivity.this, LocationServiceActivity.class);
+
+                        startActivityForResult(intent1, REQUEST_CODE_GET);
+                        break;
+
+                    case R.id.SearchButton:
+
+                        Intent intent3 = new Intent(MainActivity.this, SearchActivity.class);
+
+                        startActivity(intent3);
                         break;
 
                     default:
@@ -247,6 +261,7 @@ public class MainActivity extends AppCompatActivity {
         if(recommendedList.isEmpty()) {
             Toast.makeText(MainActivity.this, "There is no nearby tasks around you within 2km", Toast.LENGTH_SHORT).show();
         }
+        mdrawerlayout.closeDrawers();
     }
 
     //TODO end of WOW factor------------------------------------------------------------------------
@@ -282,12 +297,6 @@ public class MainActivity extends AppCompatActivity {
 
                 startActivity(intent);
                 break;
-
-            case R.id.my_location:
-
-                Intent intent1 = new Intent(MainActivity.this, LocationServiceActivity.class);
-
-                startActivityForResult(intent1, REQUEST_CODE_GET);
 
             default:
         }
