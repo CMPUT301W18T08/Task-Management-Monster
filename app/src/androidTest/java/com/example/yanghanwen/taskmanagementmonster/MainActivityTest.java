@@ -62,7 +62,8 @@ public class MainActivityTest extends ActivityInstrumentationTestCase2<LoginActi
         solo.assertCurrentActivity("Wrong Activity",NewTaskActivity.class);
         solo.clickOnButton("Create");
         solo.assertCurrentActivity("Wrong Activity",MainActivity.class);
-
+        
+        solo.sleep(3000);
         // go to see my request task
         swipeToRight(); //https://github.com/CMPUT301F17T31/NoName/blob/master/NoName/app/src/androidTest/java/com/example/haotianzhu/noname/AddHabitTest.java
         solo.clickOnView(solo.getText("Requestor Tasks"));
@@ -252,12 +253,12 @@ public class MainActivityTest extends ActivityInstrumentationTestCase2<LoginActi
     }
 
 
-    @Override
-    public void tearDown()throws Exception{
+//     @Override
+//     public void tearDown()throws Exception{
 
-        solo.finishOpenedActivities();
+//         solo.finishOpenedActivities();
 
-    }
+//     }
 
     public void swipeToRight() {
         Display display = solo.getCurrentActivity().getWindowManager().getDefaultDisplay();
