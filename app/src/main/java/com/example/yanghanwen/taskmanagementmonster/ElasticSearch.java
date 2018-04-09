@@ -20,6 +20,13 @@ import io.searchbox.core.Search;
 import io.searchbox.core.SearchResult;
 import io.searchbox.core.Update;
 
+
+/**
+ * Elastic Search
+ *
+ *
+ * @author Wenhan Yang && Yuhang Xiong
+ */
 public class ElasticSearch {
     private static JestDroidClient client;
 

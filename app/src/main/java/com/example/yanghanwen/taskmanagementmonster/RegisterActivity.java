@@ -18,6 +18,8 @@ import android.widget.Toast;
  * Activity of register a new user to use the app
  *
  * This activity will get name, email, and phone number of a user.
+ *
+ * @author Wenhan Yang && Yuhang Xiong
  */
 public class RegisterActivity extends AppCompatActivity {
 

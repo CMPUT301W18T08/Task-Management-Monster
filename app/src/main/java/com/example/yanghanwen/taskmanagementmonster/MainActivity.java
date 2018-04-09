@@ -32,8 +32,19 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.HashSet;
 
+
+
 /**
  * The activity control the main view of the app
+ * , once user finish locating himself/herself, system
+ * will give a recommended task list that within 2km of
+ * distance.
+ *
+ *
+ * layout: activity_main.xml
+ *
+ *
+ * @author Xiang Fan && Hanwen Yang
  */
 public class MainActivity extends AppCompatActivity {
 
@@ -55,6 +66,13 @@ public class MainActivity extends AppCompatActivity {
     private ArrayAdapter<Task> adapter;
     private double latitudeGet, longitudeGet;
 
+
+
+    /**
+     *  Firstly executed when activity starts, we define some
+     *  click listeners here.
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -115,8 +133,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        //TODO switch...case instead of click Listener
-
+        // Drawerlayout select actions
         navView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem item) {
@@ -188,6 +205,14 @@ public class MainActivity extends AppCompatActivity {
         });
 
         recommendedTasks.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            /**
+             * Recommended list click action
+             * @param adapterView
+             * @param view
+             * @param i
+             * @param l
+             */
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
@@ -212,6 +237,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    /**
+     * Receiving the coordinate sending from LocationService activity
+     * @param requestCode
+     * @param resultCode
+     * @param data
+     */
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         switch (requestCode) {
             case REQUEST_CODE_GET:
@@ -233,6 +264,8 @@ public class MainActivity extends AppCompatActivity {
         ElasticSearch.GetTasks getTasks = new ElasticSearch.GetTasks();
         ElasticSearch.IsExistTask isExistTask = new ElasticSearch.IsExistTask();
 
+
+        //search all database
         String qTasks = "{\"query\" : {\"match_all\": {} }, \"from\":0, \"size\":1000 }";
         getTasks.execute(qTasks);
 
@@ -243,6 +276,9 @@ public class MainActivity extends AppCompatActivity {
             Log.d("test!!!!!!!!!!", "something went wrong");
         }
 
+
+        //if the task is within 2km and with status
+        //either "requested" or "bidded" is shown on the main activity screen
         for (int i = 0; i < TmpTasks.size(); i++) {
             if (TmpTasks.get(i).getCoordinate() != null) {
                 if (((Math.abs(Math.abs(TmpTasks.get(i).getCoordinate().latitude) - Math.abs(latitudeGet)) <= 0.018) &&
@@ -266,6 +302,10 @@ public class MainActivity extends AppCompatActivity {
 
     //TODO end of WOW factor------------------------------------------------------------------------
 
+
+    /**
+     * Double press to quit action
+     */
     @Override
     public void onBackPressed() {
 
@@ -277,11 +317,23 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
+    /**
+     * Initializing Toolbar action
+     * @param menu
+     * @return
+     */
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.toolbar, menu);
         return true;
     }
 
+
+    /**
+     * Toolbar item click action
+     * @param item
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 

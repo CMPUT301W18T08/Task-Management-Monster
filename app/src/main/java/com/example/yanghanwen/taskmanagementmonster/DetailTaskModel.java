@@ -14,9 +14,10 @@ import java.util.ArrayList;
 /**
  * MVC model for the Detail task activity, compute and return required data.
  *
+ * @author Xiang Fan
+ *
  * @version 1.0
  */
-
 public abstract class DetailTaskModel {
 
     //private ElasticSearch.GetTask getTask;          // elastic search object used to get task
@@ -250,10 +251,32 @@ public abstract class DetailTaskModel {
      */
     public abstract void declineButtonAction(String newValue);
 
+    /**
+     * Set the visibility of image Button
+     *
+     * @return visibility of image Button
+     */
     public abstract int visibilityImageButton();
+
+    /**
+     * get the mode of viewing the image
+     *
+     * @return mode of image
+     */
     public abstract String getImageMode();
+
+    /**
+     * weather provider name is showed in the given place
+     *
+     * @return if provider name is showed
+     */
     public abstract Boolean showProvider();
 
+    /**
+     * Get the visibility of delete button
+     *
+     * @return the visibility of delete button
+     */
     public abstract int visibilityDeleteButton();
 
     /**
@@ -362,16 +385,29 @@ public abstract class DetailTaskModel {
         addTask.execute(this.task);
     }
 
+    /**
+     * set the task's coordinate
+     *
+     * @return LatLng coordinate
+     */
     public LatLng getCoordinate() {
 
         return task.getCoordinate();
     }
 
+    /**
+     * If is task has at least one image
+     *
+     * @return if the task has at least one image
+     */
     public Boolean hasImages() {
 
         return this.task.hasImages();
     }
 
+    /**
+     * Clean all content in current image ArrayList
+     */
     public void deleteAllImages() {
 
         this.task.deleteAllImages();
@@ -379,16 +415,32 @@ public abstract class DetailTaskModel {
         taskUpdate();
     }
 
+    /**
+     * Get the Arraylist of string information of corresponding images
+     *
+     * @return Arrylist<String> contain the information of corresponding image
+     */
     public ArrayList<String> getImageMessages() {
 
         return task.getImageMessages();
     }
 
+    /**
+     * Given a position of image in the images, return the image in Bitmap form
+     *
+     * @param position the position of image in the images
+     * @return the Bitmap form of the image
+     */
     public Bitmap getImage(int position) {
 
         return this.task.getImage(position);
     }
 
+    /**
+     * Add a new image into image Arraylist after convert it to Base64
+     *
+     * @param imageMap The new added image in Bitmap form
+     */
     public void addImage(Bitmap imageMap) {
 
         this.task.addImage(imageMap);
@@ -396,6 +448,11 @@ public abstract class DetailTaskModel {
         taskUpdate();
     }
 
+    /**
+     * Given a position of image in the images, delete that image
+     *
+     * @param position the position of image in the images
+     */
     public void deleteImage(int position) {
 
         this.task.deleteImage(position);
@@ -403,6 +460,12 @@ public abstract class DetailTaskModel {
         taskUpdate();
     }
 
+    /**
+     * Get the string contain user's information
+     *
+     * @param username the name of user
+     * @return a String contain user's information
+     */
     public String getUserInfo(String username) {
 
         ElasticSearch.GetUser getUser = new ElasticSearch.GetUser();
@@ -424,15 +487,26 @@ public abstract class DetailTaskModel {
         return username + '\n' + "Email: " + email + '\n' + "Phone: " + phone;
     }
 
+    /**
+     * if image has more than 10 picture, it has space to add more
+     *
+     * @return if more than 10 pictures
+     */
     public Boolean imageSpace() {
 
         return this.task.imageSpace();
     }
 
+    /**
+     * add this task to queue
+     */
     public void queueUpdate(){
         TaskList.getInstance().getTasks().add(this.task);
     }
 
+    /**
+     * delete the current task
+     */
     public void deleteTask() {
 
         ElasticSearch.DeleteTask deleteTask = new ElasticSearch.DeleteTask();

@@ -39,6 +39,7 @@ import java.util.ArrayList;
  *
  * layout: activity_search.xml
  *
+ * @author Wenhan Yang && Hanwen Yang
  * @version 1.0
  */
 public class SearchActivity extends AppCompatActivity {

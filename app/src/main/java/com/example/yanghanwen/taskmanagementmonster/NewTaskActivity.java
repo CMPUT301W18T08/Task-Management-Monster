@@ -86,8 +86,13 @@ public class NewTaskActivity extends AppCompatActivity {
 
         // get value and create new task when button clicked
         createButton.setOnClickListener(new View.OnClickListener() {
+
+
             /**
              * create new task button action, system brings user to creating task page
+             *, when device is offline, the system will stop uploading current task and automatically continue uploading
+             * when device is back online. User can either choose to create a task with or without assigning
+             * a location along with it.
              * @param view
              */
             @Override
@@ -146,6 +151,12 @@ public class NewTaskActivity extends AppCompatActivity {
 //        https://developers.google.com/places/android-api/placepicker
 //        2018/03/31
         setLocation.setOnClickListener(new View.OnClickListener() {
+
+            /**
+             * Implementing Google PlacePicker here for
+             * user to select a location where the task at.
+             * @param view
+             */
             @Override
             public void onClick(View view) {
 
@@ -163,8 +174,7 @@ public class NewTaskActivity extends AppCompatActivity {
             }
         });
 
-//      https://stackoverflow.com/questions/35507410/how-to-validate-google-places-autocompletetextview
-//      2018/03/31
+
         mUpdatePlaceDetailsCallback = new ResultCallback<PlaceBuffer>() {
             @Override
             public void onResult(@NonNull PlaceBuffer places) {
@@ -181,6 +191,13 @@ public class NewTaskActivity extends AppCompatActivity {
     }
 
 
+    /**
+     * Get the picked location coordinate here
+     *
+     * @param requestCode
+     * @param resultCode
+     * @param data
+     */
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
         CoorMsg = (TextView) findViewById(R.id.coordinateMessage);
@@ -203,11 +220,23 @@ public class NewTaskActivity extends AppCompatActivity {
     }
 
 
+    /**
+     * Initializing menu
+     * @param menu
+     * @return
+     */
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.discard, menu);
         return true;
     }
 
+
+    /**
+     * Alertdialog to make sure if user want give up on this
+     * edit
+     * @param item
+     * @return
+     */
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
 
@@ -239,6 +268,10 @@ public class NewTaskActivity extends AppCompatActivity {
         return true;
     }
 
+
+    /**
+     * Checking if user want quit
+     */
     @Override
     public void onBackPressed() {
 

@@ -37,6 +37,19 @@ import java.util.HashMap;
 import java.util.Map;
 
 
+
+/**
+ * This activity mainly used for displaying tasks around
+ * current location within 5 kilometers. We decided to drop a marker
+ * to each location, and information(task name and status) is shown
+ * when marker is clicked for a brief preview.
+ *
+ *
+ * layout: activity_search_location.xml
+ *
+ * @author Hanwen Yang
+ * @version 1.0.0
+ */
 public class SearchScreenLocationActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
@@ -60,6 +73,12 @@ public class SearchScreenLocationActivity extends FragmentActivity implements On
     }
 
 
+
+    /**
+     * Used to initiate the map, setting marker click event,
+     * and checking for accessing location permission
+     * @param googleMap
+     */
     @Override
     public void onMapReady(GoogleMap googleMap) {
 
@@ -74,18 +93,14 @@ public class SearchScreenLocationActivity extends FragmentActivity implements On
         status = intent.getStringArrayListExtra("status");
 
 
-        //TODO add tasks location here
-
-//        for(int i = 0; i < getCoor.size(); i++) {
-//
-//            // Add a marker in current task location and move the camera
-//            LatLng TaskLocation = new LatLng(getCoor.get(i).latitude, getCoor.get(i).longitude);
-//            mMap.addMarker(new MarkerOptions().position(TaskLocation).title(taskname.get(i)).snippet(status.get(i)));
-//            mMap.moveCamera(CameraUpdateFactory.newLatLng(TaskLocation));
-//        }
-
-
         mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+
+            /**
+             * Marker click event, show the task name
+             * and status
+             * @param marker
+             * @return
+             */
             @Override
             public boolean onMarkerClick(Marker marker) {
                  marker.showInfoWindow();
@@ -108,6 +123,15 @@ public class SearchScreenLocationActivity extends FragmentActivity implements On
 
     }
 
+
+
+    /**
+     * Setting up my current location, and add a blue dot
+     * to current location for further reviewing
+     * @param requestCode
+     * @param permissions
+     * @param grantResults
+     */
     @Override
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
 
@@ -125,6 +149,14 @@ public class SearchScreenLocationActivity extends FragmentActivity implements On
         }
     }
 
+
+
+    /**
+     * This is used to get the tasks with status "requested"
+     * or "bidded" within 5km of my current location, if tasks is far away
+     * from user location, it will still shown on the map for either "requested",
+     * "bidded", "assigned" or "done" status
+     */
     private void setMyLastKnownLocation(){
 
         if(ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
@@ -146,6 +178,8 @@ public class SearchScreenLocationActivity extends FragmentActivity implements On
                                         location.getLongitude())).radius(5000).strokeColor(Color.parseColor("#500084d3")).fillColor(Color.parseColor("#500084d3")));
                                 mLastKnownLocation = location;
 
+                                //compute the distance between current location and
+                                //all tasks that have location information along with them
                                 for(int j = 0; j < getCoor.size(); j++) {
                                     Location loc1 = new Location("");
                                     loc1.setLatitude(location.getLatitude());
@@ -157,12 +191,17 @@ public class SearchScreenLocationActivity extends FragmentActivity implements On
                                 }
                                 Log.d("****^&%%%^%#$%#@#$#@$#@@@@@@@@@@@@@@@@@", distanceInMtrs.toString());
 
+                                //if the task is within 5km range and either "requested" or "bidded"
+                                //adding a marker to the location
                                 for(int k = 0; k < distanceInMtrs.size(); k++) {
                                     if(Float.valueOf(distanceInMtrs.get(k)) <= 5000 && (status.get(k).equals("bidded") || status.get(k).equals("requested"))) {
                                         LatLng nearbyTasks = new LatLng(getCoor.get(k).latitude, getCoor.get(k).longitude);
                                         mMap.addMarker(new MarkerOptions().position(nearbyTasks).title(taskname.get(k)).snippet(status.get(k)));
                                         mMap.moveCamera(CameraUpdateFactory.newLatLng(nearbyTasks));
+
+
                                     } else if(Float.valueOf(distanceInMtrs.get(k)) > 5000) {
+                                        //if task is away, adding a marker
                                         LatLng awayTasks = new LatLng(getCoor.get(k).latitude, getCoor.get(k).longitude);
                                         mMap.addMarker(new MarkerOptions().position(awayTasks).title(taskname.get(k)).snippet(status.get(k)));
                                         mMap.moveCamera(CameraUpdateFactory.newLatLng(awayTasks));

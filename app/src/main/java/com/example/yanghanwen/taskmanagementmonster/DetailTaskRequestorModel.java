@@ -12,6 +12,8 @@ import java.util.ArrayList;
  * MVC model for the Detail task activity, compute and return required data. This is used in case
  * when the detail is view in the my task as provider
  *
+ * @author Xiang Fan
+ *
  * @version 1.0
  */
 public class DetailTaskRequestorModel extends DetailTaskModel {
@@ -469,6 +471,11 @@ public class DetailTaskRequestorModel extends DetailTaskModel {
         status = super.getStatus();
     }
 
+    /**
+     * get the mode of viewing the image
+     *
+     * @return mode of image
+     */
     public String getImageMode() {
 
         if (status.equals("requested")) {
@@ -482,6 +489,11 @@ public class DetailTaskRequestorModel extends DetailTaskModel {
         }
     }
 
+    /**
+     * Set the visibility of image Button
+     *
+     * @return visibility of image Button
+     */
     public int visibilityImageButton() {
 
         if (status.equals("requested")) {
@@ -500,7 +512,11 @@ public class DetailTaskRequestorModel extends DetailTaskModel {
         }
     }
 
-
+    /**
+     * weather provider name is showed in the given place
+     *
+     * @return if provider name is showed
+     */
     public Boolean showProvider() {
 
         if (status.equals("requested")) {
@@ -519,6 +535,11 @@ public class DetailTaskRequestorModel extends DetailTaskModel {
         }
     }
 
+    /**
+     * Get the visibility of delete button
+     *
+     * @return the visibility of delete button
+     */
     public int visibilityDeleteButton() {
 
         return View.VISIBLE;

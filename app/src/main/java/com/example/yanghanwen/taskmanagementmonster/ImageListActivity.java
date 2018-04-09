@@ -13,6 +13,13 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
+/**
+ * Control the activity of listing all image of a task
+ *
+ * @author Xiang Fan
+ *
+ * @version 1.0
+ */
 public class ImageListActivity extends AppCompatActivity {
 
     String mode;
@@ -114,6 +121,9 @@ public class ImageListActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * initialize the view according to the mode
+     */
     private void initialize() {
 
         if (mode.equals("viewOnly")) {
@@ -125,6 +135,9 @@ public class ImageListActivity extends AppCompatActivity {
         updateImages();
     }
 
+    /**
+     * update the image ListView
+     */
     private void updateImages() {
 
         if (mode.equals("new")) {

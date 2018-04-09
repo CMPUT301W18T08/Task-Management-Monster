@@ -33,6 +33,20 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 
 
+
+/**
+ *  This activity is used to locate the current location of
+ *  user, since the emulator is not able to track location itself, we have to manually
+ *  assign a coordinate to it, then we have to retrieve the location that we have already
+ *  assigned bu getting the last known location, passing the coordinate back to main
+ *  activity.
+ *
+ *
+ * layout: activity_location_service.xml
+ *
+ *  @author Hanwen Yang
+ *  @version 1.0.0
+ */
 public class LocationServiceActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
@@ -40,8 +54,13 @@ public class LocationServiceActivity extends FragmentActivity implements OnMapRe
     private FusedLocationProviderClient mFusedLocationClient;
     double latToSend, lngToSend = 0;
     private LocationManager locationManager;
-//    private FusedLocationProviderClient mFusedLocationProviderClient;
 
+
+    /**
+     * Called when activity starts, we need obtain the current
+     * location and initiate the Google map.
+     * @param savedInstanceState
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +74,10 @@ public class LocationServiceActivity extends FragmentActivity implements OnMapRe
     }
 
 
+    /**
+     * Mainly used to initiate the map
+     * @param googleMap
+     */
     @Override
     public void onMapReady(GoogleMap googleMap) {
 
@@ -76,32 +99,6 @@ public class LocationServiceActivity extends FragmentActivity implements OnMapRe
 
 
 
-
-       /*mMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
-            @Override
-            public boolean onMarkerClick(Marker marker) {
-
-                AlertDialog.Builder dialog = new AlertDialog.Builder(LocationServiceActivity.this);
-                dialog.setTitle("Reminder");
-                dialog.setMessage("This task is at" + ExactPlaceToReceive);
-                dialog.setCancelable(false);
-                dialog.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int which) {
-                        finish();
-                    }
-                });
-                dialog.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int which) {
-                    }
-                });
-                dialog.show();
-
-                return false;
-            }
-        });*/
-
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             mMap.setMyLocationEnabled(true);
         }
@@ -114,6 +111,16 @@ public class LocationServiceActivity extends FragmentActivity implements OnMapRe
         }
     }
 
+
+
+    /**
+     * Checking for location permission, if permitted by user,
+     * go in to Google map, if permission is denied, close current
+     * Google map.
+     * @param requestCode
+     * @param permissions
+     * @param grantResults
+     */
     @Override
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
 
@@ -130,6 +137,11 @@ public class LocationServiceActivity extends FragmentActivity implements OnMapRe
         }
     }
 
+
+    /**
+     * This is used to get the current location which
+     * have assigned before by user.
+     */
     private void setMyLastKnownLocation() {
 
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
@@ -154,6 +166,11 @@ public class LocationServiceActivity extends FragmentActivity implements OnMapRe
     }
 
 
+    /**
+     * Executed when back button is pressed, passing the
+     * location information back to main activity for WOW factor
+     * usage.
+     */
     @Override
     public void onBackPressed() {
         Intent intent3 = new Intent();

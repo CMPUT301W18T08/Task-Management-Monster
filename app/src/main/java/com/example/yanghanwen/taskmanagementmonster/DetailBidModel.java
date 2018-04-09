@@ -9,6 +9,8 @@ import android.util.Log;
 /**
  * MVC model for the Detail bid activity, compute and return required data.
  *
+ * @author Xiang Fan
+ *
  * @version 1.0
  */
 public class DetailBidModel {
@@ -81,11 +83,21 @@ public class DetailBidModel {
         return amount;
     }
 
+    /**
+     * Get the user's email
+     *
+     * @return user's email
+     */
     public String getEmail() {
 
         return email;
     }
 
+    /**
+     * Get the user's phone number
+     *
+     * @return user's phone number
+     */
     public String getPhone() {
 
         return phone;

@@ -15,6 +15,8 @@ import android.widget.TextView;
 /**
  * Detail bid activity, control the view of showing information of individual activity
  *
+ * @author Xiang Fan
+ *
  * @version 1.0
  */
 

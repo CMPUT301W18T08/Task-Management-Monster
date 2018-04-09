@@ -13,6 +13,8 @@ import android.widget.Toast;
 /**
  * Activity for login, the user can use an exist username to enter the main activity
  * or can enter another activity to create a new username
+ *
+ * @author Wenhan Yang && Yuhang Xiong
  */
 public class LoginActivity extends AppCompatActivity {
 

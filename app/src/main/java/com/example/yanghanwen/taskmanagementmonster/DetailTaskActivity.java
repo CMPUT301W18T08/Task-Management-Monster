@@ -23,8 +23,11 @@ import com.google.android.gms.maps.model.LatLng;
 
 import java.util.ArrayList;
 
+
 /**
  * The activity control the view of viewing detail information and operating on a task
+ *
+ * @author Xiang Fan
  */
 public class DetailTaskActivity extends AppCompatActivity {
 
@@ -141,7 +144,16 @@ public class DetailTaskActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(),
                                 "Error: Empty Are Not Available Bid Input",
                                 Toast.LENGTH_SHORT).show();
-                    } else {
+                    }
+
+                    else if (MainActivity.mainModel.getUsername().equals(detailTaskModel.getRequester())) {
+
+                        Toast.makeText(getApplicationContext(),
+                                "Error: Cannot bit your own task",
+                                Toast.LENGTH_SHORT).show();
+                    }
+
+                    else {
 
                         detailTaskModel.changeButtonAction(textBid);
                         updateView();

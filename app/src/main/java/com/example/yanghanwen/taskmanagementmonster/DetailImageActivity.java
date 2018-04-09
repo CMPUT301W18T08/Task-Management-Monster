@@ -17,6 +17,13 @@ import android.widget.Toast;
 import java.io.InputStream;
 import java.util.ArrayList;
 
+/**
+ * Control the UI of activity of viewing image activity
+ *
+ * @author Xiang Fan
+ *
+ * @version 1.0
+ */
 public class DetailImageActivity extends AppCompatActivity {
 
     private String mode;
@@ -84,6 +91,9 @@ public class DetailImageActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * initialize the view according to the mode
+     */
     private void initialize() {
 
         if (mode.equals("new")) {
@@ -127,6 +137,9 @@ public class DetailImageActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * store the image to the right place according to the mode
+     */
     private void storeImage() {
 
         if (imageMap == null) {
@@ -175,6 +188,9 @@ public class DetailImageActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * delete the current image according to the current mode
+     */
     private void deleteImage() {
 
         if (mode.equals("newView")) {
@@ -196,6 +212,9 @@ public class DetailImageActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * open the android gallery
+     */
     // https://www.youtube.com/watch?v=OPnusBmMQTw
     // 2018/03/26
     private void openGallery() {

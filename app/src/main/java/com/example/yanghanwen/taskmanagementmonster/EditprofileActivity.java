@@ -15,6 +15,8 @@ import android.widget.TextView;
 
 /**
  * The activity control the view of detail information and operating on a user
+ *
+ * @author Xiang Fan
  */
 public class EditprofileActivity extends AppCompatActivity {
 
