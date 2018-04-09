@@ -123,6 +123,9 @@ public class NewTaskModel {
         return messages;
     }
 
+    /**
+     * Clean all content in current image ArrayList
+     */
     public void deleteAllImages() {
 
         this.imagesBase64 = new ArrayList<String>();
