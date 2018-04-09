@@ -9,8 +9,15 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-/**
- * Created by Terrence on 2018/3/17.
+/*
+ *
+ *  * Copyright © 2018 CMPUT301W18T08, University of Alberta - All Rights Reserved.
+ *  * You may use, distribute or modify this code under terms and conditions of Code of Student Behavior at
+ *  *  University of Alberta.
+ *  * You can find a copy of the license in this project, otherwise please contact at
+ *  *   hyang4@ualberta.ca
+ *
+ *
  */
 
 /**

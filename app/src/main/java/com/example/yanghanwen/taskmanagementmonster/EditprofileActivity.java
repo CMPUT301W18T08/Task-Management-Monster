@@ -13,6 +13,18 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+
+/*
+ *
+ *  * Copyright © 2018 CMPUT301W18T08, University of Alberta - All Rights Reserved.
+ *  * You may use, distribute or modify this code under terms and conditions of Code of Student Behavior at
+ *  *  University of Alberta.
+ *  * You can find a copy of the license in this project, otherwise please contact at
+ *  *   hyang4@ualberta.ca
+ *
+ *
+ */
+
 /**
  * The activity control the view of detail information and operating on a user
  *

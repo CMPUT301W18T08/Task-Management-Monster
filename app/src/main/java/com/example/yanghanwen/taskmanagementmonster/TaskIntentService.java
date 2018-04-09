@@ -13,6 +13,17 @@ import android.widget.Toast;
 
 import com.google.android.gms.maps.model.LatLng;
 
+/*
+ *
+ *  * Copyright © 2018 CMPUT301W18T08, University of Alberta - All Rights Reserved.
+ *  * You may use, distribute or modify this code under terms and conditions of Code of Student Behavior at
+ *  *  University of Alberta.
+ *  * You can find a copy of the license in this project, otherwise please contact at
+ *  *   hyang4@ualberta.ca
+ *
+ *
+ */
+
 /**
  * Created by Terrence on 03/04/2018.
  * This is the intent service for upload data or delete data from database
