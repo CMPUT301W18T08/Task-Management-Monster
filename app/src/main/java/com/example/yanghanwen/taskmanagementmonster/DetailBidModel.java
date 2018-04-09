@@ -81,11 +81,21 @@ public class DetailBidModel {
         return amount;
     }
 
+    /**
+     * Get the user's email
+     *
+     * @return user's email
+     */
     public String getEmail() {
 
         return email;
     }
 
+    /**
+     * Get the user's phone number
+     *
+     * @return user's phone number
+     */
     public String getPhone() {
 
         return phone;

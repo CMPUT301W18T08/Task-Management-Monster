@@ -6,7 +6,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
-import android.media.Image;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -19,7 +18,6 @@ import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.google.android.gms.maps.model.LatLng;
 
 import java.util.ArrayList;
 
@@ -141,7 +139,16 @@ public class DetailTaskActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(),
                                 "Error: Empty Are Not Available Bid Input",
                                 Toast.LENGTH_SHORT).show();
-                    } else {
+                    }
+
+                    else if (MainActivity.mainModel.getUsername().equals(detailTaskModel.getRequester())) {
+
+                        Toast.makeText(getApplicationContext(),
+                                "Error: Cannot bit your own task",
+                                Toast.LENGTH_SHORT).show();
+                    }
+
+                    else {
 
                         detailTaskModel.changeButtonAction(textBid);
                         updateView();

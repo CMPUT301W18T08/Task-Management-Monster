@@ -5,7 +5,6 @@ import android.graphics.BitmapFactory;
 import android.util.Base64;
 import android.util.Log;
 
-import com.google.android.gms.location.places.Place;
 import com.google.android.gms.maps.model.LatLng;
 
 import java.io.ByteArrayOutputStream;
@@ -106,6 +105,11 @@ public class NewTaskModel {
         }
     }
 
+    /**
+     * Get the Arraylist of string information of corresponding images
+     *
+     * @return Arrylist<String> contain the information of corresponding image
+     */
     public ArrayList<String> getImageMessages () {
 
         int i = this.imagesBase64.size();
@@ -131,6 +135,11 @@ public class NewTaskModel {
         this.imagesBase64 = new ArrayList<String>();
     }
 
+    /**
+     * Add a new image into image Arraylist after convert it to Base64
+     *
+     * @param imageMap The new added image in Bitmap form
+     */
     public void addImage(Bitmap imageMap) {
 
         byte[] imageByteArray = BitmapToByteArray(imageMap);
@@ -139,6 +148,12 @@ public class NewTaskModel {
         this.imagesBase64.add(imageBase64);
     }
 
+    /**
+     * Given a position of image in the images, return the image in Bitmap form
+     *
+     * @param position the position of image in the images
+     * @return the Bitmap form of the image
+     */
     public Bitmap getImage(int position) {
 
         String imageBase64 = this.imagesBase64.get(position);
@@ -149,11 +164,22 @@ public class NewTaskModel {
         return imageMap;
     }
 
+    /**
+     * Given a position of image in the images, delete that image
+     *
+     * @param position the position of image in the images
+     */
     public void deleteImage(int position) {
 
         this.imagesBase64.remove(position);
     }
 
+    /**
+     * Convert an bitmap image tp byte[]
+     *
+     * @param imageMap the image in bitmap
+     * @return the same image in byte[]
+     */
     private byte[] BitmapToByteArray(Bitmap imageMap) {
 
         // https://stackoverflow.com/questions/13758560/android-bitmap-to-byte-array-and-back-skimagedecoderfactory-returned-null
@@ -165,6 +191,12 @@ public class NewTaskModel {
         return byteArray;
     }
 
+    /**
+     * Convert a byte[] image to Base64 String
+     *
+     * @param imageByteArray byte[] image
+     * @return Base64 String image
+     */
     private String byteArrayToBase64(byte[] imageByteArray) {
 
         // https://stackoverflow.com/questions/13562429/how-many-ways-to-convert-bitmap-to-string-and-vice-versa
@@ -174,6 +206,12 @@ public class NewTaskModel {
         return imageBase64;
     }
 
+    /**
+     * Convert a byte[] image to Bitmap
+     *
+     * @param imageByteArray onvert a byte[] image to Bitmap
+     * @return Bitmap image
+     */
     private Bitmap byteArrayToBitmap(byte[] imageByteArray) {
 
         // https://stackoverflow.com/questions/13562429/how-many-ways-to-convert-bitmap-to-string-and-vice-versa
@@ -184,6 +222,12 @@ public class NewTaskModel {
         return imagemap;
     }
 
+    /**
+     * Convert a Base64 String image to byte[]
+     *
+     * @param imageBase64 Base64 String image
+     * @return byte[] image
+     */
     private byte[] Base64ToByteArray(String imageBase64) {
 
         // https://stackoverflow.com/questions/13562429/how-many-ways-to-convert-bitmap-to-string-and-vice-versa
@@ -193,6 +237,11 @@ public class NewTaskModel {
         return imageByteArray;
     }
 
+    /**
+     * if image has more than 10 picture, it has space to add more
+     *
+     * @return if more than 10 pictures
+     */
     public Boolean imageSpace() {
 
         int base64Size = imagesBase64.size();
