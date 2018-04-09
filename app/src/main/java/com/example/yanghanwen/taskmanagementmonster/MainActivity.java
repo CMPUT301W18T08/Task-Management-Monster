@@ -55,7 +55,7 @@ import java.util.HashSet;
  * layout: activity_main.xml
  *
  *
- * @author Xiang Fan && Hanwen Yang
+ * @author Xiang Fan && Hanwen Yang && Tianyi Liang
  */
 public class MainActivity extends AppCompatActivity {
 
@@ -313,6 +313,14 @@ public class MainActivity extends AppCompatActivity {
 
     //TODO end of WOW factor------------------------------------------------------------------------
 
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Intent intentService = new Intent(getApplicationContext(),TaskIntentService.class);
+        intentService.putExtra("mode","notify");
+        startService(intentService);
+    }
 
     /**
      * Double press to quit action

@@ -40,6 +40,7 @@ import java.util.ArrayList;
  * The activity control the view of viewing detail information and operating on a task
  *
  * @author Xiang Fan
+ *
  */
 public class DetailTaskActivity extends AppCompatActivity {
 

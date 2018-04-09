@@ -16,6 +16,7 @@ import java.util.ArrayList;
 
 /**
  * Singleton used for store task
+ * @author Tianyi Liang && Xixuan Song
  */
 public class DeleteTaskList {
     private ArrayList<Task>tasks;

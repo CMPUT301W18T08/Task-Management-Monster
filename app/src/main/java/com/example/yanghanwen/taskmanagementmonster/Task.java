@@ -39,6 +39,8 @@ public class Task {
     private LatLng coordinate;
     private ArrayList<String> imagesBase64;
 
+    private int counter;            // for check if status is changed
+
      /**
       * Create an empty task object.
       *
@@ -69,6 +71,17 @@ public class Task {
         this.coordinate = coordinate;
 
         imagesBase64 = new ArrayList<String>();
+
+        counter = 0;
+    }
+
+
+    public int getCounter(){
+        return this.counter;
+    }
+
+    public void setCounter(int adder){
+        this.counter = adder;
     }
 
      /**

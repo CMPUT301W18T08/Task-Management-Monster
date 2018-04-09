@@ -14,6 +14,8 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import java.util.concurrent.ExecutionException;
+
 
 /*
  *
@@ -31,7 +33,7 @@ import android.widget.Toast;
  *
  * This activity will get name, email, and phone number of a user.
  *
- * @author Wenhan Yang && Yuhang Xiong
+ * @author Wenhan Yang && Yuhang Xiong && Tianyi Liang
  */
 public class RegisterActivity extends AppCompatActivity {
 
@@ -71,11 +73,26 @@ public class RegisterActivity extends AppCompatActivity {
                         String phone = phoneView.getText().toString();
 
                         User newUser = new User(userName, email, phone);
+                        String username = newUser.getUserName();
+                        ElasticSearch.IsExist isExist = new ElasticSearch.IsExist();
+                        isExist.execute(username);
 
-                        ElasticSearch.AddUser addUser = new ElasticSearch.AddUser();
-                        addUser.execute(newUser);
-                        Log.i("test", "hahhahahahahahhahahahahah");
-                        Log.d("user is", userName);
+                        try {
+                            if(isExist.get().equals(true)){
+                                Toast.makeText(getApplicationContext(),"User name conflicted. Please try another one!",
+                                        Toast.LENGTH_LONG).show();
+                            }else {
+                                ElasticSearch.AddUser addUser = new ElasticSearch.AddUser();
+                                addUser.execute(newUser);
+                                Log.i("test", "hahhahahahahahhahahahahah");
+
+                            }
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        } catch (ExecutionException e) {
+                            e.printStackTrace();
+                        }
+
 
                         finish();
                     }

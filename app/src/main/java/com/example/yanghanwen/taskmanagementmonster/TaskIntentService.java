@@ -13,6 +13,8 @@ import android.widget.Toast;
 
 import com.google.android.gms.maps.model.LatLng;
 
+import java.util.ArrayList;
+
 /*
  *
  *  * Copyright © 2018 CMPUT301W18T08, University of Alberta - All Rights Reserved.
@@ -29,6 +31,8 @@ import com.google.android.gms.maps.model.LatLng;
  * This is the intent service for upload data or delete data from database
  * we use two singleton TaskList and DeleteTaskList as queue to store the task to be uploaded or deleted
  * then in this intent service, it runs in background and keep pushing data to database when connected.
+ *
+ * @author Tianyi Liang && Xixuan Song
  */
 
 public class TaskIntentService extends IntentService{
@@ -45,6 +49,10 @@ public class TaskIntentService extends IntentService{
     private LatLng coordinate;
     private Task mTask;
     private String mode;
+
+    private String userID;
+
+    public ArrayList<Task>reqestorList = new ArrayList<>();
 
 
 
@@ -65,6 +73,18 @@ public class TaskIntentService extends IntentService{
                 }
 
 
+            }
+        });
+    }
+
+    public void displayNotification(String notify){
+        final String notifyMsg = notify;
+        iServiceHandler.post(new Runnable() {
+            @Override
+            public void run() {
+                for(int i = 0; i < 6; i++){
+                    Toast.makeText(getApplicationContext(),notifyMsg,Toast.LENGTH_LONG).show();
+                }
             }
         });
     }
@@ -91,7 +111,7 @@ public class TaskIntentService extends IntentService{
 
 
         }
-
+        userID = MainActivity.mainModel.getUsername();
         while (true) {
             if (connectionCheck.isNetWorkAvailable(getApplicationContext())){
                 /**if (TaskList.getInstance().getTasks().size() == 0) {
@@ -116,6 +136,30 @@ public class TaskIntentService extends IntentService{
                     DeleteTaskList.getInstance().getTasks().clear();
                 }catch (Exception e){
                     Log.i("delete for update","have nothing to delete");
+                }
+
+                if(mode.equals("notify")){
+                    Log.i(TAG,"query for notify start");
+                    ElasticSearch.GetTasks getTasks = new ElasticSearch.GetTasks();
+                    String query = "{\"query\" : {\"term\" : { \"username\" : \""+userID+"\" }}}";
+                    getTasks.execute(query);
+                    try{
+                        reqestorList = getTasks.get();
+                    }catch (Exception e){
+                        Log.i("Error", "Failed to get the tasks from the async object");
+                    }
+                    for(Task task : reqestorList){
+                        if(task.getCounter()==1){
+                            Log.i(TAG,"You have a task was bidded");
+                            task.setCounter(0);
+                            ElasticSearch.AddTask addTask = new ElasticSearch.AddTask();
+                            addTask.execute(task);
+                            displayNotification("You have a task was bidded");
+                            break;
+                        }
+                    }
+                    break;
+
                 }
 
                 if(mode.equals("create")){

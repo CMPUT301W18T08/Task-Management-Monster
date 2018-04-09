@@ -13,6 +13,10 @@ import java.util.ArrayList;
  *
  */
 
+/**
+ * This is a singleton for store the task to be uploaded
+ * @author Tianyi Liang && Xixuan Song
+ */
 public class TaskList {
     private ArrayList<Task> tasks;
 

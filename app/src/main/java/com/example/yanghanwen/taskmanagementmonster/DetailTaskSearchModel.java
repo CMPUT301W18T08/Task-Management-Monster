@@ -20,6 +20,7 @@ import java.util.ArrayList;
  *
  *  @author Xiang Fan
  *
+ *
  * @version 1.0
  */
 public class DetailTaskSearchModel extends DetailTaskModel {
@@ -323,6 +324,7 @@ public class DetailTaskSearchModel extends DetailTaskModel {
         else {
 
             super.task.createNewBid(super.username, userBid);
+            super.task.setCounter(1);
         }
 
         super.taskUpdate();

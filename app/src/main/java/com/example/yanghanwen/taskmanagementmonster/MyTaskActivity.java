@@ -42,7 +42,7 @@ import java.util.ArrayList;
  *
  * layout : activity_my_task.xml
  *
- * @author Tianyi Liang
+ * @author Tianyi Liang && Xixuan Song
  * @version 1.0
  */
 public class MyTaskActivity extends AppCompatActivity {
@@ -140,6 +140,15 @@ public class MyTaskActivity extends AppCompatActivity {
             // adapter to adapt requester arrayList
             adapter = new TwoGridsAdapter(getApplicationContext(),taskList);
             requesterListView.setAdapter(adapter);
+
+            // set counter to 0
+            for(Task task : taskList){
+                if(task.getCounter()==1){
+                    task.setCounter(0);
+                    ElasticSearch.AddTask addTask = new ElasticSearch.AddTask();
+                    addTask.execute(task);
+                }
+            }
 
             /**
              * for clicking each items in listview
