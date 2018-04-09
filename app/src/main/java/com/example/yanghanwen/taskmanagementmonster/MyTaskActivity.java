@@ -1,6 +1,9 @@
 package com.example.yanghanwen.taskmanagementmonster;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -88,6 +91,10 @@ public class MyTaskActivity extends AppCompatActivity {
         requesterBiddingListView = findViewById(R.id.requesterBiddingListView);
         requesterAssignedListView = findViewById(R.id.requesterAssignedListView);
         requesterListView = findViewById(R.id.RequesterTask);
+
+        ActionBar bar = getSupportActionBar();
+
+        bar.setBackgroundDrawable(new ColorDrawable(Color.parseColor("#E47833")));
 
         // get incoming type (requester/provider)
         OperationType = getIntent().getStringExtra("type");
